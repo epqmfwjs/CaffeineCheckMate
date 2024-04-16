@@ -18,11 +18,15 @@ public class DeleteFavHandler extends HttpServlet implements CommandHandler {
 	private DeleteFavService deleteFavService = new DeleteFavService();
 	
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
-    	Integer memberNo = (Integer) req.getSession().getAttribute("M_NO");
+    	Object mno =  req.getSession().getAttribute("M_NO");
+    	String memberId = null;
+    	if (mno != null) {
+    		memberId = mno.toString();
+    	}
     	Integer coffeeNo = Integer.parseInt(req.getParameter("C_NO"));
 
     	try {
-    		deleteFavService.deleteFav(memberNo, coffeeNo);
+    		deleteFavService.deleteFav(memberId, coffeeNo);
     		return "/views/screens/test.jsp";
     	} catch (Exception e) {
     		System.out.println("AddFavoriteHandler process에서 오류발생");

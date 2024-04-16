@@ -11,14 +11,14 @@ import jdbc.JdbcUtil;
 
 public class CalendarDao {
 	
-	public Calendar createTodaysRecord(Date date, int memberNo, int caffeine, String color, Connection conn) throws SQLException {
+	public Calendar createTodaysRecord(Date date, String memberId, int caffeine, String color, Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt =conn.prepareStatement(
-					"insert into CALENDAR (CAL_DATE, M_NO, CAL_DAILYCF, CAL_COLOR) values(?,?,?,?)");
+					"insert into CALENDAR (CAL_DATE, M_ID, CAL_DAILYCF, CAL_COLOR) values(?,?,?,?)");
 			pstmt.setDate(1, date);
-			pstmt.setInt(2, memberNo);
+			pstmt.setString(2, memberId);
 			pstmt.setInt(3, caffeine);
 			pstmt.setString(4, color);
 			int rows = pstmt.executeUpdate();
@@ -29,20 +29,20 @@ public class CalendarDao {
 		return null;
 	}
 	
-	public Calendar getTodaysRecord(int memberNo, Date date, Connection conn) throws SQLException {
+	public Calendar getTodaysRecord(String memberId, Date date, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		Calendar todaysCaffeine = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"select CAL_DAILYCF from CALENDAR where M_NO = ? and CAL_DATE=?");
-			pstmt.setInt(1,memberNo);
+					"select CAL_DAILYCF from CALENDAR where M_ID = ? and CAL_DATE=?");
+			pstmt.setString(1,memberId);
 			pstmt.setDate(2, date);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				todaysCaffeine = new Calendar(
 						date,
-						memberNo,
+						memberId,
 						rs.getInt("CAL_DAILYCF"),
 						""
 						);
@@ -56,15 +56,15 @@ public class CalendarDao {
 		}
 	}
 	
-	public void recordCaffeine(Date date, int memberNo, int caffeine, String color, Connection conn) throws SQLException {
+	public void recordCaffeine(Date date, String memberId, int caffeine, String color, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		String caffeineStr = caffeine+"";
 		try {
 			pstmt=conn.prepareStatement(
-					"update CALENDAR set CAL_DAILYCF=?, CAL_COLOR=?  where M_NO = ? and CAL_DATE=?");
+					"update CALENDAR set CAL_DAILYCF=?, CAL_COLOR=?  where M_ID = ? and CAL_DATE=?");
 			pstmt.setInt(1, caffeine);
 			pstmt.setString(2, color);
-			pstmt.setInt(3, memberNo);
+			pstmt.setString(3, memberId);
 			pstmt.setDate(4, date);
 			
 			int rows = pstmt.executeUpdate();
@@ -74,12 +74,12 @@ public class CalendarDao {
 		}
 	}
 	
-	public void resetCaffeine(Date date, int memberNo, Connection conn) throws SQLException {
+	public void resetCaffeine(Date date, String memberId, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		try {
 			pstmt = conn.prepareStatement(
-					"update CALENDAR set CAL_DAILYCF=0, CAL_COLOR='#BFFE01' where M_NO = ? and CAL_DATE=?");
-			pstmt.setInt(1, memberNo);
+					"update CALENDAR set CAL_DAILYCF=0, CAL_COLOR='#BFFE01' where M_ID = ? and CAL_DATE=?");
+			pstmt.setString(1, memberId);
 			pstmt.setDate(2, date);	
 			int rows = pstmt.executeUpdate();
 			System.out.println("resetcaffeine : "+rows+" rows updated");

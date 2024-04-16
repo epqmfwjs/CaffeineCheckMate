@@ -19,7 +19,7 @@ public class CalculatorService {
 	CalendarDao calendarDao = new CalendarDao();
 	ProfileDao profileDao = new ProfileDao();
 	
-	public void calculate(int memberNo, int coffeeNo) {
+	public void calculate(String memberId, int coffeeNo) {
 		Connection conn = null;
 		Coffee coffee = null;
 		Calendar todaysCaffeine = null;
@@ -30,14 +30,14 @@ public class CalculatorService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			double weight = profileDao.getWeight(memberNo, conn);
+			double weight = profileDao.getWeight(memberId, conn);
 			
 			//커피제품에서 커피넘버로 커피정보 찾아 카페인양 구하기
 			coffee = coffeeListDao.selectByCoffeeNo(coffeeNo, conn);
 			caffeine = coffee.getC_CAFFEINE();
 			
 			//저장되어있는 하루섭취량 찾기
-			todaysCaffeine = calendarDao.getTodaysRecord(memberNo, date, conn);
+			todaysCaffeine = calendarDao.getTodaysRecord(memberId, date, conn);
 			
 			if (todaysCaffeine != null) {
 				//저장되어있는 섭취량이 있을 경우
@@ -46,13 +46,13 @@ public class CalculatorService {
 				color = CCMFunctions.ColorFn(caffeine, weight);
 				
 				//새로 얻은 오늘 섭취량을 캘린더에 저장
-				calendarDao.recordCaffeine(todaysCaffeine.getCAL_DATE(), memberNo, caffeine,color, conn);
+				calendarDao.recordCaffeine(todaysCaffeine.getCAL_DATE(), memberId, caffeine,color, conn);
 
 			} else {
 				//저장되어있는 섭취량이 없을 경우
 				//선택한 커피의 카페인양을 오늘 섭취량에 저장
 				color = CCMFunctions.ColorFn(caffeine, weight);
-				calendarDao.createTodaysRecord(date, memberNo, caffeine, color, conn);
+				calendarDao.createTodaysRecord(date, memberId, caffeine, color, conn);
 			}
 			conn.commit();
 		} catch (SQLException e){

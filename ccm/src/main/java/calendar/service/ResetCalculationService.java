@@ -11,14 +11,14 @@ import jdbc.JdbcUtil;
 public class ResetCalculationService {
 	CalendarDao calendarDao = new CalendarDao();
 	
-	public void Reset(int memberNo) {
+	public void Reset(String memberId) {
 		Connection conn = null;
 		java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
 		System.out.println("sql date : "+date);
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			calendarDao.resetCaffeine(date, memberNo, conn);
+			calendarDao.resetCaffeine(date, memberId, conn);
 			
 			conn.commit();
 		}catch (SQLException e) {

@@ -15,21 +15,21 @@ public class FavoriteDao {
 	
 	Map<Integer ,Favorite> favMap = new HashMap();
 
-	public Map<Integer, Favorite> getFavList(int memberNo, Connection conn) throws SQLException { 
+	public Map<Integer, Favorite> getFavList(String memberId, Connection conn) throws SQLException { 
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"select a.M_NO, a.C_NO, b.C_NAME, a.C_FAV_DATE, b.C_IMG_COPY "
+					"select a.M_ID, a.C_NO, b.C_NAME, a.C_FAV_DATE, b.C_IMG_COPY "
 					+ "from COFFEE_FAVORITE a join COFFEELIST b "
 					+ "on a.C_NO = b.C_NO "
-					+ "where a.M_NO=?;");
-			pstmt.setInt(1, memberNo);
+					+ "where a.M_ID=?;");
+			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			Favorite favorite = null;
 			while(rs.next()) {
 				favorite = new Favorite(
-						rs.getInt("M_NO"),
+						rs.getString("M_ID"),
 						rs.getInt("C_NO"),
 						rs.getString("C_NAME"),
 						rs.getDate("C_FAV_DATE"),
@@ -49,12 +49,12 @@ public class FavoriteDao {
 	 * 존재하면 true
 	 * 없으면 false
 	 */
-	public boolean checkFav(int memberNum, int coffeeNo, Connection conn) throws SQLException {
+	public boolean checkFav(String memberId, int coffeeNo, Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"select M_NO from COFFEE_FAVORITE where C_NO=?;");
+					"select M_ID from COFFEE_FAVORITE where C_NO=?;");
 			pstmt.setInt(1, coffeeNo);
 			rs = pstmt.executeQuery();
 			return rs.next();
@@ -64,12 +64,12 @@ public class FavoriteDao {
 		}
 	}
 	
-	public void AddFav(int memberNo, int coffeeNo, Connection conn) throws SQLException { //커넥션을 변수로 받음
+	public void AddFav(String memberId, int coffeeNo, Connection conn) throws SQLException { //커넥션을 변수로 받음
 		System.out.println("favoirtedao");
 		PreparedStatement pstmt = null; //pstmt 초기화
 		try {
-			pstmt = conn.prepareStatement("insert into COFFEE_FAVORITE (M_NO, C_NO) values(?,?)");
-			pstmt.setInt(1, memberNo);
+			pstmt = conn.prepareStatement("insert into COFFEE_FAVORITE (M_ID, C_NO) values(?,?)");
+			pstmt.setString(1, memberId);
 			pstmt.setInt(2, coffeeNo);
 			int AFn = pstmt.executeUpdate(); //쿼리 실행
 			System.out.println("AddFav affect "+AFn+" rows");
@@ -78,12 +78,12 @@ public class FavoriteDao {
 		}
 	}
 	
-	public boolean delete(int memberNo, int coffeeNo, Connection conn) throws SQLException {
+	public boolean delete(String memberId, int coffeeNo, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		try {
 			pstmt = conn.prepareStatement(
-					"delete from COFFEE_FAVORITE where M_NO = ? and C_NO=?");
-			pstmt.setInt(1, memberNo);
+					"delete from COFFEE_FAVORITE where M_ID = ? and C_NO=?");
+			pstmt.setString(1, memberId);
 			pstmt.setInt(2, coffeeNo);
 			int rows = pstmt.executeUpdate();
 			System.out.println("delete favorite : "+rows+" rows deleted");

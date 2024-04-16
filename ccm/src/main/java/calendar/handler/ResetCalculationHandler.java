@@ -19,11 +19,15 @@ public class ResetCalculationHandler extends HttpServlet implements CommandHandl
 	
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
-    	Integer memberNo = (Integer) req.getSession().getAttribute("M_NO");
+    	Object mno =  req.getSession().getAttribute("M_NO");
+    	String memberId = null;
+    	if (mno != null) {
+    		memberId = mno.toString();
+    	}
     	
-    	if (memberNo != null) {
+    	if (memberId != null) {
     		try {
-    			resetCalculationService.Reset(memberNo);
+    			resetCalculationService.Reset(memberId);
     			return "/views/screens/test.jsp";
     		} catch (Exception e) {
     			System.out.println("ResetCalculationHandler process에서 예외발생");

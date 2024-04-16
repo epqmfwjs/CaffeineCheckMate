@@ -4,25 +4,25 @@ import java.sql.Date;
 
 public class Favorite {
 
-	private int M_NO;
+	private String M_ID;
 	private int C_NO;
 	private String C_NAME;
 	private Date C_FAV_DATE;
 	private String C_IMAGE;
 	
-	public Favorite(int m_NO, int c_NO, String C_NAME, Date c_FAV_DATE, String c_IMAGE) {
-		M_NO = m_NO;
+	public Favorite(String m_ID, int c_NO, String C_NAME, Date c_FAV_DATE, String c_IMAGE) {
+		M_ID = m_ID;
 		C_NO = c_NO;
 		C_FAV_DATE = c_FAV_DATE;
 		C_IMAGE = c_IMAGE;
 	}
 
-	public int getM_NO() {
-		return M_NO;
+	public String getM_ID() {
+		return M_ID;
 	}
 
-	public void setM_NO(int m_NO) {
-		M_NO = m_NO;
+	public void setM_ID(String m_ID) {
+		M_ID = m_ID;
 	}
 
 	public int getC_NO() {

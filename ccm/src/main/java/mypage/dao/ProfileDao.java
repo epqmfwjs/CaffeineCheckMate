@@ -10,14 +10,14 @@ import jdbc.JdbcUtil;
 
 public class ProfileDao {
 	
-	public double getWeight(int memberNo, Connection conn) throws SQLException {
+	public double getWeight(String memberId, Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int weight = 0;
 		try  {
 			pstmt = conn.prepareStatement(
-					"select P_WEIGHT from PROFILE where M_NO=?");
-			pstmt.setInt(1, memberNo);
+					"select P_WEIGHT from PROFILE where M_ID=?");
+			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				weight = rs.getInt(1);

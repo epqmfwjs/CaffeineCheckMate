@@ -15,26 +15,26 @@ public class AddFavoriteService {
 	FavoriteDao favoriteDao = new FavoriteDao();
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
 	
-	public boolean addFavorite(int memberNo ,int coffeeNo) {
+	public boolean addFavorite(String memberId ,int coffeeNo) {
 		System.out.println("addfavorite service");
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			Map favlist = favoriteDao.getFavList(memberNo, conn);
+			Map favlist = favoriteDao.getFavList(memberId, conn);
 			if( favlist != null) {
 				if(favlist.size()>=5) {
 					JdbcUtil.close(conn);
 					return false;
 				}
-				if(favoriteDao.checkFav(memberNo, coffeeNo, conn)) {
+				if(favoriteDao.checkFav(memberId, coffeeNo, conn)) {
 					JdbcUtil.close(conn);
 					return false;
 				}
 			}
 			String image = coffeeListDao.selectByCoffeeNo(coffeeNo, conn).getC_IMAGE();
-			favoriteDao.AddFav(memberNo, coffeeNo, conn);
+			favoriteDao.AddFav(memberId, coffeeNo, conn);
 			coffeeListDao.plusFav(coffeeNo, conn);
 			
 			

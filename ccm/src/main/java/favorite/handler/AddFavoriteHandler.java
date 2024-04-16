@@ -19,14 +19,18 @@ public class AddFavoriteHandler extends HttpServlet implements CommandHandler {
 	
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-    	Integer memberNo = (Integer) req.getSession().getAttribute("M_NO");
+    	Object mno =  req.getSession().getAttribute("M_NO");
+    	String memberId = null;
+    	if (mno != null) {
+    		memberId = mno.toString();
+    	}
     	Integer coffeeNo = Integer.parseInt(req.getParameter("C_NO"));
     	
     	System.out.println("addfavorite.do");
     	
-    	if (memberNo != null && coffeeNo != null) {
+    	if (memberId != null && coffeeNo != null) {
     		try {
-    			boolean success =  addFavoriteService.addFavorite(memberNo, coffeeNo);
+    			boolean success =  addFavoriteService.addFavorite(memberId, coffeeNo);
     			if(!success) {
     				req.setAttribute("addFavAttempt", false);
     			} else {
