@@ -17,14 +17,7 @@ public class ResetCalculationHandler extends HttpServlet implements CommandHandl
 	public static final String FORM_VIEW = "/index.jsp";
 	private ResetCalculationService resetCalculationService = new ResetCalculationService();
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			process(req, resp);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
     	Integer memberNo = (Integer) req.getSession().getAttribute("M_NO");
     	

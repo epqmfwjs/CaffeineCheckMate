@@ -17,15 +17,6 @@ public class DeleteFavHandler extends HttpServlet implements CommandHandler {
 	public static final String FORM_VIEW = "/index.jsp";
 	private DeleteFavService deleteFavService = new DeleteFavService();
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			process(req, resp);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
     	Integer memberNo = (Integer) req.getSession().getAttribute("M_NO");
     	Integer coffeeNo = Integer.parseInt(req.getParameter("C_NO"));
