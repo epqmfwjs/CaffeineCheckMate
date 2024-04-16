@@ -54,14 +54,14 @@ public class CustomBoardAddService {
 			
 			CustomBoardAddDao dao = new CustomBoardAddDao();
 			CustomBoardAddDto dto = new CustomBoardAddDto("null",m_id,c_no,cus_name,cus_content,"null",0,cus_img,cus_img_realname);
-			//CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milkType,syrupType,toppingType,decaffeinated);
+			CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milkType,syrupType,toppingType,decaffeinated);
+		
 			
-			System.out.println("---1---");
 			dao.addList(dto,con);
-			System.out.println("---2---");
 			int num =  dao.readCusNo(con);
 			dao.addimg(num, dto, con);
-			System.out.println("---3---");
+			dao.addhash(num, hashdto, con);
+			
 			
 			con.commit();
 			

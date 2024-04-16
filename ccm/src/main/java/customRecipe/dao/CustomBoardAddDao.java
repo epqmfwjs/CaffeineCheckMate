@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import customRecipe.dto.CustomBoardAddDto;
+import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
 
 
@@ -70,6 +71,30 @@ String sql = "insert into custom(cus_no,m_id,c_no,cus_title,cus_content,cus_regd
 			pstm.setInt(1, num);
 			pstm.setString(2, cus_img);
 			pstm.setString(3, cus_img_realname);
+			pstm.executeUpdate();
+			
+			JdbcUtil.close(pstm);
+	}
+	
+public void addhash(int num,CustomBoardHashDto dto,Connection con) throws SQLException {
+		
+		String fsql = "insert into "
+				+ "custom_hash(CUS_HASH_NO,CUS_NO,CUS_HASH_SHOT,CUS_HASH_MILK,CUS_HASH_SYRUP,CUS_HASH_TOP,CUS_HASH_DECAF)"
+				+ " values(null,?,?,?,?,?,?)";
+		String shot =dto.getShot();
+		String milkType =dto.getMilkType();
+		String syrupType =dto.getSyrupType();
+		String toppingType =dto.getToppingType();
+		String decaffeinated =dto.getDecaffeinated();
+			
+		
+			PreparedStatement pstm = con.prepareStatement(fsql);
+			pstm.setInt(1, num);
+			pstm.setString(2,shot);
+			pstm.setString(3,milkType);
+			pstm.setString(4,syrupType);
+			pstm.setString(5,toppingType);
+			pstm.setString(6,decaffeinated);
 			pstm.executeUpdate();
 			
 			JdbcUtil.close(pstm);
