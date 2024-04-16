@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ 
 <button onclick="location.href='LoginHandler.do'">LoginHandler.do</button>
 <button onclick="location.href='CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
 
