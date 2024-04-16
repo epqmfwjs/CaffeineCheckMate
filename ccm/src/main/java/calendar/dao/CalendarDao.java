@@ -8,20 +8,19 @@ import java.sql.SQLException;
 
 import calendar.dto.Calendar;
 import jdbc.JdbcUtil;
-/*
- * 색상 및 단계관련 구현 필요
- */
+
 public class CalendarDao {
 	
-	public Calendar createTodaysRecord(Date date, int memberNo, int caffeine, Connection conn) throws SQLException {
+	public Calendar createTodaysRecord(Date date, int memberNo, int caffeine, String color, Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt =conn.prepareStatement(
-					"insert into CALENDAR (CAL_DATE, M_NO, CAL_DAILYCF) values(?,?,?)");
+					"insert into CALENDAR (CAL_DATE, M_NO, CAL_DAILYCF, CAL_COLOR) values(?,?,?,?)");
 			pstmt.setDate(1, date);
 			pstmt.setInt(2, memberNo);
 			pstmt.setInt(3, caffeine);
+			pstmt.setString(4, color);
 			int rows = pstmt.executeUpdate();
 			System.out.println("create todays record  : "+rows+" rows updated");
 		} finally {
@@ -44,7 +43,8 @@ public class CalendarDao {
 				todaysCaffeine = new Calendar(
 						date,
 						memberNo,
-						rs.getInt("CAL_DAILYCF")
+						rs.getInt("CAL_DAILYCF"),
+						""
 						);
 				return todaysCaffeine;
 			} else {
@@ -56,15 +56,16 @@ public class CalendarDao {
 		}
 	}
 	
-	public void recordCaffeine(Date date, int memberNo, int caffeine, Connection conn) throws SQLException {
+	public void recordCaffeine(Date date, int memberNo, int caffeine, String color, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		String caffeineStr = caffeine+"";
 		try {
 			pstmt=conn.prepareStatement(
-					"update CALENDAR set CAL_DAILYCF=?  where M_NO = ? and CAL_DATE=?");
-			pstmt.setString(1, caffeineStr);
-			pstmt.setInt(2, memberNo);
-			pstmt.setDate(3, date);
+					"update CALENDAR set CAL_DAILYCF=?, CAL_COLOR=?  where M_NO = ? and CAL_DATE=?");
+			pstmt.setInt(1, caffeine);
+			pstmt.setString(2, color);
+			pstmt.setInt(3, memberNo);
+			pstmt.setDate(4, date);
 			
 			int rows = pstmt.executeUpdate();
 			System.out.println("recordCaffeine reuslt:"+rows+" rows updated");
@@ -77,7 +78,7 @@ public class CalendarDao {
 		PreparedStatement pstmt =null;
 		try {
 			pstmt = conn.prepareStatement(
-					"update CALENDAR set CAL_DAILYCF=0 where M_NO = ? and CAL_DATE=?");
+					"update CALENDAR set CAL_DAILYCF=0, CAL_COLOR='#BFFE01' where M_NO = ? and CAL_DATE=?");
 			pstmt.setInt(1, memberNo);
 			pstmt.setDate(2, date);	
 			int rows = pstmt.executeUpdate();
