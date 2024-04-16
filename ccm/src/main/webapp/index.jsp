@@ -11,7 +11,7 @@
         <div>
         <a href="/test.do">test</a>
         <% String testresult = (String) request.getAttribute("test"); %>
-        <h1><%=testresult %></h1>
+        <h1><%=testresult %></h1>dsad
         </div>
 </body>
 </html>
