@@ -18,7 +18,7 @@ public class DeleteFavHandler extends HttpServlet implements CommandHandler {
 	private DeleteFavService deleteFavService = new DeleteFavService();
 	
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
-    	Object mno =  req.getSession().getAttribute("M_NO");
+    	Object mno =  req.getSession().getAttribute("AUTH_USER_ID");
     	String memberId = null;
     	if (mno != null) {
     		memberId = mno.toString();
