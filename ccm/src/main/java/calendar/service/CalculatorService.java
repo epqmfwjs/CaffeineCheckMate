@@ -30,7 +30,7 @@ public class CalculatorService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			int weight = profileDao.getWeight(memberNo, conn);
+			double weight = profileDao.getWeight(memberNo, conn);
 			
 			//커피제품에서 커피넘버로 커피정보 찾아 카페인양 구하기
 			coffee = coffeeListDao.selectByCoffeeNo(coffeeNo, conn);

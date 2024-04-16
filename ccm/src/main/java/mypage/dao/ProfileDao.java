@@ -10,7 +10,7 @@ import jdbc.JdbcUtil;
 
 public class ProfileDao {
 	
-	public int getWeight(int memberNo, Connection conn) throws SQLException {
+	public double getWeight(int memberNo, Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int weight = 0;

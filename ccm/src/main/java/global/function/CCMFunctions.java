@@ -2,7 +2,7 @@ package global.function;
 
 public class CCMFunctions {
 
-	public static String ColorFn(int caffeine, int weight) {
+	public static String ColorFn(int caffeine, double weight) {
 		String color;
 		double ratio = caffeine/(weight*6.4);
 		if(ratio>1) {
