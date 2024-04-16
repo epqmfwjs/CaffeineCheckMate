@@ -20,7 +20,7 @@ public String process(HttpServletRequest request, HttpServletResponse response) 
 	  
 	 ArrayList<CustomBoardListDto> list= service.boardview(request, response);
 	 request.setAttribute("list", list);
-	
+	 
 	  return "CustomBoardView.jsp";
 }
 }

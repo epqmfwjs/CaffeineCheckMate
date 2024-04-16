@@ -5,7 +5,7 @@ public class CustomBoardListDto {
 	private String M_NO;
 	private String C_NO;
 	private String cus_title;
-	private String CUS_CONTENT;
+	private String CUS_CONTENT; 
 	private String CUS_REGDATE;
 	private String CUS_SUMGOOD;
 	private int CUS_IMG_NO;

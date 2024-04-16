@@ -10,7 +10,7 @@ import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
 public class CustomBoardViewDao {
-
+ 
 	public ArrayList<CustomBoardListDto> boardview(Connection con, String num) throws SQLException {
 		String sql = "select * from custom_view where num=?";
 		PreparedStatement pstm = con.prepareStatement(sql);

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
-
+ 
 
 public class CustomBoardListDao {
 

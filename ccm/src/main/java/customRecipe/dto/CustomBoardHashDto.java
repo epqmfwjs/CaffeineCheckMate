@@ -5,7 +5,7 @@ public class CustomBoardHashDto {
     private String milkType;
     private String syrupType;
     private String toppingType;
-    private String decaffeinated;
+    private String decaffeinated; 
 
     // 기본 생성자
     public CustomBoardHashDto() {}

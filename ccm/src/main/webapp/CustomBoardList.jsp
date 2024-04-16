@@ -10,7 +10,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px; /* 아이템 간의 간격 */
     list-style-type: none; /* 리스트 스타일 제거 */
-}
+} 
 
 #board li {
     text-align: center; /* 텍스트 중앙 정렬 */

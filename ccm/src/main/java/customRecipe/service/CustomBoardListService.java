@@ -20,7 +20,7 @@ public class CustomBoardListService {
 			con = ConnectionProvider.getConnection();
 			ArrayList<CustomBoardListDto> list = dao.getallList(con);
 			
-		        
+		         
 			return list;
 		} catch (SQLException e) {
 			e.printStackTrace();

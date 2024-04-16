@@ -26,7 +26,7 @@ public class CustomBoardJson extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject json = new JSONObject();
-        
+         
         CustomBoardListDao dao = new CustomBoardListDao();
         Connection con = null;
         

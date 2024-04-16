@@ -12,7 +12,7 @@ import controller.CommandHandler;
 
 public class LoginHandler implements CommandHandler {
 	
-
+ 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
         String result= "testView.jsp";

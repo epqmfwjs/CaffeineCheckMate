@@ -27,7 +27,7 @@ public class CustomBoardAddService {
 		try {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false);
-			
+			 
 			ServletContext context = request.getSession().getServletContext();
 			String directory = context.getRealPath("/upload/");
 			int maxSize = 1024*1024*5;

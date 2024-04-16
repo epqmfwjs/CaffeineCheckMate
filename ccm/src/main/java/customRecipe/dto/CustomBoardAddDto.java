@@ -2,7 +2,7 @@ package customRecipe.dto;
 
 public class CustomBoardAddDto {
 	String cus_no;
-	String m_id;
+	String m_id; 
 	String c_no;
 	String cus_name;
 	String cus_content;
@@ -11,7 +11,7 @@ public class CustomBoardAddDto {
 	String cus_img;
 	String cus_img_realname;
 	
-	
+	 
 	public CustomBoardAddDto(String cus_no, String m_id, String c_no, String cus_name, String cus_content,
 			String cus_regdate, int cus_sumgood,String cus_img, String cus_img_realname) {
 		this.cus_no = cus_no;

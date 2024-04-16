@@ -32,7 +32,7 @@ public String process(HttpServletRequest request, HttpServletResponse response) 
 	 request.setAttribute("allcount", allcount);
 	 JdbcUtil.close(con);
 	 
-	 
+	  
 	 return "CustomBoardList.jsp";
 }
 }

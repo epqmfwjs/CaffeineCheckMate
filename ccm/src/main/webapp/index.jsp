@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-      <h1> Test</h1>
+      <h1> Test</h1> 
         <div>
         <a href="/test.do">test</a>
         <% String testresult = (String) request.getAttribute("test"); %>

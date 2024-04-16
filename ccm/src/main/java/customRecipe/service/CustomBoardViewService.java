@@ -24,7 +24,7 @@ public class CustomBoardViewService {
 			ArrayList<CustomBoardListDto> list = dao.boardview(con,num);
 			return list;
 			
-			
+			 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JdbcUtil.rollback(con);

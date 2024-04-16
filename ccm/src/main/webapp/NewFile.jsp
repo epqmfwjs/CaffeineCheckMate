@@ -9,7 +9,7 @@
 <script>
     $(document).ready(function () {
         var tag = {};
-        var counter = 0;
+        var counter = 0; 
 
         // 입력한 값을 태그로 생성한다.
         function addTag (value) {
