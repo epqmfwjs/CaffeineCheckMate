@@ -2,12 +2,11 @@ const fav1 = document.querySelector(".즐겨찾기요소1");
 const dailyC = document.querySelector(".calc-box__info-value_caffeine-2");
 const cResetBtn = document.querySelector(".calc-box__reset-btn");
 
-function calc() {
-    const cno = fav1.value;
+function calc(cno) {
     console.log(cno);
     if (cno !== null && cno !== undefined) {
         const calcurl = (cno) => {
-            return("/calc?yn=0&C_NO="+cno);
+            return("/calc?yn=0&"+cno);
         }
     
         fetch(calcurl(cno))

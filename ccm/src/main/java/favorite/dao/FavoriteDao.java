@@ -13,9 +13,9 @@ import jdbc.JdbcUtil;
 
 public class FavoriteDao {
 	
-	Map<Integer ,Favorite> favMap = new HashMap();
 
-	public Map<Integer, Favorite> getFavList(String memberId, Connection conn) throws SQLException { 
+	public HashMap<Integer, Favorite> getFavList(String memberId, Connection conn) throws SQLException { 
+		Map<Integer ,Favorite> favMap = new HashMap();
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		try {
@@ -37,7 +37,7 @@ public class FavoriteDao {
 						);
 				favMap.put(favorite.getC_NO(), favorite);
 			}
-			return favMap;
+			return (HashMap<Integer, Favorite>) favMap;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
