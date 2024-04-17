@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.http.HttpSession;
+
 import customRecipe.dto.CustomBoardAddDto;
 import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
@@ -18,12 +20,13 @@ public class CustomBoardAddDao {
 
 	public void addList(CustomBoardAddDto dto, Connection con) throws SQLException {
 String sql = "insert into custom(cus_no,m_id,c_no,cus_title,cus_content,cus_regdate,cus_sumgood)"
-		+ "values(null,?,1,?,?,default,0)";
+		+ "values(null,?,11,?,?,default,0)";
 
 
 //		String cus_no = dto.getCus_no(); 오토키 null고정
 //		String m_no = dto.getM_no(); 세션 회원id 
 //		String c_no = dto.getC_no(); 제품id 커피리스트 
+	
 		String m_id = dto.getm_id();
 		String cus_name =dto.getcus_name();
 		String cus_content = dto.getcus_content();

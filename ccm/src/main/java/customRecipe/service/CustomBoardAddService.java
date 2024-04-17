@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -35,9 +36,9 @@ public class CustomBoardAddService {
 			
 			MultipartRequest mp = new MultipartRequest(request,directory,maxSize,encoding,
 					new DefaultFileRenamePolicy());
-//			HttpSession session = request.getSession(false);
-//			String m_no = (String)session.getAttribute("m_no"); 로그인세션 받을예정
-			String m_id = "CCM004";
+			HttpSession session = request.getSession(false);
+			String m_id = (String)session.getAttribute("AUTH_USER_ID"); //로그인세션 받을예정
+		
 //			String c_no = mp.getParameter("c_no");  아직 태그 미생성,c_no는 커피리스트에서 받아야됨
 			String c_no = "1";
 			String cus_name = mp.getParameter("cus_name");

@@ -16,7 +16,7 @@ public class CustomBoardAddHandler implements CommandHandler {
 		
 		service.addList(request, response);
 		
-		return "/views/screens/CustomBoardListHandler.do";
+		return "/CustomBoardListHandler.do";
 		}
 }
 

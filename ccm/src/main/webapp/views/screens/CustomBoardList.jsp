@@ -11,11 +11,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <script type="text/javascript"> var allcount = ${allcount}; </script>
-<script type="text/javascript" src="resources/js/custom.js"></script>
+<script type="text/javascript" src="/resources/js/custom.js"></script>
 
 </head>
 <body>
-<button type="button" onclick="location.href='/CustomBoardAdd.jsp'">글 작성</button>
+<button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
 검색: <input type="text" id="search" onkeypress="show_name(event)" placeholder="Search"><br/>
 
 <div class="dropdown">
