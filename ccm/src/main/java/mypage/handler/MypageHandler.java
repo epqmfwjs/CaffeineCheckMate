@@ -59,17 +59,13 @@ public class MypageHandler extends HttpServlet implements CommandHandler {
 		
 		if(m_id != null) {
 			mypages = mypageService.showMyProfile(m_id);
+			req.setAttribute("mypages", mypages);
+			return FORM_MYPAGE;
+			
 		}else {
-			mypages = mypageService.showMain();
+			return FORM_INDEX;
 			
 		}
-		
-		req.setAttribute("mypages", mypages);
-		
-		return FORM_MYPAGE;
 	
 	}
-	
-	
-
 }

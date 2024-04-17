@@ -9,6 +9,13 @@ public class MypagesDTO {
 	private Map<String,FavoriteListDTO> favlistMap; //즐겨찾기 목록 map(+이미지)
 	private Map<String, HealthLightDTO> hlightdtoMap; // 카페인 캘린더 map
 	
+	public MypagesDTO(Map<String,UserProfileDTO> updtoMap, Map<String, MyRecipeDTO>mRecipedto, Map<String,FavoriteListDTO> favlistMap, Map<String, HealthLightDTO> hlightdtoMap ) {
+		this.updtoMap = updtoMap;
+		this.mRecipedto = mRecipedto;
+		this.favlistMap = favlistMap;
+		this.hlightdtoMap = hlightdtoMap;
+	}
+	
 	
 	public Map<String, UserProfileDTO> getUpdtoMap() {
 		return updtoMap;
