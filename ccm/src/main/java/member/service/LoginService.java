@@ -34,22 +34,26 @@ public class LoginService {
 			result = memberDAO.selectID(memberDTO,conn); // 1차 로그인 아이디 셀렉 없으면 false
 			
 			if(result.getDtoPRO().equals("false")) {
+				System.out.println("백업들어옴");
 	// member 테이블에 아이디가 없다면 false를 받고 if 문들어옴 2차셀렉 member_backup 테이블조회
 				MemberDTO backupresult = memberDAO.backupSelectID(memberDTO,conn);
 				
+				if(backupresult.getDtoPRO().equals("false")) {
+					session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
+					 out.println("<script>alert('로그인실패'); location.href="
+					 		+ "'/views/screens/login.jsp';"
+					 		+ "</script>");
+					 out.flush();
+				} 
 				if(backupresult.getDtoID().equals(request.getParameter("loginId")) &&
 						backupresult.getDtoPW().equals(request.getParameter("loginPw"))) {
+					System.out.println("백업 조건만족 디티오" + backupresult.getDtoID());
+					System.out.println("백업 조건만족 겟파라미터" + request.getParameter("loginId"));
 					session.setAttribute("AUTH_USER_ID", backupresult.getDtoID());
 					 out.println("<script>alert('탈퇴신청상태입니다.'); location.href="
 						 		+ "'/views/screens/okDelete.jsp';"
 						 		+ "</script>");
 						 out.flush();
-				}else {
-				session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-				 out.println("<script>alert('로그인실패'); location.href="
-				 		+ "'/views/screens/login.jsp';"
-				 		+ "</script>");
-				 out.flush();
 				}
 			}
 			if(result.getDtoID().equals(request.getParameter("loginId")) &&

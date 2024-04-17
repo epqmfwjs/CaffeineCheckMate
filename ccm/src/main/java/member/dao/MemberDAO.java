@@ -71,6 +71,7 @@ public class MemberDAO {
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
 	            } else {
+	            	System.out.println("없는아이디");
 	                memberDTO.setDtoPRO("false");
 	            }
 	        }
@@ -97,6 +98,7 @@ public class MemberDAO {
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
 	            } else {
+	            	System.out.println("백업도아이디없음");
 	                memberDTO.setDtoPRO("false");
 	            }
 	        }
