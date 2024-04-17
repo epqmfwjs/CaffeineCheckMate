@@ -17,7 +17,8 @@ import customRecipe.dto.CustomBoardAddDto;
 import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
 
-
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class CustomBoardAddService {
 	
@@ -60,7 +61,7 @@ public class CustomBoardAddService {
 			dao.addList(dto,con);
 			int num =  dao.readCusNo(con);
 			dao.addimg(num, dto, con);
-			dao.addhash(num, hashdto, con);
+			dao.addhash(num,hashdto,con);
 			
 			
 			con.commit();

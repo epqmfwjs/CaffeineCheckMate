@@ -2,75 +2,75 @@ package customRecipe.dto;
 
 public class CustomBoardHashDto {
 	private String shot;
-    private String milkType;
-    private String syrupType;
-    private String toppingType;
-    private String decaffeinated; 
+	private String milkType;
+	private String syrupType;
+	private String toppingType;
+	private String decaffeinated; 
 
-    // 기본 생성자
-    public CustomBoardHashDto() {}
+ 
+
     
 
-    public CustomBoardHashDto(String shot, String milkType, String syrupType, String toppingType, String decaffeinated) {
-		this.shot = shot;
-		this.milkType = milkType;
-		this.syrupType = syrupType;
-		this.toppingType = toppingType;
-		this.decaffeinated = decaffeinated;
+
+
+	public CustomBoardHashDto() {
 	}
 
 
+
+
+	public CustomBoardHashDto(String shot2, String milkType2, String syrupType2, String toppingType2,
+			String decaffeinated2) {
+		this.shot = shot2;
+		this.milkType = milkType2;
+		this.syrupType = syrupType2;
+		this.toppingType = toppingType2;
+		this.decaffeinated = decaffeinated2;
+	}
+
+
+
+
 	// getter 및 setter 메서드
-    public String getShot() {
+    public String getshot() {
         return shot;
     }
 
-    public void setShot(String shot) {
+    public void setshot(String shot) {
         this.shot = shot;
     }
 
-    public String getMilkType() {
+    public String getmilkType() {
         return milkType;
     }
 
-    public void setMilkType(String milkType) {
+    public void setmilkType(String milkType) {
         this.milkType = milkType;
     }
 
-    public String getSyrupType() {
+    public String getsyrupType() {
         return syrupType;
     }
 
-    public void setSyrupType(String syrupType) {
+    public void setsyrupType(String syrupType) {
         this.syrupType = syrupType;
     }
 
-    public String getToppingType() {
+    public String gettoppingType() {
         return toppingType;
     }
 
-    public void setToppingType(String toppingType) {
+    public void settoppingType(String toppingType) {
         this.toppingType = toppingType;
     }
 
-    public String getDecaffeinated() {
+    public String getdecaffeinated() {
         return decaffeinated;
     }
 
-    public void setDecaffeinated(String decaffeinated) {
+    public void setdecaffeinated(String decaffeinated) {
         this.decaffeinated = decaffeinated;
     }
 
-    // toString 메서드
-    @Override
-    public String toString() {
-        return "Cus_HashDto{" +
-                "shot=" + shot +
-                ", milkType='" + milkType + '\'' +
-                ", syrupType='" + syrupType + '\'' +
-                ", toppingType='" + toppingType + '\'' +
-                ", decaffeinated='" + decaffeinated + '\'' +
-                '}';
-    }
 }
 

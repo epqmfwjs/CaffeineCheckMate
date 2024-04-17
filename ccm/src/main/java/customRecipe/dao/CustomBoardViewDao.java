@@ -11,11 +11,14 @@ import jdbc.JdbcUtil;
 
 public class CustomBoardViewDao {
  
+	
+	//게시글 상세보기
 	public ArrayList<CustomBoardListDto> boardview(Connection con, String num) throws SQLException {
 		String sql = "select * from custom_view where num=?";
 		PreparedStatement pstm = con.prepareStatement(sql);
 		CustomBoardListDto dto = new CustomBoardListDto();
 		CustomBoardListDao dao = new CustomBoardListDao();
+		
 		ArrayList<CustomBoardListDto> list = new ArrayList<>();
 		
 		
@@ -32,11 +35,16 @@ public class CustomBoardViewDao {
 				dto.setCUS_REGDATE(rs.getString(6));
 				dto.setCUS_SUMGOOD(rs.getString(7));
 				dao.getimg(dto,con);
-
+				dao.viewhash(dto,con);
+				
+				
 				list.add(dto);
+				
 				
 		}
 		JdbcUtil.close(rs);
 		return list;
 	}
+	
+
 }

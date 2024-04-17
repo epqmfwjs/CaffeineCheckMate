@@ -8,9 +8,59 @@ public class CustomBoardListDto {
 	private String CUS_CONTENT; 
 	private String CUS_REGDATE;
 	private String CUS_SUMGOOD;
+	
+	/*이미지*/
 	private int CUS_IMG_NO;
 	private String cus_img_realname;
 	private int CUS_NUM;
+	
+	/*해시태그*/
+	private String shot;
+	private String milkType;
+	private String syrupType;
+	private String toppingType;
+	private String decaffeinated; 
+
+    public String getshot() {
+        return shot;
+    }
+
+    public void setshot(String shot) {
+        this.shot = shot;
+    }
+
+    public String getmilkType() {
+        return milkType;
+    }
+
+    public void setmilkType(String milkType) {
+        this.milkType = milkType;
+    }
+
+    public String getsyrupType() {
+        return syrupType;
+    }
+
+    public void setsyrupType(String syrupType) {
+        this.syrupType = syrupType;
+    }
+
+    public String gettoppingType() {
+        return toppingType;
+    }
+
+    public void settoppingType(String toppingType) {
+        this.toppingType = toppingType;
+    }
+
+    public String getdecaffeinated() {
+        return decaffeinated;
+    }
+
+    public void setdecaffeinated(String decaffeinated) {
+        this.decaffeinated = decaffeinated;
+    }
+
 	
 	
 	

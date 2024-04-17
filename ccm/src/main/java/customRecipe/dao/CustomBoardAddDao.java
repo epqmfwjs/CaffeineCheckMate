@@ -81,11 +81,11 @@ public void addhash(int num,CustomBoardHashDto dto,Connection con) throws SQLExc
 		String fsql = "insert into "
 				+ "custom_hash(CUS_HASH_NO,CUS_NO,CUS_HASH_SHOT,CUS_HASH_MILK,CUS_HASH_SYRUP,CUS_HASH_TOP,CUS_HASH_DECAF)"
 				+ " values(null,?,?,?,?,?,?)";
-		String shot =dto.getShot();
-		String milkType =dto.getMilkType();
-		String syrupType =dto.getSyrupType();
-		String toppingType =dto.getToppingType();
-		String decaffeinated =dto.getDecaffeinated();
+		String shot =dto.getshot();
+		String milkType =dto.getmilkType();
+		String syrupType =dto.getsyrupType();
+		String toppingType =dto.gettoppingType();
+		String decaffeinated =dto.getdecaffeinated();
 			
 		
 			PreparedStatement pstm = con.prepareStatement(fsql);

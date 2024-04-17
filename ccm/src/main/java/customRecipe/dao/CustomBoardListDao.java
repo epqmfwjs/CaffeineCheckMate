@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
-
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
@@ -91,6 +89,31 @@ public class CustomBoardListDao {
 		JdbcUtil.close(rs); JdbcUtil.close(pstm);
 		return list;
 	
+	}
+	
+public ArrayList<CustomBoardListDto> viewhash(CustomBoardListDto dto,Connection con) throws SQLException {
+		
+		String hsql = "select CUS_HASH_SHOT,CUS_HASH_MILK,CUS_HASH_SYRUP,CUS_HASH_TOP,CUS_HASH_DECAF from custom_hash where cus_no=?";
+		PreparedStatement pstm1 = con.prepareStatement(hsql);
+		pstm1.setInt(1,dto.getcus_no());
+		ResultSet rs1 = pstm1.executeQuery();
+		
+		ArrayList<CustomBoardListDto> list2 = new ArrayList<>();
+		
+		while(rs1.next()) {
+		
+		dto.setshot(rs1.getString(1));
+		dto.setmilkType(rs1.getString(2));
+		dto.setsyrupType(rs1.getString(3));
+		dto.settoppingType(rs1.getString(4));
+		dto.setdecaffeinated(rs1.getString(5));
+		
+			list2.add(dto);
+		}
+		JdbcUtil.close(pstm1); JdbcUtil.close(rs1);
+		return list2;
+		
+			
 	}
 	
 	

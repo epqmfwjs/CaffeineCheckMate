@@ -18,10 +18,12 @@
           <p>게시글제목: ${item.cus_title}</p>
           <p>글내용: ${item.cus_content}</p>
           <p>게시일: ${item.cus_regdate}</p>
-          <%-- <p>누적 좋아요 수: ${item.cus_sumgood}</p> --%>
-          <%-- <p>이미지번호: ${item.cus_img_no}</p> --%>
         </div>
     </li>
-    </c:forEach>
+          <p>#${item.shot}#${item.milkType}#${item.syrupType}
+          #${item.toppingType}#${item.decaffeinated}</p>
+         <%--  <p>누적 좋아요 수: ${item.cus_sumgood}</p>
+          <p>이미지번호: ${item.cus_img_no}</p> --%>
+          </c:forEach>  
 </body>
 </html>

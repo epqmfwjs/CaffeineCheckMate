@@ -40,39 +40,40 @@
 <td>
     <select name="milkType" id="milkType">
         <option value="noMilk">우유 추가 없음</option>
-        <option value="lowFat">저지방 우유</option>
-        <option value="almondMilk">아몬드 브리즈</option>
-        <option value="oatMilk">오트 믹스</option>
-        <option value="soyMilk">두유</option>
-        <option value="coconutMilk">코코넛 우유</option>
+        <option value="저지방우유">저지방 우유</option>
+        <option value="아몬드브리즈">아몬드 브리즈</option>
+        <option value="오토믹스">오트 믹스</option>
+        <option value="두유">두유</option>
+        <option value="코코넛밀크">코코넛 우유</option>
     </select>
 </td>
 <td>
     <select name="syrupType" id="syrupType">
         <option value="noSyrup">시럽 추가 없음</option>
-        <option value="vanilla">바닐라 시럽</option>
-        <option value="caramel">카라멜 시럽</option>
-        <option value="hazelnut">헤이즐넛 시럽</option>
-        <option value="mocha">모카 시럽</option>
-        <option value="cinnamon">시나몬 시럽</option>
-        <option value="maple">메이플 시럽</option>
+        <option value="바닐라시럽">바닐라 시럽</option>
+        <option value="카라멜시럽">카라멜 시럽</option>
+        <option value="헤이즐넛시럽">헤이즐넛 시럽</option>
+        <option value="모카시럽">모카 시럽</option>
+        <option value="시나몬시럽">시나몬 시럽</option>
+        <option value="메이플시럽">메이플 시럽</option>
     </select>
 </td>
 <td>
     <select name="toppingType" id="toppingType">
         <option value="noTopping">토핑 추가 없음</option>
-        <option value="whippedCream">휘핑 크림</option>
-        <option value="chocolateSprinkle">초콜릿 스프링클</option>
-        <option value="caramelDrizzle">카라멜 드리즐</option>
-        <option value="marshmallow">마시멜로</option>
-        <option value="cocoaPowder">코코아 파우더</option>
-        <option value="cookieCrumbles">쿠키 크럼블</option>
+        <option value="휘핑크림">휘핑 크림</option>
+        <option value="초콜릿토핑">초콜릿 토핑</option>
+        <option value="카라멜드리즐">카라멜 드리즐</option>
+        <option value="마시멜로">마시멜로</option>
+        <option value="코코아파우더">코코아 파우더</option>
+        <option value="쿠키크럼블">쿠키 크럼블</option>
+        <option value="펄">펄</option>
     </select>
 </td>
 <td>
     <select name="decaffeinated" id="decaffeinated">
-        <option value="regular">일반</option>
-        <option value="decaf">디카페인</option>
+        <option value="일반">일반</option>
+        <option value="디카페인">디카페인</option>
     </select>
 </td>
     <p><input type="submit" value="작성하기"></p>
