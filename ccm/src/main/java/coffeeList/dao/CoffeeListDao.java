@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import coffeeList.dto.Coffee;
 import jdbc.JdbcUtil;
@@ -57,6 +58,28 @@ public class CoffeeListDao {
 			System.out.println("minusFav affect : "+mF+" rows");
 		} finally {
 			JdbcUtil.close(pstmt);
+		}
+	}
+	public HashMap<Integer, Coffee> getCoffeesByFav(Connection conn) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		HashMap<Integer,Coffee> coffeeFavMap = new HashMap<Integer, Coffee>();
+		try {
+			String query = "select C_NO, C_CAFFAINE, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				coffeeFavMap.put(rs.getInt("idx"),new Coffee(
+						rs.getInt("C_NO"),
+						rs.getInt("C_CAFFAINE"),
+						rs.getString("C_IMG_COPY")
+						));
+			}
+			return coffeeFavMap;
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
 		}
 	}
 }
