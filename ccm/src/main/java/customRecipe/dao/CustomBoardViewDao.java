@@ -28,12 +28,14 @@ public class CustomBoardViewDao {
 			
 				
 				dto.setCUS_NUM(1);
+				
 				dto.setCUS_NO(rs.getInt(2));
-				dto.setC_NO(rs.getString(3));
-				dto.setcus_title(rs.getString(4));
-				dto.setCUS_CONTENT(rs.getString(5));
-				dto.setCUS_REGDATE(rs.getString(6));
-				dto.setCUS_SUMGOOD(rs.getString(7));
+				dto.setm_id(rs.getString(3));
+				dto.setc_no(rs.getString(4));
+				dto.setcus_title(rs.getString(5));
+				dto.setCUS_CONTENT(rs.getString(6));
+				dto.setCUS_REGDATE(rs.getString(7));
+				dto.setCUS_SUMGOOD(rs.getString(8));
 				dao.getimg(dto,con);
 				dao.viewhash(dto,con);
 				

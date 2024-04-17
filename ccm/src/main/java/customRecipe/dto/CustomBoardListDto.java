@@ -3,7 +3,8 @@ package customRecipe.dto;
 public class CustomBoardListDto {
 	private int CUS_NO;
 	private String M_NO;
-	private String C_NO;
+	private String m_id;
+	private String c_no;
 	private String cus_title;
 	private String CUS_CONTENT; 
 	private String CUS_REGDATE;
@@ -62,7 +63,13 @@ public class CustomBoardListDto {
     }
 
 	
-	
+    public String getc_no() {
+        return c_no;
+    }
+
+    public void setc_no(String c_no) {
+        this.c_no = c_no;
+    }
 	
 	
 	public int getcus_num() {
@@ -92,11 +99,11 @@ public class CustomBoardListDto {
 	private String CUS_IMG_PATH;
 	
 	
-	public CustomBoardListDto(int cus_no2, String m_no2, String c_no2, String cus_title2, String cus_content2,
+	public CustomBoardListDto(int cus_no2, String m_no2, String m_id2, String cus_title2, String cus_content2,
 			String cus_regdate2, String cus_sumgood2, int cus_img_no2, String cus_img_path2) {
 		this.CUS_NO=cus_no2;
 		this.M_NO=m_no2;
-		this.C_NO=c_no2;
+		this.m_id=m_id2;
 		this.cus_title=cus_title2;
 		this.CUS_CONTENT=cus_content2;
 		this.CUS_REGDATE=cus_regdate2;
@@ -105,11 +112,11 @@ public class CustomBoardListDto {
 		this.CUS_IMG_PATH=cus_img_path2;
 		
 	}
-	public CustomBoardListDto(int cUS_NO2, String M_NO2, String c_NO2, String cus_title2, String cUS_CONTENT2,
+	public CustomBoardListDto(int cUS_NO2, String M_NO2, String m_id2, String cus_title2, String cUS_CONTENT2,
 			String cUS_REGDATE2, String cUS_SUMGOOD2) {
 		this.CUS_NO=cUS_NO2;
 		this.M_NO=M_NO2;
-		this.C_NO=c_NO2;
+		this.m_id=m_id2;
 		this.cus_title=cus_title2;
 		this.CUS_CONTENT=cUS_CONTENT2;
 		this.CUS_REGDATE=cUS_REGDATE2;
@@ -131,11 +138,11 @@ public class CustomBoardListDto {
 	public void setM_NO(String M_NO) {
 		this.M_NO = M_NO;
 	}
-	public String getc_no() {
-		return C_NO;
+	public String getm_id() {
+		return m_id;
 	}
-	public void setC_NO(String c_NO) {
-		this.C_NO = c_NO;
+	public void setm_id(String m_id) {
+		this.m_id = m_id;
 	}
 	public String getcus_title() {
 		return cus_title;
@@ -161,6 +168,7 @@ public class CustomBoardListDto {
 	public void setCUS_SUMGOOD(String cUS_SUMGOOD) {
 		this.CUS_SUMGOOD = cUS_SUMGOOD;
 	}
+
 	
 	
 }

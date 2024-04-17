@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.CommandHandler;
-import customRecipe.dto.CustomBoardHashDto;
 import customRecipe.dto.CustomBoardListDto;
 import customRecipe.service.CustomBoardViewService;
 
@@ -25,6 +24,6 @@ public String process(HttpServletRequest request, HttpServletResponse response) 
 //	 request.setAttribute("list", list);
 //	 request.setAttribute("list2", list2);
 	 
-	  return "CustomBoardView.jsp";
+	  return "/views/screens/CustomBoardView.jsp";
 }
 }

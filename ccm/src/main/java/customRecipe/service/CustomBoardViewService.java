@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardViewDao;
-import customRecipe.dto.CustomBoardHashDto;
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
@@ -40,29 +39,5 @@ public class CustomBoardViewService {
 		}
 		return null;
 }
-	/*public ArrayList<CustomBoardHashDto> hashview(HttpServletRequest request, HttpServletResponse response) {
-		Connection con = null;
-		CustomBoardViewDao dao = new CustomBoardViewDao();
-		try {
-			
-//			String num = request.getParameter("CUS_NUM");
-			int num = Integer.parseInt(request.getParameter("CUS_NUM"));
-			System.out.println(num + "num");
-			con = ConnectionProvider.getConnection();
-			
-			ArrayList<CustomBoardHashDto> list2 = dao.viewhash(num,con);
-			
-			System.out.println(list2 + " CustomBoardViewService list2 ");
-			return list2;
-			 
-		} catch (SQLException e) {
-			e.printStackTrace();
-			JdbcUtil.rollback(con);
-		}
-		finally {
-			JdbcUtil.close(con);
-		}
-		return null;
-		}*/
 }
 

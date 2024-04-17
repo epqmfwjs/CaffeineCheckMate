@@ -39,7 +39,7 @@
 </td>
 <td>
     <select name="milkType" id="milkType">
-        <option value="noMilk">우유 추가 없음</option>
+        <option value="noMilk">우유 변경 없음</option>
         <option value="저지방우유">저지방 우유</option>
         <option value="아몬드브리즈">아몬드 브리즈</option>
         <option value="오토믹스">오트 믹스</option>

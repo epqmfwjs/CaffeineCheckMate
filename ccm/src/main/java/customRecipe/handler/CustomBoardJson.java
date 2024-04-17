@@ -17,7 +17,6 @@ import org.json.simple.JSONObject;
 import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardListDao;
 import customRecipe.dto.CustomBoardListDto;
-import customRecipe.service.CustomBoardListService;
 import jdbc.JdbcUtil;
 
 
@@ -48,6 +47,7 @@ public class CustomBoardJson extends HttpServlet {
 			
 			for (CustomBoardListDto item : list) {
 				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("m_id", item.getm_id());
 				jsonObject.put("c_no", item.getc_no());
 				jsonObject.put("cus_num", item.getcus_num());
 				jsonObject.put("cus_name", item.getcus_title());

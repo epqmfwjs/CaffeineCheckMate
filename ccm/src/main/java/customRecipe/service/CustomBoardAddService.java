@@ -17,8 +17,6 @@ import customRecipe.dto.CustomBoardAddDto;
 import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class CustomBoardAddService {
 	
