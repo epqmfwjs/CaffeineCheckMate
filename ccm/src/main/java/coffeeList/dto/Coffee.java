@@ -4,7 +4,7 @@ public class Coffee {
 	int C_NO;
 	String C_NAME;
 	String C_BRAND;
-	int C_CAFFAINE;
+	int C_CAFFEINE;
 	int C_SACCHARIDE;
 	int C_CALORIE;
 	String C_CONTENT;
@@ -13,23 +13,24 @@ public class Coffee {
 	String C_IMG_REAL;
 	String C_IMG_COPY;
 	int C_FAVORITE;
+	String C_IMAGE;
 	
 	//list 조회
-	public Coffee(int C_NO,String C_NAME,String C_BRAND,int C_CAFFAINE,String C_IMG_COPY) {
+	public Coffee(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE,String C_IMG_COPY) {
 		this.C_NO = C_NO;
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
-		this.C_CAFFAINE = C_CAFFAINE;
+		this.C_CAFFEINE = C_CAFFEINE;
 		this.C_IMG_COPY = C_IMG_COPY;
 	}
 	
 	//list Detail 조회
 	public Coffee
-		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFAINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY) {
+		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY) {
 		this.C_NO = C_NO;
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
-		this.C_CAFFAINE = C_CAFFAINE;
+		this.C_CAFFEINE = C_CAFFEINE;
 		this.C_SACCHARIDE = C_SACCHARIDE;
 		this.C_CALORIE = C_CALORIE;
 		this.C_CONTENT = C_CONTENT;
@@ -37,10 +38,10 @@ public class Coffee {
 	}
 	//list Add 추가
 	public Coffee
-		(String C_NAME,String C_BRAND,int C_CAFFAINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
 	this.C_NAME = C_NAME;
 	this.C_BRAND = C_BRAND;
-	this.C_CAFFAINE = C_CAFFAINE;
+	this.C_CAFFEINE = C_CAFFEINE;
 	this.C_SACCHARIDE = C_SACCHARIDE;
 	this.C_CALORIE = C_CALORIE;
 	this.C_CONTENT = C_CONTENT;
@@ -49,7 +50,24 @@ public class Coffee {
 	this.C_IMG_REAL = C_IMG_REAL;
 	}
 
+	public Coffee(int C_NO, int C_CAFFEINE, String C_IMAGE) {
+		this.C_NO=C_NO;
+		this.C_CAFFEINE=C_CAFFEINE;
+		this.C_IMAGE=C_IMAGE;
+	}
 		
+	public String getC_IMAGE() {
+		return C_IMAGE;
+	}
+
+	public void setC_IMAGE(String c_IMAGE) {
+		C_IMAGE = c_IMAGE;
+	}
+
+	public void setC_CAFFEINE(int c_CAFFEINE) {
+		C_CAFFEINE = c_CAFFEINE;
+	}
+
 	public int getC_NO() {
 		return C_NO;
 	}
@@ -117,10 +135,11 @@ public class Coffee {
 		C_IMG_COPY = c_IMG_COPY;
 	}
 	
-	public int getC_CAFFAINE() {
-		return C_CAFFAINE;
+	public int getC_CAFFEINE() {
+		return C_CAFFEINE;
 	}
 	public void setC_CAFFAINE(int c_CAFFAINE) {
-		C_CAFFAINE = c_CAFFAINE;
+		C_CAFFEINE = c_CAFFAINE;
 	}
-}
+}	
+

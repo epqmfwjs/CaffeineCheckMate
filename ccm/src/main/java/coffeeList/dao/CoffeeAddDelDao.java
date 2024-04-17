@@ -21,7 +21,7 @@ public class CoffeeAddDelDao {
 			pstmt = conn.prepareStatement(listAddSQL);
 			pstmt.setString(1, coffee.getC_NAME());
 			pstmt.setString(2, coffee.getC_BRAND());
-			pstmt.setInt(3, coffee.getC_CAFFAINE());
+			pstmt.setInt(3, coffee.getC_CAFFEINE());
 			pstmt.setInt(4, coffee.getC_SACCHARIDE());
 			pstmt.setInt(5, coffee.getC_CALORIE());
 			pstmt.setString(6, coffee.getC_CONTENT());
