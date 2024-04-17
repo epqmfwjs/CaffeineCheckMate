@@ -1,10 +1,10 @@
-@charset "UTF-8";
-
+/*variable*/
+@import "variable.css";
 
 /*Components*/
-@import "components/nav-bar.css";
-
+@import "components/favorites.css";
+@import "components/calculator.css";
 
 
 /*Screens*/
-@import "screens/login.css";
+
