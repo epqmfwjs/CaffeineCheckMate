@@ -12,6 +12,7 @@ public class Coffee {
 	String C_STAGE;
 	String C_IMG_REAL;
 	String C_IMG_COPY;
+	int C_FAVORITE;
 	
 	//list 조회
 	public Coffee(int C_NO,String C_NAME,String C_BRAND,int C_CAFFAINE,String C_IMG_COPY) {
@@ -34,6 +35,20 @@ public class Coffee {
 		this.C_CONTENT = C_CONTENT;
 		this.C_IMG_COPY = C_IMG_COPY;
 	}
+	//list Add 추가
+	public Coffee
+		(String C_NAME,String C_BRAND,int C_CAFFAINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+	this.C_NAME = C_NAME;
+	this.C_BRAND = C_BRAND;
+	this.C_CAFFAINE = C_CAFFAINE;
+	this.C_SACCHARIDE = C_SACCHARIDE;
+	this.C_CALORIE = C_CALORIE;
+	this.C_CONTENT = C_CONTENT;
+	this.C_TYPE = C_TYPE;
+	this.C_STAGE = C_STAGE;
+	this.C_IMG_REAL = C_IMG_REAL;
+	}
+
 		
 	public int getC_NO() {
 		return C_NO;
@@ -101,7 +116,6 @@ public class Coffee {
 	public void setC_IMG_COPY(String c_IMG_COPY) {
 		C_IMG_COPY = c_IMG_COPY;
 	}
-	int C_FAVORITE;
 	
 	public int getC_CAFFAINE() {
 		return C_CAFFAINE;
