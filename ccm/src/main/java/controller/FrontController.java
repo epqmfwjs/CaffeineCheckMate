@@ -51,6 +51,8 @@ public class FrontController extends HttpServlet {
 	    }
 	}	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8"); 
+		response.setContentType("text/html; charset=UTF-8");
 		System.out.println("doGet");
 		String requestURI = request.getRequestURI().toString();
 		String command = requestURI.substring(request.getContextPath().length());
