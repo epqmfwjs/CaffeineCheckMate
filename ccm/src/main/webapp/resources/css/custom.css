@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#search {
+	width : 500px;
+	
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* 아이템 간의 간격 */
+    list-style-type: none; /* 리스트 스타일 제거 */
+} 
+
+#board li {
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+#board img {
+    max-width: 100%; /* 이미지 크기 조절 */
+}
+
+
+
+        /* Dropdown 스타일 */
+        .dropdown-toggle {
+            display: block;
+            width: 10%;
+            text-align: center;
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 10%;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #e9ecef;
+        }
