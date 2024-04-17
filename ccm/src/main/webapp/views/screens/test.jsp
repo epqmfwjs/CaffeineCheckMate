@@ -43,7 +43,7 @@
 <%
 request.getSession().setAttribute("M_Id", "a12345");
 %>
-	<a id="aa" href="/addfav.do?C_NO=1">C_NO=1 즐겨찾기 추가</a>
+	<a id="aa" href="/addfav.do?C_NO=11">C_NO=1 즐겨찾기 추가</a>
 	<a href="/addfav.do?C_NO=2">C_NO=2 즐겨찾기 추가</a>
 	<a href="/deletefav.do?C_NO=1">C_NO=1 즐겨찾기 삭제</a>
 	<a href="/calculate.do?C_NO=1">C_NO=1 카페인계산</a>
