@@ -54,7 +54,7 @@
 	$(function(){
 		var cus_no = 2;
 		cusReplyList(cus_no);
-		setInterval(cusReplyList,50000);
+		setInterval(cusReplyList,1000);
 	})
 	
 	
