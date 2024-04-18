@@ -1,6 +1,8 @@
 package customRecipeReply.handler;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 
 import javax.servlet.ServletException;
@@ -9,25 +11,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import connection.ConnectionProvider;
 import customRecipeReply.dao.CusReplyDao;
+import customRecipeReply.dto.CusReplyDto;
 import jdbc.JdbcUtil;
 
-@WebServlet("/CusReplyDeleteHandler.do")
-public class CusReplyDeleteHandler extends HttpServlet {
+@WebServlet("/CusReplyJsonUpdateHandler.do")
+public class CusReplyJsonUpdateHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int cus_re_no = Integer.parseInt(request.getParameter("cus_re_no"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
+        String json = "";
+        
+        if (br != null) {
+            json = br.readLine();
+        }
+
+        Gson gson = new Gson();
+        CusReplyDto reply = gson.fromJson(json, CusReplyDto.class);
 
         Connection conn = null;
 
         try {
             conn = ConnectionProvider.getConnection();
             CusReplyDao replyDao = new CusReplyDao();
-            replyDao.deleteReply(conn, cus_re_no);
+            replyDao.updateReply(conn, reply);
             response.getWriter().write("성공");
 
         } catch (Exception e) {
