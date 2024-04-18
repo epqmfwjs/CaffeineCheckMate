@@ -20,7 +20,7 @@
 			 </tr> 
 			 <tr>
 			  <td>카페인</td>
-			  <td>${coffeeDetail.c_CAFFAINE}</td>
+			  <td>${coffeeDetail.c_CAFFEINE}</td>
 			 </tr> 
 			 <tr>
 			  <td>당도</td>

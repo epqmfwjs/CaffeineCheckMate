@@ -3,7 +3,7 @@ package coffeeList.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import coffeeList.dao.CoffeeAddDelDao;
+import coffeeList.dao.CoffeeListDao;
 import coffeeList.dto.Coffee;
 import connection.ConnectionProvider;
 import jdbc.JdbcUtil;
@@ -17,7 +17,7 @@ public class CoffeeAddService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			CoffeeAddDelDao coffeeAddDelDao = new CoffeeAddDelDao();
+			CoffeeListDao coffeeAddDelDao = new CoffeeListDao();
 			coffeeAddDelDao.AddCoffee(coffee, conn);
 			
 			conn.commit();

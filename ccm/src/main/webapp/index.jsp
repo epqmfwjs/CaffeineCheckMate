@@ -19,8 +19,9 @@
         back_pastelq
         </div>
         
+        <div>
         <h1>일본식 교란말이</h1>
-        <form action="coffeeList.do" method="get">
+        <form action="/coffeeList.do" method="get">
         <input type="submit">
         </form>
 

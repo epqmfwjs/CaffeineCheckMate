@@ -48,7 +48,7 @@
 			 <tr>
 			  <td><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></td>
 			  <td>${coffeeV.c_BRAND}</td>
-			  <td>${coffeeV.c_CAFFAINE}</td>
+			  <td>${coffeeV.c_CAFFEINE}</td>
 			  <td>${coffeeV.c_IMG_COPY}</td>
 			  <td>관리자 전용<br/>
 				<a href="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">Delete</a>
