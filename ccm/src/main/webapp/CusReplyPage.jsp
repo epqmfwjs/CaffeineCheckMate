@@ -53,8 +53,9 @@
 	/*자동 함수 호출*/
 	$(function(){
 		var cus_no = 2;
-		cusReplyList(cus_no);
-		setInterval(cusReplyList,1000);
+		setInterval(function() {
+			cusReplyList(cus_no);
+		}, 1000);
 	})
 	
 	
@@ -84,7 +85,7 @@
 	        }
 	    });
 	}
-
+	
 	
      /*댓글 조회 */
 	var page = 1;
@@ -98,6 +99,8 @@
 	            cus_no: cus_no //임시 지정
 	        },
 	        success: function(data) {
+	            $("#replyArea").empty();
+	            
 	        	var cus_re_list = data.cus_re_list;
 	        	cus_re_list.forEach(function(item) {
 	                let m_id = item.m_id;
