@@ -51,7 +51,6 @@ public class CusReplyJsonHandler  extends HttpServlet {
 		 		re_json.put("cus_re_list", re_jsonArray);
 				response.setContentType("application/json; charset=utf-8");
 				response.getWriter().write(re_json.toString());
-System.out.println(cus_re_list);
 			
 			} catch (SQLException e) {
 				e.printStackTrace();

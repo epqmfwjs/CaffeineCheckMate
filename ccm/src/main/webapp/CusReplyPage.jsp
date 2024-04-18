@@ -59,6 +59,7 @@
 	
 	 /*댓글 작성*/
     function insertReply(){
+		console.log("댓글 작성 함수가 실행되었습니다.");
 		$.ajax({
        		url : "CusReplyInsert.do"
        		,data : {
@@ -66,8 +67,9 @@
        					cus_no: 2, //임시 지정
 		                cus_re_content: $("#reply").val()
         			}
-       		,type : "POST"
+       		,type : "GET"
        		,success : function(result){
+		console.log("댓글 작성 요청이 성공하였습니다.");
             		if(result>0){
             			cusReplyList(cus_no);
             			$("#cus_re_content").val("");
@@ -75,6 +77,7 @@
        		}
         	})
         }
+
 	
      /*댓글 조회 */
 	var page = 1;
