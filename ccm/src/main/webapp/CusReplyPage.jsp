@@ -96,7 +96,7 @@
 	        contentType: 'application/json',
 	        dataType: "json",
 	        data: {
-	            cus_no: cus_no //임시 지정
+	            cus_no: cus_no
 	        },
 	        success: function(data) {
 	            $("#replyArea").empty();
@@ -111,16 +111,16 @@
 	
 	                let replyItem =
 	                	'<br>' +   
-	                    '<td>' + m_id + '</td>' +  
 	                    '<br>' +
 	                    '<tr class="reply-deatil-content">' +
-	                    '<td colspan="3"><b>' + cus_re_content  + '</b></td>' +
+	                    '<td><b>' + m_id + '&nbsp;&nbsp;&nbsp;</b></td>' +  
+	                    '<td colspan="3">' + cus_re_content  + '</td>' +
 	                    '</tr>' +
 	                    '<br>' +
 	                    '<tr>' +
-	                    '<td>' + cus_no + '</td>' +
-	                    '<td>' + cus_re_no + '</td>' +
-	                    '<td>' + cus_re_regdate + '</td>' +
+	                    '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
+                        '<td onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">수정 &nbsp; &nbsp;</td>' +
+                        '<td onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">삭제</td>' +
 	                    '</tr>' +
 	                    '<br>';
 	                $("#replyArea").append(replyItem);
@@ -132,6 +132,64 @@
 	    });
 	}
 
+	  /* 댓글 수정 입력*/
+    function updateReply(cus_re_no) {
+        $("#cus_re_content" + cus_re_no).hide();
+        $("#updateReply" + cus_re_no).show();
+        $("#updateReply" + cus_re_no).focus();
+        $("#updateReply" + cus_re_no).select();
+        $("#updateReply" + cus_re_no).keyup(function(event) {
+            if (event.keyCode === 13) {
+            	updateReplySave(cus_re_no);
+            }
+        });
+        // 수정 버튼 => 저장 버튼
+        $("button[onclick='updateReply(" + cus_re_no + ")']").text("저장");
+        $("button[onclick='updateReply(" + cus_re_no + ")']").attr("onclick", "saveEditedReply(" + cus_re_no + ")");
+    }
+    
+    /* 수정 댓글 저장 */
+    function updateReplySave(cus_re_no) {
+        var cus_re_content_update = $("#updateReply" + cus_re_no).val();
+        var data = {
+            cus_re_no: cus_re_no,
+            cus_re_content: cus_re_content_update
+        };
+        
+        $.ajax({
+            url : "CusReplyJsonUpdateHandler.do",
+            data : JSON.stringify(data),
+            contentType: 'application/json',
+            type : "POST",
+            success : function(result){
+                if(result>0){
+                    cusReplyList(2); //임시 지
+                }
+            },
+            error: function() {
+                 alert("에러");
+            }
+        });
+    }
+    
+    /* 댓글 삭제 */
+    function deleteReply(cus_re_no) {
+        $.ajax({
+            url : "CusReplyJsonDeleteHandler.do",
+            data : {
+            	cus_re_no: cus_re_no
+            	},
+            type : "POST",
+            success : function(result){
+                if(result>0){
+                    cusReplyList(2);
+                }
+            },
+            error: function() {
+                 alert("에러");
+            }
+        });
+    }
 	</script>
 
 </body>
