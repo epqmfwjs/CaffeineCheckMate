@@ -146,7 +146,6 @@ $(document).ready(function(){
             let selectedFruit = $(this).data("value");
             $("#milkButton").text(selectedFruit);
             $(this).parent(".dropdown-menu").slideToggle();
-            // 선택된 과일에 대한 추가 로직
             console.log("선택된 과일:", selectedFruit);
         });
     });

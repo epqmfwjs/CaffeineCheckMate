@@ -1,4 +1,4 @@
-package customRecipe.handler;
+package customRecipe.service;
 
 import java.io.IOException;
 import java.sql.Connection;

@@ -3,48 +3,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/custom.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/custom.js"></script>
 <script> 
-document.addEventListener("DOMContentLoaded", function() {
-    var dropdownItems = document.querySelectorAll("#fruitList .dropdown-item");
-    
-    dropdownItems.forEach(function(item) {
-        item.addEventListener("click", function(event) {
-            event.preventDefault();
-            
-            // 모든 항목의 활성화 클래스를 제거
-            dropdownItems.forEach(function(item) {
-                item.classList.remove("active");
-            });
-            
-            // 클릭된 항목에 활성화 클래스 추가
-            item.classList.add("active");
-            
-            // 선택된 항목의 data-value 값을 가져옴
-            var selectedValue = item.getAttribute("data-value");
-            console.log("선택된 값:", selectedValue);
-            
-            // AJAX 요청
-            fetch('/your-servlet-url', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'selectedValue': selectedValue })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // 서버에서 반환된 데이터 처리
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-    });
+$(document).ready(function(){
+
+	$.ajax({
+		url : '/Jsontest.do',
+		type : 'get',
+		data : {"nomilk":nomilk,
+				"syrupList":syrupList,
+				"toppingButton":toppingButton,
+				"decafButton":decafButton}
+		datatype :'json'
+		success(data){
+			console.log("hi");
+			
+		},error : function(){
+			console.log("X");
+		}
+			
+	});
 });
+
 </script>
 
 </head>
