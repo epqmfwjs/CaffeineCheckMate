@@ -3,27 +3,26 @@ import java.util.HashMap;
 /*
  * 로그인 페이지에 들어갈 요소 정리
  */
-import java.util.Map;
 
 import favorite.dto.Favorite;
 
 public class Main {
-	HashMap<Integer, Favorite> favorties;
+	HashMap<Integer, Object> favorites;
 	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";
 //	추천레시피 관련필드
 	
 	public Main(HashMap favMap, int  calculatedResult) { //수정필요
-		this.favorties = favMap;
+		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
 	}
 	
-	public HashMap<Integer, Favorite> getFavorties() {
-		return favorties;
+	public HashMap<Integer, Object> getfavorites() {
+		return favorites;
 	}
-	public void setFavorties(HashMap<Integer, Favorite> favorties) {
-		this.favorties = favorties;
+	public void setfavorites(HashMap<Integer, Object> favorites) {
+		this.favorites = favorites;
 	}
 	public int getCalculationResult() {
 		return calculationResult;

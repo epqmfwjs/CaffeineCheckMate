@@ -5,17 +5,17 @@ import java.sql.Date;
 public class Favorite {
 
 	private String memberId;
-	private int coffeeNo;
+	private int C_NO;
 	private String coffeeName;
 	private Date favDate;
-	private String coffeeImage;
+	private String C_IMAGE;
 	
 	public Favorite(String m_ID, int c_NO, String c_NAME, Date c_FAV_DATE, String c_IMAGE) {
 		this.memberId = m_ID;
-		this.coffeeNo = c_NO;
+		this.C_NO = c_NO;
 		this.coffeeName = c_NAME;
 		this.favDate = c_FAV_DATE;
-		this.coffeeImage = c_IMAGE;
+		this.C_IMAGE = c_IMAGE;
 	}
 
 	public String getMemberId() {
@@ -27,11 +27,11 @@ public class Favorite {
 	}
 
 	public int getCoffeeNo() {
-		return coffeeNo;
+		return C_NO;
 	}
 
 	public void setCoffeeNo(int coffeeNo) {
-		this.coffeeNo = coffeeNo;
+		this.C_NO = coffeeNo;
 	}
 
 	public String getCoffeeName() {
@@ -51,11 +51,11 @@ public class Favorite {
 	}
 
 	public String getCoffeeImage() {
-		return coffeeImage;
+		return C_IMAGE;
 	}
 
 	public void setCoffeeImage(String coffeeImage) {
-		this.coffeeImage = coffeeImage;
+		this.C_IMAGE = coffeeImage;
 	}
 
 

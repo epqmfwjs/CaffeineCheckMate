@@ -1,12 +1,9 @@
 package global.handler;
 
 import controller.CommandHandler;
-import favorite.dto.Favorite;
 import global.dto.Main;
 import global.service.MainPageService;
 
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +26,10 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
     	Object mId =  req.getSession().getAttribute("AUTH_USER_ID");
     	String memberId = mId != null? mId.toString() : null;
     	if(memberId != null ) {
+    		System.out.println("authed");
     		main = mainPageService.showAuthedMain(memberId);
     	} else { // 비로그인상태    		
+    		System.out.println("not authed");
     		main = mainPageService.showMain();
     	}
     	
