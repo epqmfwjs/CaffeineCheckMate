@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import calendar.service.AsyncCalcService;
-import controller.CommandHandler;
+import calendar.service.CalculatorService;
 
 
 @WebServlet("/calc")
-public class AsyncCalc extends HttpServlet {
+public class CalculatorAsync extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AsyncCalcService asyncCalcService = new AsyncCalcService();
+    private CalculatorService calculatorService = new CalculatorService();
     Gson gson = new Gson();
 
     
@@ -51,10 +50,10 @@ public class AsyncCalc extends HttpServlet {
 		}
 		
 		if (doReset == 0) {
-			HashMap<String, Object> cr = asyncCalcService.calc(memberId, coffeeNo);
+			HashMap<String, Object> cr = calculatorService.calculateAsync(memberId, coffeeNo);
 			jsonString = gson.toJson(cr);			
 		} else if (doReset ==1 ) {
-			HashMap<String, Object> rr = asyncCalcService.reset(memberId);
+			HashMap<String, Object> rr = calculatorService.resetAsync(memberId);
 			jsonString = gson.toJson(rr);
 		}
 		

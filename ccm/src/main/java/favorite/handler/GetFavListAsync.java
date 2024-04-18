@@ -15,8 +15,8 @@ import com.google.gson.Gson;
 import favorite.service.FavoriteService;
 
 
-@WebServlet("/delfav")
-public class DeleteFavAsync extends HttpServlet {
+@WebServlet("/favorites")
+public class GetFavListAsync extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Gson gson = new Gson();
 	private FavoriteService favoriteService = new FavoriteService();
@@ -27,13 +27,11 @@ public class DeleteFavAsync extends HttpServlet {
     	if (mno != null) {
     		memberId = mno.toString();
     	}
-    	Integer coffeeNo = Integer.parseInt(request.getParameter("C_NO"));
-    	
     	HashMap favMap = null;
     	String jsonString = null;
     	
-		favMap = favoriteService.deleteFavAsync(memberId, coffeeNo);
-		jsonString = gson.toJson(favMap);
+    	favMap = favoriteService.getFavAsync(memberId);
+    	jsonString = gson.toJson(favMap);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -42,6 +40,7 @@ public class DeleteFavAsync extends HttpServlet {
 		out.print(jsonString);
 		out.flush();	
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

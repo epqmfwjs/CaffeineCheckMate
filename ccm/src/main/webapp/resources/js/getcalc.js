@@ -32,7 +32,6 @@ function resetCalc() {
     const reseturl = () => {
         return ("/calc?yn=1");
     }
-
     fetch(reseturl())
     .then(response => {
         return (response.json());

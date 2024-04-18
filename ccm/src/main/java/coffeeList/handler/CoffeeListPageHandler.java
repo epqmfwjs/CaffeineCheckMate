@@ -28,7 +28,7 @@ public class CoffeeListPageHandler implements CommandHandler{
 	    	} else { // 비로그인상태    		
 	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList());	    		
 	    	}
-			
+				
 			System.out.println("리스트 뷰 핸들러 리턴 전");
 			
 			return "/views/screens/coffeeList_index.jsp";

@@ -1,7 +1,7 @@
 package favorite.handler;
 
 import controller.CommandHandler;
-import favorite.service.AddFavoriteService;
+import favorite.service.FavoriteService;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddFavoriteHandler extends HttpServlet implements CommandHandler {
 	private static final long serialVersionUID = 1L;
 	public static final String FORM_VIEW = "/index.jsp";
-	private AddFavoriteService addFavoriteService = new AddFavoriteService();
+	private FavoriteService favoriteService = new FavoriteService();
 	
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -30,7 +30,7 @@ public class AddFavoriteHandler extends HttpServlet implements CommandHandler {
     	
     	if (memberId != null && coffeeNo != null) {
     		try {
-    			boolean success =  addFavoriteService.addFavorite(memberId, coffeeNo);
+    			boolean success =  favoriteService.addFavorite(memberId, coffeeNo);
     			if(!success) {
     				req.setAttribute("addFavAttempt", false);
     			} else {
