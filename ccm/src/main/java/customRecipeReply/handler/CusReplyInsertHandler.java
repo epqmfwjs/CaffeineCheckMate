@@ -18,6 +18,7 @@ public class CusReplyInsertHandler implements CommandHandler{
 		
 		Connection conn = null;
 		conn = ConnectionProvider.getConnection();
+		conn.setAutoCommit(false);
 		
 		String m_id = req.getParameter("m_id");
 		int cus_no = Integer.parseInt(req.getParameter("cus_no"));

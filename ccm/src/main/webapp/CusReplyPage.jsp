@@ -10,19 +10,6 @@
 
 </head>
 <body>
-	<br>
-	<!--댓글 조회-->
-	<div id="replList">
-		<!--각 댓글 영역 -->
-		<div class="replyArea" align="center" id="replyArea">
-			<table style="width: 500px;">
-				<tbody>
-
-				</tbody>
-			</table>
-		</div>
-	</div>
-	
 	<!--댓글 입력-->
 	<div align="center">
 	    <table style="width: 500px;">
@@ -33,7 +20,6 @@
 	                    <img class="profile" src="<%=request.getContextPath()%>/resources/imgs/profile.png" style="width: 40px; height: 40px; vertical-align: middle;">
 	                </div>
 	            </td>
-	            
 	        </tr>
 	        <tr>
 	            <td style="width: 80%;">
@@ -46,12 +32,29 @@
 	        </tr>
 	    </table>
 	</div>
+	
+	<br/>
+	
+	<!--댓글 조회-->
+	<div id="replyList" align="center">
+		<!--각 댓글 영역 -->
+		<div class=align="center">
+			<table style="width: 500px;">
+				<tbody class="replyArea" id="replyArea">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+<!-- ----------------------------스크립트------------------------------ -->
 
 	<script>
 	/*자동 함수 호출*/
 	$(function(){
-		selectReplyList();
-		setInterval(selectReplyList,50000);
+		var cus_no = 2;
+		cusReplyList(cus_no);
+		setInterval(cusReplyList,50000);
 	})
 	
 	 /*댓글 작성*/
@@ -73,32 +76,47 @@
         	
         	})
         }
-
+     
      /*댓글 조회 */
-     function selectReplyList(){
-    	 $.ajax({
-     	 	url : "CusReplyList.do",
-         	data : {
-         		cus_no: "2" //임시 지정
-			},
-         	success : function(selectReplyList){
-         		var result = "";
-         		for(var i in selectReplyList){
-         			result += 
-            			"<br>"	+	
-                        "<td>" + "<b>" + selectReplyList[i].getCus_no + "</b>" + "</td>" +
-                        "<td>" + selectReplyList[i].getCus_re_no + "</td>" + 
-                        "<td>" + selectReplyList[i].getCus_re_regdate + "</td>" + 
-                        "<br>" +
-                        "<tr class='reply-deatil-content'>" + 
-                        "<td colspan='3'>" + selectReplyList[i].getCus_re_content  + "</td>" + 
-                        "</tr>" +
-                        "<br>"
-         		} 
-					$("#replyArea tbody").html(result);	
-         	}
-     	})
-     }
+var page = 1;
+
+function cusReplyList(cus_no) {
+    $.ajax({
+        url: "/CusReplyJson.do",
+        dataType: "json",
+        data: {
+            cus_no: cus_no //임시 지정
+        },
+        success: function(data) {
+        	var cus_re_list = data.cus_re_list;
+        	console.log(cus_re_list);
+        	cus_re_list.forEach(function(item) {
+                let m_id = item.m_id;
+                let cus_no = item.cus_no;
+                let cus_re_no = item.cus_re_no;
+                let cus_re_regdate = item.cus_re_regdate;
+                let cus_re_content = item.cus_re_content;
+
+                let replyItem =
+                	'<br>' +   
+                    '<td>' + m_id + '</td>' +  
+                    '<td>' + cus_no + '</td>' +
+                    '<td>' + cus_re_no + '</td>' +
+                    '<td>' + cus_re_regdate + '</td>' +
+                    '<br>' +
+                    '<tr class="reply-deatil-content">' +
+                    '<td colspan="3">' + cus_re_content  + '</td>' +
+                    '</tr>' +
+                    '<br>';
+                $("#replyArea").append(replyItem);
+            });
+        },
+        error: function() {
+            alert("에러");
+        }
+    });
+}
+
 	</script>
 
 </body>

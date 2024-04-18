@@ -18,12 +18,14 @@ public class CusReplyDao {
 	}
 	
 	
-	/*글 삽입*/
+	/*댓글 삽입*/
 	public int insertReply(Connection conn, CusReplyDto reply) {
+		
 	    int result = 0;
 	    PreparedStatement pstmt = null;
 	   
 	    String sql = "INSERT INTO CUSTOM_REPLY(M_ID, CUS_NO, CUS_RE_CONTENT) VALUES(?, ?, ?)";
+	    
 	    try {
 	        pstmt = conn.prepareStatement(sql);
 	        pstmt.setString(1, "user2"); //임시 지정
@@ -36,15 +38,21 @@ public class CusReplyDao {
 	    } finally {
 	        close(pstmt);
 	    }
+	    
 	    return result;
+	    
 	}
 	
-	/*글 전체 목록*/
+	
+	
+	/*댓글 목록*/
 	public ArrayList <CusReplyDto> selectReplyList(Connection conn, int cus_no){
+		
 		ArrayList<CusReplyDto> cus_re_list = new ArrayList<>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = "SELECT M_ID, CUS_NO, CUS_RE_NO, CUS_RE_REGDATE, CUS_RE_CONTENT FROM CUSTOM_REPLY WHERE CUS_NO = ? ORDER BY CUS_RE_REGDATE DESC";
 		
 		try {
