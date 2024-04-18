@@ -57,26 +57,33 @@
 		setInterval(cusReplyList,50000);
 	})
 	
-	 /*댓글 작성*/
-    function insertReply(){
-		console.log("댓글 작성 함수가 실행되었습니다.");
-		$.ajax({
-       		url : "CusReplyInsert.do"
-       		,data : {
-       					m_id: "user2", //임시 지정
-       					cus_no: 2, //임시 지정
-		                cus_re_content: $("#reply").val()
-        			}
-       		,type : "GET"
-       		,success : function(result){
-		console.log("댓글 작성 요청이 성공하였습니다.");
-            		if(result>0){
-            			cusReplyList(cus_no);
-            			$("#cus_re_content").val("");
-            		}
-       		}
-        	})
-        }
+	
+	/*댓글 작성 */
+	function insertReply(){
+	    console.log("댓글 작성 함수가 실행되었습니다.");
+	    var replyContent = $("#reply").val();
+	    var data = {
+	        m_id: "user2", // 임시 지정
+	        cus_no: 2, // 임시 지정
+	        cus_re_content: replyContent
+	    };
+	    
+	    $.ajax({
+	        url : "CusReplyJsonInsertHandler.do",
+	        data : JSON.stringify(data), // 데이터를 JSON 문자열로 변환
+	        contentType: 'application/json',
+	        type : "POST",
+	        success : function(result){
+	            if(result>0){
+	            	cusReplyList(cus_no);
+	                $("#reply").val(""); // 입력 필드 비우기
+	            }
+	        },
+	        error: function() {
+	        	 alert("에러");
+	        }
+	    });
+	}
 
 	
      /*댓글 조회 */
@@ -85,6 +92,7 @@
 	function cusReplyList(cus_no) {
 	    $.ajax({
 	        url: "/CusReplyJson.do",
+	        contentType: 'application/json',
 	        dataType: "json",
 	        data: {
 	            cus_no: cus_no //임시 지정

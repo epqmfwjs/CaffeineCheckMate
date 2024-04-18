@@ -20,7 +20,7 @@ import customRecipeReply.dto.CusReplyDto;
 import jdbc.JdbcUtil;
 
 @WebServlet("/CusReplyJson.do")
-public class CusReplyJsonHandler  extends HttpServlet {
+public class CusReplyJsonHandler extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JSONObject re_json = new JSONObject();
@@ -59,5 +59,10 @@ public class CusReplyJsonHandler  extends HttpServlet {
 				JdbcUtil.close(conn);
 			}
     }
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }
