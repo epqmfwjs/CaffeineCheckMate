@@ -29,13 +29,24 @@ public class DeleteService {
 		returnPage = updateService.UpdateStart(memberDTO,request,response);
 		
 		if(returnPage.equals("ok")) {
-			String query = "delete from ccm.member where M_ID = ?";
+			
+			
+//			SET AUTOCOMMIT = 0;
+//			SET FOREIGN_KEY_CHECKS = 0;
+//			delete from ccm.member where M_ID = ?;
+//			SET FOREIGN_KEY_CHECKS = 1;
+//			COMMIT;
+			
+//			String query = "DELETE FROM ccm.member WHERE M_ID = ?";		
+					//"delete from ccm.member where M_ID = ?";
 			String deleteID = memberDTO.getDtoID();
-			result = memberDAO.delete(deleteID,query,conn);
+			result = memberDAO.deleteMember(deleteID,conn);
 			if(result == true) {
+				System.out.println("딜리트메소드 다녀와서 if문 트루로 들어옴");
 				 returnPage = "/views/screens/okDelete.jsp";
 				 session.invalidate();
 			}else {
+				System.out.println("딜리트메소드 다녀와서 else로 들어옴");
 				 out.println("<script>alert('알수없는 오류로인해 회원정보를 확인할수없습니다.'); location.href='/views/screens/login.jsp';</script>");
 				 session.invalidate();
 				 out.flush();

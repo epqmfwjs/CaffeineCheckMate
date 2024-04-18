@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>정보확인</title>
 </head>
 <body>
 <button onclick="location.href='/LoginHandler.do'">LoginHandler.do</button>
