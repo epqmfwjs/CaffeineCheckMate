@@ -33,6 +33,12 @@
 	    </table>
 	</div>
 	
+	<!-- 수정 폼 -->
+	<div id="updateForm" style="display: none;">
+	    <input type="text" id="updateReplyContent" style="width: 350px; height: 30px;">
+	    <button onclick="updateReplySave()">저장</button>
+	</div>
+	
 	<br/>
 	
 	<!--댓글 조회-->
@@ -89,6 +95,7 @@
 	
      /*댓글 조회 */
 	var page = 1;
+	var autoRefresh;
 	
 	function cusReplyList(cus_no) {
 	    $.ajax({
@@ -119,8 +126,8 @@
 	                    '<br>' +
 	                    '<tr>' +
 	                    '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
-                        '<td onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">수정 &nbsp; &nbsp;</td>' +
-                        '<td onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">삭제</td>' +
+                        '<tr><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">수정</button></td>&nbsp;&nbsp;&nbsp;' +
+                        '<tr><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">삭제</button></td>' +
 	                    '</tr>' +
 	                    '<br>';
 	                $("#replyArea").append(replyItem);
@@ -132,20 +139,24 @@
 	    });
 	}
 
-	  /* 댓글 수정 입력*/
+	/*댓글 수정 입력 */
     function updateReply(cus_re_no) {
+		
+		//갱신 중지
+    	clearInterval(autoRefresh);
+		
         $("#cus_re_content" + cus_re_no).hide();
         $("#updateReply" + cus_re_no).show();
         $("#updateReply" + cus_re_no).focus();
         $("#updateReply" + cus_re_no).select();
         $("#updateReply" + cus_re_no).keyup(function(event) {
             if (event.keyCode === 13) {
-            	updateReplySave(cus_re_no);
+                updateReplySave(cus_re_no);
             }
         });
         // 수정 버튼 => 저장 버튼
         $("button[onclick='updateReply(" + cus_re_no + ")']").text("저장");
-        $("button[onclick='updateReply(" + cus_re_no + ")']").attr("onclick", "saveEditedReply(" + cus_re_no + ")");
+        $("button[onclick='updateReply(" + cus_re_no + ")']").attr("onclick", "updateReplySave(" + cus_re_no + ")");
     }
     
     /* 수정 댓글 저장 */
@@ -157,17 +168,20 @@
         };
         
         $.ajax({
-            url : "CusReplyJsonUpdateHandler.do",
-            data : JSON.stringify(data),
+            url: "CusReplyJsonUpdateHandler.do",
+            data: JSON.stringify(data),
             contentType: 'application/json',
-            type : "POST",
-            success : function(result){
-                if(result>0){
-                    cusReplyList(2); //임시 지
-                }
-            },
+            type: "POST",
+            success: function(result) {
+            	   if (result > 0) {
+                       //갱신 다시 시작
+                       autoRefresh = setInterval(function() {
+                           cusReplyList(cus_no);
+                       }, 1000);
+                   }
+               },
             error: function() {
-                 alert("에러");
+                alert("에러");
             }
         });
     }
@@ -175,18 +189,18 @@
     /* 댓글 삭제 */
     function deleteReply(cus_re_no) {
         $.ajax({
-            url : "CusReplyJsonDeleteHandler.do",
-            data : {
-            	cus_re_no: cus_re_no
-            	},
-            type : "POST",
-            success : function(result){
-                if(result>0){
+            url: "CusReplyJsonDeleteHandler.do",
+            data: {
+                cus_re_no: cus_re_no
+            },
+            type: "POST",
+            success: function(result) {
+                if (result > 0) {
                     cusReplyList(2);
                 }
             },
             error: function() {
-                 alert("에러");
+                alert("에러");
             }
         });
     }
