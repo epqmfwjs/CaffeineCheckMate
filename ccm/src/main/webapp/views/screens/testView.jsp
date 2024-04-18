@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button onclick="location.href='/LoginHandler.do'">LoginHandler.do</button>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
 <button onclick="location.href='/views/screens/test.jsp'">test.jsp 즐겨찾기</button>
 

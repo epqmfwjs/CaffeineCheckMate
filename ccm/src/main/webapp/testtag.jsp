@@ -1,25 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/custom.css">
 <meta charset="UTF-8">
-<title>커스텀레시피</title>
-<a><h3>커스텀레시피</h3></a>
+<title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-<script type="text/javascript"> var allcount = ${allcount}; </script>
-<script type="text/javascript" src="/resources/js/custom.js"></script>
-
+<script> 
+document.addEventListener("DOMContentLoaded", function() {
+    var dropdownItems = document.querySelectorAll("#fruitList .dropdown-item");
+    
+    dropdownItems.forEach(function(item) {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            // 모든 항목의 활성화 클래스를 제거
+            dropdownItems.forEach(function(item) {
+                item.classList.remove("active");
+            });
+            
+            // 클릭된 항목에 활성화 클래스 추가
+            item.classList.add("active");
+            
+            // 선택된 항목의 data-value 값을 가져옴
+            var selectedValue = item.getAttribute("data-value");
+            console.log("선택된 값:", selectedValue);
+            
+            // AJAX 요청
+            fetch('/your-servlet-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 'selectedValue': selectedValue })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 서버에서 반환된 데이터 처리
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+</script>
 
 </head>
 <body>
-<button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
-<button type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
-검색: <input type="text" id="search" onkeypress="show_name(event)" placeholder="Search"><br/>
-
 <div class="dropdown">
     <button id="milkButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
         우유 종류
@@ -72,8 +101,5 @@
         <a class="dropdown-item" href="#" data-value="디카페인">디카페인</a>
     </div>
 </div>
-
-
-<ul id="board"></ul>
 </body>
 </html>

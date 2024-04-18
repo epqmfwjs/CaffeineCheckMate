@@ -1,5 +1,4 @@
 var curPage = 1;
-var isLoading = false;
 
 $(document).ready(function(){
 	list(allcount);
@@ -24,7 +23,6 @@ $(document).ready(function(){
 });
 	
 function list(allcount){
-	var page = 1;
 	$.ajax({
 		url:"/CustomBoardJson.do",
 		type:"get",
