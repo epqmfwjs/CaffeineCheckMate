@@ -10,11 +10,11 @@ public class Favorite {
 	private Date favDate;
 	private String coffeeImage;
 	
-	public Favorite(String m_ID, int c_NO, String C_NAME, Date C_FAV_DATE, String c_IMAGE) {
+	public Favorite(String m_ID, int c_NO, String c_NAME, Date c_FAV_DATE, String c_IMAGE) {
 		this.memberId = m_ID;
 		this.coffeeNo = c_NO;
-		this.coffeeName = C_NAME;
-		this.favDate = C_FAV_DATE;
+		this.coffeeName = c_NAME;
+		this.favDate = c_FAV_DATE;
 		this.coffeeImage = c_IMAGE;
 	}
 

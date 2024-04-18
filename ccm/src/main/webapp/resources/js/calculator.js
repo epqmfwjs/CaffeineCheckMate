@@ -35,7 +35,7 @@ const dailyC = document.querySelector(".calc-box__dailyc"); //커피 섭취량
 const cResetBtn = document.querySelector("#calc-box__btn-reset"); //리셋 버튼
 const favBox = document.querySelector(".fav-box");
 const favItems = favBox.children;
-
+bar.animate(calcResult/400);
 
 //계산
 function calc(cno) {

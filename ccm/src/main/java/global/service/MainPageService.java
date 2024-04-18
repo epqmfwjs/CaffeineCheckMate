@@ -29,7 +29,7 @@ public class MainPageService {
 		
 		Main main = null;
 		Calendar todaysCaffeine = null;
-		Map<Integer, Favorite> favMap = null;
+		HashMap<Integer, Favorite> favMap = null;
 		
 		Date date = new Date(System.currentTimeMillis());
 		
