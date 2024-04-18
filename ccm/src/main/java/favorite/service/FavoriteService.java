@@ -78,7 +78,7 @@ public class FavoriteService {
 		HashMap<Integer, Favorite> favMap = null;
 		try {
 			conn = ConnectionProvider.getConnection();
-			favMap = favoriteDao.getFavList(memberId, conn);
+			favMap = favoriteDao.getFavList(memberId, conn);	
 		}catch (SQLException e) {
 			e.printStackTrace();
 			JdbcUtil.rollback(conn);

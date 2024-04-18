@@ -41,6 +41,7 @@
 			border: 1px solid black;
 			position: relative;
 			margin: 30px;
+			font-size: 10px;
 		}
 		.fav-item__img {
 			height: 40px;

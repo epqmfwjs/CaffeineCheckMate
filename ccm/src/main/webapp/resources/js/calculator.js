@@ -30,10 +30,12 @@ const bar = new ProgressBar.SemiCircle(container, {
   bar.text.style.fontSize = '2rem';
 //   bar.animate(1.0);  // Number from 0.0 to 1.0
 
+
+const dailyC = document.querySelector(".calc-box__dailyc"); //커피 섭취량
+const cResetBtn = document.querySelector("#calc-box__btn-reset"); //리셋 버튼
 const favBox = document.querySelector(".fav-box");
 const favItems = favBox.children;
-const dailyC = document.querySelector(".calc-box__dailyc");
-const cResetBtn = document.querySelector("#calc-box__btn-reset");
+
 
 //계산
 function calc(cno) {
@@ -42,7 +44,6 @@ function calc(cno) {
         const calcurl = (cno) => {
             return("/calc?yn=0&"+cno);
         }
-    
         fetch(calcurl(cno))
         .then(respons => {
             return (respons.json());
@@ -85,20 +86,6 @@ function resetCalc() {
     })
 }
 
-//즐겨찾기 목록 불러오기 함수
-document.addEventListener('DOMContentLoaded', getFavItem);
-function getFavItem() {
-  fetch("/favorites")
-  .then(response => {
-      return(response.json());
-  })
-  .then(data => {
-      console.log(data);
-  })
-  .catch(error => {
-      console.log("error",error);
-  })
-}
 
 // 즐겨찾기 목록에 이벤트 리스너 추가
 for (let i=0; i<favItems.length; i++) {
@@ -108,26 +95,25 @@ for (let i=0; i<favItems.length; i++) {
 
 //즐겨찾기 삭제
 function deleteFavItem(element) {
-    const item = element.target.closest(".fav-item")
-    const cno = item.getAttribute("value");
-    fetch("/delfav?"+cno)
-    .then(response => {
-        return(response.json());
-    })
-    .then(data => {
-        //favMap객체 처리방법 구현 필요
-        favBox.removeChild(item);
-    })
-    .catch(error => {
-      console.log("error",error);
+  element.stopPropagation();
+  const item = element.target.closest(".fav-item")
+  const cno = item.getAttribute("value");
+  fetch("/delfav?"+cno)
+  .then(response => {
+      return(response.json());
   })
+  .then(data => {
+      document.querySelector(".fav-box").removeChild(item);
+  })
+  .catch(error => {
+    console.log("error",error);
+})
 }
 
-
-
+//계산기 기능
 function doCalc(event) {
-    //계산기 기능
-    calc(event.target.closest(".fav-item").getAttribute("value"));
-
+  calc(event.target.closest(".fav-item").getAttribute("value"));
 }
+
+//리셋버튼
 cResetBtn.addEventListener("click", resetCalc);

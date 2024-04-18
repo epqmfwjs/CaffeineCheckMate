@@ -10,11 +10,12 @@ public class Favorite {
 	private Date C_FAV_DATE;
 	private String C_IMAGE;
 	
-	public Favorite(String m_ID, int c_NO, String C_NAME, Date c_FAV_DATE, String c_IMAGE) {
-		M_ID = m_ID;
-		C_NO = c_NO;
-		C_FAV_DATE = c_FAV_DATE;
-		C_IMAGE = c_IMAGE;
+	public Favorite(String m_ID, int c_NO, String C_NAME, Date C_FAV_DATE, String c_IMAGE) {
+		this.M_ID = m_ID;
+		this.C_NO = c_NO;
+		this.C_NAME = C_NAME;
+		this.C_FAV_DATE = C_FAV_DATE;
+		this.C_IMAGE = c_IMAGE;
 	}
 
 	public String getM_ID() {
