@@ -66,56 +66,57 @@
        					cus_no: 2, //임시 지정
 		                cus_re_content: $("#reply").val()
         			}
-       		,type : "GET"
+       		,type : "POST"
        		,success : function(result){
             		if(result>0){
-            			selectReplyList();
+            			cusReplyList(cus_no);
             			$("#cus_re_content").val("");
             		}
        		}
-        	
         	})
         }
-     
+	
      /*댓글 조회 */
-var page = 1;
-
-function cusReplyList(cus_no) {
-    $.ajax({
-        url: "/CusReplyJson.do",
-        dataType: "json",
-        data: {
-            cus_no: cus_no //임시 지정
-        },
-        success: function(data) {
-        	var cus_re_list = data.cus_re_list;
-        	console.log(cus_re_list);
-        	cus_re_list.forEach(function(item) {
-                let m_id = item.m_id;
-                let cus_no = item.cus_no;
-                let cus_re_no = item.cus_re_no;
-                let cus_re_regdate = item.cus_re_regdate;
-                let cus_re_content = item.cus_re_content;
-
-                let replyItem =
-                	'<br>' +   
-                    '<td>' + m_id + '</td>' +  
-                    '<td>' + cus_no + '</td>' +
-                    '<td>' + cus_re_no + '</td>' +
-                    '<td>' + cus_re_regdate + '</td>' +
-                    '<br>' +
-                    '<tr class="reply-deatil-content">' +
-                    '<td colspan="3">' + cus_re_content  + '</td>' +
-                    '</tr>' +
-                    '<br>';
-                $("#replyArea").append(replyItem);
-            });
-        },
-        error: function() {
-            alert("에러");
-        }
-    });
-}
+	var page = 1;
+	
+	function cusReplyList(cus_no) {
+	    $.ajax({
+	        url: "/CusReplyJson.do",
+	        dataType: "json",
+	        data: {
+	            cus_no: cus_no //임시 지정
+	        },
+	        success: function(data) {
+	        	var cus_re_list = data.cus_re_list;
+	        	cus_re_list.forEach(function(item) {
+	                let m_id = item.m_id;
+	                let cus_no = item.cus_no;
+	                let cus_re_no = item.cus_re_no;
+	                let cus_re_regdate = item.cus_re_regdate;
+	                let cus_re_content = item.cus_re_content;
+	
+	                let replyItem =
+	                	'<br>' +   
+	                    '<td>' + m_id + '</td>' +  
+	                    '<br>' +
+	                    '<tr class="reply-deatil-content">' +
+	                    '<td colspan="3"><b>' + cus_re_content  + '</b></td>' +
+	                    '</tr>' +
+	                    '<br>' +
+	                    '<tr>' +
+	                    '<td>' + cus_no + '</td>' +
+	                    '<td>' + cus_re_no + '</td>' +
+	                    '<td>' + cus_re_regdate + '</td>' +
+	                    '</tr>' +
+	                    '<br>';
+	                $("#replyArea").append(replyItem);
+	            });
+	        },
+	        error: function() {
+	            alert("에러");
+	        }
+	    });
+	}
 
 	</script>
 
