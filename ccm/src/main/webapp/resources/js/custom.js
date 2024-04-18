@@ -8,13 +8,15 @@ $(document).ready(function(){
             var searchTerm = $('#searchInput').val();
 			
             $.ajax({
-                url: '/Jsontest.do',
+                url: '/CustomBoardSearchJson.do',
                 type: 'post',
                	data : {"searchTerm":searchTerm},
                	datatype : "json",
                 success: function(data) {
 					$("#board").empty();
                 	searchlist(data);
+                	
+                	$(window).off("scroll");
                 },
                 error: function(error) {
                     console.log('Error:', error);

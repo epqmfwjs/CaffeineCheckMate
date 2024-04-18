@@ -36,14 +36,6 @@ public ArrayList<CustomBoardListDto> searchlist(String content,Connection con) t
 			dto.setCUS_REGDATE(rs.getString(7));
 			dto.setCUS_SUMGOOD(rs.getString(8));
 			
-			System.out.println(rs.getInt(1)+"get1");
-			System.out.println(rs.getInt(2)+"get2");
-			System.out.println(rs.getString(3)+"get3");
-			System.out.println(rs.getString(4)+"get4");
-			System.out.println(rs.getString(5)+"get5");
-			System.out.println(rs.getString(6)+"get6");
-			System.out.println(rs.getString(7)+"get7");
-			System.out.println(rs.getString(8)+"get8");
 			dao.getimg(dto,con);
 			dao.viewhash(dto,con);
 			

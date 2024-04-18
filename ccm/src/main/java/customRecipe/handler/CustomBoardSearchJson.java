@@ -18,8 +18,8 @@ import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardSearchDao;
 import customRecipe.dto.CustomBoardListDto;
 
-@WebServlet("/Jsontest.do")
-public class Jsontest extends HttpServlet {
+@WebServlet("/CustomBoardSearchJson.do")
+public class CustomBoardSearchJson extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
