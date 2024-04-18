@@ -15,7 +15,7 @@ public class FavoriteDao {
 	
 
 	public HashMap<Integer, Favorite> getFavList(String memberId, Connection conn) throws SQLException { 
-		Map<Integer ,Favorite> favMap = new HashMap();
+		HashMap<Integer ,Favorite> favMap = new HashMap();
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		try {
