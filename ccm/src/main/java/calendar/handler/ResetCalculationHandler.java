@@ -25,7 +25,7 @@ public class ResetCalculationHandler extends HttpServlet implements CommandHandl
     	if (memberId != null) {
     		try {
     			calculatorService.Reset(memberId);
-    			return "/views/screens/test.jsp";
+    			return "/main.do";
     		} catch (Exception e) {
     			System.out.println("ResetCalculationHandler process에서 예외발생");
     		}return FORM_VIEW;    		

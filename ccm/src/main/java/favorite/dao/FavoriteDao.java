@@ -35,7 +35,7 @@ public class FavoriteDao {
 						rs.getDate("C_FAV_DATE"),
 						rs.getString("C_IMG_COPY")
 						);
-				favMap.put(favorite.getC_NO(), favorite);
+				favMap.put(favorite.getCoffeeNo(), favorite);
 			}
 			return (HashMap<Integer, Favorite>) favMap;
 		} finally {

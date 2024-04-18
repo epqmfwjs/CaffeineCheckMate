@@ -24,7 +24,7 @@ public class DeleteFavHandler extends HttpServlet implements CommandHandler {
 
     	try {
     		favoriteService.deleteFav(memberId, coffeeNo);
-    		return "/views/screens/test.jsp";
+    		return "/main.do";
     	} catch (Exception e) {
     		System.out.println("AddFavoriteHandler process에서 오류발생");
     	} return FORM_VIEW;

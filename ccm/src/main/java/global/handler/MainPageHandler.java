@@ -1,6 +1,7 @@
 package global.handler;
 
 import controller.CommandHandler;
+import favorite.dto.Favorite;
 import global.dto.Main;
 import global.service.MainPageService;
 
@@ -31,8 +32,8 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
     		main = mainPageService.showMain();
     	}
     	
-    	String jsonString = gson.toJson(main);
-    	req.setAttribute("main", jsonString);
-		return "index.jsp";
+//    	String jsonString = gson.toJson(main);
+    	req.setAttribute("main", main);
+		return "/views/screens/test.jsp";
     }
 }

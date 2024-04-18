@@ -26,7 +26,7 @@ public class CalculatorHandler extends HttpServlet implements CommandHandler {
     	if (memberId != null && coffeeNo != null) {
     		try {
     			calculatorService.calculate(memberId, coffeeNo);
-    			return "/views/screens/test.jsp";
+    			return "/main.do";
     		} catch (Exception e) {
     			System.out.println("CalculatorHandler process 에서 예외 발생");
     		} return FORM_VIEW;    		
