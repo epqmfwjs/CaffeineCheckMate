@@ -20,6 +20,23 @@ function loadLisetener() {
 }
 
 //즐겨찾기 목록 불러오기 함수
+const root = document.querySelector(".fav-box");
+function App(props) {
+    const fav = props.data;
+    return(
+        <div className="fav-box">
+            {Object.keys(fav["data"]).map(key => (
+            <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav["data"][key]["C_NO"]} onClick={doCalc}>
+                <button className="fav-item__delete-btn" onClick={deleteFavItem}>
+                <i className="fa-solid fa-x"></i>
+                </button>
+                <div className="fav-item__img">이미지 이름 : {fav["data"][key]["C_IMAGE"]}</div>
+                <div className="fav-item__info">커피 이름 : {fav["data"][key]["C_NAME"]}</div>
+            </div>
+            ))}
+        </div>
+        )
+}
 function getFavItem() {
     fetch("/favorites")
     .then(response => {
@@ -27,6 +44,7 @@ function getFavItem() {
     })
     .then(data => {
         //구현 필요
+        ReactDOM.render(<App data={data}/>,root);
     })
     .catch(error => {
         console.log("error",error);
@@ -65,3 +83,8 @@ function addFavItem(element) {
         console.log("error",error);
     })
 }
+/*
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+*/

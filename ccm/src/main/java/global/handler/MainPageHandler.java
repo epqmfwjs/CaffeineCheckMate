@@ -25,7 +25,7 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
     	Main main;
-    	
+
     	Object mId =  req.getSession().getAttribute("AUTH_USER_ID");
     	String memberId = mId != null? mId.toString() : null;
     	if(memberId != null ) {
