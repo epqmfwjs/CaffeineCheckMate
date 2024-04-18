@@ -18,8 +18,8 @@
 <body>
 <button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
 <button type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
-검색: <input type="text" id="search" onkeypress="show_name(event)" placeholder="Search"><br/>
-
+검색 : <input type="text" id="searchInput" placeholder="Search">
+<div id="searchResult"></div>
 <div class="dropdown">
     <button id="milkButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
         우유 종류

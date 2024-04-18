@@ -3,7 +3,60 @@ var curPage = 1;
 $(document).ready(function(){
 	list(allcount);
 	
+	 $('#searchInput').keypress(function(event) {
+        if (event.which === 13) { // Enter 키 코드
+            var searchTerm = $('#searchInput').val();
+			
+            $.ajax({
+                url: '/Jsontest.do',
+                type: 'post',
+               	data : {"searchTerm":searchTerm},
+               	datatype : "json",
+                success: function(data) {
+					$("#board").empty();
+                	searchlist(data);
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
+        }
+    });
 	});
+	
+	
+function searchlist(data){
+    var list = data.list;
+   
+
+    list.forEach(function(item) {
+        let cus_num = item.cus_num;
+        let m_id = item.m_id;
+        let c_no = item.c_no;
+        let cus_name = item.cus_name;
+        let cus_content = item.cus_content;
+        let cus_regdate = item.cus_regdate;
+        let cus_img_realname = item.cus_img_realname;
+
+        let boardItem = `
+        <li>
+            <a href="CustomBoardViewHandler.do?CUS_NUM=` + cus_num + `">
+                <div>
+                    <img src="upload/` + cus_img_realname + `" alt="Image">
+                    <p>게시글번호: ` + cus_num + `</p>
+                    <p>회원명: ` + m_id + `</p>
+                    <p>제품아이디: ` + c_no + `</p>
+                    <p>게시글제목: ` + cus_name + `</p>
+                    <p>글내용: ` + cus_content + `</p>
+                    <p>게시일: ` + cus_regdate + `</p>
+                </div>
+            </a>
+        </li>
+        `;
+
+        $("#board").append(boardItem);
+    });
+}
 	
  $(window).on("scroll", function() {
 	var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
@@ -22,6 +75,7 @@ $(document).ready(function(){
 	}
 });
 	
+	
 function list(allcount){
 	$.ajax({
 		url:"/CustomBoardJson.do",
@@ -33,7 +87,6 @@ function list(allcount){
 			
             list.forEach(function(item) {
             	let cus_num = item.cus_num;
-                let m_no = item.m_no;
                 let m_id = item.m_id;
                 let c_no = item.c_no;
                 let cus_name = item.cus_name;
@@ -68,6 +121,7 @@ function list(allcount){
 	});//ajax끝 			
 }
 
+
 $(document).ready(function(){
     // 포커스가 들어갔을 때
     $("#search").focus(function(){
@@ -79,6 +133,7 @@ $(document).ready(function(){
         $(this).attr('placeholder', 'Search');
     });
 });
+
 
 $(document).ready(function(){
         $(".dropdown-toggle").click(function(){
@@ -93,5 +148,9 @@ $(document).ready(function(){
             console.log("선택된 과일:", selectedFruit);
         });
     });
+
+
+    
+    
 
 
