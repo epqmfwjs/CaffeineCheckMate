@@ -3,6 +3,7 @@ package coffeeList.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 
 import org.apache.catalina.connector.Response;
 
@@ -26,9 +27,9 @@ public class CoffeeListPageHandler implements CommandHandler{
 	    	if(memberId != null ) {
 	    		request.setAttribute("CoffeeListPage", coffeeListService.getCoffeeList(memberId));
 	    	} else { // 비로그인상태    		
-	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList());	    		
+	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList());
+	    		System.out.println(coffeeListService.notAuthCoffeeList());
 	    	}
-				
 			System.out.println("리스트 뷰 핸들러 리턴 전");
 			
 			return "/views/screens/coffeeList_index.jsp";

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>COFFEELIST Detail</title>
 </head>
 <body>
 <h3>요기는 상세 페이지 임시 거처입니당 :D</h3>

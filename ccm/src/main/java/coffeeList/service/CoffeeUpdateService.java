@@ -8,18 +8,19 @@ import coffeeList.dto.Coffee;
 import connection.ConnectionProvider;
 import jdbc.JdbcUtil;
 
-public class CoffeeAddService {
-
+public class CoffeeUpdateService {
+	
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
 	
-	public void addCoffee(Coffee coffee) {
+	public void updateCoffee(Coffee coffee) {
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			coffeeListDao.AddCoffee(coffee, conn);
+			CoffeeListDao coffeeListDao = new CoffeeListDao();
+			coffeeListDao.updateCoffee(coffee, conn);
 			
 			conn.commit();
 		}catch (SQLException e) {

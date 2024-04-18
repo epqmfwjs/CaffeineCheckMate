@@ -43,7 +43,7 @@ public class CoffeeListPageService {
 			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn);
 
 			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList);
-			//System.out.println("커피서비스");
+			System.out.println("커피서비스");
 			return coffeeListPage;
 		}finally {
 			JdbcUtil.close(conn);

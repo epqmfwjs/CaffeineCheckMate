@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,8 @@
 <div class="content">
     <div class="left">
         <table border="1">
-			<c:forEach var="coffeeV" items="${coffeeV}">
+        
+			<c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}">
 			 <tr>
 			  <td><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></td>
 			  <td>${coffeeV.c_BRAND}</td>
@@ -52,7 +53,7 @@
 			  <td>${coffeeV.c_IMG_COPY}</td>
 			  <td>관리자 전용<br/>
 				<a href="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">Delete</a>
-				<a href="">Update</a>
+				<a href="coffeeListUpdate.do?coffeeNo=${coffeeV.c_NO}">Update</a>
 			  </td>
 			 </tr>
 			</c:forEach>
