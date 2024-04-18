@@ -10,6 +10,8 @@ import jdbc.JdbcUtil;
 
 public class CoffeeAddService {
 
+	CoffeeListDao coffeeListDao = new CoffeeListDao();
+	
 	public void addCoffee(Coffee coffee) {
 		Connection conn = null;
 		
@@ -17,7 +19,7 @@ public class CoffeeAddService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			CoffeeListDao coffeeAddDelDao = new CoffeeListDao();
+			CoffeeAddDelDao coffeeAddDelDao = new CoffeeAddDelDao();
 			coffeeAddDelDao.AddCoffee(coffee, conn);
 			
 			conn.commit();

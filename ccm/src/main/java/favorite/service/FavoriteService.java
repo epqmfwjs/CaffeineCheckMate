@@ -3,14 +3,16 @@ package favorite.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Map;
 
 import coffeeList.dao.CoffeeListDao;
 import connection.ConnectionProvider;
 import favorite.dao.FavoriteDao;
+import favorite.dto.Favorite;
 import jdbc.JdbcUtil;
 
-public class AddFavoriteService {
+public class FavoriteService {
 	
 	FavoriteDao favoriteDao = new FavoriteDao();
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
@@ -48,6 +50,63 @@ public class AddFavoriteService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
+	public void deleteFav(String memberId, int coffeeNo) {
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			if (favoriteDao.delete(memberId, coffeeNo, conn)) {				
+				coffeeListDao.minusFav(coffeeNo, conn);
+			}
+			conn.commit();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			JdbcUtil.rollback(conn);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+	}
+	
+	
+	/*
+	 * 비동기 메서드
+	 */
+	
+	public HashMap getFavAsync(String memberId) {
+		Connection conn = null;
+		HashMap<Integer, Favorite> favMap = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			favMap = favoriteDao.getFavList(memberId, conn);	
+		}catch (SQLException e) {
+			e.printStackTrace();
+			JdbcUtil.rollback(conn);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return favMap;
+	}
+	
+	public HashMap deleteFavAsync(String memberId, int coffeeNo) {
+		Connection conn = null;
+		HashMap<Integer, Favorite> favMap = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			if (favoriteDao.delete(memberId, coffeeNo, conn)) {				
+				coffeeListDao.minusFav(coffeeNo, conn);
+			}
+			favMap = favoriteDao.getFavList(memberId, conn);
+			conn.commit();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			JdbcUtil.rollback(conn);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return favMap;
+	}
 }
 /*
  *  - 서비스에서 커넥션을 생성하면 한 트랜잭션 안에서 그 서비스에서 사용하는 DAO의 메서드를 관리할 수 있음
@@ -66,3 +125,4 @@ public class AddFavoriteService {
  *   
  *   ResultSet(rs), PreparedStatement(pstmt), Statement(stmt)는 각각의 메서드에서 종료해줘야함
  */
+

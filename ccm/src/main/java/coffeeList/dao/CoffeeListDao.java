@@ -30,7 +30,7 @@ public class CoffeeListDao {
 					rs.getInt("C_NO"),
 					rs.getString("C_NAME"),
 					rs.getString("C_BRAND"),
-					rs.getInt("C_CAFFAINE"),
+					rs.getInt("C_CAFFEINE"),
 					rs.getString("C_IMG_COPY")
 				); coffeeList.add(rsCoffeeView);
 			}
@@ -58,7 +58,7 @@ public class CoffeeListDao {
                 		rs.getInt("C_NO"), 
                 		rs.getString("C_NAME"), 
                 		rs.getString("C_BRAND"),
-                        rs.getInt("C_CAFFAINE"), 
+                        rs.getInt("C_CAFFEINE"), 
                         rs.getInt("C_SACCHARIDE"),
                         rs.getInt("C_CALORIE"),
                         rs.getString("C_CONTENT"),
@@ -86,7 +86,7 @@ public class CoffeeListDao {
 			if(rs.next()) {
 				coffee = new Coffee(
 						rs.getInt("C_NO"),
-						rs.getInt("C_CAFFAINE"),
+						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						);
 			}

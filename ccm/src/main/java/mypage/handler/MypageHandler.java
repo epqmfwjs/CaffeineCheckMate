@@ -59,6 +59,7 @@ public class MypageHandler extends HttpServlet implements CommandHandler {
 		
 		if(m_id != null) {
 			mypages = mypageService.showMyProfile(m_id);
+			
 		}else {
 			mypages = mypageService.showMain();
 			

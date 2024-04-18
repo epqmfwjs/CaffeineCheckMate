@@ -7,18 +7,28 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.connector.Response;
 
 import coffeeList.dto.Coffee;
-import coffeeList.service.CoffeeListService;
+import coffeeList.dto.CoffeeListPage;
+import coffeeList.service.CoffeeListPageService;
 import controller.CommandHandler;
 
-public class CoffeeListHandler implements CommandHandler{
+public class CoffeeListPageHandler implements CommandHandler{
+	
+	CoffeeListPageService coffeeListService = new CoffeeListPageService();
 	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try {
 			System.out.println("리스트 뷰 핸들러 왔당");
-			CoffeeListService coffeeListService = new CoffeeListService();
 			//반환되는 ArrayList<Coffee> coffeeList를 setAttribute에 저장
-			request.setAttribute("coffeeV", coffeeListService.getCoffeeList());
+			
+			Object mId =  request.getSession().getAttribute("AUTH_USER_ID");
+	    	String memberId = mId != null? mId.toString() : null;
+	    	if(memberId != null ) {
+	    		request.setAttribute("CoffeeListPage", coffeeListService.getCoffeeList(memberId));
+	    	} else { // 비로그인상태    		
+	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList());	    		
+	    	}
+				
 			System.out.println("리스트 뷰 핸들러 리턴 전");
 			
 			return "/views/screens/coffeeList_index.jsp";

@@ -2,20 +2,17 @@ package calendar.handler;
 
 import controller.CommandHandler;
 
-import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import calendar.service.ResetCalculationService;
+import calendar.service.CalculatorService;
 
 
 public class ResetCalculationHandler extends HttpServlet implements CommandHandler {
 	private static final long serialVersionUID = 1L;
 	public static final String FORM_VIEW = "/index.jsp";
-	private ResetCalculationService resetCalculationService = new ResetCalculationService();
+	private CalculatorService calculatorService = new CalculatorService();
 	
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
@@ -27,8 +24,8 @@ public class ResetCalculationHandler extends HttpServlet implements CommandHandl
     	
     	if (memberId != null) {
     		try {
-    			resetCalculationService.Reset(memberId);
-    			return "/views/screens/test.jsp";
+    			calculatorService.Reset(memberId);
+    			return "/main.do";
     		} catch (Exception e) {
     			System.out.println("ResetCalculationHandler process에서 예외발생");
     		}return FORM_VIEW;    		

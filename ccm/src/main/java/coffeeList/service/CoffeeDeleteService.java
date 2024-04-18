@@ -12,13 +12,15 @@ public class CoffeeDeleteService {
 	public void deleteCoffee(int coffeeNo) {
 		Connection conn = null;
 		
+		CoffeeListDao coffeeListDao = new CoffeeListDao();
+		
 		try {
 			conn = ConnectionProvider.getConnection();
 			//auto commit false : 호출된 메서드가 끝나면 다시 auto로 돌아감
 			conn.setAutoCommit(false);
 			
-			CoffeeListDao coffeeListdao = new CoffeeListDao();
-			coffeeListdao.deleteCoffee(coffeeNo, conn);
+			CoffeeAddDelDao coffeeAddDeldao = new CoffeeAddDelDao();
+			coffeeAddDeldao.deleteCoffee(coffeeNo, conn);
 			
 			conn.commit();
 		} catch(SQLException e) {
