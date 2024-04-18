@@ -25,7 +25,7 @@
 	            <td style="width: 80%;">
 	                <div class="relpyForm">
 	                    <label for="reply"></label> 
-	                    <input type="text" class="form-control" id="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;" name="reply">
+	                    <input type="text" class="form-control" id="reply"  name="reply" placeholder="댓글을 입력하세요." style="width: 350px; height: 30px;">
 	                </div>
 	            </td>
 	            <td><button class="btn" onclick="insertReply();" style="width: 80px;  height: 30px;">게시하기</button></td>

@@ -80,4 +80,49 @@ public class CusReplyDao {
 		return cus_re_list;
 		
 	}
+	
+	 /* 댓글 수정 */
+    public int updateReply(Connection conn, CusReplyDto reply) {
+        int result = 0;
+        PreparedStatement pstmt = null;
+        
+        String sql = "UPDATE CUSTOM_REPLY SET CUS_RE_CONTENT = ? WHERE CUS_RE_NO = ?";
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, reply.getCus_re_content());
+            pstmt.setInt(2, reply.getCus_re_no());
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
+    
+    /* 댓글 삭제 */
+    public int deleteReply(Connection conn, int cus_re_no) {
+        int result = 0;
+        PreparedStatement pstmt = null;
+        
+        String sql = "DELETE FROM CUSTOM_REPLY WHERE CUS_RE_NO = ?";
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, cus_re_no);
+            
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
+    }
+    
 }
+
