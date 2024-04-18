@@ -132,5 +132,4 @@ if (main != null) {
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
 <script src="/resources/js/calculator.js"></script>
-<script src="/resources/js/getcalc.js"></script>
 </html>
