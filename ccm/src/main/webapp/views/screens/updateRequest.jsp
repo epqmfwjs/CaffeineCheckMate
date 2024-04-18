@@ -6,8 +6,71 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.container{
-text-align: center;
+
+/* 컨테이너 스타일 */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"] {
+    padding: 8px;
+    margin: 5px 0; /* 상하 마진 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%; /* 너비 조정 */
+}
+
+
+/* 기존 버튼 스타일 */
+input[type="button"], input[type="submit"] {
+    padding: 8px 15px; /* 패딩 조정 */
+    margin-top: 10px; /* 상단 마진 추가 */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 20%; /* 버튼 너비 조정 */
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+}
+/* 비밀번호 입력 필드 스타일 */
+input[type="password"] {
+    padding: 8px;
+    margin: 5px 0; /* 상하 마진 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%; /* 너비 조정 */
+    display: inline-block;
+    box-sizing: border-box; /* 박스 크기 조정 */
+}
+
+input[type="password"]:focus {
+    border-color: #4A90E2;
+}
+/* 버튼 및 서브밋 스타일 조정 */
+input[type="button"], input[type="submit"] {
+    padding: 8px 15px; /* 패딩 조정 */
+    margin-top: 10px; /* 상단 마진 추가 */
+    background-color: #4CAF50; /* 배경색 */
+    color: white; /* 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 모양 변경 */
+    width: 60%; /* 너비 조정 */
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
 }
 </style>
 </head>
@@ -62,10 +125,10 @@ text-align: center;
 			</form>	
 				<%}%>
 			<br/>
-			<button onclick="location.href='/views/screens/testView.jsp'">홈으로</button>
 			<form action="/views/screens/identify.jsp" method="post" name= "deleteSubmit" id="deleteSubmit">
 			<input type="hidden" value="delete" name="Value"/>
-			<input type="submit" value="회원탈퇴">
+			<input type= "button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'"/>
+			<input type="submit" value="탈퇴"/>
 			</form>
 			
 	</form>
