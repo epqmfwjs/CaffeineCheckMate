@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%
+<%
 	Main main = (Main) request.getAttribute("main");
 	Map<Integer, Object> favMap = main.getFavorties();
 	int calculationResult = main.getCalculationResult();
@@ -39,13 +39,13 @@
 	<br/>
 	<h2>fav-box</h2>
 	<div class="fav-box">
-		<c:forEach var="favEntry" items="${favMap}">
+	<c:forEach var="favEntry" items="${favMap}">
 			<div class="fav-item" id="fi_${favEntry.key}" value="C_NO=${favEntry.key}">
-	            <button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
-	            <div class="fav-item__img">${favEntry.value.getCoffeeImage}</div>
-	            <div class="fav-item__info">${favEntry.value.getCoffeeName}</div>
-	        </div>
-		</c:forEach>
+            <button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
+            <div class="fav-item__img">${favEntry.value.getCoffeeImage}</div>
+            <div class="fav-item__info">${favEntry.value.getCoffeeName}</div>
+        </div>
+</c:forEach>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
