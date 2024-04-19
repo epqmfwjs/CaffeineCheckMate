@@ -70,6 +70,7 @@ public class MemberDAO {
 	                memberDTO.setDtoTEL(rs.getString("M_PHONENUMBER"));
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
+	                System.out.println("멤버에 아이디있음 디티오에 정보저장");
 	            } else {
 	            	System.out.println("없는아이디");
 	            	String backupQuery = "SELECT * FROM ccm.member_backup WHERE M_ID = ?";

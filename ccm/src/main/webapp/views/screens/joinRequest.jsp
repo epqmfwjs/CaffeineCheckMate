@@ -5,90 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-/* 컨테이너 스타일 */
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-}
-
-/* 입력 필드 스타일 */
-input[type="text"] {
-    padding: 8px;
-    margin: 5px 0; /* 상하 마진 조정 */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 60%; /* 너비 조정 */
-}
-
-/* 버튼 스타일 */
-input[type="button"] {
-    padding: 8px 15px; /* 패딩 조정 */
-    margin-top: 10px; /* 상단 마진 추가 */
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 30%; /* 버튼 너비 조정 */
-}
-
-input[type="button"]:hover {
-    background-color: #45a049;
-}
-/* 기존 버튼 스타일 */
-input[type="button"], input[type="submit"] {
-    padding: 8px 15px; /* 패딩 조정 */
-    margin-top: 10px; /* 상단 마진 추가 */
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 30%; /* 버튼 너비 조정 */
-}
-
-input[type="button"]:hover, input[type="submit"]:hover {
-    background-color: #45a049;
-}
-/* 비밀번호 입력 필드 스타일 */
-input[type="password"] {
-    padding: 8px;
-    margin: 5px 0; /* 상하 마진 조정 */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 60%; /* 너비 조정 */
-    display: inline-block;
-    box-sizing: border-box; /* 박스 크기 조정 */
-}
-
-input[type="password"]:focus {
-    border-color: #4A90E2;
-}
-/* 드롭다운 스타일 */
-select {
-    padding: 8px;
-    margin: 5px 0; /* 상하 마진 조정 */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 60%; /* 너비 조정 */
-    display: inline-block;
-    box-sizing: border-box; /* 박스 크기 조정 */
-    background-color: white;
-    cursor: pointer;
-}
-
-select:focus {
-    border-color: #4A90E2;
-}
-
-</style>
+<link href="/resources/css/joinRequest.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
@@ -120,9 +37,6 @@ select:focus {
 					        window.idChecked = true;
 					    }
 					}
-//				  function setIdValue(idValue) {
-//					    document.joinForm.joinId.value = idValue;
-//					}
 				  </script>
 				  
 		비밀번호<br/><input type="password" name="joinPw1" id="joinPw1" placeholder="비밀번호" required="required"/><br/>
@@ -179,7 +93,6 @@ select:focus {
 					    }
 					  }
 					});
-
 					birthDayEl.addEventListener('focus', function () {
 					  // day 목록 생성되지 않았을 때 (최초 클릭 시)
 					  if (!isDayOptionExisted) {
@@ -224,7 +137,6 @@ select:focus {
 								})
 							</script>
 							<input type="button" value="이메일인증"/><br/>
-		
 		<br/>
 		닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
 					<input type="button" value="중복체크" onclick="return checkNick()"/><br/>
@@ -235,8 +147,6 @@ select:focus {
 						  document.joinForm.joinNick.focus();
 						  return false;
 					  }
-					  //var url = "CheckHandler.do?joinNick=" + document.joinForm.joinNick.value;
-					  		//window.open(url,"_blank_1","width=500,height=300, toolbar=no,menubar=no,resizble=no,scrollbars=yes")
 					  	    var url = "CheckHandler.do?joinNick=" + encodeURIComponent(document.joinForm.joinNick.value);
 					  	    window.open(url,"_blank","width=500,height=300,toolbar=no,menubar=no,resizable=no,scrollbars=yes");
 				  }
@@ -247,11 +157,8 @@ select:focus {
 					        window.nickChecked = true;
 					    }
 					}
-//				  function setNickValue(nickValue) {
-//					    document.joinForm.joinNick.value = nickValue;
-//					}
 				  </script>
-		tel<br/><input type="text" name="joinTel1" id="joinTel1" placeholder="010" maxlength=3  minlength=3 size=3 required="required"/>-
+		전화번호<br/><input type="text" class="tel" name="joinTel1" id="joinTel1" placeholder="010" maxlength=3  minlength=3 size=3 required="required"/>-
 				<input type="text" name="joinTel2" id="joinTel2" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/>-
 				<input type="text" name="joinTel3" id="joinTel3" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/><br/>
 		성별

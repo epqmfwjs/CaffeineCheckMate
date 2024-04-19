@@ -71,8 +71,8 @@ public class LoginService {
 					session.setAttribute("AUTH_USER_SNS", result.getDtoSNS());
 					returnPage = "/views/screens/testView.jsp";					
 				}else {
-					session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-					out.println("<script>alert('로그인실패'); location.href='/views/screens/login.jsp';</script>");
+					session.setAttribute("errMSG", " 비밀번호가 일치하지않습니다.");
+					out.println("<script>alert('비밀번호를 확인해주세요.'); location.href='/views/screens/login.jsp';</script>");
 					out.flush();
 				}
 				break;
