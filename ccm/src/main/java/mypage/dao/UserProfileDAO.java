@@ -17,12 +17,14 @@ public class UserProfileDAO {
 		ResultSet rs = null;
 		
 		try {
-			pstmt = conn.prepareStatement("select * from PROFILE where M_ID = ?");
+			pstmt = conn.prepareStatement("select MEMBER.M_NICKNAME, PROFILE.P_NO, PROFILE.M_ID, PROFILE.P_WEIGHT, PROFILE.P_IMG_COPY from PROFILE join member on PROFILE.M_ID = MEMBER.M_ID where PROFILE.M_ID =?"
+					+ "");
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			UserProfileDTO updto = null;
 			if(rs.next()) {
 				updto = new UserProfileDTO(
+					rs.getString("M_NICKNAME"),
 				    rs.getInt("P_NO"),
 				    rs.getString("M_ID"),
 				    rs.getInt("P_WEIGHT"),

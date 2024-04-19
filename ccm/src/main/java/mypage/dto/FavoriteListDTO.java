@@ -4,15 +4,15 @@ public class FavoriteListDTO {
 	private String M_ID; //회원ID
 	private int C_NO; //제품넘버
 	private String C_NAME; //제품명
-	private int C_CAFFAINE; //카페인함량
+	private int C_CAFFEINE; //카페인함량
 	private String C_IMG_COPY; //제품 이미지 사본 이름
 	
 	
-	public FavoriteListDTO(String m_ID, int c_NO, String c_NAME, int c_CAFFAINE, String c_IMG_COPY) {
+	public FavoriteListDTO(String m_ID, int c_NO, String c_NAME, int c_CAFFEINE, String c_IMG_COPY) {
 		M_ID = m_ID; //회원ID
 		C_NO = c_NO; //제품넘버
 		C_NAME = c_NAME; //제품명
-		C_CAFFAINE = c_CAFFAINE; //카페인함량
+		C_CAFFEINE = c_CAFFEINE; //카페인함량
 		C_IMG_COPY = c_IMG_COPY; // 제품 이미지 사본 이름
 	}
 
@@ -47,13 +47,13 @@ public class FavoriteListDTO {
 	}
 
 
-	public int getC_CAFFAINE() {
-		return C_CAFFAINE;
+	public int getC_CAFFEINE() {
+		return C_CAFFEINE;
 	}
 
 
-	public void setC_CAFFAINE(int c_CAFFAINE) {
-		C_CAFFAINE = c_CAFFAINE;
+	public void setC_CAFFEINE(int c_CAFFEINE) {
+		C_CAFFEINE = c_CAFFEINE;
 	}
 
 
@@ -69,7 +69,7 @@ public class FavoriteListDTO {
 
 	@Override
 	public String toString() {
-		return "FavoriteListDTO [M_ID=" + M_ID + ", C_NO=" + C_NO + ", C_NAME=" + C_NAME + ", C_CAFFAINE=" + C_CAFFAINE
+		return "FavoriteListDTO [M_ID=" + M_ID + ", C_NO=" + C_NO + ", C_NAME=" + C_NAME + ", C_CAFFEINE=" + C_CAFFEINE
 				+ ", C_IMG_COPY=" + C_IMG_COPY + "]";
 	}
 	

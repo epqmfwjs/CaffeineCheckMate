@@ -1,17 +1,28 @@
 package mypage.dto;
 
 public class UserProfileDTO {
+	private String M_NICKNAME;
 	private int P_NO;
 	private String M_ID;
 	private int P_WEIGHT;
 	private String P_IMG_COPY;
 	
-	public UserProfileDTO(int p_NO, String m_ID, int p_WEIGHT, String p_IMG_COPY) {
+	public UserProfileDTO(String m_NICKNAME, int p_NO, String m_ID, int p_WEIGHT, String p_IMG_COPY) {
+		M_NICKNAME = m_NICKNAME;
 		P_NO = p_NO;
 		M_ID = m_ID; 
 		P_WEIGHT= p_WEIGHT;
 		P_IMG_COPY= p_IMG_COPY;
 	}
+	
+	public String getM_NICKNAME() {
+		return M_NICKNAME;
+	}
+
+	public void setM_NICKNAME(String m_NICKNAME) {
+		M_NICKNAME = m_NICKNAME;
+	}
+
 	public int getP_NO() {
 		return P_NO;
 	}
@@ -42,15 +53,10 @@ public class UserProfileDTO {
 	public void changeP_IMG_COPY(String newP_IMG_COPY) {
 		this.P_IMG_COPY = newP_IMG_COPY;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "UserProfileDTO [P_NO=" + P_NO + ", M_ID=" + M_ID + ", P_WEIGHT=" + P_WEIGHT + ", P_IMG_COPY="
-				+ P_IMG_COPY + "]";
+		return "UserProfileDTO [M_NICKNAME=" + M_NICKNAME + ", P_NO=" + P_NO + ", M_ID=" + M_ID + ", P_WEIGHT="
+				+ P_WEIGHT + ", P_IMG_COPY=" + P_IMG_COPY + "]";
 	}
-	
-	
-	
-	
 }
