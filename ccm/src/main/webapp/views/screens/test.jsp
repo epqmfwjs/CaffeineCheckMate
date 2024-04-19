@@ -52,37 +52,41 @@
 			<h2>즐겨찾기 많은 커피 5개</h2>
 		</c:when>
 	</c:choose>
-	<div class="fav-box">
-	<c:choose>
-		<c:when test="${isAuth}">
-			<c:forEach var="favorite" items="${main.favorites}">
-				<div class="fav-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
-					<div class="fav-item__box">
-						<div class="fav-item__img">이미지 이름 : ${favorite.value.c_IMAGE}</div>
-						<div class="fav-item__info">커피 이름 : ${favorite.value.c_NAME}</div>
-					</div>
-					<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
-	        	</div>
-			</c:forEach>
-		</c:when>
-		<c:when test="${!isAuth}">
-			<c:forEach var="popular" items="${main.favorites}">
-				<div class="fav-item" id="fi_${popular.key}" value="C_NO=${popular.key}">
-					<div class="fav-item__box">
-						<div class="fav-item__img">이미지 이름 : ${popular.value.c_IMAGE}</div>
-						<div class="fav-item__info">커피 이름 : ${popular.value.c_NAME}</div>
-					</div>
-					<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
-	        	</div>
-			</c:forEach>
-		</c:when>
-	</c:choose>
+	<div class="fav-pop-box">
+		<c:choose>
+			<c:when test="${isAuth}">
+				<div class="fav-box">
+					<c:forEach var="favorite" items="${main.favorites}">
+						<div class="fp-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
+							<div class="fp-item__box">
+								<div class="fp-item__img">이미지 이름 : ${favorite.value.c_IMAGE}</div>
+								<div class="fp-item__info">커피 이름 : ${favorite.value.c_NAME}</div>
+							</div>
+							<button class="fp-item__delete-btn"><i class="fa-solid fa-x"></i></button>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
+			<c:when test="${!isAuth}">
+				<div class="popular-box">
+					<c:forEach var="popular" items="${main.favorites}">
+						<div class="fp-item" id="fi_${popular.key}" value="${popular.value.c_CAFFEINE}">
+							<div class="fp-item__box">
+								<div class="fp-item__img">이미지 이름 : ${popular.value.c_IMAGE}</div>
+								<div class="fp-item__info">커피 이름 : ${popular.value.c_NAME}</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
+		</c:choose>
     </div>
 </body>
 <!--즐겨찾기js가 계산기js보다 위에 있어야함, 즐겨찾기js는 type="text/babel"-->
 <script>
 	let calcResult = "${main.calculationResult}";
-	const isAuth = "${isAuth}";
+	const isAuth = "${isAuth}"==="true"? true : false;
+	console.log("html : ",isAuth);
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>

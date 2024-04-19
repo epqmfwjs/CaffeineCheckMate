@@ -62,12 +62,16 @@ function calc(cno) {
             console.log("cno is null");
         }
     }else{//비로그인
-
+        let caf = localStorage.getItem("caf");
+        let caffeine = caf? parseInt(caf.toString()) : 0;
+        caffeine += parseInt(cno);
+        localStorage.setItem("caf",caffeine);
+        bar.animate(parseInt(caffeine)/400);
     }
 }
 
 //리셋
-function resetCalc() {
+function resetCalc(event) {
     if(isAuth){//로그인
         const reseturl = () => {
             return ("/calc?yn=1");
@@ -88,7 +92,8 @@ function resetCalc() {
             console.log("error",error);
         })
     }else{//비로그인
-       
+        localStorage.setItem("caf",0);
+        bar.animate(0);
     }
 
 }
@@ -99,14 +104,27 @@ cResetBtn.addEventListener("click", resetCalc);
 
 
 // 즐겨찾기 목록에 이벤트 리스너 추가
-const favb = document.querySelector(".fav-box");
-const favI = favb.children;
-for (let i=0; i<favI.length; i++) {
-    favI[i].querySelector(".fav-item__box").addEventListener("click",doCalc);
+if(isAuth){
+    const favB = document.querySelector(".fav-box");
+    const favI = favB.children;
+    for (let i=0; i<favI.length; i++) {
+        favI[i].querySelector(".fp-item__box").addEventListener("click",doCalc);
+    }
+}else {
+    let caf = localStorage.getItem("caf");
+    let caffeine = caf? parseInt(caf.toString()) : 0;
+    localStorage.setItem("caf",caffeine);
+    bar.animate(parseInt(caffeine)/400);
+    
+    const popB = document.querySelector(".popular-box");
+    const popI = popB.children;
+    for (let i=0; i<popI.length; i++) {
+        popI[i].querySelector(".fp-item__box").addEventListener("click",doCalc);
+    }
 }
 
 
 //계산기 기능
 function doCalc(event) {
-  calc(event.target.closest(".fav-item").getAttribute("value"));
+  calc(event.target.closest(".fp-item").getAttribute("value"));
 }
