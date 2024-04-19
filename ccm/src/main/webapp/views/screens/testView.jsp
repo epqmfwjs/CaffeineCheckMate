@@ -24,7 +24,7 @@
 			<input type="submit" value="정보수정"/>
 		</form>
 		<!-- 마이페이지 버튼 추가 -->
-		<form action="<%=request.getContextPath() %>/views/screens/Mypage.jsp">
+		<form action="mypage.do">
 			<input type="submit" value="My Page" />
 		</form>
 	</div>
