@@ -1,36 +1,23 @@
 /*
 계산기 기능이 필요없는 보여주기만 할 즐겨찾기 리스트
 */
-fetch("/favorites")
-.then(response =>{
-    return(response.json())
-})
-.then(data => {
-    render(data)
-})
-.catch(error => {
-    console.log("error",error);
-})
 
 // 즐겨찾기 목록 렌더링 함수 ReactDOM.render(<App data={data}/>,root);
 console.log("favlist.js");
 const root = document.querySelector(".fav-box");
 function App(props) {
-    console.log("props ",props);
-    console.log("data ",props.data);
     const fav = props.data;
-    console.log("fav ",fav);
-    loadLisetener();
-    console.log("------------------");
     return(
         <div className="fav-box">
-            {Object.keys(fav["data"]).map(key => (
-                <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav["data"][key]["C_NO"]} onClick={doCalc}>
+            {Object.keys(fav).map(key => (
+            <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav[key]["C_NO"]}>
+                <div className="fav-item__box" onClick={doCalc}>
+                    <div className="fav-item__img">이미지 이름 : {fav[key]["C_IMAGE"]}</div>
+                    <div className="fav-item__info">커피 이름 : {fav[key]["C_NAME"]}</div>
+                </div>
                 <button className="fav-item__delete-btn" onClick={deleteFavItem}>
-                <i className="fa-solid fa-x"></i>
+                <i className="fa-solid fa-x"></i>  
                 </button>
-                <div className="fav-item__img">이미지 이름 : {fav["data"][key]["C_IMAGE"]}</div>
-                <div className="fav-item__info">커피 이름 : {fav["data"][key]["C_NAME"]}</div>
             </div>
             ))}
         </div>
@@ -76,9 +63,9 @@ function addFavItem(element) {
     .then(data => {
         render(data);
     })
-    .catch(error => {
-        console.log("error",error);
-    })
+    // .catch(error => {
+    //     console.log("error",error);
+    // })
 }
 
 
@@ -94,9 +81,9 @@ function deleteFavItem(element) {
     .then(data => {
         document.querySelector(".fav-box").removeChild(item);
     })
-    .catch(error => {
-      console.log("error",error);
-  })
+//     .catch(error => {
+//       console.log("error",error);
+//   })
 }
 
 /* 리액트 및 babel cdn

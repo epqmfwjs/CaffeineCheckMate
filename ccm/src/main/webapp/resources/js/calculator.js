@@ -89,7 +89,7 @@ function resetCalc() {
 
 // 즐겨찾기 목록에 이벤트 리스너 추가
 for (let i=0; i<favItems.length; i++) {
-    favItems[i].addEventListener("click",doCalc);
+    favItems[i].querySelector("fav-item__box").addEventListener("click",doCalc);
 }
 
 
