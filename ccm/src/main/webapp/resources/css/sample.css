@@ -1,5 +1,5 @@
-/*variable*/
-@import "variable.css";
+/*Common*/
+@import "common.css";
 
 /*Components*/
 @import "components/favorites.css";
