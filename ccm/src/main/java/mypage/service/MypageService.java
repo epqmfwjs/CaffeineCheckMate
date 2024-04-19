@@ -80,8 +80,71 @@ public class MypageService {
 			JdbcUtil.close(conn);
 		}
 		
-		
 	}
 	
+	public UserProfileDTO getUserProfiles(String memberID) {
+		Connection conn = null;
+		UserProfileDTO updto = null;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			updto = userprofiledao.ShowMyPF(memberID, conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return updto;
+	}
+	//프로필 업데이트
+	public boolean updateProfile(String memberId, String profileImage, int weight) {
+		boolean isSuccess = false;
+		Connection conn = null;
+		
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			
+			//프로필 업데이트 수행
+			userprofiledao.updateProfile(memberId, profileImage, weight, conn);
+			
+			conn.commit();
+			isSuccess = true;
+		} catch (Exception e) {
+			JdbcUtil.rollback(conn);
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return isSuccess;
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,5 +36,10 @@ public class MyRecipeDTO {
 	public void setCUS_IMG_COPY(String cUS_IMG_COPY) {
 		CUS_IMG_COPY = cUS_IMG_COPY;
 	}
+	@Override
+	public String toString() {
+		return "MyRecipeDTO [CUS_NO=" + CUS_NO + ", M_ID=" + M_ID + ", CUS_TITLE=" + CUS_TITLE + ", CUS_IMG_COPY="
+				+ CUS_IMG_COPY + "]";
+	}
 	
 }

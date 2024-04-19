@@ -65,6 +65,13 @@ public class FavoriteListDTO {
 	public void setC_IMG_COPY(String c_IMG_COPY) {
 		C_IMG_COPY = c_IMG_COPY;
 	}
+
+
+	@Override
+	public String toString() {
+		return "FavoriteListDTO [M_ID=" + M_ID + ", C_NO=" + C_NO + ", C_NAME=" + C_NAME + ", C_CAFFAINE=" + C_CAFFAINE
+				+ ", C_IMG_COPY=" + C_IMG_COPY + "]";
+	}
 	
 	
 	

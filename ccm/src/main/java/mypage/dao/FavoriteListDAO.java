@@ -12,9 +12,9 @@ import mypage.dto.FavoriteListDTO;
 
 public class FavoriteListDAO {
 	
-	Map<String,FavoriteListDTO> favlistMap = null;
+	//Map<String,FavoriteListDTO> favlistMap = null;
 
-	public Map<String,FavoriteListDTO> getFavList(String memberId, Connection conn) throws SQLException { 
+	public FavoriteListDTO getFavList(String memberId, Connection conn) throws SQLException { 
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		// COFFEE_FAVORITE+COFFEELIST 조인해서 검색하기 
@@ -32,9 +32,8 @@ public class FavoriteListDAO {
 						rs.getInt("C_CAFFAINE"),
 						rs.getString("C_IMG_COPY")
 						);
-				favlistMap.put(favlist.getM_ID(), favlist);
 			}
-			return favlistMap;
+			return favlist;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);

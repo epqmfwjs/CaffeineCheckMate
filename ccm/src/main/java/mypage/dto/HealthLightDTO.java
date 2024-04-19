@@ -36,6 +36,11 @@ public class HealthLightDTO {
 	public void setCAL_DAILYCF(int cAL_DAILYCF) {
 		CAL_DAILYCF = cAL_DAILYCF;
 	}
+	@Override
+	public String toString() {
+		return "HealthLightDTO [CAL_DATE=" + CAL_DATE + ", M_ID=" + M_ID + ", CAL_COLOR=" + CAL_COLOR + ", CAL_DAILYCF="
+				+ CAL_DAILYCF + "]";
+	}
 	
 	
 }

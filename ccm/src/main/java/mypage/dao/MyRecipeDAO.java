@@ -11,10 +11,10 @@ import mypage.dto.MyRecipeDTO;
 
 public class MyRecipeDAO {
 	
-	Map<String, MyRecipeDTO> mRecipedto = null;
+	//Map<String, MyRecipeDTO> mRecipedto = null;
 	//내가 작성한 레시피 ,custom 레시피
 	//아이디 받아서 검색하기
-	public Map<String,MyRecipeDTO> getRecipe(String memberid ,Connection conn) throws SQLException{
+	public MyRecipeDTO getRecipe(String memberid ,Connection conn) throws SQLException{
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		
@@ -36,9 +36,9 @@ public class MyRecipeDAO {
 						rs.getString("CUS_TITLE"),
 						rs.getString("CUS_IMG_COPY")
 						);
-				mRecipedto.put(myrecipe.getM_ID(), myrecipe);
 			}
-			return mRecipedto;
+			System.out.println("myrecipe"+myrecipe.toString());
+			return myrecipe;
 			
 		} finally {
 			JdbcUtil.close(rs);
