@@ -70,11 +70,11 @@ button:hover{
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="nomilk" data-value="noshot">추가없음</li>
-            <li id="샷추가" data-value="샷추가">샷추가</li>
-            <li id="2샷추가" data-value="2샷추가">2샷추가</li>
-            <li id="3샷추가" data-value="3샷추가">3샷추가</li>
-            <li id="4샷추가" data-value="4샷추가">4샷추가</li>
+            <li id="0" data-value="noshot">추가없음</li>
+            <li id="1" data-value="샷추가">샷추가</li>
+            <li id="2" data-value="2샷추가">2샷추가</li>
+            <li id="3" data-value="3샷추가">3샷추가</li>
+            <li id="4" data-value="4샷추가">4샷추가</li>
         </ul>
     </div>
 </div>

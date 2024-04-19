@@ -1,7 +1,7 @@
 var curPage = 1;
 
 
-
+//검색코드
 $(document).ready(function(){
 	list(allcount);
 	
@@ -28,12 +28,15 @@ $(document).ready(function(){
     });
 	});
 	
+	
+
+//태그버튼 이벤트발생
 $(document).ready(function(){
-		let shot = "추가없음";
-		let milk = "nomilk";
-		let syrup= "nosyrup";
-		let topping = "notopping";
-		let decaf = "decaf";
+		let shot = 'null';
+		let milk = 'null';
+		let syrup= 'null';
+		let topping = 'null';
+		let decaf = 'null';
 		
 		 $(".dropdown").click(function(){
 		        $(this).next(".dropdown-options").slideToggle();
@@ -93,8 +96,10 @@ $(document).ready(function(){
 		            },
 		            datatype: "json",
 		            success: function(data) {
+			
 		            $("#board").empty();
                 	searchlist(data);      
+                	$(window).off("scroll");
 		            },
 		            error: function(error) {
 						console.log("에러발생");
@@ -102,6 +107,7 @@ $(document).ready(function(){
 		        });
 		    }
 		});
+	
 	
 function searchlist(data){
     var list = data.list;

@@ -31,7 +31,16 @@ public class Jsontest extends HttpServlet {
 		String syrup =(String)request.getParameter("syrup");
 		String topping =(String)request.getParameter("topping");
 		String decaf =(String)request.getParameter("decaf");
+		if("null".equals(topping)) {
+			System.out.println("제발요");
+		}
+		System.out.println(shot);
+		System.out.println(milk);
+		System.out.println(syrup);
+		System.out.println(topping);
 		System.out.println(decaf);
+		System.out.println("---------");
+		
 		
 			CustomBoardHashDao hashdao = new CustomBoardHashDao();
 			CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milk,syrup,topping,decaf);
@@ -47,17 +56,14 @@ public class Jsontest extends HttpServlet {
 
 			
 				ArrayList<CustomBoardHashDto> hashlist =  hashdao.hashnum(con,hashdto);
+				JSONArray jsonArray = new JSONArray();
+				
 				for(CustomBoardHashDto clist : hashlist) {
 					String a = clist.getcus_no();
-					System.out.println(a + "a값");
-					JSONArray jsonArray = new JSONArray();
-					
+					System.out.println(a + "a값"); //잘담김
 					
 					ArrayList<CustomBoardListDto> list = dao.searchhash(a, con);
-				
-				
-				
-				
+	    			
 					for (CustomBoardListDto item : list) {
 						JSONObject jsonObject = new JSONObject();
 						jsonObject.put("m_id", item.getm_id());
@@ -71,12 +77,9 @@ public class Jsontest extends HttpServlet {
 						
 						jsonArray.add(jsonObject);
 					}
-					
 					json.put("list", jsonArray);
 					
-					
-					
-				}
+}
 				response.setContentType("application/json; charset=utf-8");
 				response.getWriter().write(json.toString());
 				
