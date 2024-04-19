@@ -18,8 +18,8 @@ import customRecipeReply.dao.CusReplyDao;
 import customRecipeReply.dto.CusReplyDto;
 import jdbc.JdbcUtil;
 
-@WebServlet("/CusReplyInsertHandler.do")
-public class CusReplyInsertHandler extends HttpServlet {
+@WebServlet("/CusReplyAddHandler")
+public class CusReplyAddHandler extends HttpServlet {
 	
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 

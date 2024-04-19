@@ -19,7 +19,7 @@ import customRecipeReply.dao.CusReplyDao;
 import customRecipeReply.dto.CusReplyDto;
 import jdbc.JdbcUtil;
 
-@WebServlet("/CusReplyUpdateHandler.do")
+@WebServlet("/CusReplyUpdateHandler")
 public class CusReplyUpdateHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

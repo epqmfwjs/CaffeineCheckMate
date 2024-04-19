@@ -76,7 +76,7 @@
 	/*댓글 조회 */
 	function cusReplyList(cus_no) {
 	    $.ajax({
-	        url: "/CusReplyListHandler.do",
+	        url: "/CusReplyListHandler",
 	        contentType: "application/json",
 	        type: "POST",
 	        dataType: "json",
@@ -127,7 +127,7 @@
 	    };
 	    
 	    $.ajax({
-	        url : "CusReplyInsertHandler.do",
+	        url : "CusReplyAddHandler",
 	        data : JSON.stringify(data), // 데이터를 JSON 문자열로 변환
 	        contentType: "application/json",
 	        type : "POST",
@@ -166,7 +166,7 @@
         };
         
         $.ajax({
-            url: "CusReplyUpdateHandler.do",
+            url: "CusReplyUpdateHandler",
             data: JSON.stringify(data), // JSON 문자열로 변환하여 전송
             contentType: "application/json",
             type: "POST",
@@ -196,7 +196,7 @@
     /* 댓글 삭제 */
     function deleteReply(cus_re_no) {
         $.ajax({
-            url: "CusReplyDeleteHandler.do",
+            url: "CusReplyDeleteHandler",
             data: {
                 cus_re_no: cus_re_no
             },

@@ -13,7 +13,7 @@ import connection.ConnectionProvider;
 import customRecipeReply.dao.CusReplyDao;
 import jdbc.JdbcUtil;
 
-@WebServlet("/CusReplyDeleteHandler.do")
+@WebServlet("/CusReplyDeleteHandler")
 public class CusReplyDeleteHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

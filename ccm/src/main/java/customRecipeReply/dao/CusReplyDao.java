@@ -103,8 +103,6 @@ public class CusReplyDao {
 	    return result;
 	}
 
-    
-    
     /* 댓글 삭제 */
     public int deleteReply(Connection conn, int cus_re_no) {
         int result = 0;
