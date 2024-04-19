@@ -32,10 +32,9 @@ const bar = new ProgressBar.SemiCircle(container, {
 
 
 const dailyC = document.querySelector(".calc-box__dailyc"); //커피 섭취량
-const cResetBtn = document.querySelector("#calc-box__btn-reset"); //리셋 버튼
+bar.animate(calcResult/400);
 // const favBox = document.querySelector(".fav-box");
 // const favItems = favBox.children;
-bar.animate(calcResult/400);
 
 //계산
 function calc(cno) {
@@ -86,10 +85,16 @@ function resetCalc() {
     })
 }
 
+//리셋버튼
+const cResetBtn = document.querySelector("#calc-box__btn-reset");
+cResetBtn.addEventListener("click", resetCalc);
+
 
 // 즐겨찾기 목록에 이벤트 리스너 추가
-for (let i=0; i<favItems.length; i++) {
-    favItems[i].querySelector("fav-item__box").addEventListener("click",doCalc);
+const favb = document.querySelector(".fav-box");
+const favI = favb.children;
+for (let i=0; i<favI.length; i++) {
+    favI[i].querySelector(".fav-item__box").addEventListener("click",doCalc);
 }
 
 
@@ -98,5 +103,3 @@ function doCalc(event) {
   calc(event.target.closest(".fav-item").getAttribute("value"));
 }
 
-//리셋버튼
-cResetBtn.addEventListener("click", resetCalc);

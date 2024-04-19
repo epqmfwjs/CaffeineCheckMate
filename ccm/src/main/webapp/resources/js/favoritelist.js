@@ -8,7 +8,7 @@ const root = document.querySelector(".fav-box");
 function App(props) {
     const fav = props.data;
     return(
-        <div className="fav-box">
+        <>
             {Object.keys(fav).map(key => (
             <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav[key]["C_NO"]}>
                 <div className="fav-item__box" onClick={doCalc}>
@@ -20,7 +20,7 @@ function App(props) {
                 </button>
             </div>
             ))}
-        </div>
+        </>
     )
 }
 function render(data){
@@ -30,15 +30,13 @@ function render(data){
 
 
 //즐겨찾기 박스 선택
-const favBox = document.querySelector(".fav-box");
-const favItems = favBox.children;
-
+const favItems = root.children;
 
 // 즐겨찾기 목록에 이벤트 리스너 추가 메서드
 function loadLisetener() {
     console.log("loadListener");
     for (let i=0; i<favItems.length; i++) {
-        favItems[i].childNodes[1].addEventListener("click",deleteFavItem);
+        favItems[i].querySelector(".fav-item__delete-btn").addEventListener("click",deleteFavItem);
     }
 }
 loadLisetener();
@@ -72,8 +70,9 @@ function addFavItem(element) {
 //즐겨찾기 삭제
 function deleteFavItem(element) {
     element.stopPropagation();
-    const item = element.target.closest(".fav-item")
+    const item = element.target.closest(".fav-item");
     const cno = item.getAttribute("value");
+    console.log("delete : ",item.getAttribute("class"));
     fetch("/delfav?"+cno)
     .then(response => {
         return(response.json());

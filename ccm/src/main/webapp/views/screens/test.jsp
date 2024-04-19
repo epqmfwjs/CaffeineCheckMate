@@ -35,7 +35,7 @@
 	<br/>
 	<br/>
 	<h2>calc-box</h2><br/>
-	<div class="calc-box">
+	<div>
 		<button id="calc-box__btn-reset">reset</button>
 		<div class="calc-box__dailyc">${main.calculationResult}</div>
 	</div>
@@ -43,14 +43,22 @@
 	<br/>
 	<br/>
 	<h2>fav-box</h2>
+	<c:choose>
+		<c:when test="${!isAuth}">
+			<h2>즐겨찾기목록</h2>
+		</c:when>
+		<c:when test="${!isAuth}">
+			<h2>즐겨찾기 많은 커피 5개</h2>
+		</c:when>
+	</c:choose>
 	<div class="fav-box">
 	<c:choose>
 		<c:when test="${!isAuth}">
 			<c:forEach var="favorite" items="${main.favorites}">
 				<div class="fav-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
 					<div class="fav-item__box">
-						<div class="fav-item__img">${favorite.value.c_IMAGE}</div>
-						<div class="fav-item__info">${favorite.value.c_NAME}</div>
+						<div class="fav-item__img">이미지 이름 : ${favorite.value.c_IMAGE}</div>
+						<div class="fav-item__info">커피 이름 : ${favorite.value.c_NAME}</div>
 					</div>
 					<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
 	        	</div>
@@ -60,8 +68,8 @@
 			<c:forEach var="popular" items="${main.favorites}">
 				<div class="fav-item" id="fi_${popular.key}" value="C_NO=${popular.key}">
 					<div class="fav-item__box">
-						<div class="fav-item__img">${popular.value.c_IMAGE}</div>
-						<div class="fav-item__info">${popular.value.c_NAME}</div>
+						<div class="fav-item__img">이미지 이름 : ${popular.value.c_IMAGE}</div>
+						<div class="fav-item__info">커피 이름 : ${popular.value.c_NAME}</div>
 					</div>
 					<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
 	        	</div>
@@ -71,7 +79,10 @@
     </div>
 </body>
 <!--즐겨찾기js가 계산기js보다 위에 있어야함, 즐겨찾기js는 type="text/babel"-->
-<script>let calcResult = "${main.calculationResult}"</script>
+<script>
+	let calcResult = "${main.calculationResult}";
+	const isAuth = "${isAuth}";
+</script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
