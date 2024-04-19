@@ -186,7 +186,7 @@
             complete: function() {
                 $("#editModal").css("display", "none"); // AJAX 요청 완료 후 모달 닫기
                 autoRefresh = setInterval(function() {
-                	cusReplyList(2); //임시지
+                	cusReplyList(2); //임시 지정
                 }, 1000);
             }
         });
