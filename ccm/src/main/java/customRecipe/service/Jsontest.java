@@ -31,13 +31,6 @@ public class Jsontest extends HttpServlet {
 		String syrup =(String)request.getParameter("syrup");
 		String topping =(String)request.getParameter("topping");
 		String decaf =(String)request.getParameter("decaf");
-		System.out.println(shot);
-		System.out.println(milk);
-		System.out.println(syrup);
-		System.out.println(topping);
-		System.out.println(decaf);
-		System.out.println("---------");
-		
 		
 			CustomBoardHashDao hashdao = new CustomBoardHashDao();
 			CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milk,syrup,topping,decaf);
@@ -71,7 +64,9 @@ public class Jsontest extends HttpServlet {
 						jsonObject.put("cus_sumgood", item.getcus_sumgood());
 						
 						jsonArray.add(jsonObject);
+					
 					}
+					
 					json.put("list", jsonArray);
 					
 }

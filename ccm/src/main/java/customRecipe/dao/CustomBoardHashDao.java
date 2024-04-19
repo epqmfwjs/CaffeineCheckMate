@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
@@ -29,8 +31,6 @@ public class CustomBoardHashDao {
 		if(hashdto.getsyrupType() !="null"&& !hashdto.getsyrupType().equals("null")) {
 			sql += " and CUS_HASH_SYRUP=?";
 		}
-		System.out.println(sql);
-		System.out.println("--1--");
 		PreparedStatement pstm = con.prepareStatement(sql);
 		int a = 1;
 		if(hashdto.getmilkType() != null && !hashdto.getmilkType().equals("null")) {
@@ -49,7 +49,7 @@ public class CustomBoardHashDao {
 			pstm.setString(a,hashdto.getsyrupType());
 		}
 		ArrayList<CustomBoardHashDto> list = new ArrayList<>();
-		
+		sql += " order by cus_no desc";
 		ResultSet rs = pstm.executeQuery();
 		while(rs.next()) {
 			CustomBoardHashDto cus_no = new CustomBoardHashDto();
@@ -60,6 +60,13 @@ public class CustomBoardHashDao {
 		
 		JdbcUtil.close(pstm);
 		JdbcUtil.close(rs);
+		
+		Collections.sort(list, new Comparator<CustomBoardHashDto>() {
+		    @Override
+		    public int compare(CustomBoardHashDto o1, CustomBoardHashDto o2) {
+		        return Integer.parseInt(o2.getcus_no()) - Integer.parseInt(o1.getcus_no());
+		    }
+		});
 		return list;
 	}
 }

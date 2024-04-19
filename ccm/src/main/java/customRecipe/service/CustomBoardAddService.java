@@ -36,6 +36,7 @@ public class CustomBoardAddService {
 			
 			MultipartRequest mp = new MultipartRequest(request,directory,maxSize,encoding,
 					new DefaultFileRenamePolicy());
+			
 			HttpSession session = request.getSession(false);
 			String m_id = (String)session.getAttribute("AUTH_USER_ID"); //로그인세션 받을예정
 		
