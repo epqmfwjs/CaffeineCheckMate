@@ -70,7 +70,6 @@ button:hover{
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="0" data-value="noshot">추가없음</li>
             <li id="1" data-value="샷추가">샷추가</li>
             <li id="2" data-value="2샷추가">2샷추가</li>
             <li id="3" data-value="3샷추가">3샷추가</li>
@@ -85,7 +84,6 @@ button:hover{
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="nomilk" data-value="noMilk">우유 변경 없음</li>
             <li id="저지방우유" data-value="저지방우유">저지방 우유</li>
             <li id="아몬드브리즈" data-value="아몬드브리즈">아몬드 브리즈</li>
             <li id="오토믹스" data-value="오토믹스">오트 믹스</li>
@@ -97,11 +95,10 @@ button:hover{
 
 <div class="divdropdown">
     <button id="syrupButton" class="dropdown" type="button" data-toggle="dropdown">
-        시럽 종류
+        시럽 추가
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="noSyrup" data-value="noSyrup">시럽 추가 없음</li>
             <li id="바닐라시럽" data-value="바닐라시럽">바닐라 시럽</li>
             <li id="카라멜시럽" data-value="카라멜시럽">카라멜 시럽</li>
             <li id="헤이즐넛시럽" data-value="헤이즐넛시럽">헤이즐넛 시럽</li>
@@ -114,11 +111,10 @@ button:hover{
 
 <div class="divdropdown">
     <button id="toppingButton" class="dropdown" type="button" data-toggle="dropdown">
-        토핑 종류
+        토핑 추가
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="noTopping" data-value="noTopping">토핑 추가 없음</li>
             <li id="휘핑크림" data-value="휘핑크림">휘핑 크림</li>
             <li id="초콜릿토핑" data-value="초콜릿토핑">초콜릿 토핑</li>
             <li id="카라멜드리즐" data-value="카라멜드리즐">카라멜 드리즐</li>

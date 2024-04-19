@@ -31,9 +31,6 @@ public class Jsontest extends HttpServlet {
 		String syrup =(String)request.getParameter("syrup");
 		String topping =(String)request.getParameter("topping");
 		String decaf =(String)request.getParameter("decaf");
-		if("null".equals(topping)) {
-			System.out.println("제발요");
-		}
 		System.out.println(shot);
 		System.out.println(milk);
 		System.out.println(syrup);
@@ -57,10 +54,8 @@ public class Jsontest extends HttpServlet {
 			
 				ArrayList<CustomBoardHashDto> hashlist =  hashdao.hashnum(con,hashdto);
 				JSONArray jsonArray = new JSONArray();
-				
 				for(CustomBoardHashDto clist : hashlist) {
 					String a = clist.getcus_no();
-					System.out.println(a + "a값"); //잘담김
 					
 					ArrayList<CustomBoardListDto> list = dao.searchhash(a, con);
 	    			

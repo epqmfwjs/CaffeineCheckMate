@@ -13,14 +13,41 @@ public class CustomBoardHashDao {
 	
 	//해쉬넘버조회
 	public ArrayList<CustomBoardHashDto> hashnum(Connection con, CustomBoardHashDto hashdto) throws SQLException {
-		String sql = "select cus_no from custom_hash where CUS_HASH_SHOT=? and CUS_HASH_MILK=? and CUS_HASH_SYRUP=? and CUS_HASH_TOP=? and CUS_HASH_DECAF=?";
-		
+		String sql = "select cus_no from custom_hash where 1=1";
+		if(hashdto.getmilkType() != null && !hashdto.getmilkType().equals("null")) {
+			sql += " and CUS_HASH_MILK=?";
+		}
+		if(hashdto.getdecaffeinated() !=null&& !hashdto.getdecaffeinated().equals("null")) {
+			sql += " and CUS_HASH_DECAF=?";
+		}
+		if(hashdto.getshot() !="null"&& !hashdto.getshot().equals("null")) {
+			sql += " and CUS_HASH_SHOT=?";
+		}
+		if(hashdto.gettoppingType() !="null"&& !hashdto.gettoppingType().equals("null")) {
+			sql += " and CUS_HASH_TOP=?";
+		}
+		if(hashdto.getsyrupType() !="null"&& !hashdto.getsyrupType().equals("null")) {
+			sql += " and CUS_HASH_SYRUP=?";
+		}
+		System.out.println(sql);
+		System.out.println("--1--");
 		PreparedStatement pstm = con.prepareStatement(sql);
-		pstm.setString(1,hashdto.getshot());
-		pstm.setString(2,hashdto.getmilkType());
-		pstm.setString(3,hashdto.getsyrupType());
-		pstm.setString(4,hashdto.gettoppingType());
-		pstm.setString(5,hashdto.getdecaffeinated());
+		int a = 1;
+		if(hashdto.getmilkType() != null && !hashdto.getmilkType().equals("null")) {
+			pstm.setString(a++, hashdto.getmilkType());
+		}
+		if(hashdto.getdecaffeinated() !=null&& !hashdto.getdecaffeinated().equals("null")) {
+			pstm.setString(a++, hashdto.getdecaffeinated());
+		}
+		if(hashdto.getshot() !="null"&& !hashdto.getshot().equals("null")) {
+			pstm.setString(a++, hashdto.getshot());
+		}
+		if(hashdto.gettoppingType() !="null"&& !hashdto.gettoppingType().equals("null")) {
+			pstm.setString(a++, hashdto.gettoppingType());
+		}
+		if(hashdto.getsyrupType() !="null"&& !hashdto.getsyrupType().equals("null")) {
+			pstm.setString(a,hashdto.getsyrupType());
+		}
 		ArrayList<CustomBoardHashDto> list = new ArrayList<>();
 		
 		ResultSet rs = pstm.executeQuery();
