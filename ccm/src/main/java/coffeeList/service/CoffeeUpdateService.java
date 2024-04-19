@@ -21,7 +21,7 @@ public class CoffeeUpdateService {
 			
 			CoffeeListDao coffeeListDao = new CoffeeListDao();
 			coffeeListDao.updateCoffee(coffee, conn);
-			
+			System.out.println("서비스");
 			conn.commit();
 		}catch (SQLException e) {
 			System.out.println(e.getMessage() + "SQLException");

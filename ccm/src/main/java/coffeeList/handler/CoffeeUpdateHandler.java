@@ -11,6 +11,8 @@ public class CoffeeUpdateHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		
 		try {
 			//coffeeNo를 파라미터로 받아 WHERE절에 사용
 			int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));

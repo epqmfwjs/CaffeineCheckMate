@@ -62,6 +62,9 @@ public class CoffeeListDao {
                         rs.getInt("C_SACCHARIDE"),
                         rs.getInt("C_CALORIE"),
                         rs.getString("C_CONTENT"),
+                        rs.getString("C_TYPE"),
+                        rs.getString("C_STAGE"),
+                        rs.getString("C_IMG_REAL"),
                         rs.getString("C_IMG_COPY")
                         );
             }
@@ -177,7 +180,7 @@ public class CoffeeListDao {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
 		String listUpdateSQL = "UPDATE COFFEELIST "
 				+ "SET C_NAME = ?,  C_BRAND = ?, C_CAFFEINE = ?, C_SACCHARIDE = ?, "
-				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ?"
+				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ? "
 				+ "WHERE C_NO = ?";
 		PreparedStatement pstmt = null;
 		
@@ -192,7 +195,8 @@ public class CoffeeListDao {
 			pstmt.setString(7, coffee.getC_TYPE());
 			pstmt.setString(8, coffee.getC_STAGE());
 			pstmt.setString(9, coffee.getC_IMG_REAL());
-			
+			pstmt.setInt(10, coffee.getC_NO());
+			System.out.println("다오 왔뎅");
 			pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);

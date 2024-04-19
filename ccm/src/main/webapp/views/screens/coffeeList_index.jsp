@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>커피리스트 게시판 리스트</title>
+<title>COFFEE LIST INDEX</title>
 <style>
     div.search{
         text-align: center;
@@ -51,10 +51,6 @@
 			  <td>${coffeeV.c_BRAND}</td>
 			  <td>${coffeeV.c_CAFFEINE}</td>
 			  <td>${coffeeV.c_IMG_COPY}</td>
-			  <td>관리자 전용<br/>
-				<a href="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">Delete</a>
-				<a href="coffeeListUpdate.do?coffeeNo=${coffeeV.c_NO}">Update</a>
-			  </td>
 			 </tr>
 			</c:forEach>
 		</table>
