@@ -1,41 +1,62 @@
 package customRecipeReply.handler;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import connection.ConnectionProvider;
-import controller.CommandHandler;
+import customRecipeReply.dao.CusReplyDao;
 import customRecipeReply.dto.CusReplyDto;
-import customRecipeReply.service.CusReplyInsertService;
 import jdbc.JdbcUtil;
 
-public class CusReplyInsertHandler implements CommandHandler{
+@WebServlet("/CusReplyInsertHandler.do")
+public class CusReplyInsertHandler extends HttpServlet {
 	
-	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		System.out.println("-----1-----");
-		Connection conn = null;
-		conn = ConnectionProvider.getConnection();
-		
-		System.out.println("-----2-----");
-		String m_id = req.getParameter("m_id");
-		int cus_no = Integer.parseInt(req.getParameter("cus_no"));
-        String cus_re_content = req.getParameter("cus_re_content");
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 
+		 	// 요청에서 JSON 데이터를 읽어옴
+		   BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
+	        String json = "";
+	        if (br != null) {
+	            json = br.readLine();
+	        }
 
-        System.out.println("-----2-----");
-        CusReplyDto reply = new CusReplyDto();
-        reply.setM_id(m_id);
-        reply.setCus_no(cus_no);
-        reply.setCus_re_content(cus_re_content);
+	        // JSON 데이터를 자바 객체로 변환
+	        Gson gson = new Gson();
+	        CusReplyDto reply = gson.fromJson(json, CusReplyDto.class);
 
-        System.out.println("-----2-----");
-        int result = new CusReplyInsertService().insertReply(reply);
-        res.getWriter().print(result);
-        
-        JdbcUtil.close(conn);
+	        Connection conn = null;
+	        
+	        try {
+	            conn = ConnectionProvider.getConnection();
+	            CusReplyDao replyDao = new CusReplyDao();
+	            replyDao.insertReply(conn, reply);
+	           System.out.println("성공진입");
+	            response.getWriter().write("성공");
+	            
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            response.getWriter().write("실패");
+	            
+	        } finally {
+	            JdbcUtil.close(conn);
+	            
+	        }
+	    }
 
-        return "CusReplyList.do";
-	}
+
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			doGet(request, response);
+		}
+
+
 }

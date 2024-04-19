@@ -47,52 +47,39 @@
 		</div>
 	</div>
 	
+
+<!-- ----------------------------모달------------------------------ -->
+	
+	
+	<!-- 수정 모달 -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
+        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">저장</button>
+    </div>
+</div>
+	
+	
 <!-- ----------------------------스크립트------------------------------ -->
 
 	<script>
 	/*자동 함수 호출*/
 	var autoRefresh;
 	$(function(){
-	    var cus_no = 2;
+	    var cus_no = 2; //임시 지정
 	    autoRefresh = setInterval(function() {
 	        cusReplyList(cus_no);
 	    }, 1000);
 	})
 
 	
-	/*댓글 작성 */
-	function insertReply(){
-	    console.log("댓글 작성 함수가 실행되었습니다.");
-	    var replyContent = $("#reply").val();
-	    var data = {
-	        m_id: "user2", // 임시 지정
-	        cus_no: 2, // 임시 지정
-	        cus_re_content: replyContent
-	    };
-	    
-	    $.ajax({
-	        url : "CusReplyJsonInsertHandler.do",
-	        data : JSON.stringify(data), // 데이터를 JSON 문자열로 변환
-	        contentType: "application/json",
-	        type : "POST",
-	        success : function(result){
-	            if(result>0){
-	            	cusReplyList(cus_no);
-	                $("#reply").val(""); // 입력 필드 비우기
-	            }
-	        },
-	        error: function() {
-	        	 alert("에러");
-	        }
-	    });
-	}
-	
-	
 	/*댓글 조회 */
 	function cusReplyList(cus_no) {
 	    $.ajax({
-	        url: "/CusReplyJson.do",
+	        url: "/CusReplyListHandler.do",
 	        contentType: "application/json",
+	        type: "POST",
 	        dataType: "json",
 	        data: {
 	            cus_no: cus_no
@@ -131,88 +118,93 @@
 	    });
 	}
 
-
-	/* 수정 댓글 입력 */
-	function updateReply(cus_re_no) {
-	    // 해당 댓글의 내용 가져오기
-	    var replyContent = $("#replyArea").find('tr.reply-deatil-content').eq(cus_re_no).find('td').eq(1).text().trim();
-	    
-	    /* 수정 폼으로 변경 */
-	    var updateForm = 
-	        '<tr id="updateForm' + cus_re_no + '" class="update-form">' + // 수정 폼의 CSS 클래스 추가
-	            '<td colspan="3">' +
-	                '<input type="text" id="updateReplyContent' + cus_re_no + '"style="width: 350px; height: 30px;" value="' + replyContent + '">' +
-	                '<button onclick="updateReplySave(' + cus_re_no + ') ">저장</button>' +
-	            '</td>' +
-	        '</tr>';
-	   	 console.log("v폼 생성");
-	    
-	    // 해당 댓글 아래에 수정 폼 추가
-	    $("#updateForm" + cus_re_no).remove(); // 이미 존재하는 폼이 있을 경우 삭제
-	    $("#replyArea").find('tr.reply-deatil-content').eq(cus_re_no).after(updateForm);
-	    
-	    // 수정 버튼을 저장 버튼으로 변경
-	    $("button[onclick='updateReply(" + cus_re_no + ")']").text("저장");
-	    $("button[onclick='updateReply(" + cus_re_no + ")']").attr("onclick", "updateReplySave(" + cus_re_no + ")");
-	    
-	    // 갱신 중지
-	    clearInterval(autoRefresh);
-	}
-
-	/* 수정 댓글 저장 */
-	function updateReplySave(cus_re_no) {
-	    var cus_re_content_update = $("#updateReplyContent" + cus_re_no).val();
+	/*댓글 작성 */
+	function insertReply(){
+	    var replyContent = $("#reply").val();
 	    var data = {
-	        cus_re_no: cus_re_no,
-	        cus_re_content: cus_re_content_update
+	        m_id: "user2", // 임시 지정
+	        cus_no: 2, // 임시 지정
+	        cus_re_content: replyContent
 	    };
 	    
 	    $.ajax({
-	        url: "CusReplyJsonUpdateHandler.do",
-	        data: JSON.stringify(data),
-	        contentType: 'application/json',
-	        type: "POST",
-	        success: function(result) {
-	       	 console.log("저장");
-	               if (result > 0) {
-	            	   console.log("갱신시작");
-	                   //갱신 다시 시작
-	                   autoRefresh = setInterval(function() {
-	                       cusReplyList(cus_no);
-	                   }, 1000);
-	              	 console.log("갱신끝");
-	                   // 수정 폼 숨기기
-	                   $("#updateForm" + cus_re_no).remove(); // 폼 삭제
-	              	 console.log("삭제");
-	                   
-	               }
-	           },
-	        error: function() {
-	            alert("에러");
+	        url : "CusReplyInsertHandler.do",
+	        data : JSON.stringify(data), // 데이터를 JSON 문자열로 변환
+	        contentType: "application/json",
+	        type : "POST",
+	        dataType: "json",
+	        success : function(result){
+	            if(result === "성공"){
+	            	cusReplyList(cus_no);
+	                $("#reply").val(""); // 입력 필드 비우기
+	            }
 	        }
 	    });
 	}
-
+	
+	
+    /*수정*/
+    function saveEditedReply() {
+        var cus_re_no = $("#saveBtn").attr("data-cus-re-no");
+        var editedContent = $("#editModal input#editedReply").val();
+        
+        var data = {
+            cus_re_content: editedContent,
+            cus_re_no: cus_re_no
+        };
+        
+        $.ajax({
+            url: "CusReplyUpdateHandler.do",
+            data: JSON.stringify(data), // JSON 문자열로 변환하여 전송
+            contentType: "application/json",
+            type: "POST",
+            dataType: "json",
+            success: function(result) {
+                if (result === "성공") {
+                    cusReplyList(2); //임시 지정
+                    $("#editModal").css("display", "none");
+                    autoRefresh = setInterval(function() {
+                    }, 1000);
+                } else {
+            console.log(data);
+                    alert("업데이트에 실패했습니다.");
+                }
+            }
+        });
+    }
+    
     
     /* 댓글 삭제 */
     function deleteReply(cus_re_no) {
         $.ajax({
-            url: "CusReplyJsonDeleteHandler.do",
+            url: "CusReplyDeleteHandler.do",
             data: {
                 cus_re_no: cus_re_no
             },
             type: "POST",
+            dataType: "json",
             success: function(result) {
                 if (result > 0) {
                     cusReplyList(2);
                 }
-            },
-            error: function() {
-                alert("에러");
             }
         });
     }
+    
+    
+    /*모달창 열기*/
+    function updateReply(cus_re_no) {
+        var editedContent = $("#replyArea").find("tr.reply-deatil-content[data-cus-re-no='" + cus_re_no + "']").find("td:nth-child(2)").text().trim();
+        $("#editedReply").val(editedContent);
+        $("#editModal").css("display", "block");
+        $("#saveBtn").attr("data-cus-re-no", cus_re_no);
+        
+        clearInterval(autoRefresh); // 갱신 함수 중지
+    }
+
 	</script>
+	
+	
 
 </body>
 </html>

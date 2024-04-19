@@ -10,9 +10,10 @@ public class CusReplyDto {
 	private String cus_re_regdate;
 	private String cus_re_content;
 	
-	public CusReplyDto(int cus_no, String cus_re_content) {
-		this.cus_no = cus_no;
+	
+	public CusReplyDto(String cus_re_content, int cus_re_no) {
 		this.cus_re_content = cus_re_content;
+		this.cus_re_no = cus_re_no;
 	}
 	
 	public CusReplyDto(int cus_no, String cus_re_regdate, String cus_re_content) {
