@@ -3,7 +3,7 @@ package coffeeList.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import coffeeList.dao.CoffeeAddDelDao;
+import coffeeList.dao.CoffeeListDao;
 import connection.ConnectionProvider;
 import jdbc.JdbcUtil;
 
@@ -12,13 +12,14 @@ public class CoffeeDeleteService {
 	public void deleteCoffee(int coffeeNo) {
 		Connection conn = null;
 		
+		CoffeeListDao coffeeListDao = new CoffeeListDao();
+		
 		try {
 			conn = ConnectionProvider.getConnection();
 			//auto commit false : 호출된 메서드가 끝나면 다시 auto로 돌아감
 			conn.setAutoCommit(false);
 			
-			CoffeeAddDelDao coffeeAddDeldao = new CoffeeAddDelDao();
-			coffeeAddDeldao.deleteCoffee(coffeeNo, conn);
+			coffeeListDao.deleteCoffee(coffeeNo, conn);
 			
 			conn.commit();
 		} catch(SQLException e) {

@@ -4,7 +4,7 @@ public class CCMFunctions {
 
 	public static String ColorFn(int caffeine, double weight) {
 		String color;
-		double ratio = caffeine/(weight*6.4);
+		double ratio = weight>0? caffeine/(weight*6.4) : caffeine/400;
 		if(ratio>1) {
 			color = "#180607"; //검정
 		} else if (ratio>0.8) {

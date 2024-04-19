@@ -3,87 +3,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/custom.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/custom.js"></script>
-<script> 
+<style> 
+div{
+float: right;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+ button{
+  border:none;
+  border-radius:5px;
+  padding:15px 30px;
+  font-size:18px;
+  cursor:pointer;
+} 
+ 
+button:hover{
+  background-color:#ddd;
+} 
+
+.dropdown-options {
+  display: none;
+   position: absolute;
+  overflow: auto;
+  background-color:#fff;
+  border-radius:5px;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4); 
+}
+
+ .dropdown:hover .dropdown-options {
+/*   display: block; */
+} 
+
+.dropdown-options li {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+  padding:20px 40px;
+}
+
+.dropdown-options li:hover {
+  color: #0a0a23;
+  background-color: #ddd;
+  border-radius:5px;
+}
+</style>
+
+
+<script>
+
 $(document).ready(function(){
+        $(".dropdown").click(function(){
+            $(this).next(".dropdown-options").slideToggle();
+        });
 
-	$.ajax({
-		url : '/Jsontest.do',
-		type : 'get',
-		data : {"nomilk":nomilk,
-				"syrupList":syrupList,
-				"toppingButton":toppingButton,
-				"decafButton":decafButton}
-		datatype :'json'
-		success(data){
-			console.log("hi");
-			
-		},error : function(){
-			console.log("X");
-		}
-			
-	});
-});
-
+        $(".dropdown-options li").click(function(){
+        	 let selectedValue = $(this).attr("id");
+             let selectedText = $(this).text();
+             
+             $(this).closest(".divdropdown").find(".dropdown").text(selectedText);
+             $(this).closest(".dropdown-options").slideToggle();
+             
+             console.log("선택된 값:", selectedValue);
+             console.log("선택된 텍스트:", selectedText);
+         });
+     });
 </script>
-
 </head>
 <body>
-<div class="dropdown">
-    <button id="milkButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
+<div class="divdropdown">
+  <button class="dropdown">Profile</button>
+  <div class="dropdown-options">
+  <ul>
+    <li  id="1" value="1">1</li>
+    <li  id="2" value="2">2</li>
+    <li  id="3" value="3">3</li>
+   </ul>
+  </div>
+</div>
+
+<div class="divdropdown">
+    <button  class="dropdown" >
         우유 종류
     </button>
-    <div id="fruitList" class="dropdown-menu">
-     <a class="dropdown-item" id="nomilk" href="#" data-value="noMilk">우유 변경 없음</a>
-<a class="dropdown-item" href="#" data-value="저지방우유">저지방 우유</a>
-<a class="dropdown-item" href="#" data-value="아몬드브리즈">아몬드 브리즈</a>
-<a class="dropdown-item" href="#" data-value="오토믹스">오트 믹스</a>
-<a class="dropdown-item" href="#" data-value="두유">두유</a>
-<a class="dropdown-item" href="#" data-value="코코넛밀크">코코넛 우유</a>
-    </div>
-</div>
-<div class="dropdown">
-    <button id="syrupButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
-        시럽 종류
-    </button>
-    <div id="syrupList" class="dropdown-menu">
-        <a class="dropdown-item" href="#" data-value="noSyrup">시럽 추가 없음</a>
-        <a class="dropdown-item" href="#" data-value="바닐라시럽">바닐라 시럽</a>
-        <a class="dropdown-item" href="#" data-value="카라멜시럽">카라멜 시럽</a>
-        <a class="dropdown-item" href="#" data-value="헤이즐넛시럽">헤이즐넛 시럽</a>
-        <a class="dropdown-item" href="#" data-value="모카시럽">모카 시럽</a>
-        <a class="dropdown-item" href="#" data-value="시나몬시럽">시나몬 시럽</a>
-        <a class="dropdown-item" href="#" data-value="메이플시럽">메이플 시럽</a>
-    </div>
-</div>
-<div class="dropdown">
-    <button id="toppingButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
-        토핑 종류
-    </button>
-    <div id="toppingList" class="dropdown-menu">
-        <a class="dropdown-item" href="#" data-value="noTopping">토핑 추가 없음</a>
-        <a class="dropdown-item" href="#" data-value="휘핑크림">휘핑 크림</a>
-        <a class="dropdown-item" href="#" data-value="초콜릿토핑">초콜릿 토핑</a>
-        <a class="dropdown-item" href="#" data-value="카라멜드리즐">카라멜 드리즐</a>
-        <a class="dropdown-item" href="#" data-value="마시멜로">마시멜로</a>
-        <a class="dropdown-item" href="#" data-value="코코아파우더">코코아 파우더</a>
-        <a class="dropdown-item" href="#" data-value="쿠키크럼블">쿠키 크럼블</a>
-        <a class="dropdown-item" href="#" data-value="펄">펄</a>
+    <div class="dropdown-options">
+        <ul>
+            <li id="nomilk" data-value="noMilk">우유 변경 없음</li>
+            <li data-value="저지방우유">저지방 우유</li>
+            <li data-value="아몬드브리즈">아몬드 브리즈</li>
+            <li data-value="오토믹스">오트 믹스</li>
+            <li data-value="두유">두유</li>
+            <li data-value="코코넛밀크">코코넛 우유</li>
+        </ul>
     </div>
 </div>
 
-<div class="dropdown">
-    <button id="decafButton" class="dropdown-toggle" type="button" data-toggle="dropdown">
-        디카페인 종류
-    </button>
-    <div id="decafList" class="dropdown-menu">
-        <a class="dropdown-item" href="#" data-value="일반">일반</a>
-        <a class="dropdown-item" href="#" data-value="디카페인">디카페인</a>
-    </div>
+<div class="divdropdown">
+  <button class="dropdown">Profile</button>
+  <div class="dropdown-options">
+  <ul>
+    <li  id="가" value="가">가</li>
+    <li  id="나" value="나">나</li>
+    <li  id="다" value="다">다</li>
+   </ul>
+  </div>
 </div>
 </body>
 </html>

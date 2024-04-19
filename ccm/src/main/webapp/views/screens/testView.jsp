@@ -8,7 +8,11 @@
 </head>
 <body>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
+
 <button onclick="location.href='/views/screens/test.jsp'">test.jsp 즐겨찾기</button>
+
+<button onclick="location.href='/main.do'">계산기/즐겨찾기</button>
+
 
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
