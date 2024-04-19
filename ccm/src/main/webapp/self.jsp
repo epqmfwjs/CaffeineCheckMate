@@ -57,9 +57,10 @@ button:hover{
 </style>
 
 
-<script>
+<!-- <script>
 
 $(document).ready(function(){
+		let shot = "추가없음";
 		let milk = "nomilk";
 		let syrup= "nosyrup";
 		let topping = "notopping";
@@ -69,6 +70,14 @@ $(document).ready(function(){
 		        $(this).next(".dropdown-options").slideToggle();
 		    });
 
+		    $("#shotButton + .dropdown-options li").click(function(){
+		        shot = $(this).attr("id");
+	            let selectedText = $(this).text();
+	            $("#shotButton").text(selectedText);
+	            $("#shotButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 샷:", shot);
+		        sendData();
+		    });
 		    $("#milkButton + .dropdown-options li").click(function(){
 		        milk = $(this).attr("id");
 	            let selectedText = $(this).text();
@@ -107,6 +116,7 @@ $(document).ready(function(){
 		            url: '/Jsontest.do',
 		            type: 'get',
 		            data: {
+		            	"shot" : shot,
 		                "milk": milk,
 		                "syrup": syrup,
 		                "topping": topping,
@@ -122,10 +132,130 @@ $(document).ready(function(){
 		        });
 		    }
 		});
+</script> -->
+<script>
+$(document).ready(function(){
+	let shot = "추가없음";
+	let milk = "nomilk";
+	let syrup= "nosyrup";
+	let topping = "notopping";
+	let decaf = "decaf";
+	
+	 $(".dropdown").click(function(){
+	        $(this).next(".dropdown-options").slideToggle();
+	    });
+
+	    $("#shotButton + .dropdown-options li").click(function(){
+	        shot = $(this).attr("id");
+            let selectedText = $(this).text();
+            $("#shotButton").text(selectedText);
+            $("#shotButton").next(".dropdown-options").slideToggle();
+	        console.log("선택된 샷:", shot);
+	        sendData();
+	    });
+	    $("#milkButton + .dropdown-options li").click(function(){
+	        milk = $(this).attr("id");
+            let selectedText = $(this).text();
+            $("#milkButton").text(selectedText);
+            $("#milkButton").next(".dropdown-options").slideToggle();
+	        console.log("선택된 우유:", milk);
+	        sendData();
+	    });
+
+	    $("#syrupButton +.dropdown-options li").click(function(){
+	        syrup = $(this).attr("id");
+	        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+	        $(this).closest(".dropdown-options").slideToggle();
+	        console.log("선택된 시럽:", syrup);
+	        sendData();
+	    });
+
+	    $("#toppingButton +.dropdown-options li").click(function(){
+	        topping = $(this).attr("id");
+	        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+	        $(this).closest(".dropdown-options").slideToggle();
+	        console.log("선택된 토핑:", topping);
+	        sendData();
+	    });
+
+	    $("#decafButton +.dropdown-options li").click(function(){
+	        decaf = $(this).attr("id");
+	        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+	        $(this).closest(".dropdown-options").slideToggle();
+	        console.log("선택된 디카페인:", decaf);
+	        sendData();
+	    });
+
+	    function sendData() {
+	        $.ajax({
+	            url: '/Jsontest.do',
+	            type: 'get',
+	            data: {
+	            	"shot" : shot,
+	                "milk": milk,
+	                "syrup": syrup,
+	                "topping": topping,
+	                "decaf": decaf
+	            },
+	            datatype: "json",
+	            success: function(data) {
+	                var list = data.list;
+		
+        list.forEach(function(item) {
+        	let cus_num = item.cus_num;
+            let m_id = item.m_id;
+            let c_no = item.c_no;
+            let cus_name = item.cus_name;
+            let cus_content = item.cus_content;
+       		let cus_regdate = item.cus_regdate;
+       		let cus_img_realname = item.cus_img_realname;
+       		
+       		
+       		let boardItem = `
+       		<li>
+       			<a href="CustomBoardViewHandler.do?CUS_NUM=`+cus_num+`">
+                <div>
+                    <img src="upload/` + cus_img_realname + `" alt="Image">
+                        <p>게시글번호: ` + cus_num + `</p>
+                        <p>회원명: ` + m_id + `</p>
+                    <p>제품아이디: ` + c_no + `</p>
+                    <p>게시글제목: ` + cus_name + `</p>
+                    <p>글내용: ` + cus_content + `</p>
+                    <p>게시일: ` + cus_regdate + `</p>
+                </div>
+                </a>
+               </li>
+            `;
+            
+            $("#board").append(boardItem);
+        });
+	                
+	            },
+	            error: function(error) {
+					console.log("에러발생");
+	            }
+	        });
+	    }
+	});
 </script>
+
 </head>
 <body>
 
+<div class="divdropdown">
+    <button id="shotButton" class="dropdown" type="button" data-toggle="dropdown">
+        샷추가
+    </button>
+    <div class="dropdown-options">
+        <ul>
+            <li id="nomilk" data-value="noshot">추가없음</li>
+            <li id="샷추가" data-value="샷추가">샷추가</li>
+            <li id="2샷추가" data-value="2샷추가">2샷추가</li>
+            <li id="3샷추가" data-value="3샷추가">3샷추가</li>
+            <li id="4샷추가" data-value="4샷추가">4샷추가</li>
+        </ul>
+    </div>
+</div>
 
 <div class="divdropdown">
     <button id="milkButton" class="dropdown" type="button" data-toggle="dropdown">
@@ -190,5 +320,6 @@ $(document).ready(function(){
     </div>
 </div>
 
+<ul id="board"></ul>
 </body>
 </html>

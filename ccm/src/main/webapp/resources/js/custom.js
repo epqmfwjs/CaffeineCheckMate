@@ -1,5 +1,7 @@
 var curPage = 1;
 
+
+
 $(document).ready(function(){
 	list(allcount);
 	
@@ -26,6 +28,80 @@ $(document).ready(function(){
     });
 	});
 	
+$(document).ready(function(){
+		let shot = "추가없음";
+		let milk = "nomilk";
+		let syrup= "nosyrup";
+		let topping = "notopping";
+		let decaf = "decaf";
+		
+		 $(".dropdown").click(function(){
+		        $(this).next(".dropdown-options").slideToggle();
+		    });
+
+		    $("#shotButton + .dropdown-options li").click(function(){
+		        shot = $(this).attr("id");
+	            let selectedText = $(this).text();
+	            $("#shotButton").text(selectedText);
+	            $("#shotButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 샷:", shot);
+		        sendData();
+		    });
+		    $("#milkButton + .dropdown-options li").click(function(){
+		        milk = $(this).attr("id");
+	            let selectedText = $(this).text();
+	            $("#milkButton").text(selectedText);
+	            $("#milkButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 우유:", milk);
+		        sendData();
+		    });
+
+		    $("#syrupButton +.dropdown-options li").click(function(){
+		        syrup = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 시럽:", syrup);
+		        sendData();
+		    });
+
+		    $("#toppingButton +.dropdown-options li").click(function(){
+		        topping = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 토핑:", topping);
+		        sendData();
+		    });
+
+		    $("#decafButton +.dropdown-options li").click(function(){
+		        decaf = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 디카페인:", decaf);
+		        sendData();
+		    });
+
+		    function sendData() {
+		        $.ajax({
+		            url: '/Jsontest.do',
+		            type: 'get',
+		            data: {
+		            	"shot" : shot,
+		                "milk": milk,
+		                "syrup": syrup,
+		                "topping": topping,
+		                "decaf": decaf
+		            },
+		            datatype: "json",
+		            success: function(data) {
+		            $("#board").empty();
+                	searchlist(data);      
+		            },
+		            error: function(error) {
+						console.log("에러발생");
+		            }
+		        });
+		    }
+		});
 	
 function searchlist(data){
     var list = data.list;
@@ -123,7 +199,6 @@ function list(allcount){
 	});//ajax끝 			
 }
 
-
 $(document).ready(function(){
     // 포커스가 들어갔을 때
     $("#search").focus(function(){
@@ -137,18 +212,8 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-        $(".dropdown-toggle").click(function(){
-            $(this).next(".dropdown-menu").slideToggle();
-        });
 
-        $(".dropdown-item").click(function(){
-            let selectedFruit = $(this).data("value");
-            $("#milkButton").text(selectedFruit);
-            $(this).parent(".dropdown-menu").slideToggle();
-            console.log("선택된 과일:", selectedFruit);
-        });
-    });
+
 
 
     

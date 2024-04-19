@@ -15,7 +15,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import connection.ConnectionProvider;
+import customRecipe.dao.CustomBoardHashDao;
 import customRecipe.dao.CustomBoardListDao;
+import customRecipe.dao.CustomBoardSearchDao;
+import customRecipe.dto.CustomBoardHashDto;
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
@@ -23,42 +26,57 @@ import jdbc.JdbcUtil;
 public class Jsontest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String shot = (String)request.getParameter("shot");
 		String milk =(String)request.getParameter("milk");
 		String syrup =(String)request.getParameter("syrup");
 		String topping =(String)request.getParameter("topping");
 		String decaf =(String)request.getParameter("decaf");
+		System.out.println(decaf);
 		
-		
-		    CustomBoardListDao dao = new CustomBoardListDao();
+			CustomBoardHashDao hashdao = new CustomBoardHashDao();
+			CustomBoardHashDto hashdto = new CustomBoardHashDto(shot,milk,syrup,topping,decaf);
+			CustomBoardSearchDao dao = new CustomBoardSearchDao();
+			
+			
+		   // CustomBoardListDao dao = new CustomBoardListDao();
 	        Connection con = null;
-	        
 	        
 	        JSONObject json = new JSONObject();
 			try {
 				con = ConnectionProvider.getConnection();
 
-				JSONArray jsonArray = new JSONArray();
-				int allcount = Integer.parseInt(request.getParameter("allcount"));
-				int acount  = dao.allCount(con); //모든게시글 count	
-				
-				ArrayList<CustomBoardListDto> list= dao.readlist(acount,allcount, con);
-				
-				for (CustomBoardListDto item : list) {
-					JSONObject jsonObject = new JSONObject();
-					jsonObject.put("m_id", item.getm_id());
-					jsonObject.put("c_no", item.getc_no());
-					jsonObject.put("cus_num", item.getcus_num());
-					jsonObject.put("cus_name", item.getcus_title());
-					jsonObject.put("cus_content", item.getcus_content());
-					jsonObject.put("cus_regdate", item.getcus_regdate());
-					jsonObject.put("cus_img_realname", item.getcus_img_realname());
-					jsonObject.put("cus_sumgood", item.getcus_sumgood());
+			
+				ArrayList<CustomBoardHashDto> hashlist =  hashdao.hashnum(con,hashdto);
+				for(CustomBoardHashDto clist : hashlist) {
+					String a = clist.getcus_no();
+					System.out.println(a + "a값");
+					JSONArray jsonArray = new JSONArray();
 					
-					jsonArray.add(jsonObject);
+					
+					ArrayList<CustomBoardListDto> list = dao.searchhash(a, con);
+				
+				
+				
+				
+					for (CustomBoardListDto item : list) {
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("m_id", item.getm_id());
+						jsonObject.put("c_no", item.getc_no());
+						jsonObject.put("cus_num", item.getcus_num());
+						jsonObject.put("cus_name", item.getcus_title());
+						jsonObject.put("cus_content", item.getcus_content());
+						jsonObject.put("cus_regdate", item.getcus_regdate());
+						jsonObject.put("cus_img_realname", item.getcus_img_realname());
+						jsonObject.put("cus_sumgood", item.getcus_sumgood());
+						
+						jsonArray.add(jsonObject);
+					}
+					
+					json.put("list", jsonArray);
+					
+					
+					
 				}
-
-				json.put("list", jsonArray);
 				response.setContentType("application/json; charset=utf-8");
 				response.getWriter().write(json.toString());
 				
