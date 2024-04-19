@@ -6,10 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<%
 	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
+
+	
+
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css">
 	<meta charset="UTF-8">
@@ -17,7 +21,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<a id="aa" href="/addfav.do?C_NO=1">C_NO=1 즐겨찾기 추가</a>
+
 	<a href="/addfav.do?C_NO=2">C_NO=2 즐겨찾기 추가</a>
 	<a href="/deletefav.do?C_NO=1">C_NO=1 즐겨찾기 삭제</a>
 	<a href="/calculate.do?C_NO=1">C_NO=1 카페인계산</a>
