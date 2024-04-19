@@ -8,6 +8,7 @@
 <head>
 	<%
 	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
+	pageContext.setAttribute("isAuth", isAuth);
 	%>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css">
@@ -26,11 +27,11 @@
 	<br/>
 	<h2>임시 커피목록</h2>
 	<div class="coffee-box">
-		<div class="coffeelist-item" value="C_NO=1"><h4 style="display: inline-block;">아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=2"><h4 style="display: inline-block;">카페라떼</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=3"><h4 style="display: inline-block;">그린티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=4"><h4 style="display: inline-block;">밀크티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline-block;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=2"><h4 style="display: inline;">카페라떼</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=1"><h4 style="display: inline;">아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=3"><h4 style="display: inline;">그린티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=4"><h4 style="display: inline;">밀크티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
 	</div>
 	<br/>
 	<br/>
@@ -39,12 +40,12 @@
 		<button id="calc-box__btn-reset">reset</button>
 		<div class="calc-box__dailyc">${main.calculationResult}</div>
 	</div>
-	<div class="calc-container"></div>
+	<div class="calc-container" style="height: 100px; width: 130px;"></div>
 	<br/>
 	<br/>
 	<h2>fav-box</h2>
 	<c:choose>
-		<c:when test="${!isAuth}">
+		<c:when test="${isAuth}">
 			<h2>즐겨찾기목록</h2>
 		</c:when>
 		<c:when test="${!isAuth}">
@@ -53,7 +54,7 @@
 	</c:choose>
 	<div class="fav-box">
 	<c:choose>
-		<c:when test="${!isAuth}">
+		<c:when test="${isAuth}">
 			<c:forEach var="favorite" items="${main.favorites}">
 				<div class="fav-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
 					<div class="fav-item__box">
@@ -64,7 +65,7 @@
 	        	</div>
 			</c:forEach>
 		</c:when>
-		<c:when test="${isAuth}">
+		<c:when test="${!isAuth}">
 			<c:forEach var="popular" items="${main.favorites}">
 				<div class="fav-item" id="fi_${popular.key}" value="C_NO=${popular.key}">
 					<div class="fav-item__box">

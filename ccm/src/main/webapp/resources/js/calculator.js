@@ -38,14 +38,43 @@ bar.animate(calcResult/400);
 
 //계산
 function calc(cno) {
-    console.log(cno);
-    if (cno !== null && cno !== undefined) {
-        const calcurl = (cno) => {
-            return("/calc?yn=0&"+cno);
+    if(isAuth){//로그인
+        if (cno !== null && cno !== undefined) {
+            const calcurl = (cno) => {
+                return("/calc?yn=0&"+cno);
+            }
+            fetch(calcurl(cno))
+            .then(respons => {
+                return (respons.json());
+            })
+            .then(data => {
+                const caffeine = data.caffeine;
+                const rda = data.rda;
+                const ratio = caffeine/rda;
+                console.log("cf:",caffeine,"  rda:",rda,"  ratio:",ratio);
+                dailyC.innerText = caffeine;
+                bar.animate(ratio);
+            })
+            .catch(error => {
+                console.log("error",error);
+            })
+        } else {
+            console.log("cno is null");
         }
-        fetch(calcurl(cno))
-        .then(respons => {
-            return (respons.json());
+    }else{//비로그인
+
+    }
+}
+
+//리셋
+function resetCalc() {
+    if(isAuth){//로그인
+        const reseturl = () => {
+            return ("/calc?yn=1");
+        }
+        fetch(reseturl())
+        .then(response => {
+            return (response.json());
         })
         .then(data => {
             const caffeine = data.caffeine;
@@ -58,31 +87,10 @@ function calc(cno) {
         .catch(error => {
             console.log("error",error);
         })
-    } else {
-        console.log("cno is null");
+    }else{//비로그인
+       
     }
-}
 
-//리셋
-function resetCalc() {
-    const reseturl = () => {
-        return ("/calc?yn=1");
-    }
-    fetch(reseturl())
-    .then(response => {
-        return (response.json());
-    })
-    .then(data => {
-        const caffeine = data.caffeine;
-        const rda = data.rda;
-        const ratio = caffeine/rda;
-        console.log("cf:",caffeine,"  rda:",rda,"  ratio:",ratio);
-        dailyC.innerText = caffeine;
-        bar.animate(ratio);
-    })
-    .catch(error => {
-        console.log("error",error);
-    })
 }
 
 //리셋버튼
@@ -102,4 +110,3 @@ for (let i=0; i<favI.length; i++) {
 function doCalc(event) {
   calc(event.target.closest(".fav-item").getAttribute("value"));
 }
-

@@ -3,7 +3,7 @@
 */
 
 // 즐겨찾기 목록 렌더링 함수 ReactDOM.render(<App data={data}/>,root);
-console.log("favlist.js");
+if (isAuth){
 const root = document.querySelector(".fav-box");
 function App(props) {
     const fav = props.data;
@@ -78,12 +78,16 @@ function deleteFavItem(element) {
         return(response.json());
     })
     .then(data => {
-        document.querySelector(".fav-box").removeChild(item);
+        // document.querySelector(".fav-box").removeChild(item);
+        render(data);
     })
 //     .catch(error => {
 //       console.log("error",error);
 //   })
 }
+} else {
+
+}// 비로그인상태
 
 /* 리액트 및 babel cdn
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
