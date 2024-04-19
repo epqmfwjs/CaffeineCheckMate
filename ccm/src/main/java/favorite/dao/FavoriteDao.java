@@ -57,7 +57,7 @@ public class FavoriteDao {
 			pstmt.setInt(2, coffeeNo);
 			pstmt.setString(3, memberId);
 			pstmt.setString(4, memberId);
-			pstmt.setInt(4, coffeeNo);
+			pstmt.setInt(5, coffeeNo);
 			affectedRow = pstmt.executeUpdate(); //쿼리 실행
 			System.out.println("AddFav affect "+affectedRow+" rows");
 			return affectedRow;

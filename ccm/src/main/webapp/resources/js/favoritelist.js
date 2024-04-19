@@ -1,32 +1,31 @@
 /*
 계산기 기능이 필요없는 보여주기만 할 즐겨찾기 리스트
 */
+fetch("/favorites")
+.then(response =>{
+    return(response.json())
+})
+.then(data => {
+    render(data)
+})
+.catch(error => {
+    console.log("error",error);
+})
 
-const favBox = document.querySelector(".fav-box");
-const favItems = favBox.children;
-
-
-// **즐겨찾기에 커피 추가 버튼의 클래스리스트에 addFav-btn 필요
-// **커피 요소 박스 value에 C_NO 필요
-const coffeeList = document.querySelector("커피리스트 아이템 선택자")
-const coffee = coffeeList.childern;
-const addFavBtn = document.querySelector(".addFav-btn");
-
-// 즐겨찾기 목록에 이벤트 리스너 추가 메서드
-function loadLisetener() {
-    for (let i=0; i<favItems.length; i++) {
-        favItems[i].childNodes[1].addEventListener("click",deleteFavItem);
-    }
-}
-
-//즐겨찾기 목록 불러오기 함수
+// 즐겨찾기 목록 렌더링 함수 ReactDOM.render(<App data={data}/>,root);
+console.log("favlist.js");
 const root = document.querySelector(".fav-box");
 function App(props) {
+    console.log("props ",props);
+    console.log("data ",props.data);
     const fav = props.data;
+    console.log("fav ",fav);
+    loadLisetener();
+    console.log("------------------");
     return(
         <div className="fav-box">
             {Object.keys(fav["data"]).map(key => (
-            <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav["data"][key]["C_NO"]} onClick={doCalc}>
+                <div key={key} className="fav-item" id="fi_1" value={"C_NO="+fav["data"][key]["C_NO"]} onClick={doCalc}>
                 <button className="fav-item__delete-btn" onClick={deleteFavItem}>
                 <i className="fa-solid fa-x"></i>
                 </button>
@@ -35,16 +34,47 @@ function App(props) {
             </div>
             ))}
         </div>
-        )
+    )
 }
-function getFavItem() {
-    fetch("/favorites")
+function render(data){
+    console.log("render");
+    ReactDOM.render(<App data={data}/>,root);
+}
+
+
+//즐겨찾기 박스 선택
+const favBox = document.querySelector(".fav-box");
+const favItems = favBox.children;
+
+
+// 즐겨찾기 목록에 이벤트 리스너 추가 메서드
+function loadLisetener() {
+    console.log("loadListener");
+    for (let i=0; i<favItems.length; i++) {
+        favItems[i].childNodes[1].addEventListener("click",deleteFavItem);
+    }
+}
+loadLisetener();
+
+//즐겨찾기 추가
+// **즐겨찾기에 커피 추가 버튼의 클래스리스트에 addFav-btn 필요
+const coffeeBox = document.querySelector(".coffee-box");
+const coffeeitem = coffeeBox.children;
+for(let i=0; i<coffeeitem.length; i++){
+    coffeeitem[i].querySelector(".addFav-btn").addEventListener("click",addFavItem);
+}
+// **커피 요소 박스 value에 C_NO 필요
+function addFavItem(element) {
+    console.log("in addFav");
+    const item = element.target.closest(".coffeelist-item");//커피리스트아이템
+    const cno = item.getAttribute("value");
+    fetch("/addfav?"+cno)
     .then(response => {
+        console.log("converting json");
         return(response.json());
     })
     .then(data => {
-        //구현 필요
-        ReactDOM.render(<App data={data}/>,root);
+        render(data);
     })
     .catch(error => {
         console.log("error",error);
@@ -54,6 +84,7 @@ function getFavItem() {
 
 //즐겨찾기 삭제
 function deleteFavItem(element) {
+    element.stopPropagation();
     const item = element.target.closest(".fav-item")
     const cno = item.getAttribute("value");
     fetch("/delfav?"+cno)
@@ -61,29 +92,14 @@ function deleteFavItem(element) {
         return(response.json());
     })
     .then(data => {
-        favBox.removeChild(item);
+        document.querySelector(".fav-box").removeChild(item);
     })
     .catch(error => {
-        console.log("error",error);
-    })
+      console.log("error",error);
+  })
 }
 
-//즐겨찾기 추가
-function addFavItem(element) {
-    const item = element.target.closest("커피리스트 아이템 선택자");
-    const cno = item.getAttribute("value");
-    fetch("/addfav?"+cno)
-    .then(response => {
-        return(response.json());
-    })
-    .then(data => {
-        // 요소 추가 로직 구현 필요
-    })
-    .catch(error => {
-        console.log("error",error);
-    })
-}
-/*
+/* 리액트 및 babel cdn
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 

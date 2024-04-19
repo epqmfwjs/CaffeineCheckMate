@@ -24,11 +24,15 @@
 	<a href="/reset.do">카페인양 리셋</a>
 	<br/>
 	<br/>
-	<div>
-		<h2>임시 커피목록</h2>
-		<div value="C_NO="></div>
+	<h2>임시 커피목록</h2>
+	<div class="coffee-box">
+		<div class="coffeelist-item" value="C_NO=1"><h4 style="display: inline-block;">아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=2"><h4 style="display: inline-block;">카페라떼</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=3"><h4 style="display: inline-block;">그린티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=4"><h4 style="display: inline-block;">밀크티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+		<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline-block;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
 	</div>
-
+	<br/>
 	<br/>
 	<h2>calc-box</h2><br/>
 	<div class="calc-box">
@@ -62,8 +66,16 @@
 	</c:choose>
     </div>
 </body>
+<!--즐겨찾기js가 계산기js보다 위에 있어야함, 즐겨찾기js는 type="text/babel"-->
 <script>let calcResult = "${main.calculationResult}"</script>
+
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
+
+<script src="/resources/js/favoritelist.js" type="text/babel"></script>
 <script src="/resources/js/calculator.js"></script>
 </html>

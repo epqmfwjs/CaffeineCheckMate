@@ -33,8 +33,8 @@ const bar = new ProgressBar.SemiCircle(container, {
 
 const dailyC = document.querySelector(".calc-box__dailyc"); //커피 섭취량
 const cResetBtn = document.querySelector("#calc-box__btn-reset"); //리셋 버튼
-const favBox = document.querySelector(".fav-box");
-const favItems = favBox.children;
+// const favBox = document.querySelector(".fav-box");
+// const favItems = favBox.children;
 bar.animate(calcResult/400);
 
 //계산
@@ -89,26 +89,9 @@ function resetCalc() {
 
 // 즐겨찾기 목록에 이벤트 리스너 추가
 for (let i=0; i<favItems.length; i++) {
-    favItems[i].childNodes[1].addEventListener("click",deleteFavItem);
     favItems[i].addEventListener("click",doCalc);
 }
 
-//즐겨찾기 삭제
-function deleteFavItem(element) {
-  element.stopPropagation();
-  const item = element.target.closest(".fav-item")
-  const cno = item.getAttribute("value");
-  fetch("/delfav?"+cno)
-  .then(response => {
-      return(response.json());
-  })
-  .then(data => {
-      document.querySelector(".fav-box").removeChild(item);
-  })
-  .catch(error => {
-    console.log("error",error);
-})
-}
 
 //계산기 기능
 function doCalc(event) {
