@@ -36,6 +36,21 @@ public class UserProfileDTO {
 	public void setP_IMG_COPY(String p_IMG_COPY) {
 		P_IMG_COPY = p_IMG_COPY;
 	}
+	public void changeP_WEIGHT(int newP_WEIGHT) {
+		this.P_WEIGHT = newP_WEIGHT;
+	}
+	public void changeP_IMG_COPY(String newP_IMG_COPY) {
+		this.P_IMG_COPY = newP_IMG_COPY;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "UserProfileDTO [P_NO=" + P_NO + ", M_ID=" + M_ID + ", P_WEIGHT=" + P_WEIGHT + ", P_IMG_COPY="
+				+ P_IMG_COPY + "]";
+	}
+	
+	
 	
 	
 }

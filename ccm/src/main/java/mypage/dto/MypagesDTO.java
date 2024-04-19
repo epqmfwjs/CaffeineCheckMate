@@ -3,44 +3,55 @@ package mypage.dto;
 import java.util.Map;
 
 public class MypagesDTO {
-	private Map<String,UserProfileDTO> updtoMap; //유저 프로필 map
-	private Map<String, MyRecipeDTO> mRecipedto; // 내가 작성한 레시피 map(+이미지)
+	private UserProfileDTO userProfileDTO; //유저 프로필 
+	private MyRecipeDTO myRecipeDTO; // 내가 작성한 레시피 (+이미지)
 	//Favoritelist c_no 부분 수정 필요
-	private Map<String,FavoriteListDTO> favlistMap; //즐겨찾기 목록 map(+이미지)
-	private Map<String, HealthLightDTO> hlightdtoMap; // 카페인 캘린더 map
+	private FavoriteListDTO favoriteListDTO; //즐겨찾기 목록 (+이미지)
+	private HealthLightDTO healthLightDTO; // 카페인 캘린더 
 	
-	public MypagesDTO(Map<String,UserProfileDTO> updtoMap, Map<String, MyRecipeDTO>mRecipedto, Map<String,FavoriteListDTO> favlistMap, Map<String, HealthLightDTO> hlightdtoMap ) {
-		this.updtoMap = updtoMap;
-		this.mRecipedto = mRecipedto;
-		this.favlistMap = favlistMap;
-		this.hlightdtoMap = hlightdtoMap;
+	public MypagesDTO(UserProfileDTO userProfileDTO, MyRecipeDTO myRecipeDTO, FavoriteListDTO favoriteListDTO, HealthLightDTO healthLightDTO ) {
+		this.userProfileDTO = userProfileDTO;
+		this.myRecipeDTO = myRecipeDTO;
+		this.favoriteListDTO = favoriteListDTO;
+		this.healthLightDTO = healthLightDTO;
 	}
-	
-	
-	public Map<String, UserProfileDTO> getUpdtoMap() {
-		return updtoMap;
-	}
-	public void setUpdtoMap(Map<String, UserProfileDTO> updtoMap) {
-		this.updtoMap = updtoMap;
-	}
-	public Map<String, MyRecipeDTO> getmRecipedto() {
-		return mRecipedto;
-	}
-	public void setmRecipedto(Map<String, MyRecipeDTO> mRecipedto) {
-		this.mRecipedto = mRecipedto;
-	}
-	public Map<String, FavoriteListDTO> getFavlistMap() {
-		return favlistMap;
-	}
-	public void setFavlistMap(Map<String, FavoriteListDTO> favlistMap) {
-		this.favlistMap = favlistMap;
-	}
-	public Map<String, HealthLightDTO> getHlightdtoMap() {
-		return hlightdtoMap;
-	}
-	public void setHlightdtoMap(Map<String, HealthLightDTO> hlightdtoMap) {
-		this.hlightdtoMap = hlightdtoMap;
-	}
-	
 
+	public UserProfileDTO getUserProfileDTO() {
+		return userProfileDTO;
+	}
+
+	public void setUserProfileDTO(UserProfileDTO userProfileDTO) {
+		this.userProfileDTO = userProfileDTO;
+	}
+
+	public MyRecipeDTO getMyRecipeDTO() {
+		return myRecipeDTO;
+	}
+
+	public void setMyRecipeDTO(MyRecipeDTO myRecipeDTO) {
+		this.myRecipeDTO = myRecipeDTO;
+	}
+
+	public FavoriteListDTO getFavoriteListDTO() {
+		return favoriteListDTO;
+	}
+
+	public void setFavoriteListDTO(FavoriteListDTO favoriteListDTO) {
+		this.favoriteListDTO = favoriteListDTO;
+	}
+
+	public HealthLightDTO getHealthLightDTO() {
+		return healthLightDTO;
+	}
+
+	public void setHealthLightDTO(HealthLightDTO healthLightDTO) {
+		this.healthLightDTO = healthLightDTO;
+	}
+
+	@Override
+	public String toString() {
+		return "MypagesDTO [userProfileDTO=" + userProfileDTO + ", myRecipeDTO=" + myRecipeDTO + ", favoriteListDTO="
+				+ favoriteListDTO + ", healthLightDTO=" + healthLightDTO + "]";
+	}
+	
 }

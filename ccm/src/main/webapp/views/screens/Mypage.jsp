@@ -9,13 +9,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Mypage</title>
 </head>
 <body>
 	<h2>Mypage 입니당</h2>
 	
 	<hr>
 	<h2>내 프로필</h2>
+	<!-- 프로필 수정 버튼 -->
+	<form action="${pageContext.request.contextPath }/views/screens/EditMyProfile.jsp">
+		<input type="submit" value="프로필 수정"/>
+	</form>
 	<table align="center" border="1">
         <tr align="center" bgcolor="#79e5cb">
             <td width="%"><b>아이디</b></td>
@@ -23,22 +27,21 @@
         </tr>
         <c:choose>
             <c:when test="${empty mypages}">
-                <td colspan="5" align="center">
+                <tr align="center">
+                <td colspan="2">
                     <b>등록된 회원이 없습니다.</b>
                 </td>
+                </tr>
             </c:when>
-            <c:when test="${not empty mypages }">
-                <c:forEach var="mypages" items="${mypages }">
-                    <tr align="center">
-                        <td>${mypages.M_ID }</td>
-                        <td>${mypages.P_IMG_COPY }</td>
-                    </tr>
-                </c:forEach>
-            </c:when>
+            <c:otherwise>
+            	<tr align="center">
+            	<td>${mypages.userProfileDTO.m_ID }</td>
+            	<td>${mypages.userProfileDTO.p_IMG_COPY }</td>
+            </c:otherwise>
         </c:choose>
     </table>
 
-	
+
 	<hr>
 	<h2>카페인 신호등</h2>
 	
