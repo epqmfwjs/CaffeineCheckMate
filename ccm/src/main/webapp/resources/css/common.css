@@ -1,0 +1,16 @@
+/*variables*/
+:root {
+    --ccm-blue:rgb(0, 209, 255);
+    --ccm-pink:rgb(255, 86, 228);
+    --ccm-yellow:rgb(255, 245, 0);
+}
+/*common style*/
+.clickable:hover {
+    cursor: pointer;
+}
+
+/*background*/
+
+
+/*navigation bar*/
+
