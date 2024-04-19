@@ -35,6 +35,17 @@
 
 	<br/>
 	
+
+	<!-- 수정 모달 -->
+	<div id="editModal" class="modal" align="center" style="display: none;">
+	    <div class="modal-content">
+	        <span class="close">&times;</span>
+	        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
+	        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">수정저장</button>
+	    </div>
+	</div>
+		
+	
 	<!--댓글 조회-->
 	<div id="replyList" align="center">
 		<!--각 댓글 영역 -->
@@ -48,18 +59,6 @@
 	</div>
 	
 
-<!-- ----------------------------모달------------------------------ -->
-	
-	
-	<!-- 수정 모달 -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
-        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">저장</button>
-    </div>
-</div>
-	
 	
 <!-- ----------------------------스크립트------------------------------ -->
 
@@ -137,11 +136,24 @@
 	            if(result === "성공"){
 	            	cusReplyList(cus_no);
 	                $("#reply").val(""); // 입력 필드 비우기
-	            }
+	            }else{
+                	alert("삭제를 실패했습니다.");
+                }
 	        }
 	    });
 	}
 	
+	
+    /*수정 버튼 작동*/
+    function updateReply(cus_re_no) {
+        var editedContent = $("#replyArea").find("tr.reply-deatil-content[data-cus-re-no='" + cus_re_no + "']").find("td:nth-child(2)").text().trim();
+        $("#editedReply").val(editedContent);
+        $("#editModal").css("display", "block");
+        $("#saveBtn").attr("data-cus-re-no", cus_re_no);
+        
+        clearInterval(autoRefresh); // 갱신 함수 중지
+    }
+
 	
     /*수정*/
     function saveEditedReply() {
@@ -159,16 +171,23 @@
             contentType: "application/json",
             type: "POST",
             dataType: "json",
-            success: function(result) {
+            success: function(result) { //현재 if문까지 가지 않음
                 if (result === "성공") {
                     cusReplyList(2); //임시 지정
                     $("#editModal").css("display", "none");
+                    
                     autoRefresh = setInterval(function() {
+                    	cusReplyList(cus_no);
                     }, 1000);
                 } else {
-            console.log(data);
                     alert("업데이트에 실패했습니다.");
                 }
+            },
+            complete: function() {
+                $("#editModal").css("display", "none"); // AJAX 요청 완료 후 모달 닫기
+                autoRefresh = setInterval(function() {
+                	cusReplyList(2); //임시지
+                }, 1000);
             }
         });
     }
@@ -186,20 +205,11 @@
             success: function(result) {
                 if (result > 0) {
                     cusReplyList(2);
+                }else{
+                	alert("삭제를 실패했습니다.");
                 }
             }
         });
-    }
-    
-    
-    /*모달창 열기*/
-    function updateReply(cus_re_no) {
-        var editedContent = $("#replyArea").find("tr.reply-deatil-content[data-cus-re-no='" + cus_re_no + "']").find("td:nth-child(2)").text().trim();
-        $("#editedReply").val(editedContent);
-        $("#editModal").css("display", "block");
-        $("#saveBtn").attr("data-cus-re-no", cus_re_no);
-        
-        clearInterval(autoRefresh); // 갱신 함수 중지
     }
 
 	</script>
