@@ -24,6 +24,11 @@
 	<a href="/reset.do">카페인양 리셋</a>
 	<br/>
 	<br/>
+	<div>
+		<h2>임시 커피목록</h2>
+		<div value="C_NO="></div>
+	</div>
+
 	<br/>
 	<h2>calc-box</h2><br/>
 	<div class="calc-box">
@@ -40,8 +45,8 @@
 			<c:forEach var="favorite" items="${main.favorites}">
 				<div class="fav-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
 	            	<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
-	            	<div class="fav-item__img">${favorite.value.C_IMAGE}</div>
-	            	<div class="fav-item__info">${favorite.value.C_NAME}</div>
+	            	<div class="fav-item__img">${favorite.value.c_IMAGE}</div>
+	            	<div class="fav-item__info">${favorite.value.c_NAME}</div>
 	        	</div>
 			</c:forEach>
 		</c:when>
@@ -49,8 +54,8 @@
 			<c:forEach var="popular" items="${main.favorites}">
 				<div class="fav-item" id="fi_${popular.key}" value="C_NO=${popular.key}">
 	            	<button class="fav-item__delete-btn"><i class="fa-solid fa-x"></i></button>
-	            	<div class="fav-item__img">${popular.value.C_IMAGE}</div>
-	            	<div class="fav-item__info">${popular.value.C_NAME}</div>
+	            	<div class="fav-item__img">${popular.value.c_IMAGE}</div>
+	            	<div class="fav-item__info">${popular.value.c_NAME}</div>
 	        	</div>
 			</c:forEach>
 		</c:when>

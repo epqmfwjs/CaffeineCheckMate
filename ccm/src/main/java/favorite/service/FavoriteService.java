@@ -2,9 +2,7 @@ package favorite.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
-import java.util.Map;
 
 import coffeeList.dao.CoffeeListDao;
 import connection.ConnectionProvider;
@@ -19,29 +17,22 @@ public class FavoriteService {
 	
 	public boolean addFavorite(String memberId ,int coffeeNo) {
 		System.out.println("addfavorite service");
+		int affectedRow = 0;
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			Map favlist = favoriteDao.getFavList(memberId, conn);
-			if( favlist != null) {
-				if(favlist.size()>=5) {
-					JdbcUtil.close(conn);
-					return false;
-				}
-				if(favoriteDao.checkFav(memberId, coffeeNo, conn)) {
-					JdbcUtil.close(conn);
-					return false;
-				}
+			affectedRow = favoriteDao.AddFav(memberId, coffeeNo, conn);
+			
+			if(affectedRow != 0) {
+				coffeeListDao.plusFav(coffeeNo, conn);
+				conn.commit();
+				return true;				
+			} else {
+				conn.commit();
+				return false;
 			}
-			String image = coffeeListDao.selectByCoffeeNo(coffeeNo, conn).getC_IMAGE();
-			favoriteDao.AddFav(memberId, coffeeNo, conn);
-			coffeeListDao.plusFav(coffeeNo, conn);
-			
-			
-			conn.commit();
-			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JdbcUtil.rollback(conn);
@@ -106,6 +97,31 @@ public class FavoriteService {
 			JdbcUtil.close(conn);
 		}
 		return favMap;
+	}
+
+	public HashMap addFavAsync(String memberId, Integer coffeeNo) {
+		Connection conn = null;
+		HashMap favlist = null;
+		int affectedRow = 0;
+		try {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			
+			affectedRow = favoriteDao.AddFav(memberId, coffeeNo, conn);
+			
+			if(affectedRow != 0) {
+				coffeeListDao.plusFav(coffeeNo, conn);
+			}			
+			favlist = favoriteDao.getFavList(memberId, conn);			
+			conn.commit();
+			return favlist;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JdbcUtil.rollback(conn);
+		} finally {
+			JdbcUtil.close(conn);
+		}
+		return favlist;
 	}
 }
 /*
