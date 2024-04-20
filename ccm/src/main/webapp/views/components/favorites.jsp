@@ -6,17 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%
+	<!-- <%
 	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> -->
 	<meta charset="UTF-8">
 	<meta http-equiv="Compatible" content="no-cache"/>
-	<title>Insert title here</title>
 </head>
 <body>
+	
 	<c:choose>
 		<c:when test="${isAuth}">
 			<h2>즐겨찾기목록</h2>
@@ -58,7 +58,7 @@
     
 </body>
 <!--즐겨찾기js가 계산기js보다 위에 있어야함, 즐겨찾기js는 type="text/babel"-->
-<script>
+<!-- <script>
 	let calcResult = "${main.calculationResult}";
 	const isAuth = "${isAuth}"==="true"? true : false;
 	console.log("html : ",isAuth);
@@ -72,5 +72,5 @@
 <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
 
 <script src="/resources/js/favoritelist.js" type="text/babel"></script>
-<script src="/resources/js/calculator.js"></script>
+<script src="/resources/js/calculator.js"></script> -->
 </html>

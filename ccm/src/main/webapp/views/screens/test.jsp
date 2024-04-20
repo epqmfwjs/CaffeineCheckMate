@@ -41,8 +41,7 @@
 	<br/>
 	<h2>calc-box</h2><br/>
 	<div>
-		<button id="calc-box__btn-reset">reset</button>
-		<div class="calc-box__dailyc">${main.calculationResult}</div>
+		
 	</div>
 	<div class="calc-container" style="height: 100px; width: 130px;"></div>
 	<br/>
