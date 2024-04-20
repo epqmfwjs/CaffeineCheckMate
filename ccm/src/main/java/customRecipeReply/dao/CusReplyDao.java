@@ -15,6 +15,7 @@ public class CusReplyDao {
 	public CusReplyDao() {
 	}
 	
+	
 	/*댓글 삽입*/
 	public int insertReply(Connection conn, CusReplyDto reply) {
 		
@@ -79,6 +80,7 @@ public class CusReplyDao {
 	
 	/* 댓글 수정 */
 	public int updateReply(Connection conn, CusReplyDto reply) {
+		
 	    int result = 0;
 	    PreparedStatement pstmt = null;
 	    
@@ -99,8 +101,10 @@ public class CusReplyDao {
 	    return result;
 	}
 
+	
     /* 댓글 삭제 */
     public int deleteReply(Connection conn, int cus_re_no) {
+    	
         int result = 0;
         PreparedStatement pstmt = null;
         
@@ -119,5 +123,6 @@ public class CusReplyDao {
         
         return result;
     }
+    
     
 }

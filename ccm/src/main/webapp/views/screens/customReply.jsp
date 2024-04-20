@@ -39,7 +39,8 @@
 	<!-- 댓글 수정 -->
 	<div id="editModal" class="modal" align="center" style="display: none;">
 	    <div class="modal-content">
-	        <span class="close">&times;</span>
+	        <!-- 닫힘 버튼 -->
+	        <span class="close">&times;</span> 
 	        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
 	        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">수정저장</button>
 	    </div>

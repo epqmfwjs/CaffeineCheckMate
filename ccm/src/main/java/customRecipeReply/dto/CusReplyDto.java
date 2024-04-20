@@ -2,25 +2,20 @@ package customRecipeReply.dto;
 
 public class CusReplyDto {
 	
-	public CusReplyDto() {}
-	
 	private String m_id;
 	private int cus_no;
 	private int cus_re_no;
 	private String cus_re_regdate;
 	private String cus_re_content;
 	
+	public CusReplyDto() {}
+
 	
 	public CusReplyDto(String cus_re_content, int cus_re_no) {
 		this.cus_re_content = cus_re_content;
 		this.cus_re_no = cus_re_no;
 	}
 	
-//	public CusReplyDto(int cus_no, String cus_re_regdate, String cus_re_content) {
-//		this.cus_no = cus_no;
-//		this.cus_re_regdate = cus_re_regdate;
-//		this.cus_re_content = cus_re_content;
-//	}
 	
 	public CusReplyDto(String m_id, int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
 		this.m_id = m_id;
@@ -30,6 +25,7 @@ public class CusReplyDto {
 		this.cus_re_content = cus_re_content;
 	}
 
+	
 	public String getM_id() {
 		return m_id;
 	}
