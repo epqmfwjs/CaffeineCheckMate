@@ -7,20 +7,18 @@
 <meta charset="UTF-8">
 <title>Reply</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/customReply.js"></script>\
-
 <%
     String cus_NUM = request.getParameter("cus_no");
 	int cus_no = 0;
 	cus_no = Integer.parseInt(cus_NUM);
-	
-	out.println("cus_no 값: " + cus_no);
-	out.println("cus_no 값: " + cus_no);
-	out.println("cus_no 값: " + cus_no);
 %>
 
 <input type="hidden" id="cus_no_hidden" value="<%= cus_no %>">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/customReply.js"></script>
+
+
 
 </head>
 <body>

@@ -1,5 +1,5 @@
 var cus_no = document.getElementById("cus_no_hidden").value;
-console.log("스크립트내부"+cus_no);
+console.log(cus_no);
 
 /*자동 함수 호출*/
 var autoRefresh;

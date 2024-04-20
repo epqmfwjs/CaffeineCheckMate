@@ -31,7 +31,7 @@
     	var encodedCusNo = encodeURIComponent(cus_no);
         window.location.href = "<%=request.getContextPath()%>/views/screens/customReply.jsp?cus_no=" + encodedCusNo;
     }
-</script>
+	</script>
 
 </body>
 </html>
