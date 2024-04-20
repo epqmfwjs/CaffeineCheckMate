@@ -25,7 +25,7 @@
          <%--  <p>누적 좋아요 수: ${item.cus_sumgood}</p>
           <p>이미지번호: ${item.cus_img_no}</p> --%>
           </c:forEach>  
- <!-- <button type="button" onclick="location.href='/CustomBoardDelete.do'">삭제</button>
- <button type="button" onclick="location.href='/views/screens/CustomBoardUpdate.jsp'">수정</button> -->
+ <button type="button" onclick="location.href='/CustomBoardDelete.do'">삭제</button>
+ <button type="button" onclick="location.href='/views/screens/CustomBoardUpdate.jsp'">수정</button>
 </body>
 </html>

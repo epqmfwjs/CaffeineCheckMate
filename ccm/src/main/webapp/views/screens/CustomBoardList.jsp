@@ -118,7 +118,7 @@ button:hover{
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="null" data-value="크림종류">크림 종류</li>
+            <li id="null" data-value="토핑종류">토핑 종류</li>
             <li id="휘핑크림" data-value="휘핑크림">휘핑 크림</li>
             <li id="초콜릿토핑" data-value="초콜릿토핑">초콜릿 토핑</li>
             <li id="카라멜드리즐" data-value="카라멜드리즐">카라멜 드리즐</li>
@@ -144,6 +144,7 @@ button:hover{
 
 
 <button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
+
 <button type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
 검색 : <input type="text" id="searchInput" placeholder="Search">
 <div id="searchResult"></div>
