@@ -3,6 +3,7 @@ package customRecipeReply.dto;
 public class CusReplyDto {
 	
 	private String m_id;
+	private String m_nickname;
 	private int cus_no;
 	private int cus_re_no;
 	private String cus_re_regdate;
@@ -17,8 +18,9 @@ public class CusReplyDto {
 	}
 	
 	
-	public CusReplyDto(String m_id, int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
+	public CusReplyDto(String m_id, String m_nickname, int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
 		this.m_id = m_id;
+		this.m_id = m_nickname;
 		this.cus_no = cus_no;
 		this.cus_re_no = cus_re_no;
 		this.cus_re_regdate = cus_re_regdate;
@@ -31,6 +33,13 @@ public class CusReplyDto {
 	}
 	public void setM_id(String m_id) {
 		this.m_id = m_id;
+	}
+	
+	public String getM_nickname() {
+		return m_nickname;
+	}
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
 	}
 	
 	public int getCus_no() {

@@ -1,7 +1,8 @@
+    var cus_no = "<%= cus_no %>";
+
 	/*자동 함수 호출*/
 	var autoRefresh;
 	$(function(){
-	    var cus_no = 2; //임시 지정
 	    autoRefresh = setInterval(function() {
 	        cusReplyList(cus_no);
 	    }, 1000);
@@ -23,6 +24,7 @@
 	            var cus_re_list = data.cus_re_list;
 	            cus_re_list.forEach(function(item) {
 	                let m_id = item.m_id;
+	                let m_nickname = item.m_nickname;
 	                let cus_no = item.cus_no;
 	                let cus_re_no = item.cus_re_no;
 	                let cus_re_regdate = item.cus_re_regdate;
@@ -31,14 +33,14 @@
 	                    '<br>' +   
 	                    '<br>' +
 	                    '<tr class="reply-deatil-content">' +
-	                    '<td><b>' + m_id + '&nbsp;&nbsp;&nbsp;</b></td>' +  
+	                    '<td><b>' + m_nickname + '&nbsp;&nbsp;&nbsp;</b></td>' +  
 	                    '<td colspan="3">' + cus_re_content  + '</td>' +
 	                    '</tr>' +
 	                    '<br>' +
 	                    '<tr>' +
 	                    '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
-	                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">수정</button></td>' + // 이 부분 수정
-	                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">삭제</button></td>' +
+	                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "m_id" ? 'inline-block' : 'none') + '">수정</button></td>' +
+	                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "m_id" ? 'inline-block' : 'none') + '">삭제</button></td>' +
 	                    '</tr>' +
 	                    '<br>';
 	                    
@@ -54,8 +56,8 @@
 	/*댓글 작성 */
 	function insertReply(){
 	    var replyContent = $("#reply").val();
-	    var data = {m_id: "user2", // 임시 지정
-	    	cus_no: 2, // 임시 지정
+	    var data = {m_id: m_id, // 임시 지정
+	    	cus_no: cus_no, // 임시 지정
 	        cus_re_content: replyContent
 	    };
 	    
@@ -102,7 +104,7 @@
             dataType: "json",
             success: function(data) { //현재 if문까지 가지 않음
                 if (data > 0) {
-                    cusReplyList(2); //임시 지정
+                    cusReplyList(cus_no); //임시 지정
                     $("#editModal").css("display", "none");
                     
                     autoRefresh = setInterval(function() {
@@ -115,7 +117,7 @@
             complete: function() {
                 $("#editModal").css("display", "none"); // AJAX 요청 완료 후 수정 입력창 닫기
                 autoRefresh = setInterval(function() {
-                	cusReplyList(2); //임시 지정
+                	cusReplyList(cus_no); //임시 지정
                 }, 1000);
             }
         });
@@ -131,7 +133,7 @@
             dataType: "json",
             success: function(data) {
                 if (data > 0) {
-                    cusReplyList(2);
+                    cusReplyList(cus_no); //임시 지정
                 }else{
                 	alert("삭제를 실패했습니다.");
                 }

@@ -18,24 +18,24 @@ public class CusReplyDeleteHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	 int cus_re_no = Integer.parseInt(request.getParameter("cus_re_no"));
+    	int cus_re_no = Integer.parseInt(request.getParameter("cus_re_no"));
 
-         Connection conn = null;
+    	Connection conn = null;
 
-         try {
-             conn = ConnectionProvider.getConnection();
-             CusReplyDao replyDao = new CusReplyDao();
-             replyDao.deleteReply(conn, cus_re_no);
-             response.getWriter().write("성공");
+    	try {
+    		conn = ConnectionProvider.getConnection();
+    		CusReplyDao replyDao = new CusReplyDao();
+    		replyDao.deleteReply(conn, cus_re_no);
+    		response.getWriter().write("성공");
 
-	         } catch (Exception e) {
-	             e.printStackTrace();
-	             response.getWriter().write("실패");
-	         } finally {
-	             JdbcUtil.close(conn);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		response.getWriter().write("실패");
+    	} finally {
+    		JdbcUtil.close(conn);
 	
-	         }
-	    }
+    	}
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);

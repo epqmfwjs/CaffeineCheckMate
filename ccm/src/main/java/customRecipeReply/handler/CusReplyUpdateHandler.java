@@ -25,12 +25,12 @@ public class CusReplyUpdateHandler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	// 요청에서 여러 줄의 데이터를 읽어오고 StringBuilder를 이용해서 한줄의 문자열로 JSON 데이터 저장
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-        StringBuilder sb = new StringBuilder();
-        String line;
-        
+    	BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
+    	StringBuilder sb = new StringBuilder();
+    	String line;
+    	
         while ((line = br.readLine()) != null) {
-            sb.append(line).append('\n');
+        	sb.append(line).append('\n');
         }
         br.close();
         
@@ -46,27 +46,27 @@ public class CusReplyUpdateHandler extends HttpServlet {
         Connection conn = null;
 
         try {
-            conn = ConnectionProvider.getConnection();
-            CusReplyDao replyDao = new CusReplyDao();
-            CusReplyDto reply = new CusReplyDto(editedContent, cus_re_no);
-            // 업데이트 성공 시 result 값이 1 이상, 실패 시 0이 result에 담긴다
-            int result = replyDao.updateReply(conn, reply);
+        	conn = ConnectionProvider.getConnection();
+        	CusReplyDao replyDao = new CusReplyDao();
+        	CusReplyDto reply = new CusReplyDto(editedContent, cus_re_no);
+        	// 업데이트 성공 시 result 값이 1 이상, 실패 시 0이 result에 담긴다
+        	int result = replyDao.updateReply(conn, reply);
             
-            if (result > 0) {
-                response.getWriter().write("성공");
-            } else {
-                response.getWriter().write("실패");
-            }
+        	if (result > 0) {
+        		response.getWriter().write("성공");
+        	} else {
+        		response.getWriter().write("실패");
+        	}
 
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            response.getWriter().write("실패");
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        		response.getWriter().write("실패");
 	
-	        } finally {
-	            JdbcUtil.close(conn);
+        	} finally {
+        		JdbcUtil.close(conn);
 	
-	        }
-	    }
+        	}
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);

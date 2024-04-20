@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,22 +25,29 @@ public class CusReplyListHandler extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-        JSONObject re_json = new JSONObject();
+		HttpSession session = request.getSession(false);
+		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
+		 
+    	System.out.println("넘어는 왔어");
+    	
+    	JSONObject re_json = new JSONObject();
         
-        Connection conn = null;
-        CusReplyDao cus_re_dao = new CusReplyDao();
+    	Connection conn = null;
+    	CusReplyDao cus_re_dao = new CusReplyDao();
         
-		try {
-			conn = ConnectionProvider.getConnection();
+    	try {
+    		conn = ConnectionProvider.getConnection();
 			
-			JSONArray re_jsonArray = new JSONArray();
-			 int cus_no = 2; //Integer.parseInt(request.getParameter("cus_no"));
+    		JSONArray re_jsonArray = new JSONArray();
+    		int cus_no = Integer.parseInt(request.getParameter("cus_no"));
+    		System.out.println(cus_no);
 			 
-			 ArrayList <CusReplyDto> cus_re_list = cus_re_dao.selectReplyList(conn, cus_no);
+    		ArrayList <CusReplyDto> cus_re_list = cus_re_dao.selectReplyList(conn, cus_no);
 			 
-			 for (CusReplyDto item : cus_re_list) {
-					JSONObject jsonObject = new JSONObject();
-					jsonObject.put("m_id", item.getM_id());
+    		for (CusReplyDto item : cus_re_list) {
+    				JSONObject jsonObject = new JSONObject();
+    				jsonObject.put("m_id", item.getM_id());
+					jsonObject.put("m_nickname", item.getM_nickname());
 					jsonObject.put("cus_no", item.getCus_no());
 					jsonObject.put("cus_re_no", item.getCus_re_no());
 					jsonObject.put("cus_re_regdate", item.getCus_re_regdate());
@@ -54,6 +62,8 @@ public class CusReplyListHandler extends HttpServlet {
 			
 				} catch (SQLException e) {
 					e.printStackTrace();
+					System.out.println("durldi");
+					
 					
 				}finally {
 					JdbcUtil.close(conn);

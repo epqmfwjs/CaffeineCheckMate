@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+    String cus_no = request.getParameter("cus_no");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Reply</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/customReply.js"></script>
+<script type="text/javascript" src="/resources/js/customReply.js"></script>\
 
 </head>
 <body>
@@ -39,8 +44,8 @@
 	<!-- 댓글 수정 -->
 	<div id="editModal" class="modal" align="center" style="display: none;">
 	    <div class="modal-content">
-	        <!-- 닫힘 버튼 -->
 	        <span class="close">&times;</span> 
+	        <!-- 닫힘 버튼 -->
 	        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
 	        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">수정저장</button>
 	    </div>
