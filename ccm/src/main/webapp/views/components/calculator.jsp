@@ -18,12 +18,12 @@
 </head>
 <body>
     <div class="calc-box">
-        <div class="calc-box__column">
+        <div class="calc-box__column-first">
             <div class="calc-container"></div>
         </div>
-        <div class="calc-box__column">
+        <div class="calc-box__column-second">
             <div class="calc-box__result-title">Caffeine</div>
-            <div class="calc-box__dailyc">${main.calculationResult}</div>
+            <div class="calc-box__dailyc">${main.calculationResult} mg</div>
             <div class="calc-box__reset-box">
                 <button id="calc-box__btn-reset">Reset</button>
             </div>

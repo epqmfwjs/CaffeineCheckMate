@@ -15,7 +15,7 @@
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
 
-    <link rel="stylesheet" href="/resources/css/test2.css">
+    <link rel="stylesheet" href="/resources/css/sample.css">
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
