@@ -28,7 +28,8 @@
           </c:forEach>  
 	<script>
     function moveToReplyPage(cus_no) {
-        window.location.href = "<%=request.getContextPath()%>/views/screens/customReply.jsp?cus_no=" + cus_no;
+    	var encodedCusNo = encodeURIComponent(cus_no);
+        window.location.href = "<%=request.getContextPath()%>/views/screens/customReply.jsp?cus_no=" + encodedCusNo;
     }
 </script>
 
