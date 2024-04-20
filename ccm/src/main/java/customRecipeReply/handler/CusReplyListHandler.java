@@ -25,9 +25,6 @@ public class CusReplyListHandler extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-		HttpSession session = request.getSession(false);
-		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
-		 
     	JSONObject re_json = new JSONObject();
         
     	Connection conn = null;

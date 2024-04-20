@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import connection.ConnectionProvider;
 import customRecipeReply.dao.CusReplyDao;
@@ -17,6 +18,9 @@ import jdbc.JdbcUtil;
 public class CusReplyDeleteHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession(false);
+		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
     	
     	int cus_re_no = Integer.parseInt(request.getParameter("cus_re_no"));
 

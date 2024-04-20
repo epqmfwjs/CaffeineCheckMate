@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,10 @@
 <title>Reply</title>
 
 <%
+    // 세션에서 AUTH_USER_ID 값을 가져와서 JavaScript 변수에 할당
+    HttpSession sessionId = request.getSession(false);
+    String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
+
     String cus_NUM = request.getParameter("cus_no");
 	int cus_no = 0;
 	cus_no = Integer.parseInt(cus_NUM);
@@ -16,6 +22,7 @@
 
 <!-- 게시판 번호 히든 value에 저장 -->
 <input type="hidden" id="cus_no_hidden" value="<%= cus_no %>">
+<input type="hidden" id="m_id_hidden" value="<%= m_id %>">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/customReply.js"></script>

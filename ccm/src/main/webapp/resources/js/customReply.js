@@ -1,6 +1,8 @@
 // jsp에서 받은 게시판 번호 추출 정수로 변환
-//var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
-var cus_no = document.getElementById("cus_no_hidden").value;
+var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
+var m_id = document.getElementById("m_id_hidden").value;
+
+console.log(m_id);
 
 
 /*자동 함수 호출*/
@@ -41,8 +43,8 @@ function cusReplyList(cus_no) {
                     '<br>' +
                     '<tr>' +
                     '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
-                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === "m_id" ? 'inline-block' : 'none') + '">수정</button></td>' +
-                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "m_id" ? 'inline-block' : 'none') + '">삭제</button></td>' +
+                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === item.m_id ? 'inline-block' : 'none') + '">수정</button></td>' +
+                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === item.m_id ? 'inline-block' : 'none') + '">삭제</button></td>' +
                     '</tr>' +
                     '<br>';
                     
@@ -58,7 +60,8 @@ function cusReplyList(cus_no) {
 /*댓글 작성 */
 function insertReply(){
     var replyContent = $("#reply").val();
-    var data = {m_id: m_id, // 임시 지정
+    var data = {
+		m_id: m_id,
     	cus_no: cus_no,
         cus_re_content: replyContent
     };

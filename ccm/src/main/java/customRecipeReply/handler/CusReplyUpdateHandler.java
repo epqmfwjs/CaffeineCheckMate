@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -23,6 +24,9 @@ import jdbc.JdbcUtil;
 public class CusReplyUpdateHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession(false);
+		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
     	
     	// 요청에서 여러 줄의 데이터를 읽어오고 StringBuilder를 이용해서 한줄의 문자열로 JSON 데이터 저장
     	BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));

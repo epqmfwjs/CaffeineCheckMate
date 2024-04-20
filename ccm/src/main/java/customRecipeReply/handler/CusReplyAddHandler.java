@@ -24,11 +24,10 @@ public class CusReplyAddHandler extends HttpServlet {
 	
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
-		 HttpSession session = request.getSession(false);
-		 String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
+		HttpSession session = request.getSession(false);
+		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
 		 
 	 	// 요청에서 한줄의 데이터만 읽어오고 JSON 데이터 저장
-	   
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
 		String json = "";
         
