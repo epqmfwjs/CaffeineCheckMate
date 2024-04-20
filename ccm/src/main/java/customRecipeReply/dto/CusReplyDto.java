@@ -16,11 +16,11 @@ public class CusReplyDto {
 		this.cus_re_no = cus_re_no;
 	}
 	
-	public CusReplyDto(int cus_no, String cus_re_regdate, String cus_re_content) {
-		this.cus_no = cus_no;
-		this.cus_re_regdate = cus_re_regdate;
-		this.cus_re_content = cus_re_content;
-	}
+//	public CusReplyDto(int cus_no, String cus_re_regdate, String cus_re_content) {
+//		this.cus_no = cus_no;
+//		this.cus_re_regdate = cus_re_regdate;
+//		this.cus_re_content = cus_re_content;
+//	}
 	
 	public CusReplyDto(String m_id, int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
 		this.m_id = m_id;

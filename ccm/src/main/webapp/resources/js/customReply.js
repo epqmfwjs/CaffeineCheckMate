@@ -15,10 +15,9 @@
 	        contentType: "application/json",
 	        type: "POST",
 	        dataType: "json",
-	        data: {
-	            cus_no: cus_no
-	        },
+	        data: {cus_no: cus_no},
 	        success: function(data) {
+		
 	            $("#replyArea").empty();
 	            
 	            var cus_re_list = data.cus_re_list;
@@ -28,7 +27,6 @@
 	                let cus_re_no = item.cus_re_no;
 	                let cus_re_regdate = item.cus_re_regdate;
 	                let cus_re_content = item.cus_re_content;
-
 	                let replyItem =
 	                    '<br>' +   
 	                    '<br>' +
@@ -43,6 +41,7 @@
 	                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === "user2" ? 'inline-block' : 'none') + '">삭제</button></td>' +
 	                    '</tr>' +
 	                    '<br>';
+	                    
 	                $("#replyArea").append(replyItem);
 	            });
 	        },
@@ -55,15 +54,14 @@
 	/*댓글 작성 */
 	function insertReply(){
 	    var replyContent = $("#reply").val();
-	    var data = {
-	        m_id: "user2", // 임시 지정
-	        cus_no: 2, // 임시 지정
+	    var data = {m_id: "user2", // 임시 지정
+	    	cus_no: 2, // 임시 지정
 	        cus_re_content: replyContent
 	    };
 	    
 	    $.ajax({
 	        url : "/CusReplyAddHandler",
-	        data : JSON.stringify(data), // 데이터를 JSON 문자열로 변환
+	        data : JSON.stringify(data),
 	        contentType: "application/json",
 	        type : "POST",
 	        dataType: "json",
@@ -79,7 +77,7 @@
 	}
 	
 	
-    /*수정 버튼 작동*/
+    /*댓글 수정 버튼 작동*/
     function updateReply(cus_re_no) {
         var editedContent = $("#replyArea").find("tr.reply-deatil-content[data-cus-re-no='" + cus_re_no + "']").find("td:nth-child(2)").text().trim();
         $("#editedReply").val(editedContent);
@@ -90,19 +88,15 @@
     }
 
 	
-    /*수정*/
+    /*댓글 수정*/
     function saveEditedReply() {
         var cus_re_no = $("#saveBtn").attr("data-cus-re-no");
-        var editedContent = $("#editModal input#editedReply").val();
-        
-        var data = {
-            cus_re_content: editedContent,
-            cus_re_no: cus_re_no
-        };
+        var editedContent = $("#editModal input#editedReply").val(); 
+        var data = { cus_re_content: editedContent, cus_re_no: cus_re_no };
         
         $.ajax({
             url: "/CusReplyUpdateHandler",
-            data: JSON.stringify(data), // JSON 문자열로 변환하여 전송
+            data: JSON.stringify(data),
             contentType: "application/json",
             type: "POST",
             dataType: "json",
@@ -119,7 +113,7 @@
                 }
             },
             complete: function() {
-                $("#editModal").css("display", "none"); // AJAX 요청 완료 후 모달 닫기
+                $("#editModal").css("display", "none"); // AJAX 요청 완료 후 수정 입력창 닫기
                 autoRefresh = setInterval(function() {
                 	cusReplyList(2); //임시 지정
                 }, 1000);
@@ -132,9 +126,7 @@
     function deleteReply(cus_re_no) {
         $.ajax({
             url: "/CusReplyDeleteHandler",
-            data: {
-                cus_re_no: cus_re_no
-            },
+            data: {cus_re_no: cus_re_no},
             type: "POST",
             dataType: "json",
             success: function(data) {
@@ -146,3 +138,4 @@
             }
         });
     }
+    

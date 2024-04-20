@@ -23,13 +23,15 @@ public class CusReplyAddHandler extends HttpServlet {
 	
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
-		 	// 요청에서 JSON 데이터를 읽어옴
+		 	// 요청에서 한줄의 데이터만 읽어오고 JSON 데이터 저장
 		   BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-	        String json = "";
+	       String json = "";
+	        
 	        if (br != null) {
 	            json = br.readLine();
 	        }
-
+	        br.close();
+	        
 	        // JSON 데이터를 자바 객체로 변환
 	        Gson gson = new Gson();
 	        CusReplyDto reply = gson.fromJson(json, CusReplyDto.class);

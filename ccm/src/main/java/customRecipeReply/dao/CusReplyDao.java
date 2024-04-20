@@ -7,16 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import customRecipeReply.dto.CusReplyDto;
 
 public class CusReplyDao {
 	
 	public CusReplyDao() {
-
 	}
-	
 	
 	/*댓글 삽입*/
 	public int insertReply(Connection conn, CusReplyDto reply) {
@@ -42,7 +39,6 @@ public class CusReplyDao {
 	    return result;
 	    
 	}
-	
 	
 	
 	/*댓글 목록*/
@@ -125,4 +121,3 @@ public class CusReplyDao {
     }
     
 }
-

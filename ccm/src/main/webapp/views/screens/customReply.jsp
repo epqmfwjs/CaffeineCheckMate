@@ -36,7 +36,7 @@
 
 	<br/>
 	
-	<!-- 수정 모달 -->
+	<!-- 댓글 수정 -->
 	<div id="editModal" class="modal" align="center" style="display: none;">
 	    <div class="modal-content">
 	        <span class="close">&times;</span>

@@ -28,15 +28,14 @@ public class CusReplyDeleteHandler extends HttpServlet {
              replyDao.deleteReply(conn, cus_re_no);
              response.getWriter().write("성공");
 
-         } catch (Exception e) {
-             e.printStackTrace();
-             response.getWriter().write("실패");
-
-         } finally {
-             JdbcUtil.close(conn);
-
-         }
-    }
+	         } catch (Exception e) {
+	             e.printStackTrace();
+	             response.getWriter().write("실패");
+	         } finally {
+	             JdbcUtil.close(conn);
+	
+	         }
+	    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);

@@ -23,6 +23,7 @@ import jdbc.JdbcUtil;
 public class CusReplyListHandler extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
         JSONObject re_json = new JSONObject();
         
         Connection conn = null;
@@ -45,20 +46,19 @@ public class CusReplyListHandler extends HttpServlet {
 					jsonObject.put("cus_re_content", item.getCus_re_content());
 					
 					re_jsonArray.add(jsonObject);
-					
 				}
 			 
 		 		re_json.put("cus_re_list", re_jsonArray);
 				response.setContentType("application/json; charset=utf-8");
 				response.getWriter().write(re_json.toString());
 			
-			} catch (SQLException e) {
-				e.printStackTrace();
-				
-			}finally {
-				JdbcUtil.close(conn);
-			}
-    }
+				} catch (SQLException e) {
+					e.printStackTrace();
+					
+				}finally {
+					JdbcUtil.close(conn);
+				}
+	    }
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

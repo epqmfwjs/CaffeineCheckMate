@@ -24,6 +24,7 @@ public class CusReplyUpdateHandler extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	// 요청에서 여러 줄의 데이터를 읽어오고 StringBuilder를 이용해서 한줄의 문자열로 JSON 데이터 저장
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
         StringBuilder sb = new StringBuilder();
         String line;
@@ -37,12 +38,10 @@ public class CusReplyUpdateHandler extends HttpServlet {
         Gson gson = new Gson();
         
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
-        System.out.println(jsonObject);
+        
         // JSON 객체에서 수정된 댓글 내용과 댓글 번호 추출
         String editedContent = jsonObject.get("cus_re_content").getAsString();
         int cus_re_no = jsonObject.get("cus_re_no").getAsInt();
-
-       System.out.println(editedContent);
         
         Connection conn = null;
 
@@ -50,6 +49,7 @@ public class CusReplyUpdateHandler extends HttpServlet {
             conn = ConnectionProvider.getConnection();
             CusReplyDao replyDao = new CusReplyDao();
             CusReplyDto reply = new CusReplyDto(editedContent, cus_re_no);
+            // 업데이트 성공 시 result 값이 1 이상, 실패 시 0이 result에 담긴다
             int result = replyDao.updateReply(conn, reply);
             
             if (result > 0) {
@@ -58,15 +58,15 @@ public class CusReplyUpdateHandler extends HttpServlet {
                 response.getWriter().write("실패");
             }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.getWriter().write("실패");
-
-        } finally {
-            JdbcUtil.close(conn);
-
-        }
-    }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            response.getWriter().write("실패");
+	
+	        } finally {
+	            JdbcUtil.close(conn);
+	
+	        }
+	    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);
