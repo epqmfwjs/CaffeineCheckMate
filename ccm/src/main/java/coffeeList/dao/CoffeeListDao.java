@@ -11,22 +11,29 @@ import coffeeList.dto.Coffee;
 import jdbc.JdbcUtil;
 
 public class CoffeeListDao {
-	//커피 목록 뷰 DAO
-	public ArrayList<Coffee> CoffeeListView(Connection conn) throws SQLException {
-		String listViewSQL = "SELECT * "+
-				 			 "FROM COFFEELIST";
+	//커피 목록 뷰 DAO + 페이징
+	public ArrayList<Coffee> CoffeeListView(Connection conn, int page, int size) throws SQLException {
+		String listViewSQL = "SELECT C_NO, C_NAME, C_BRAND, C_CAFFEINE, C_IMG_COPY "
+				 		   + "FROM COFFEELIST "
+				 		   + "ORDER BY C_NO DESC "
+				 		   + "LIMIT ?, ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Coffee> coffeeList = new ArrayList<Coffee>();
 		//System.out.println("뷰 DAO");
 		
+		//현재 페이지에서 필요한 시작 행을 연산하는 식
+		//페이지블럭이 2일 때 연산하면 10이므로 시작하는 행은 10으로 시작
+		int startRow = (page-1)*size; 
+		
 		try {
 			pstmt = conn.prepareStatement(listViewSQL);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, size);
 			rs = pstmt.executeQuery();
-			Coffee rsCoffeeView = null;
 			
 			while(rs.next()) {
-				rsCoffeeView = new Coffee(
+				Coffee rsCoffeeView = new Coffee(
 					rs.getInt("C_NO"),
 					rs.getString("C_NAME"),
 					rs.getString("C_BRAND"),
@@ -39,6 +46,27 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 		return coffeeList;	
+	}
+	//커피리스트의 게시물의 총 수를 세는 DAO
+	public int CoffeeListCount(Connection conn) throws SQLException {
+		String listCountSQL = "SELECT COUNT(*) as cnt "
+							+ "FROM COFFEELIST";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(listCountSQL);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		} finally {
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
+        }
+		return count;
 	}
 	
 	//커피 상세 내역 DAO

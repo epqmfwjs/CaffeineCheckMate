@@ -18,7 +18,7 @@
         </div>
         
         <div>
-        <h1>일본식 교란말이</h1>
+        <h1>커피리스트</h1>
         <form action="/coffeeList.do" method="get">
         <input type="submit">
         </form>

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>커피를 열심히 추가하쟈</h2>
-	<form action="../../coffeeListAdd.do" method="post" accept-charset="UTF-8">
+	<form action="/coffeeListAdd.do" method="post" accept-charset="UTF-8">
 		제품 이름:<br/>
 		<input type="text" id="cname" name="cname" required><br/>
 		        
