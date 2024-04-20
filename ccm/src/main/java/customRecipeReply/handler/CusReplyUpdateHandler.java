@@ -37,11 +37,13 @@ public class CusReplyUpdateHandler extends HttpServlet {
         Gson gson = new Gson();
         
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
-        
+        System.out.println(jsonObject);
         // JSON 객체에서 수정된 댓글 내용과 댓글 번호 추출
         String editedContent = jsonObject.get("cus_re_content").getAsString();
         int cus_re_no = jsonObject.get("cus_re_no").getAsInt();
 
+       System.out.println(editedContent);
+        
         Connection conn = null;
 
         try {

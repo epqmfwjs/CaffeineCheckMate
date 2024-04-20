@@ -40,7 +40,6 @@ public class CusReplyAddHandler extends HttpServlet {
 	            conn = ConnectionProvider.getConnection();
 	            CusReplyDao replyDao = new CusReplyDao();
 	            replyDao.insertReply(conn, reply);
-	           System.out.println("성공진입");
 	            response.getWriter().write("성공");
 	            
 	        } catch (Exception e) {
