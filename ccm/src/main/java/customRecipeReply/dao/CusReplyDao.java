@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import customRecipeReply.dto.CusReplyDto;
+import jdbc.JdbcUtil;
 
 public class CusReplyDao {
 	
@@ -129,6 +130,29 @@ public class CusReplyDao {
         }
         
         return result;
+    }
+    
+    
+    // 작성자 동일 확인 메서드
+    public String getReplyWriterId(Connection conn, int cus_re_no) throws SQLException {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String writerId = null;
+        
+        try {
+            pstmt = conn.prepareStatement("SELECT m_id FROM cus_reply WHERE cus_re_no = ?");
+            pstmt.setInt(1, cus_re_no);
+            rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                writerId = rs.getString("m_id");
+            }
+        } finally {
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
+        }
+        
+        return writerId;
     }
     
     

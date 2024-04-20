@@ -2,9 +2,6 @@
 var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
 var m_id = document.getElementById("m_id_hidden").value;
 
-console.log(m_id);
-
-
 /*자동 함수 호출*/
 var autoRefresh;
 $(function(){
@@ -27,7 +24,7 @@ function cusReplyList(cus_no) {
            var cus_re_list = data.cus_re_list;
             
             cus_re_list.forEach(function(item) {
-                let m_id = item.m_id;
+                let m_id_db = item.m_id;
                 let m_nickname = item.m_nickname;
                 let cus_no = item.cus_no;
                 let cus_re_no = item.cus_re_no;
@@ -43,8 +40,8 @@ function cusReplyList(cus_no) {
                     '<br>' +
                     '<tr>' +
                     '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
-                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === item.m_id ? 'inline-block' : 'none') + '">수정</button></td>' +
-                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === item.m_id ? 'inline-block' : 'none') + '">삭제</button></td>' +
+                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">수정</button></td>' +
+                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">삭제</button></td>' +
                     '</tr>' +
                     '<br>';
                     
@@ -65,7 +62,6 @@ function insertReply(){
     	cus_no: cus_no,
         cus_re_content: replyContent
     };
-    console.log("형은 list 안이야"+cus_no);
     $.ajax({
         url : "/CusReplyAddHandler",
         data : JSON.stringify(data),
