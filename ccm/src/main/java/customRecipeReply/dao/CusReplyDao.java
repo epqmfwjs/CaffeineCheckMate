@@ -24,7 +24,12 @@ public class CusReplyDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = "SELECT M.M_ID, M.M_NICKNAME, C.CUS_NO, R.CUS_RE_NO, R.CUS_RE_REGDATE, R.CUS_RE_CONTENT FROM CUSTOM_REPLY R, CUSTOM C, MEMBER M  WHERE C.M_ID = R.M_ID AND M.M_ID = R.M_ID AND C.CUS_NO = ? ORDER BY CUS_RE_REGDATE DESC";
+		String sql = "SELECT M.M_ID, M.M_NICKNAME, C.CUS_NO, R.CUS_RE_NO, R.CUS_RE_REGDATE, R.CUS_RE_CONTENT "
+				+ "FROM CUSTOM_REPLY R "
+				+ "JOIN CUSTOM C ON C.CUS_NO = R.CUS_NO "
+				+ "JOIN MEMBER M ON M.M_ID = R.M_ID "
+				+ "WHERE C.CUS_NO = ? "
+				+ "ORDER BY R.CUS_RE_REGDATE DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

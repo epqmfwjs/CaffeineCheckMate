@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,7 @@
 	cus_no = Integer.parseInt(cus_NUM);
 %>
 
+<!-- 게시판 번호 히든 value에 저장 -->
 <input type="hidden" id="cus_no_hidden" value="<%= cus_no %>">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

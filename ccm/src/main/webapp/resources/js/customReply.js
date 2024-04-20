@@ -1,5 +1,7 @@
+// jsp에서 받은 게시판 번호 추출 정수로 변환
+//var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
 var cus_no = document.getElementById("cus_no_hidden").value;
-console.log(cus_no);
+
 
 /*자동 함수 호출*/
 var autoRefresh;
@@ -14,14 +16,12 @@ $(function(){
 function cusReplyList(cus_no) {
     $.ajax({
         url: "/CusReplyListHandler",
-        contentType: "application/json",
-        type: "get",
+        type: "POST",
         dataType: "json",
         data: {cus_no: cus_no},
         success: function(data) {
 	
             $("#replyArea").empty();
-           var cus_no = cus_no
            var cus_re_list = data.cus_re_list;
             
             cus_re_list.forEach(function(item) {
@@ -59,14 +59,13 @@ function cusReplyList(cus_no) {
 function insertReply(){
     var replyContent = $("#reply").val();
     var data = {m_id: m_id, // 임시 지정
-    	cus_no: cus_no, // 임시 지정
+    	cus_no: cus_no,
         cus_re_content: replyContent
     };
-    
+    console.log("형은 list 안이야"+cus_no);
     $.ajax({
         url : "/CusReplyAddHandler",
         data : JSON.stringify(data),
-        contentType: "application/json",
         type : "POST",
         dataType: "json",
         success : function(data){
@@ -101,7 +100,6 @@ function saveEditedReply() {
     $.ajax({
         url: "/CusReplyUpdateHandler",
         data: JSON.stringify(data),
-        contentType: "application/json",
         type: "POST",
         dataType: "json",
         success: function(data) { //현재 if문까지 가지 않음
@@ -119,7 +117,7 @@ function saveEditedReply() {
         complete: function() {
             $("#editModal").css("display", "none"); // AJAX 요청 완료 후 수정 입력창 닫기
             autoRefresh = setInterval(function() {
-            	cusReplyList(cus_no); //임시 지정
+            	cusReplyList(cus_no);
             }, 1000);
         }
     });
@@ -135,7 +133,7 @@ function deleteReply(cus_re_no) {
         dataType: "json",
         success: function(data) {
             if (data > 0) {
-                cusReplyList(cus_no); //임시 지정
+                cusReplyList(cus_no);
             }else{
             	alert("삭제를 실패했습니다.");
             }

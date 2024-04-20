@@ -20,7 +20,7 @@ public class CusReplyDto {
 	
 	public CusReplyDto(String m_id, String m_nickname, int cus_no, int cus_re_no, String cus_re_regdate, String cus_re_content) {
 		this.m_id = m_id;
-		this.m_id = m_nickname;
+		this.m_nickname = m_nickname;
 		this.cus_no = cus_no;
 		this.cus_re_no = cus_re_no;
 		this.cus_re_regdate = cus_re_regdate;

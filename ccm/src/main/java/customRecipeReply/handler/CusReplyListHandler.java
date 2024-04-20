@@ -28,8 +28,6 @@ public class CusReplyListHandler extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String m_id = (String)session.getAttribute("AUTH_USER_ID"); 
 		 
-    	System.out.println("넘어는 왔어");
-    	
     	JSONObject re_json = new JSONObject();
         
     	Connection conn = null;
@@ -37,7 +35,6 @@ public class CusReplyListHandler extends HttpServlet {
         
     	try {
     		conn = ConnectionProvider.getConnection();
-			
     		JSONArray re_jsonArray = new JSONArray();
     		int cus_no = Integer.parseInt(request.getParameter("cus_no"));
 			 
@@ -56,12 +53,13 @@ public class CusReplyListHandler extends HttpServlet {
 				}
 			 
 		 		re_json.put("cus_re_list", re_jsonArray);
-				response.setContentType("application/json; charset=utf-8");
+		 		
+		 		response.setCharacterEncoding("UTF-8");
+		 		response.setContentType("charset=UTF-8");
 				response.getWriter().write(re_json.toString());
 			
 				} catch (SQLException e) {
 					e.printStackTrace();
-					System.out.println("durldi");
 					
 					
 				}finally {
