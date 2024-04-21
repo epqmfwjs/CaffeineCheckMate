@@ -32,11 +32,15 @@
 		<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
 	</div>
 
-    <!--계산기 include 부분 -->
-    <jsp:include page="/views/components/calculator.jsp"></jsp:include>
+	<div class="calc-area">
+		<!--계산기 include 부분 -->
+		<jsp:include page="/views/components/calculator.jsp"></jsp:include>
+	</div>
 
-    <!--즐겨찾기 include 부분-->
-    <jsp:include page="/views/components/favorites.jsp"></jsp:include>
+	<div class="fav-area">
+		<!--즐겨찾기 include 부분-->
+		<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+	</div>
 
 </body>
 
