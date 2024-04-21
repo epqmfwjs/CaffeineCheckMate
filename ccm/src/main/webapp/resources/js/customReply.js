@@ -86,7 +86,6 @@ function updateReply(cus_re_no) {
     }, 1000);
     });
     clearInterval(autoRefresh); // 갱신 함수 중지
-    $("#editModal").css("display", "none");
 }
 
 
@@ -102,6 +101,7 @@ function saveEditedReply() {
         type: "POST",
         dataType: "json",
     });
+    $("#editModal").css("display", "none");
 }
 
 /* 댓글 삭제 */
