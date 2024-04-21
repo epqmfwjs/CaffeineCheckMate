@@ -33,9 +33,12 @@ public class CusReplyListHandler extends HttpServlet {
     	try {
     		conn = ConnectionProvider.getConnection();
     		JSONArray re_jsonArray = new JSONArray();
+    		
     		int cus_no = Integer.parseInt(request.getParameter("cus_no"));
+    		int page = Integer.parseInt(request.getParameter("page"));
+            int size = Integer.parseInt(request.getParameter("size"));
 			 
-    		ArrayList <CusReplyDto> cus_re_list = cus_re_dao.selectReplyList(conn, cus_no);
+    		ArrayList <CusReplyDto> cus_re_list = cus_re_dao.selectReplyList(conn, cus_no, page, size);
 			 
     		for (CusReplyDto item : cus_re_list) {
     				JSONObject jsonObject = new JSONObject();
