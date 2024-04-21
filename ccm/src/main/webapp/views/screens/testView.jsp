@@ -13,7 +13,7 @@
     flex-direction: column;
     width: 100%;
     margin-top: 20px;
-    text-align: center;
+    text-align: center; 
 }
 /* 기존 버튼 스타일 */
 input[type="button"], input[type="submit"] {
@@ -63,15 +63,13 @@ input[type="button"]:hover, input[type="submit"]:hover {
 	<div class="container">
 	<h1>다돌고  결과 viewPage 돌아오기 완료됨</h1>
 	  <strong><%= session.getAttribute("AUTH_USER_NICKNAME") %></strong> 님 안녕하세요
-		<div class="button-container">
-			<form action="<%=request.getContextPath() %>/Logout">
-				<input type="submit" value="로그아웃"  class="login-button" onclick="alert('로그아웃되었습니다.')"/>
-			</form>
-			<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
-				<input type="hidden" value="edit" name="Value"/>
-				<input type="submit" value="정보수정"/>
-			</form>
-			</div>
+		<form action="<%=request.getContextPath() %>/Logout">
+			<input type="submit" value="로그아웃"  class="login-button" onclick="alert('로그아웃되었습니다.')"/>
+		</form>
+		<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
+			<input type="hidden" value="edit" name="Value"/>
+			<input type="submit" value="정보수정"/>
+		</form>
 	</div>
 	<%}else{%>
 	<div class="container">

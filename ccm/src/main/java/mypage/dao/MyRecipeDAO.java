@@ -4,41 +4,38 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 import jdbc.JdbcUtil;
 import mypage.dto.MyRecipeDTO;
 
 public class MyRecipeDAO {
 	
-	Map<String, MyRecipeDTO> mRecipedto = null;
+	//Map<String, MyRecipeDTO> mRecipedto = null; 
 	//내가 작성한 레시피 ,custom 레시피
-	//아이디 받아서 검색하기
-	public Map<String,MyRecipeDTO> getRecipe(String memberid ,Connection conn) throws SQLException{
+	//아이디 받아서 검색하기 / 나와야 하는 항목이 여러개니까 list 사용하기
+	public List<MyRecipeDTO> getRecipe(String memberid ,Connection conn) throws SQLException{
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
-		
+		List<MyRecipeDTO> myrecipelist = new ArrayList<>();
 		//조인하기 (DTO-1개, DAO-1개)
-		
 		try {
-			pstmt = conn.prepareStatement("SELECT custom.CUS_NO, custom.M_ID, custom.CUS_TITLE, custom_img.CUS_IMG_COPY"
-					+ "FROM custom join custom_img"
-					+ "on custom.CUS_NO = custom_img.CUS_NO"
-					+ "where custom.M_ID=?");
+			pstmt = conn.prepareStatement("SELECT custom.CUS_NO, custom.M_ID, custom.CUS_TITLE, custom_img.CUS_IMG_COPY FROM custom join custom_img on custom.CUS_NO = custom_img.CUS_NO where custom.M_ID=?"
+											);
 			pstmt.setString(1, memberid);
 			rs = pstmt.executeQuery();
-			MyRecipeDTO myrecipe = null;
-			
 			while(rs.next()) {
-				myrecipe = new MyRecipeDTO(
+				MyRecipeDTO myrecipe = new MyRecipeDTO(
 						rs.getInt("CUS_NO"),
 						rs.getString("M_ID"),
 						rs.getString("CUS_TITLE"),
 						rs.getString("CUS_IMG_COPY")
 						);
-				mRecipedto.put(myrecipe.getM_ID(), myrecipe);
+				myrecipelist.add(myrecipe);
 			}
-			return mRecipedto;
+			System.out.println("myrecipelist : "+myrecipelist.toString());
+			return myrecipelist;
 			
 		} finally {
 			JdbcUtil.close(rs);

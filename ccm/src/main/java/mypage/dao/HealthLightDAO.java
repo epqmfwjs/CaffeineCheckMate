@@ -11,10 +11,10 @@ import mypage.dto.HealthLightDTO;
 
 public class HealthLightDAO {
 	
-	Map<String, HealthLightDTO> hlightdtoMap = null;
+	//Map<String, HealthLightDTO> hlightdtoMap = null;
 	//카페인 섭취량에 따라 색을 결정하고 데이터베이스에 -> 
 	
-	public Map<String, HealthLightDTO> getHealthLight(String memberid ,String caldate, Connection conn) throws SQLException { 
+	public HealthLightDTO getHealthLight(String memberid ,String caldate, Connection conn) throws SQLException { 
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		
@@ -31,15 +31,16 @@ public class HealthLightDAO {
 				    rs.getString("CAL_COLOR"),
 				    rs.getInt("CAL_DALYCF")
 				);
-				hlightdtoMap.put(hldto.getM_ID(), hldto);
 			}
-			return hlightdtoMap;
+			System.out.println("hldto"+hldto.toString());
+			return hldto;
 			
 		}finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
 	// 캘린더 색 업데이트
 //	public void updateCalColor(HealthLightDTO healthLightDTO, Connection conn) throws SQLException {
 //        PreparedStatement pstmt = null;
