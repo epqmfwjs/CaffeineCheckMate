@@ -73,8 +73,10 @@
 	
 	        // AJAX를 통해 다른 JSP 페이지를 불러와 모달에 표시
 	        var xhr = new XMLHttpRequest();
+	        
 	        var encodedCusNo = encodeURIComponent(cus_no);
 	        var m_id = document.getElementById("m_id_hidden").value;
+	        
 	        xhr.open("POST", "<%=request.getContextPath()%>/views/screens/customReply.jsp?cus_no=" + encodedCusNo);
 	        xhr.send();
 	        
