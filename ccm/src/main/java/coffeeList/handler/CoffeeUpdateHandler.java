@@ -4,18 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import coffeeList.dto.Coffee;
-import coffeeList.service.CoffeeAddService;
+import coffeeList.service.CoffeeUpdateService;
 import controller.CommandHandler;
 
-public class CoffeeAddHandler implements CommandHandler{
-	
+public class CoffeeUpdateHandler implements CommandHandler {
+
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		
-		System.out.println("여기는 오니..?");
-		
-		try {//파라미터 받은 값과 변수는 _없이 모두 소문자
+		try {
+			//coffeeNo를 파라미터로 받아 WHERE절에 사용
+			int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
+			//수정에 필요한 파라미터는 모두 소문자
 			String cname = request.getParameter("cname");
 			String cbrand = request.getParameter("cbrand");
 			int ccaffeine = Integer.parseInt(request.getParameter("ccaffeine"));
@@ -27,16 +28,14 @@ public class CoffeeAddHandler implements CommandHandler{
 			String cimgreal = request.getParameter("cimgreal");
 			
 			Coffee coffee = new Coffee
-					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal);
+					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal,coffeeNo);
 			
-			CoffeeAddService coffeeAddService = new CoffeeAddService();
-			coffeeAddService.addCoffee(coffee);
-			System.out.println("여기까진..? 오니..?");
-			
+			CoffeeUpdateService coffeeUpdateService = new CoffeeUpdateService();
+			coffeeUpdateService.updateCoffee(coffee);
 			return "/coffeeList.do";
-		} catch (Exception e) {
-			System.out.println("Coffee delete handler 에러 메시지: " + e.getMessage());
-            return "에러";
+		}catch(Exception e) {
+			System.out.println("coffee update handler 에러 메시지: " + e.getMessage());
+			return "에러";
 		}
 	}
 }

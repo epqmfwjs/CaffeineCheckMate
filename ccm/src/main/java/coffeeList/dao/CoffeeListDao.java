@@ -11,22 +11,29 @@ import coffeeList.dto.Coffee;
 import jdbc.JdbcUtil;
 
 public class CoffeeListDao {
-	//커피 목록 DAO
-	public ArrayList<Coffee> CoffeeListView(Connection conn) throws SQLException {
-		String listViewSQL = "SELECT * "+
-				 			 "FROM COFFEELIST";
+	//커피 목록 뷰 DAO + 페이징
+	public ArrayList<Coffee> CoffeeListView(Connection conn, int page, int size) throws SQLException {
+		String listViewSQL = "SELECT C_NO, C_NAME, C_BRAND, C_CAFFEINE, C_IMG_COPY "
+				 		   + "FROM COFFEELIST "
+				 		   + "ORDER BY C_NO DESC "
+				 		   + "LIMIT ?, ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Coffee> coffeeList = new ArrayList<Coffee>();
-		System.out.println("카트라이더 DAO");
+		//System.out.println("뷰 DAO");
+		
+		//현재 페이지에서 필요한 시작 행을 연산하는 식
+		//페이지블럭이 2일 때 연산하면 10이므로 시작하는 행은 10으로 시작
+		int startRow = (page-1)*size; 
 		
 		try {
 			pstmt = conn.prepareStatement(listViewSQL);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, size);
 			rs = pstmt.executeQuery();
-			Coffee rsCoffeeView = null;
 			
 			while(rs.next()) {
-				rsCoffeeView = new Coffee(
+				Coffee rsCoffeeView = new Coffee(
 					rs.getInt("C_NO"),
 					rs.getString("C_NAME"),
 					rs.getString("C_BRAND"),
@@ -39,6 +46,27 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 		return coffeeList;	
+	}
+	//커피리스트의 게시물의 총 수를 세는 DAO
+	public int CoffeeListCount(Connection conn) throws SQLException {
+		String listCountSQL = "SELECT COUNT(*) as cnt "
+							+ "FROM COFFEELIST";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(listCountSQL);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		} finally {
+            JdbcUtil.close(rs);
+            JdbcUtil.close(pstmt);
+        }
+		return count;
 	}
 	
 	//커피 상세 내역 DAO
@@ -62,6 +90,9 @@ public class CoffeeListDao {
                         rs.getInt("C_SACCHARIDE"),
                         rs.getInt("C_CALORIE"),
                         rs.getString("C_CONTENT"),
+                        rs.getString("C_TYPE"),
+                        rs.getString("C_STAGE"),
+                        rs.getString("C_IMG_REAL"),
                         rs.getString("C_IMG_COPY")
                         );
             }
@@ -86,7 +117,6 @@ public class CoffeeListDao {
 			if(rs.next()) {
 				coffee = new Coffee(
 						rs.getInt("C_NO"),
-						rs.getString("C_NAME"),
 						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						);
@@ -130,19 +160,17 @@ public class CoffeeListDao {
 		ResultSet rs = null;
 		HashMap<Integer,Coffee> coffeeFavMap = new HashMap<Integer, Coffee>();
 		try {
-			String query = "select C_NO, C_CAFFEINE, C_NAME, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
+			String query = "select C_NO, C_CAFFEINE, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				coffeeFavMap.put(rs.getInt("idx"),new Coffee(
 						rs.getInt("C_NO"),
-						rs.getString("C_NAME"),
 						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						));
-				System.out.println("rs,ext");
 			}
-			System.out.println("dao :"+coffeeFavMap.size());
 			return coffeeFavMap;
 		} finally {
 			JdbcUtil.close(pstmt);
@@ -152,7 +180,7 @@ public class CoffeeListDao {
 	
 	public void AddCoffee(Coffee coffee,Connection conn) throws SQLException {
 		String listAddSQL = "INSERT INTO COFFEELIST ("
-						  + "C_NAME, C_BRAND, C_CAFFAINE, C_SACCHARIDE, "
+						  + "C_NAME, C_BRAND, C_CAFFEINE, C_SACCHARIDE, "
 						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL) "
 						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		//ㅋㅋㅋ... 아 쿼리문에 세미콜론 제발
@@ -176,6 +204,32 @@ public class CoffeeListDao {
 		}
 	}
 	
+	public void updateCoffee(Coffee coffee, Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String listUpdateSQL = "UPDATE COFFEELIST "
+				+ "SET C_NAME = ?,  C_BRAND = ?, C_CAFFEINE = ?, C_SACCHARIDE = ?, "
+				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ? "
+				+ "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listUpdateSQL);
+			pstmt.setString(1, coffee.getC_NAME());
+			pstmt.setString(2, coffee.getC_BRAND());
+			pstmt.setInt(3, coffee.getC_CAFFEINE());
+			pstmt.setInt(4, coffee.getC_SACCHARIDE());
+			pstmt.setInt(5, coffee.getC_CALORIE());
+			pstmt.setString(6, coffee.getC_CONTENT());
+			pstmt.setString(7, coffee.getC_TYPE());
+			pstmt.setString(8, coffee.getC_STAGE());
+			pstmt.setString(9, coffee.getC_IMG_REAL());
+			pstmt.setInt(10, coffee.getC_NO());
+			System.out.println("다오 왔뎅");
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
 	
 	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
@@ -191,4 +245,5 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+
 }

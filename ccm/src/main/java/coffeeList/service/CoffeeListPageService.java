@@ -19,31 +19,41 @@ public class CoffeeListPageService {
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
 	FavoriteDao favoriteDao = new FavoriteDao();
 	
-	public CoffeeListPage getCoffeeList(String memberId) throws SQLException {
+	public CoffeeListPage getCoffeeList(String memberId, int page) throws SQLException {
 		Connection conn = null;
 		try {
+			System.out.println("커피서비스 멤버 OK 도달");
+			
 			conn = ConnectionProvider.getConnection();
+			// 한 페이지에 표시할 게시물 수
+			int size = 10; 
 			
-			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn);
+			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn, page, size);
 			HashMap<Integer, Favorite> favMap = favoriteDao.getFavList(memberId, conn);
+			int total = coffeeListDao.CoffeeListCount(conn);
 			
-			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList,favMap);
-			//System.out.println("커피서비스");
+			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList, favMap, total, page, size);
+			
 			return coffeeListPage;
 		}finally {
 			JdbcUtil.close(conn);
 		}
 	}
 	
-	public CoffeeListPage notAuthCoffeeList() throws SQLException {
+	public CoffeeListPage notAuthCoffeeList(int page) throws SQLException {
 		Connection conn = null;
 		try {
+			System.out.println("커피서비스 비로그인");
 			conn = ConnectionProvider.getConnection();
 			
-			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn);
-
-			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList);
-			//System.out.println("커피서비스");
+			// 한 페이지에 표시할 게시물 수
+			int size = 10; 
+			
+			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn, page, size);
+			int total = coffeeListDao.CoffeeListCount(conn);
+			
+			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList,total,page,size);
+			
 			return coffeeListPage;
 		}finally {
 			JdbcUtil.close(conn);

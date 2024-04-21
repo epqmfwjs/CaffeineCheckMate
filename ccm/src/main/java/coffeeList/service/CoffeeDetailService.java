@@ -24,4 +24,4 @@ public class CoffeeDetailService {
         }
     }
 }
-//coffeeListNo(C_NO)
+//coffeeListNo(C_NO) 이 주석은 뭘까 나도 기억이
