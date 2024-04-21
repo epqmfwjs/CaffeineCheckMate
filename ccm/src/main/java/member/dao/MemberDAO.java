@@ -70,9 +70,14 @@ public class MemberDAO {
 	                memberDTO.setDtoTEL(rs.getString("M_PHONENUMBER"));
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
+	                System.out.println("멤버에 아이디있음 디티오에 정보저장");
 	            } else {
-	                memberDTO.setDtoPRO("false");
+	            	System.out.println("없는아이디");
+	            	String backupQuery = "SELECT * FROM ccm.member_backup WHERE M_ID = ?";
+	            	memberDTO.setDtoPRO("memberEmpty");
+	                backupSelectID(memberDTO,backupQuery,conn);
 	            }
+	            if (conn != null) conn.close();
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -80,10 +85,10 @@ public class MemberDAO {
 	    return memberDTO;
 	}
 	// member_backup 조회
-	public MemberDTO backupSelectID(MemberDTO memberDTO, Connection conn) {
+	public MemberDTO backupSelectID(MemberDTO memberDTO,String backupQuery, Connection conn) {
 	    System.out.println("백업셀렉들어옴");
-		String query = "SELECT * FROM ccm.member_backup WHERE M_ID = ?";
-	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+		//String query = "SELECT * FROM ccm.member_backup WHERE M_ID = ?";
+	    try (PreparedStatement pstmt = conn.prepareStatement(backupQuery)) {
 	        pstmt.setString(1, memberDTO.getDtoID());
 	        try (ResultSet rs = pstmt.executeQuery()) {
 	            if (rs.next()) {
@@ -97,7 +102,8 @@ public class MemberDAO {
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
 	            } else {
-	                memberDTO.setDtoPRO("false");
+	            	System.out.println("백업도아이디없음");
+	                memberDTO.setDtoPRO("backupEmpty");
 	            }
 	        }
 	    } catch (SQLException e) {
@@ -165,18 +171,24 @@ public class MemberDAO {
 	}
 	
 	//---------------------------delete---------------------------------------
-	    //회원탈퇴 메소드(삭제하면 db백업테이블로 이동되고 7일후 자동 삭제된다	
+	    
 		public boolean delete(String deleteID,String query,Connection conn) {
+		    System.out.println("delete문들어옴");
+
 		    boolean result = false;
 		    int num = -1;
 		    try {
+		    	// 데이터 삭제
 		        PreparedStatement pstmt = conn.prepareStatement(query);
 		        pstmt.setString(1, deleteID);
 		        num = pstmt.executeUpdate();
 		        if (num > 0) { // 삭제된 행이 있으면 true, 없으면 false
-		            result = true;
+		            System.out.println(" 삭제 행 있으면 = true");
+		        	result = true;
+		        	// 트랜잭션 커밋
 		            conn.commit();
 		        } else {
+		        	System.out.println(" 삭제 행 없으면 = false");
 		            result = false;
 		        }
 		        pstmt.close();
@@ -185,6 +197,38 @@ public class MemberDAO {
 		    }
 		    return result;
 		}
+		//회원탈퇴 메소드(삭제하면 db백업테이블로 이동되고 7일후 자동 삭제된다	
+		    public boolean deleteMember(String deleteID,Connection conn) {
+		        System.out.println("deleteMember문 들어옴");
+		        boolean result = false;
+		        int num = -1;
+		        try {
+		        	conn.createStatement().execute("SET AUTOCOMMIT = 0");
+		            // 외래 키 검사 비활성화
+		            conn.createStatement().execute("SET FOREIGN_KEY_CHECKS = 0");
+		            // 데이터 삭제
+		            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM ccm.member WHERE M_ID = ?");
+		            pstmt.setString(1, deleteID);
+		            num = pstmt.executeUpdate();
+		            // 외래 키 검사 활성화
+		            conn.createStatement().execute("SET FOREIGN_KEY_CHECKS = 1");
+
+		            if (num > 0) { // 삭제된 행이 있으면 true, 없으면 false
+		                System.out.println("삭제멤버 행 있으면 = true");
+		                result = true;
+		                // 트랜잭션 커밋
+		                conn.commit();
+		            } else {
+		                System.out.println("삭제멤버 행 없으면 = false");
+		                result = false;
+		            }
+		            pstmt.close();
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        }
+		        return result;
+		    }
+
 		public boolean deleteCancelSelect(String cancelID,String cancelPW,Connection conn) {
 			boolean result = false;
 		    try (PreparedStatement pstmt = conn.prepareStatement

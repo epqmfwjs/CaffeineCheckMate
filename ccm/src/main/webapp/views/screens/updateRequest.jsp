@@ -5,23 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.container{
-text-align: center;
-}
-</style>
+<link href="/resources/css/updateRequest.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
 <h1>회원정보수정</h1>
-
 <% 
 	String UpdateID = (String)session.getAttribute("AUTH_USER_ID");
 	String UpdateNAME = (String)session.getAttribute("AUTH_USER_NAME");
 	String UpdateSSN = (String)session.getAttribute("AUTH_USER_SSN");
 	String UpdateEMAIL = (String)session.getAttribute("AUTH_USER_EMAIL");
-	String UpdateNICKNAME = (String)session.getAttribute("AUTH_USER_UPDATENICKNAME");
-	String UpdateTEL = (String)session.getAttribute("AUTH_USER_UPDATETEL");
+	String UpdateNICKNAME = (String)session.getAttribute("AUTH_USER_NICKNAME");
+	String UpdateTEL = (String)session.getAttribute("AUTH_USER_TEL");
 	String UpdateGENDER = (String)session.getAttribute("AUTH_USER_GENDER");
 	String UpdateSNS = (String)session.getAttribute("AUTH_USER_SNS");
 %>
@@ -52,22 +47,26 @@ text-align: center;
 			<form action="<%=request.getContextPath() %>/UpdateMemberHandler.do" method = "post" name="UpdateSnsForm">
 				<input type="radio" name="updateSnsYN" id="updateSnsY" value="Y" checked="checked"/>동의
 				<input type="radio" name="updateSnsYN" id="updateSnsN" value="N" required="required"/>거절
+				<input type="hidden" value="UpdateSsn" name="Value">
 				<input type="submit" value="변경"/><br/>
 			</form>
 	<%} else {%>		
 			<form action="<%=request.getContextPath() %>/UpdateMemberHandler.do" method = "post" name="UpdateSnsForm">
 				<input type="radio" name="updateSnsYN" id="updateSnsY" value="Y" required="required"/>동의
 				<input type="radio" name="updateSnsYN" id="updateSnsN" value="N" checked="checked"/>거절
+				<input type="hidden" value="UpdateSsn" name="Value">
 				<input type="submit" value="변경"/><br/>
 			</form>	
 				<%}%>
 			<br/>
-			<button onclick="location.href='/views/screens/testView.jsp'">홈으로</button>
+
 			<form action="/views/screens/identify.jsp" method="post" name= "deleteSubmit" id="deleteSubmit">
-			<input type="hidden" value="delete" name="Value"/>
-			<input type="submit" value="회원탈퇴">
+				<input type="hidden" value="delete" name="Value"/>
+				<div class="button-container">	
+					<input type= "button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'"/>
+					<input type="submit" value="탈퇴"/>
+				</div>
 			</form>
-			
 	</form>
 </div>
 </html>

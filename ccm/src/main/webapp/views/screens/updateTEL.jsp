@@ -5,11 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<style>
-		.container{
-		text-align: center;
-		}
-	</style>
+<link href="/resources/css/updateTEL.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 </br></br></br>
@@ -39,8 +35,9 @@
 		tel<br/><input type="text" name="updateTel1" id="updateTel1" placeholder="010" maxlength=3  minlength=3 size=3 required="required"/>-
 				<input type="text" name="updateTel2" id="updateTel2" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/>-
 				<input type="text" name="updateTel3" id="updateTel3" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/><br/>
+				<input type="hidden" value="UpdateTel" name="Value">
 				</br><input type="submit" value="수정"/>
-				<button onclick="self.close()">취소</button>
+				<input type="button" value="취소" onclick="self.close()"/>
 </form>
 <%} %>
 </div>
