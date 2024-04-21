@@ -2,8 +2,8 @@
 @import "common.css";
 
 /*Components*/
-@import "components/favorites.css";
-@import "components/calculator.css";
+@import "/resources/css/components/favorites.css";
+@import "/resources/css/components/calculator.css";
 
 
 /*Screens*/
