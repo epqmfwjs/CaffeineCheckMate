@@ -1,30 +1,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>글작성</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-    function previewImage() {
-        var fileInput = document.getElementById('file');
-        var preview = document.getElementById('preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
- 
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            }
-
-            reader.readAsDataURL(fileInput.files[0]);
+$(document).ready(function() {
+    $.ajax({
+        url: "/getRealImagePath", // 실제 이미지 경로를 반환하는 서블릿 URL
+        type: "GET",
+        data: {
+            imgName: "${param.img}" // 이미지 파일 이름을 전달
+        },
+        dataType: "json",
+        success: function(data) {
+            var realImagePath = data.realImagePath; // 서버에서 받아온 실제 이미지 경로
+            $("#preview").attr("src", realImagePath); // 이미지 경로를 업데이트
+            console.log(realImagePath);
+        },
+        error: function() {
+            alert("이미지 경로를 가져오는데 실패했습니다.");
         }
+    });
+});
+
+function previewImage() {
+    var fileInput = document.getElementById('file');
+    var preview = document.getElementById('preview');
+
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(fileInput.files[0]);
     }
+}
 </script>
+
 </head>
 <body>
-<form action="/CustomBoardAddHandler.do" id="add" name="add" method="post" enctype="multipart/form-data">
-    <p>제목 <input type="text" size="30" id="cus_name" name="cus_name"></p>
-    내용<p><textarea cols="50" rows="10" id="cus_content" name="cus_content"></textarea></p>
+<c:set var="content" value="${param.content}" />
+<c:set var="title" value="${param.title}" />
+<c:set var="img" value="${param.img}" />
+<form action="/CustomBoardUpdateHandler.do" id="add" name="add" method="post" enctype="multipart/form-data">
+ <input type="hidden" id="num" name="num" value="${param.no}" />  
+   <%--  <p>제목<input type="text" size="30" id="cus_name" name="cus_name" value="${title}"></p>
+    내용<p><textarea cols="50" rows="10" id="content" name="content">${content}</textarea></p>
+    이미지: <br/>
+    나옴?:${img}
+    <img id="preview" src="" alt="미리보기" style="max-width: 300px; max-height: 300px;"><br>
+   <p>이미지: <img src="${img}" alt="Image" width="150"></p>  --%>
+   
+   <form action="/CustomBoardUpdateHandler.do" id="add" name="add" method="post" enctype="multipart/form-data">
+    <p>제목 <input type="text" size="30" id="cus_name" name="cus_name" value="${title}"></p>
+    내용<p><textarea cols="50" rows="10" id="cus_content" name="cus_content">${content}</textarea></p>
     이미지: <input type="file" name="file" id="file" onchange="previewImage()"><br/>
     <img id="preview" src="#" alt="미리보기" style="max-width: 300px; max-height: 300px;"><br>
 <td>
@@ -76,7 +110,7 @@
         <option value="디카페인">디카페인</option>
     </select>
 </td>
-    <p><input type="submit" value="작성하기"></p>
+    <p><input type="submit" value="수정하기"></p>
 
 </form>
 </body>

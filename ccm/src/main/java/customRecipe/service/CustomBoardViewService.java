@@ -39,6 +39,9 @@ public class CustomBoardViewService {
 		}
 		return null;
 }
+	
+	
+	
 	public String checkid(HttpServletRequest request, HttpServletResponse response) {
 		Connection con = null;
 		CustomBoardViewDao dao = new CustomBoardViewDao();
@@ -51,11 +54,8 @@ public class CustomBoardViewService {
 			
 			con = ConnectionProvider.getConnection();
 			String dtoid = dao.memid(num,con);
-			System.out.println(dtoid+" :dtoid");
-			System.out.println(id+" :id");
 			
 			if(id !=null && id.equals(dtoid)) {
-			System.out.println("jsp");
 			return "/views/screens/CustomBoardMyView.jsp";
 			}
 		} catch (SQLException e) {

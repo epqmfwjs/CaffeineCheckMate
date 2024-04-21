@@ -54,6 +54,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		response.setContentType("text/html; charset=UTF-8");
 		System.out.println("doGet");
+		
 		String requestURI = request.getRequestURI().toString();
 		String command = requestURI.substring(request.getContextPath().length());
 		String viewPage = null;

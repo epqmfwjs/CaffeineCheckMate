@@ -18,16 +18,16 @@ import customRecipe.dto.CustomBoardAddDto;
 import customRecipe.dto.CustomBoardHashDto;
 import jdbc.JdbcUtil;
 
+public class CustomBoardUpdateService {
 
-public class CustomBoardAddService {
-	
-	public void addList(HttpServletRequest request, HttpServletResponse response) {
-		
+	//게시글 수정
+	public void boardUpdate(HttpServletRequest request, HttpServletResponse response) {
 		Connection con = null;
+		
+		
 		try {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false);
-			
 			
 			 
 			ServletContext context = request.getSession().getServletContext();
@@ -78,6 +78,6 @@ public class CustomBoardAddService {
 			JdbcUtil.close(con);
 		}
 		
-	
-}
+		
+	}
 }

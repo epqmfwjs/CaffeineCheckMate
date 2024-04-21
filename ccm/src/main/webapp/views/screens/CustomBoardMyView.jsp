@@ -6,14 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>CCM</title>
+
 </head>
 <body>
+    <form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
 <c:forEach var="item" items="${list}">
     <li style="display: inline-block; width: 20%;">
         <div>
-         <%--  <p>글번호: ${item.cus_no}</p> --%>
-          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p> 
-          <p>회원아이디: ${item.m_id}</p>
+	 <input type="hidden" id="num" name="num" value="${item.cus_num}" />    
+     <input type="hidden" name="content" id="content" value="${item.cus_content}" />
+     <input type="hidden" name="title" id="title" value="${item.cus_title}" />
+     <input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
+	 <h3>${itme.cus_num}</h3>     
+          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></          <p>회원아이디: ${item.m_id}</p>
           <p>제품아이디: ${item.c_no}</p>
           <p>게시글제목: ${item.cus_title}</p>
           <p>글내용: ${item.cus_content}</p>
@@ -25,7 +30,11 @@
          <%--  <p>누적 좋아요 수: ${item.cus_sumgood}</p>
           <p>이미지번호: ${item.cus_img_no}</p> --%>
           </c:forEach>  
- <button type="button" onclick="location.href='/CustomBoardDelete.do'">삭제</button>
- <button type="button" onclick="location.href='/views/screens/CustomBoardUpdate.jsp'">수정</button>
+<div style="display: flex; align-items: center;">
+        <input type="hidden" name="no" value="${param.CUS_NUM}" />
+        <button type="submit">수정</button>
+    </form>
+    <button type="button" onclick="location.href='/CustomBoardDelete.do'">삭제</button>
+</div>
 </body>
 </html>
