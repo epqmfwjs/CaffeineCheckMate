@@ -46,11 +46,9 @@ public class CusReplyAddHandler extends HttpServlet {
 			conn = ConnectionProvider.getConnection();
             CusReplyDao replyDao = new CusReplyDao();
             replyDao.insertReply(conn, reply);
-            response.getWriter().write("성공");
             
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write("실패");
             
         } finally {
             JdbcUtil.close(conn);

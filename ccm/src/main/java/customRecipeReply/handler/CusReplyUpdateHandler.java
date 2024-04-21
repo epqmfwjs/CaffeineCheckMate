@@ -56,12 +56,6 @@ public class CusReplyUpdateHandler extends HttpServlet {
         	// 업데이트 성공 시 result 값이 1 이상, 실패 시 0이 result에 담긴다
         	int result = replyDao.updateReply(conn, reply);
             
-        	if (result > 0) {
-        		response.getWriter().write("성공");
-        	} else {
-        		response.getWriter().write("실패");
-        	}
-
         	} catch (Exception e) {
         		e.printStackTrace();
         		response.getWriter().write("실패");

@@ -18,9 +18,7 @@ public class CusReplyDao {
 	
 	
 	/*댓글 목록*/
-	public ArrayList <CusReplyDto> selectReplyList(Connection conn, int cus_no, int page, int size){
-		
-		int start = (page - 1) * size;
+	public ArrayList <CusReplyDto> selectReplyList(Connection conn, int cus_no){
 		
 		ArrayList<CusReplyDto> cus_re_list = new ArrayList<>();
 		
@@ -28,18 +26,15 @@ public class CusReplyDao {
 		ResultSet rset = null;
 		
 		String sql = "SELECT M.M_ID, M.M_NICKNAME, C.CUS_NO, R.CUS_RE_NO, R.CUS_RE_REGDATE, R.CUS_RE_CONTENT "
-	            + "FROM CUSTOM_REPLY R "
-	            + "JOIN CUSTOM C ON C.CUS_NO = R.CUS_NO "
-	            + "JOIN MEMBER M ON M.M_ID = R.M_ID "
-	            + "WHERE C.CUS_NO = ? "
-	            + "ORDER BY R.CUS_RE_NO DESC " // 댓글 번호의 역순으로 정렬
-	            + "LIMIT ?, ?"; // 페이징 처리를 위한 LIMIT 절 추가
+				+ "FROM CUSTOM_REPLY R "
+				+ "JOIN CUSTOM C ON C.CUS_NO = R.CUS_NO "
+				+ "JOIN MEMBER M ON M.M_ID = R.M_ID "
+				+ "WHERE C.CUS_NO = ? "
+				+ "ORDER BY R.CUS_RE_REGDATE DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cus_no);
-			pstmt.setInt(2, start);
-	        pstmt.setInt(3, size);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
