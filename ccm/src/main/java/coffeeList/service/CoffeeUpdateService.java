@@ -14,22 +14,28 @@ public class CoffeeUpdateService {
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
 	
 	//업데이트를 처리하는 메서드
-	public void updateCoffee(Coffee coffee) {
+	public void updateCoffee(Coffee coffee, String saveDirectory) {
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			//Detail을 재활용하여 existingCoffee에 변수 저장 
-			/*Coffee existingCoffee = coffeeListDao.getCoffeeDetail(conn, coffee.getC_NO());
-			 이전값과 비교 : !null, C_IMG_REAL이 새로운 파일과 경로가 다른 경우에 삭제 진행 로직
-			if (existingCoffee != null && 
-				!existingCoffee.getC_IMG_REAL().equals(coffee.getC_IMG_REAL())) {
-				//파일 객체 생성하여 기존 이미지 삭제
-				new File(existingCoffee.getC_IMG_REAL()).delete();
-			}*/
-			coffeeListDao.updateCoffee(coffee, conn);
+			//수정 후 이전 사진을 삭제하는 로직
+			Coffee existingCoffee = coffeeListDao.fileDeleteCoffee(coffee.getC_NO(), conn);
+			//!null & 수정 전 이전 정보와 현재의 C_IMG_REAL 문자열 동일한 지 비교
+			if (existingCoffee != null && !existingCoffee.getC_IMG_REAL().equals(coffee.getC_IMG_REAL())) {
+				String pathDelete = saveDirectory + "/" + existingCoffee.getC_IMG_REAL();
+				File oldFile = new File(pathDelete);
+				if (oldFile.exists()) {
+					boolean isDeleted = oldFile.delete();
+					System.out.println("수정 후 이전 사진 삭제 성공");
+				} else {
+					System.out.println("파일 경로 오류" + pathDelete);
+				}
+			}
+			
+				coffeeListDao.updateCoffee(coffee, conn);
 			
 			conn.commit();
 		}catch (SQLException e) {

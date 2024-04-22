@@ -12,9 +12,11 @@ public class CoffeeDeleteHandler implements CommandHandler{
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try {
 			int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
-			System.out.println("여기까지");
+			//사진 삭제를 위해 파일 경로 얻어서 서비스로 보내기
+			String saveDirectory = request.getServletContext().getRealPath("/resources/testimg");
+			
 			CoffeeDeleteService coffeeDeleteService = new CoffeeDeleteService();
-			coffeeDeleteService.deleteCoffee(coffeeNo);
+			coffeeDeleteService.deleteCoffee(coffeeNo, saveDirectory);
 			return "/coffeeList.do";
 		} catch (Exception e) {
 			System.out.println("Coffee delete handler 에러 메시지: " + e.getMessage());

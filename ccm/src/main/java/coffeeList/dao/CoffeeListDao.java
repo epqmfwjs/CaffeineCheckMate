@@ -102,8 +102,105 @@ public class CoffeeListDao {
         }
         return coffeeDetail;
     }
-
-
+    //게시물 추가하는 DAO
+	public void AddCoffee(Coffee coffee,Connection conn) throws SQLException {
+		String listAddSQL = "INSERT INTO COFFEELIST ("
+						  + "C_NAME, C_BRAND, C_CAFFEINE, C_SACCHARIDE, "
+						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL, C_IMG_COPY) "
+						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listAddSQL);
+			pstmt.setString(1, coffee.getC_NAME());
+			pstmt.setString(2, coffee.getC_BRAND());
+			pstmt.setInt(3, coffee.getC_CAFFEINE());
+			pstmt.setInt(4, coffee.getC_SACCHARIDE());
+			pstmt.setInt(5, coffee.getC_CALORIE());
+			pstmt.setString(6, coffee.getC_CONTENT());
+			pstmt.setString(7, coffee.getC_TYPE());
+			pstmt.setString(8, coffee.getC_STAGE());
+			pstmt.setString(9, coffee.getC_IMG_REAL());
+			pstmt.setString(10, coffee.getC_IMG_COPY());
+			
+			
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	//게시물 수정 관련 DAO
+	public void updateCoffee(Coffee coffee, Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String listUpdateSQL = "UPDATE COFFEELIST "
+				+ "SET C_NAME = ?,  C_BRAND = ?, C_CAFFEINE = ?, C_SACCHARIDE = ?, "
+				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ?, C_IMG_COPY = ? "
+				+ "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listUpdateSQL);
+			pstmt.setString(1, coffee.getC_NAME());
+			pstmt.setString(2, coffee.getC_BRAND());
+			pstmt.setInt(3, coffee.getC_CAFFEINE());
+			pstmt.setInt(4, coffee.getC_SACCHARIDE());
+			pstmt.setInt(5, coffee.getC_CALORIE());
+			pstmt.setString(6, coffee.getC_CONTENT());
+			pstmt.setString(7, coffee.getC_TYPE());
+			pstmt.setString(8, coffee.getC_STAGE());
+			pstmt.setString(9, coffee.getC_IMG_REAL());
+			pstmt.setString(10, coffee.getC_IMG_COPY());
+			pstmt.setInt(11, coffee.getC_NO());
+			System.out.println("다오 왔뎅");
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	//게시물 삭제 관련 DAO
+	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String listDeleteSQL = "DELETE FROM COFFEELIST "+
+							   "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listDeleteSQL);
+			pstmt.setInt(1, coffeeNo);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	//게시물 사진 수정,삭제 관련 DAO(수정, 삭제 후 이전 사진 파일 삭제)
+	public Coffee fileDeleteCoffee(int coffeeNo, Connection conn) throws SQLException{
+		String fileDeleteSQL = "SELECT C_NO, C_IMG_REAL "
+							 + "FROM COFFEELIST "
+							 + "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Coffee coffeeFileDelete = null;
+		
+		try {
+			pstmt = conn.prepareStatement(fileDeleteSQL);
+			pstmt.setInt(1, coffeeNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				coffeeFileDelete = new Coffee(rs.getInt("C_NO"), 
+											  rs.getString("C_IMG_REAL")
+											  );
+			}
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return coffeeFileDelete;
+	}
+	
+	
+	// -------------------------------------캘린더--------------------------------------------------
+    
 	public Coffee selectByCoffeeNo(int coffeeNo, Connection conn) throws SQLException {
 		System.out.println("coffeelistdao1");
 		PreparedStatement pstmt = null;
@@ -177,76 +274,4 @@ public class CoffeeListDao {
 			JdbcUtil.close(rs);
 		}
 	}
-	
-	public void AddCoffee(Coffee coffee,Connection conn) throws SQLException {
-		String listAddSQL = "INSERT INTO COFFEELIST ("
-						  + "C_NAME, C_BRAND, C_CAFFEINE, C_SACCHARIDE, "
-						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL, C_IMG_COPY) "
-						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		//ㅋㅋㅋ... 아 쿼리문에 세미콜론 제발
-		PreparedStatement pstmt = null;
-		
-		try {
-			pstmt = conn.prepareStatement(listAddSQL);
-			pstmt.setString(1, coffee.getC_NAME());
-			pstmt.setString(2, coffee.getC_BRAND());
-			pstmt.setInt(3, coffee.getC_CAFFEINE());
-			pstmt.setInt(4, coffee.getC_SACCHARIDE());
-			pstmt.setInt(5, coffee.getC_CALORIE());
-			pstmt.setString(6, coffee.getC_CONTENT());
-			pstmt.setString(7, coffee.getC_TYPE());
-			pstmt.setString(8, coffee.getC_STAGE());
-			pstmt.setString(9, coffee.getC_IMG_REAL());
-			pstmt.setString(10, coffee.getC_IMG_COPY());
-			
-			
-			pstmt.executeUpdate();
-		} finally {
-			JdbcUtil.close(pstmt);
-		}
-	}
-	
-	public void updateCoffee(Coffee coffee, Connection conn) throws SQLException {
-		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
-		String listUpdateSQL = "UPDATE COFFEELIST "
-				+ "SET C_NAME = ?,  C_BRAND = ?, C_CAFFEINE = ?, C_SACCHARIDE = ?, "
-				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ?, C_IMG_COPY = ? "
-				+ "WHERE C_NO = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			pstmt = conn.prepareStatement(listUpdateSQL);
-			pstmt.setString(1, coffee.getC_NAME());
-			pstmt.setString(2, coffee.getC_BRAND());
-			pstmt.setInt(3, coffee.getC_CAFFEINE());
-			pstmt.setInt(4, coffee.getC_SACCHARIDE());
-			pstmt.setInt(5, coffee.getC_CALORIE());
-			pstmt.setString(6, coffee.getC_CONTENT());
-			pstmt.setString(7, coffee.getC_TYPE());
-			pstmt.setString(8, coffee.getC_STAGE());
-			pstmt.setString(9, coffee.getC_IMG_REAL());
-			pstmt.setString(10, coffee.getC_IMG_COPY());
-			pstmt.setInt(11, coffee.getC_NO());
-			System.out.println("다오 왔뎅");
-			pstmt.executeUpdate();
-		} finally {
-			JdbcUtil.close(pstmt);
-		}
-	}
-	
-	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
-		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
-		String listDeleteSQL = "DELETE FROM COFFEELIST "+
-							   "WHERE C_NO = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			pstmt = conn.prepareStatement(listDeleteSQL);
-			pstmt.setInt(1, coffeeNo);
-			pstmt.executeUpdate();
-		} finally {
-			JdbcUtil.close(pstmt);
-		}
-	}
-
 }

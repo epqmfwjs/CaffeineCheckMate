@@ -1,7 +1,7 @@
 package coffeeList.dto;
 
 public class Coffee {
-	//생성자
+	//필드
 	int C_NO;			//커피
 	String C_NAME;		//제품 이름
 	String C_BRAND;		//브랜드
@@ -15,6 +15,7 @@ public class Coffee {
 	String C_IMG_COPY;	//이미지 생성 후 부여됨 / 실제 불러오는 이미지 파일 이름
 	int C_FAVORITE;		//총 즐겨찾기 수
 	String C_IMAGE;		//C_IMG_COPY와 동일 / 팀원과 분할하여 구현 진행
+	
 	
 	//list 조회
 	public Coffee(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE,String C_IMG_COPY) {
@@ -68,14 +69,21 @@ public class Coffee {
 		this.C_IMG_REAL = C_IMG_REAL;
 		this.C_IMG_COPY = C_IMG_COPY;
 	}
-
+	//사진파일 삭제
+	public Coffee(int C_NO,String C_IMG_REAL) {
+		this.C_NO = C_NO;
+		this.C_IMG_REAL = C_IMG_REAL;
+	}
+	
 	//카페인, 이미지 조회 (계산기)
 	public Coffee(int C_NO, int C_CAFFEINE, String C_IMAGE) {
 		this.C_NO=C_NO;
 		this.C_CAFFEINE=C_CAFFEINE;
 		this.C_IMAGE=C_IMAGE;
 	}
-		
+	
+	
+	//하기 게터세터 메서드----------------------------------------------------
 	public String getC_IMAGE() {
 		return C_IMAGE;
 	}

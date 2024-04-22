@@ -72,7 +72,7 @@ public class CoffeeUpdateHandler implements CommandHandler {
 					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal,cimgcopy,coffeeNo);
 			
 			CoffeeUpdateService coffeeUpdateService = new CoffeeUpdateService();
-			coffeeUpdateService.updateCoffee(coffee);
+			coffeeUpdateService.updateCoffee(coffee,saveDirectory);
 			return "/coffeeList.do";
 		}catch(Exception e) {
 			System.out.println("coffee update handler 에러 메시지: " + e.getMessage());
