@@ -13,18 +13,15 @@
     이미지: <input type="file" name="file" id="file" onchange="previewImage()"><br/>
     <img id="preview" src="#" alt="미리보기" style="max-width: 300px; max-height: 300px;"><br>
     <input type="hidden" id="num" name="num" value="${item.cus_num}" />
-    <input type="hidden" id="img" name="img" value="${img}" />
-<td>
-	<select name="shot" id="shot">
-		<option value="0">샷추가</option>
-		<option value="0">없음</option>
-		<option value="1">1번</option>
-		<option value="2">2번</option>
-		<option value="3">3번</option>
-		<option value="4">4번이상</option>
-	</select>
-</td>
-<td>
+<div class="selection-group">
+    <select name="shot" id="shot">
+        <option value="0">샷추가</option>
+        <option value="0">없음</option>
+        <option value="1">1번</option>
+        <option value="2">2번</option>
+        <option value="3">3번</option>
+        <option value="4">4번이상</option>
+    </select>
     <select name="milkType" id="milkType">
         <option value="noMilk">우유 변경 없음</option>
         <option value="저지방우유">저지방 우유</option>
@@ -33,8 +30,6 @@
         <option value="두유">두유</option>
         <option value="코코넛밀크">코코넛 우유</option>
     </select>
-</td>
-<td>
     <select name="syrupType" id="syrupType">
         <option value="noSyrup">시럽 추가 없음</option>
         <option value="바닐라시럽">바닐라 시럽</option>
@@ -44,8 +39,6 @@
         <option value="시나몬시럽">시나몬 시럽</option>
         <option value="메이플시럽">메이플 시럽</option>
     </select>
-</td>
-<td>
     <select name="toppingType" id="toppingType">
         <option value="noTopping">토핑 추가 없음</option>
         <option value="휘핑크림">휘핑 크림</option>
@@ -56,13 +49,11 @@
         <option value="쿠키크럼블">쿠키 크럼블</option>
         <option value="펄">펄</option>
     </select>
-</td>
-<td>
     <select name="decaffeinated" id="decaffeinated">
         <option value="일반">일반</option>
         <option value="디카페인">디카페인</option>
     </select>
-</td>
+</div>
     <p><input type="submit" value="작성하기"></p>
 
 </form>

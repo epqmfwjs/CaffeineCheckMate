@@ -39,6 +39,6 @@
         <input type="submit" value="수정">
     </form>   
 </div>
-<button type="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
+<button type="button"id="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
 </body>
 </html>

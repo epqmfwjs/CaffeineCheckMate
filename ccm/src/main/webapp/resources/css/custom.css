@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-div{
+div.divdropdown{
 float: right;
 }
 
@@ -9,7 +9,7 @@ float: right;
   position: relative;
 }
 
- button{
+ button.dropdown{
   border:none;
   border-radius:5px;
   padding:15px 30px;
@@ -49,7 +49,6 @@ button:hover{
 }
 
 
-/*/////////////////  */
 
 #searchInput {
 	width : 500px;
@@ -71,39 +70,8 @@ button:hover{
     max-width: 100%; /* 이미지 크기 조절 */
 }
 
-
-
      .dropdown {
     display: inline-block;
     margin-right: 10px; /* 각 드롭다운 사이의 간격을 위한 마진 */
 }
 
-/* .dropdown-toggle {
-    display: inline-block;
-    width: auto; 너비를 자동으로 설정하여 내용에 맞게 조절
-    text-align: center;
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.dropdown-menu {
-    display: none;
-    text-align: center;
-    width: auto; 너비를 자동으로 설정하여 내용에 맞게 조절
-    min-width: 100%; 최소 너비 설정
-}
-
-.dropdown-item {
-    display: block;
-    width: auto; 너비를 자동으로 설정하여 내용에 맞게 조절
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.dropdown-item:hover {
-    background-color: #e9ecef;
-}
- */

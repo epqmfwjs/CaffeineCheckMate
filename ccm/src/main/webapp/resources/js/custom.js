@@ -6,7 +6,7 @@ $(document).ready(function(){
 	list(allcount);
 	
 	 $('#searchInput').keypress(function(event) {
-        if (event.which === 13) { // Enter 키 코드
+        if (event.which === 13) { 
             var searchTerm = $('#searchInput').val();
 			
             $.ajax({
@@ -28,6 +28,16 @@ $(document).ready(function(){
     });
 	});
 	
+$(document).ready(function(){
+    $("#searchInput").focus(function(){
+        $(this).removeAttr('placeholder');
+    });
+
+    $("#searchInput").blur(function(){
+        $(this).attr('placeholder', 'Search');
+    });
+});
+
 /*$(document).ready(function() {
     $.ajax({
         url: "/getRealImagePath", // 실제 이미지 경로를 반환하는 서블릿 URL
@@ -256,17 +266,6 @@ function list(allcount){
 	});//ajax끝 			
 }
 
-$(document).ready(function(){
-    // 포커스가 들어갔을 때
-    $("#search").focus(function(){
-        $(this).removeAttr('placeholder');
-    });
-
-    // 포커스가 나갔을 때
-    $("#search").blur(function(){
-        $(this).attr('placeholder', 'Search');
-    });
-});
 
 
 

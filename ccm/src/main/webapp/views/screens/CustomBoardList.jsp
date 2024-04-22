@@ -1,10 +1,10 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="/resources/css/custom.css">
+
 <meta charset="UTF-8">
 <title>커스텀레시피</title>
 <a><h3>커스텀레시피</h3></a>
@@ -12,55 +12,7 @@
 
 <script type="text/javascript"> var allcount = ${allcount}; </script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>
-<style>
-div{
-float: right;
-}
 
-.dropdown {
-  display: inline-block;
-  position: relative;
-}
-
- button{
-  border:none;
-  border-radius:5px;
-  padding:15px 30px;
-  font-size:18px;
-  cursor:pointer;
-} 
- 
-button:hover{
-  background-color:#ddd;
-} 
-
-.dropdown-options {
-  display: none;
-   position: absolute;
-  overflow: auto;
-  background-color:#fff;
-  border-radius:5px;
-  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4); 
-}
-
- .dropdown:hover .dropdown-options {
-   display: block; 
-} 
-
-.dropdown-options li {
-  display: block;
-  color: #000000;
-  padding: 5px;
-  text-decoration: none;
-  padding:20px 40px;
-}
-
-.dropdown-options li:hover {
-  color: #0a0a23;
-  background-color: #ddd;
-  border-radius:5px;
-}
-</style>
 
 </head>
 <body>
@@ -143,11 +95,11 @@ button:hover{
 </div>
 
 
-<button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
-
-<button type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
 검색 : <input type="text" id="searchInput" placeholder="Search">
 <div id="searchResult"></div>
+
+<button id="edit" class="button" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
+<button id="test" class="button"type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
 
 
 <ul id="board"></ul>
