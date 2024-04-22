@@ -168,6 +168,10 @@
 	    <!-- 부트스트랩 자바스크립트 추가 -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+
+		<script>
+			const isAuth = "${isAuth}"==="true"? true : false;
+		</script>
 		<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 		<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
