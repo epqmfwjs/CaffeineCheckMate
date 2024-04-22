@@ -27,12 +27,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/customReply.js"></script>
 
+<style>
+.modal-content {
+    overflow-y: auto;
+    max-height: 60vh;
+    position: relative;
+}
+
+ .reply-input-container {
+      position: fixed;
+      top: 1calc(50% - 120px); /* 모달 내부 상단에 고정 */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      padding: 0px;
+      width: 500px;
+      box-sizing: border-box;
+  }
+</style>
 
 
 </head>
 <body>
 	<!--댓글 입력-->
-	<div align="center">
+	<div class="reply-input-container" align="center">
 	    <table style="width: 500px;">
 	        <tr>
 	            <td rowspan="2" style="vertical-align: middle; text-align: center;">
@@ -59,7 +77,6 @@
 	<!-- 댓글 수정 -->
 	<div id="editModal" class="modal" align="center" style="display: none;">
 	    <div class="modal-content">
-	        <span class="close">&times;</span> 
 	        <!-- 닫힘 버튼 -->
 	        <input id="editedReply" class="form-control" style="width: 350px; height: 30px;">
 	        <button id="saveBtn" class="btn" onclick="saveEditedReply();" style="width: 80px; height: 30px;">수정저장</button>

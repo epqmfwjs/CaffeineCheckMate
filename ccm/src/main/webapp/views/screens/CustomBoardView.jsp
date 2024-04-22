@@ -7,6 +7,36 @@
 <head>
 <meta charset="UTF-8">
 <title>CCM</title>
+<%
+    // 세션에서 AUTH_USER_ID 값을 가져와서 JavaScript 변수에 할당
+    HttpSession sessionId = request.getSession(false);
+    String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
+%>
+<input type="hidden" id="m_id_hidden" value="<%= m_id %>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    /* 모달을 위한 스타일 */
+    .modal-container {
+        display: none; /* 기본적으로 모달은 숨겨져 있어야 함 */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 함 */
+        z-index: 9999; /* 다른 요소 위에 모달이 나타나도록 함 */
+    }
+
+    .modal-content {
+        background-color: #fff;
+        width: 500px;
+        margin: 100px auto; /* 화면 중앙에 위치하도록 함 */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
+    }
+</style>
+
 </head> 
 <body>
 <c:forEach var="item" items="${list}">
@@ -44,8 +74,10 @@
 	
 	        // AJAX를 통해 다른 JSP 페이지를 불러와 모달에 표시
 	        var xhr = new XMLHttpRequest();
+	        
 	        var encodedCusNo = encodeURIComponent(cus_no);
 	        var m_id = document.getElementById("m_id_hidden").value;
+	        
 	        xhr.open("POST", "<%=request.getContextPath()%>/views/screens/customReply.jsp?cus_no=" + encodedCusNo);
 	        xhr.send();
 	        

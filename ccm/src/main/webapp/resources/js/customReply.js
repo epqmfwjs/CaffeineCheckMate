@@ -2,13 +2,12 @@
 var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
 var m_id = document.getElementById("m_id_hidden").value;
 
-/*자동 함수 호출*/
 var autoRefresh;
-$(function(){
-    autoRefresh = setInterval(function() {
-        cusReplyList(cus_no);
-    }, 1000);
-})
+
+//시작시 목록 조회 
+$(document).ready(function() {
+    cusReplyList(cus_no); // 페이지가 로드될 때 케시글 목록을 불러옴
+});
 
 
 /*댓글 조회 */
@@ -67,12 +66,13 @@ function insertReply(){
         data : JSON.stringify(data),
         type : "POST",
         dataType: "json",
-        success : function(data){
-            
-        }
+   }), $(function(){
+    autoRefresh = setInterval(function() {
+        cusReplyList(cus_no);
+    }, 1000);
     });
+    clearInterval(autoRefresh); // 갱신 함수 중지
 }
-
 
 /*댓글 수정 버튼 작동*/
 function updateReply(cus_re_no) {
@@ -80,7 +80,11 @@ function updateReply(cus_re_no) {
     $("#editedReply").val(editedContent);
     $("#editModal").css("display", "block");
     $("#saveBtn").attr("data-cus-re-no", cus_re_no);
-    
+    $(function(){
+    autoRefresh = setInterval(function() {
+        cusReplyList(cus_no);
+    }, 1000);
+    });
     clearInterval(autoRefresh); // 갱신 함수 중지
 }
 
@@ -96,17 +100,9 @@ function saveEditedReply() {
         data: JSON.stringify(data),
         type: "POST",
         dataType: "json",
-        success: function(data) { //현재 if문까지 가지 않음
-           },
-        complete: function() {
-            $("#editModal").css("display", "none"); // AJAX 요청 완료 후 수정 입력창 닫기
-            autoRefresh = setInterval(function() {
-            	cusReplyList(cus_no);
-            }, 1000);
-        }
     });
+    $("#editModal").css("display", "none");
 }
-
 
 /* 댓글 삭제 */
 function deleteReply(cus_re_no) {
@@ -115,8 +111,10 @@ function deleteReply(cus_re_no) {
         data: {cus_re_no: cus_re_no},
         type: "POST",
         dataType: "json",
-        success: function(data) {
-           
-        }
+  }), $(function(){
+    autoRefresh = setInterval(function() {
+        cusReplyList(cus_no);
+    }, 1000);
     });
+    clearInterval(autoRefresh); // 갱신 함수 중지
 }
