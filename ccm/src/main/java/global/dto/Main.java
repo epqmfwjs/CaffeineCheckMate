@@ -1,28 +1,28 @@
 package global.dto;
+import java.util.HashMap;
 /*
  * 로그인 페이지에 들어갈 요소 정리
  */
-import java.util.Map;
 
 import favorite.dto.Favorite;
 
 public class Main {
-	Map<Integer, Object> favorties;
-	int calculationResult;
+	HashMap<Integer, Object> favorites;
+	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";
 //	추천레시피 관련필드
 	
-	public Main(Map favMap, int  calculatedResult) { //수정필요
-		this.favorties = favMap;
+	public Main(HashMap favMap, int  calculatedResult) { //수정필요
+		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
 	}
 	
-	public Map<Integer, Object> getFavorties() {
-		return favorties;
+	public HashMap<Integer, Object> getfavorites() {
+		return favorites;
 	}
-	public void setFavorties(Map<Integer, Object> favorties) {
-		this.favorties = favorties;
+	public void setfavorites(HashMap<Integer, Object> favorites) {
+		this.favorites = favorites;
 	}
 	public int getCalculationResult() {
 		return calculationResult;

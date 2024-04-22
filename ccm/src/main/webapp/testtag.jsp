@@ -1,18 +1,12 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/resources/css/custom.css">
-<meta charset="UTF-8">
-<title>커스텀레시피</title>
-<a><h3>커스텀레시피</h3></a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-<script type="text/javascript"> var allcount = ${allcount}; </script>
-<script type="text/javascript" src="/resources/js/custom.js"></script>
-<style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style> 
 div{
 float: right;
 }
@@ -62,19 +56,97 @@ button:hover{
 }
 </style>
 
+
+<script>
+
+$(document).ready(function(){
+		let shot = "추가없음";
+		let milk = "nomilk";
+		let syrup= "nosyrup";
+		let topping = "notopping";
+		let decaf = "decaf";
+		
+		 $(".dropdown").click(function(){
+		        $(this).next(".dropdown-options").slideToggle();
+		    });
+
+		    $("#shotButton + .dropdown-options li").click(function(){
+		        shot = $(this).attr("id");
+	            let selectedText = $(this).text();
+	            $("#shotButton").text(selectedText);
+	            $("#shotButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 샷:", shot);
+		        sendData();
+		    });
+		    $("#milkButton + .dropdown-options li").click(function(){
+		        milk = $(this).attr("id");
+	            let selectedText = $(this).text();
+	            $("#milkButton").text(selectedText);
+	            $("#milkButton").next(".dropdown-options").slideToggle();
+		        console.log("선택된 우유:", milk);
+		        sendData();
+		    });
+
+		    $("#syrupButton +.dropdown-options li").click(function(){
+		        syrup = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 시럽:", syrup);
+		        sendData();
+		    });
+
+		    $("#toppingButton +.dropdown-options li").click(function(){
+		        topping = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 토핑:", topping);
+		        sendData();
+		    });
+
+		    $("#decafButton +.dropdown-options li").click(function(){
+		        decaf = $(this).attr("id");
+		        $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		        $(this).closest(".dropdown-options").slideToggle();
+		        console.log("선택된 디카페인:", decaf);
+		        sendData();
+		    });
+
+		    function sendData() {
+		        $.ajax({
+		            url: '/Jsontest.do',
+		            type: 'get',
+		            data: {
+		            	"shot" : shot,
+		                "milk": milk,
+		                "syrup": syrup,
+		                "topping": topping,
+		                "decaf": decaf
+		            },
+		            datatype: "json",
+		            success: function(data) {
+		                // 성공 시 로직
+		            },
+		            error: function(error) {
+		                // 에러 시 로직
+		            }
+		        });
+		    }
+		});
+</script>
 </head>
 <body>
+
 <div class="divdropdown">
     <button id="shotButton" class="dropdown" type="button" data-toggle="dropdown">
         샷추가
     </button>
     <div class="dropdown-options">
         <ul>
-            <li id="0" data-value="noshot">추가없음</li>
-            <li id="1" data-value="샷추가">샷추가</li>
-            <li id="2" data-value="2샷추가">2샷추가</li>
-            <li id="3" data-value="3샷추가">3샷추가</li>
-            <li id="4" data-value="4샷추가">4샷추가</li>
+            <li id="nomilk" data-value="noshot">추가없음</li>
+            <li id="샷추가" data-value="샷추가">샷추가</li>
+            <li id="2샷추가" data-value="2샷추가">2샷추가</li>
+            <li id="3샷추가" data-value="3샷추가">3샷추가</li>
+            <li id="4샷추가" data-value="4샷추가">4샷추가</li>
         </ul>
     </div>
 </div>
@@ -142,13 +214,5 @@ button:hover{
     </div>
 </div>
 
-
-<button type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">글 작성</button>
-<button type="button" onclick="location.href='/views/screens/testView.jsp'">test View</button>
-검색 : <input type="text" id="searchInput" placeholder="Search">
-<div id="searchResult"></div>
-
-
-<ul id="board"></ul>
 </body>
 </html>

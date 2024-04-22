@@ -12,9 +12,9 @@ public class CustomBoardAddHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response)
 	{
 		CustomBoardAddService service = new CustomBoardAddService();
-		 
-		
 		service.addList(request, response);
+		
+		
 		
 		return "/CustomBoardListHandler.do";
 		}

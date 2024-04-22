@@ -1,4 +1,4 @@
-package customRecipe.handler;
+package customRecipe.service;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,26 +24,20 @@ import jdbc.JdbcUtil;
 public class CustomBoardJson extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        JSONObject json = new JSONObject();
          
         CustomBoardListDao dao = new CustomBoardListDao();
         Connection con = null;
         
         
+        JSONObject json = new JSONObject();
 		try {
 			con = ConnectionProvider.getConnection();
-//			ArrayList<CustomBoardListDto> list= dao.getallList(con);
+
 			JSONArray jsonArray = new JSONArray();
-			
 			int allcount = Integer.parseInt(request.getParameter("allcount"));
-			 
 			int acount  = dao.allCount(con); //모든게시글 count	
 			
-			
 			ArrayList<CustomBoardListDto> list= dao.readlist(acount,allcount, con);
-			//어떻게수정하지
-			
-			
 			
 			for (CustomBoardListDto item : list) {
 				JSONObject jsonObject = new JSONObject();
@@ -57,9 +51,7 @@ public class CustomBoardJson extends HttpServlet {
 				jsonObject.put("cus_sumgood", item.getcus_sumgood());
 				
 				jsonArray.add(jsonObject);
-				
 			}
-			 
 
 			json.put("list", jsonArray);
 			response.setContentType("application/json; charset=utf-8");

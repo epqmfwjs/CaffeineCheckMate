@@ -26,7 +26,7 @@ public class Coffee {
 	
 	//list Detail 조회
 	public Coffee
-		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY) {
+		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY) {
 		this.C_NO = C_NO;
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
@@ -50,8 +50,9 @@ public class Coffee {
 	this.C_IMG_REAL = C_IMG_REAL;
 	}
 
-	public Coffee(int C_NO, int C_CAFFEINE, String C_IMAGE) {
+	public Coffee(int C_NO, String C_NAME, int C_CAFFEINE, String C_IMAGE) {
 		this.C_NO=C_NO;
+		this.C_NAME = C_NAME;
 		this.C_CAFFEINE=C_CAFFEINE;
 		this.C_IMAGE=C_IMAGE;
 	}
@@ -141,5 +142,6 @@ public class Coffee {
 	public void setC_CAFFAINE(int c_CAFFAINE) {
 		C_CAFFEINE = c_CAFFAINE;
 	}
+	
 }	
 

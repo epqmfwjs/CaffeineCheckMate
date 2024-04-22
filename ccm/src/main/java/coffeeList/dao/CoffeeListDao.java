@@ -30,7 +30,7 @@ public class CoffeeListDao {
 					rs.getInt("C_NO"),
 					rs.getString("C_NAME"),
 					rs.getString("C_BRAND"),
-					rs.getInt("C_CAFFAINE"),
+					rs.getInt("C_CAFFEINE"),
 					rs.getString("C_IMG_COPY")
 				); coffeeList.add(rsCoffeeView);
 			}
@@ -58,7 +58,7 @@ public class CoffeeListDao {
                 		rs.getInt("C_NO"), 
                 		rs.getString("C_NAME"), 
                 		rs.getString("C_BRAND"),
-                        rs.getInt("C_CAFFAINE"), 
+                        rs.getInt("C_CAFFEINE"), 
                         rs.getInt("C_SACCHARIDE"),
                         rs.getInt("C_CALORIE"),
                         rs.getString("C_CONTENT"),
@@ -86,7 +86,8 @@ public class CoffeeListDao {
 			if(rs.next()) {
 				coffee = new Coffee(
 						rs.getInt("C_NO"),
-						rs.getInt("C_CAFFAINE"),
+						rs.getString("C_NAME"),
+						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						);
 			}
@@ -129,21 +130,65 @@ public class CoffeeListDao {
 		ResultSet rs = null;
 		HashMap<Integer,Coffee> coffeeFavMap = new HashMap<Integer, Coffee>();
 		try {
-			String query = "select C_NO, C_CAFFAINE, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
+			String query = "select C_NO, C_CAFFEINE, C_NAME, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
 				coffeeFavMap.put(rs.getInt("idx"),new Coffee(
 						rs.getInt("C_NO"),
-						rs.getInt("C_CAFFAINE"),
+						rs.getString("C_NAME"),
+						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						));
+				System.out.println("rs,ext");
 			}
+			System.out.println("dao :"+coffeeFavMap.size());
 			return coffeeFavMap;
 		} finally {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(rs);
+		}
+	}
+	
+	public void AddCoffee(Coffee coffee,Connection conn) throws SQLException {
+		String listAddSQL = "INSERT INTO COFFEELIST ("
+						  + "C_NAME, C_BRAND, C_CAFFAINE, C_SACCHARIDE, "
+						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL) "
+						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		//ㅋㅋㅋ... 아 쿼리문에 세미콜론 제발
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listAddSQL);
+			pstmt.setString(1, coffee.getC_NAME());
+			pstmt.setString(2, coffee.getC_BRAND());
+			pstmt.setInt(3, coffee.getC_CAFFEINE());
+			pstmt.setInt(4, coffee.getC_SACCHARIDE());
+			pstmt.setInt(5, coffee.getC_CALORIE());
+			pstmt.setString(6, coffee.getC_CONTENT());
+			pstmt.setString(7, coffee.getC_TYPE());
+			pstmt.setString(8, coffee.getC_STAGE());
+			pstmt.setString(9, coffee.getC_IMG_REAL());
+			
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	
+	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String listDeleteSQL = "DELETE FROM COFFEELIST "+
+							   "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(listDeleteSQL);
+			pstmt.setInt(1, coffeeNo);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
 		}
 	}
 }

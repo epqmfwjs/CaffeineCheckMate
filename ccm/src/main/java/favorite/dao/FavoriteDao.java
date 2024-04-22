@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Map;
 
-import connection.ConnectionProvider;
 import favorite.dto.Favorite;
 import jdbc.JdbcUtil;
 
@@ -15,7 +13,7 @@ public class FavoriteDao {
 	
 
 	public HashMap<Integer, Favorite> getFavList(String memberId, Connection conn) throws SQLException { 
-		Map<Integer ,Favorite> favMap = new HashMap();
+		HashMap<Integer ,Favorite> favMap = new HashMap();
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
 		try {
@@ -44,35 +42,25 @@ public class FavoriteDao {
 		}
 	}
 	
-	/*
-	 * 유저의 즐겨찾기 목록에 특정 커피가 존재하는지 확인하는 메서드
-	 * 존재하면 true
-	 * 없으면 false
-	 */
-	public boolean checkFav(String memberId, int coffeeNo, Connection conn) throws SQLException {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			pstmt = conn.prepareStatement(
-					"select M_ID from COFFEE_FAVORITE where C_NO=?;");
-			pstmt.setInt(1, coffeeNo);
-			rs = pstmt.executeQuery();
-			return rs.next();
-		} finally {
-			JdbcUtil.close(pstmt);
-			JdbcUtil.close(rs);
-		}
-	}
-	
-	public void AddFav(String memberId, int coffeeNo, Connection conn) throws SQLException { //커넥션을 변수로 받음
+	public int AddFav(String memberId, int coffeeNo, Connection conn) throws SQLException { //커넥션을 변수로 받음
 		System.out.println("favoirtedao");
 		PreparedStatement pstmt = null; //pstmt 초기화
+		int affectedRow = 0;
+		String sql = 
+				" insert into COFFEE_FAVORITE (M_ID,C_NO) "
+				+ "select ?, ? from dual where 5> "
+				+ "(select count(*)	 from COFFEE_FAVORITE where M_ID=?) "
+				+ "and 0=(select count(C_NO) from COFFEE_FAVORITE where M_ID=? and C_NO=?);";
 		try {
-			pstmt = conn.prepareStatement("insert into COFFEE_FAVORITE (M_ID, C_NO) values(?,?)");
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
 			pstmt.setInt(2, coffeeNo);
-			int AFn = pstmt.executeUpdate(); //쿼리 실행
-			System.out.println("AddFav affect "+AFn+" rows");
+			pstmt.setString(3, memberId);
+			pstmt.setString(4, memberId);
+			pstmt.setInt(5, coffeeNo);
+			affectedRow = pstmt.executeUpdate(); //쿼리 실행
+			System.out.println("AddFav affect "+affectedRow+" rows");
+			return affectedRow;
 		} finally {
 			JdbcUtil.close(pstmt); //pstmt 종료
 		}

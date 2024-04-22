@@ -54,6 +54,7 @@ public class MypageHandler extends HttpServlet implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
 		HttpSession session = req.getSession(false); //세션이 없으면 null반환
 		
+
 		if(session != null) {
 			String m_id = (String) session.getAttribute("AUTH_USER_ID");
 			System.out.println("로그인한 아이디 값 유무 체크 m_id : "+m_id);
@@ -63,6 +64,12 @@ public class MypageHandler extends HttpServlet implements CommandHandler {
 				req.setAttribute("mypages", mypages);
 				return FORM_MYPAGE;
 			}
+
+		if(m_id != null) {
+			mypages = mypageService.showMyProfile(m_id);
+			
+		}else {
+			mypages = mypageService.showMain();
 			
 		}
 		//로그인되지 않은 경우나 세션이 없는 경우 : INDEX.JSP로 리다이렉트
