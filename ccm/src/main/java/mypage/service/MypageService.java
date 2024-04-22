@@ -6,8 +6,8 @@ import java.util.Map;
 import java.time.LocalDate;
 
 import connection.ConnectionProvider;
+import favorite.dao.FavoriteDao;
 import jdbc.JdbcUtil;
-import mypage.dao.FavoriteListDAO;
 import mypage.dao.HealthLightDAO;
 import mypage.dao.MyRecipeDAO;
 import mypage.dao.UserProfileDAO;
@@ -21,7 +21,7 @@ public class MypageService {
 	
 	UserProfileDAO userprofiledao = new UserProfileDAO(); //유저 프로필
 	MyRecipeDAO myrecipedao = new MyRecipeDAO(); //내가 작성한 레시피
-	FavoriteListDAO favoritelistdao = new FavoriteListDAO(); //즐겨찾기목록
+	FavoriteDao favoritelistdao = new FavoriteDao(); //즐겨찾기목록
 	HealthLightDAO healthlightdao = new HealthLightDAO(); //카페인 섭취량에 따른 캘린더
 	
 	//내 프로필 보여주기

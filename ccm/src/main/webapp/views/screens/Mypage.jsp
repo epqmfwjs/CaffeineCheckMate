@@ -149,14 +149,10 @@
 	                            </tr>
 	                        </c:when>
 	                        <c:otherwise>
-                            	<c:forEach var="favorite" items="${mypages.favoriteListDTO}">
-	                                <tr align="center">
-	                                    <td>${favorite.c_NO }</td>
-	                                    <td>${favorite.c_NAME }</td>
-	                                    <td>${favorite.c_CAFFEINE }mg</td>
-	                                    <td>${favorite.c_IMG_COPY }</td>
-	                                </tr>
-	                            </c:forEach>
+                            	<div class="fav-area">
+									<!--즐겨찾기 include 부분-->
+									<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+								</div>
 	                        </c:otherwise>
 	                    </c:choose>
 	                </tbody>
@@ -167,5 +163,14 @@
 	    </div>
 	    <!-- 부트스트랩 자바스크립트 추가 -->
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+		<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+		<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+
+		<script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
+
+		<script src="/resources/js/favoritelist.js" type="text/babel"></script>
 	</body>
 </html>
