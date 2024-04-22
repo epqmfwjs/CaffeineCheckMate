@@ -64,6 +64,13 @@ public class CoffeeListPageService {
 			JdbcUtil.close(conn);
 		}
 	}
+	public CoffeeListPage searchCoffee(String searchType, String searchQuery, int page) throws SQLException {
+		try (Connection conn = ConnectionProvider.getConnection()) {
+			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 10);
+			int total = coffeeList.size();  // 검색 결과 수
+			return new CoffeeListPage(coffeeList, total, page, 10);
+		}
+	}
 	
 	//관리자 유무 확인
 	public boolean checkAdmin(String memberId) throws SQLException {

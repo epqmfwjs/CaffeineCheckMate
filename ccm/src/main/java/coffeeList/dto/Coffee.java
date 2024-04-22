@@ -2,7 +2,7 @@ package coffeeList.dto;
 
 public class Coffee {
 	//필드
-	int C_NO;			//커피
+	int C_NO;			//커피 넘버 pk
 	String C_NAME;		//제품 이름
 	String C_BRAND;		//브랜드
 	int C_CAFFEINE;		//카페인

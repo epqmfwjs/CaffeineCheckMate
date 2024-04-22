@@ -68,6 +68,51 @@ public class CoffeeListDao {
         }
 		return count;
 	}
+	//커피 검색 기능 DAO
+	public ArrayList<Coffee> searchCoffees(Connection conn, String searchType, String searchValue, int page, int size) throws SQLException {
+		ArrayList<Coffee> searchResults = new ArrayList<>();
+		String searchColumn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		switch(searchType) {
+			case "brand":
+				searchColumn = "C_BRAND";
+				break;
+			case "name":
+				searchColumn = "C_NAME";
+				break;
+		}
+		
+		String searchSQL = "SELECT C_NO, C_NAME, C_BRAND, C_CAFFEINE, C_IMG_COPY "
+						 + "FROM COFFEELIST "
+						 + "WHERE " + searchColumn + " LIKE ? ORDER BY C_NO DESC LIMIT ?, ?";
+		
+		int startRow = (page - 1) * size;
+	    
+	    try {
+	    	pstmt = conn.prepareStatement(searchSQL);
+	    	pstmt.setString(1, "%" + searchValue + "%");
+	        pstmt.setInt(2, startRow);
+	        pstmt.setInt(3, size);
+	        rs = pstmt.executeQuery();
+	        
+	        while (rs.next()) {
+	        	Coffee rsSerachView = new Coffee(
+	                        rs.getInt("C_NO"),
+	                        rs.getString("C_NAME"),
+	                        rs.getString("C_BRAND"),
+	                        rs.getInt("C_CAFFEINE"),
+	                        rs.getString("C_IMG_COPY")
+	                );
+	                searchResults.add(rsSerachView);
+	        }
+	    } finally {
+	    	JdbcUtil.close(pstmt);
+	    	JdbcUtil.close(rs);
+	    }
+	    return searchResults;
+	}
 	
 	//커피 상세 내역 DAO
     public Coffee getCoffeeDetail(Connection conn, int coffeeNo) throws SQLException {

@@ -43,9 +43,16 @@
 
 <div class="coffeeListSearch">
     <h3>커피 리스트</h3>
-    검색 <input type="text" value="kongnamuel"/>
-    <input type="submit" value="검색"/><br/>
-    해당 부분에서 제목별 검색이 가능합니다
+    
+    <form action="coffeeList.do" method="get">
+    	<select name="searchType">
+    		<option value="name">제품명</option>
+    		<option value="brand">브랜드</option>
+    	</select>	
+    	검색 <input type="text" name="searchQuery">
+    	<input type="submit" value="검색"><br/>
+    	해당 부분에서 제목별 검색이 가능합니다
+    </form>
 </div>
 <c:if test="${coffeeListAdmin}">
 	<div>
@@ -70,19 +77,24 @@
     </c:forEach>
 </div>
 
-<!-- 페이지네이션 아래 블럭을 담당하느 부분 -->
+<!-- 페이지네이션 아래 블럭을 담당하는 부분 -->
 <div class="pagination">
-	<c:if test="${not empty CoffeeListPage and CoffeeListPage.totalPage > 0}">
-        <c:forEach begin="1" end="${CoffeeListPage.totalPage}" var="i">
+	<c:if test="${CoffeeListPage.startPage > 1}">
+		<a href="?page=${CoffeeListPage.startPage - 1}">이전</a>
+	</c:if>
+        <c:forEach begin="${CoffeeListPage.startPage}" 
+        		   end  ="${CoffeeListPage.endPage}"  var="i">
             <c:choose>
                 <c:when test="${i == CoffeeListPage.currentPage}">
-                    <span><strong>${i}</strong></span>
+                    <span><b>${i}</b></span>
                 </c:when>
                 <c:otherwise>
                     <a href="?page=${i}">${i}</a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
+    <c:if test="${CoffeeListPage.endPage < CoffeeListPage.totalPage}">
+    	<a href="?page=${CoffeeListPage.endPage + 1}">다음</a>
     </c:if>
 </div>
 
