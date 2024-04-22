@@ -2,18 +2,18 @@ package mypage.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
-import java.time.LocalDate;
+
+
+import calendar.dao.CalendarDao;
+
+
 
 import connection.ConnectionProvider;
 import favorite.dao.FavoriteDao;
 import jdbc.JdbcUtil;
-import mypage.dao.HealthLightDAO;
 import mypage.dao.MyRecipeDAO;
 import mypage.dao.UserProfileDAO;
-import mypage.dto.FavoriteListDTO;
-import mypage.dto.HealthLightDTO;
-import mypage.dto.MyRecipeDTO;
+
 import mypage.dto.MypagesDTO;
 import mypage.dto.UserProfileDTO;
 
@@ -22,7 +22,7 @@ public class MypageService {
 	UserProfileDAO userprofiledao = new UserProfileDAO(); //유저 프로필
 	MyRecipeDAO myrecipedao = new MyRecipeDAO(); //내가 작성한 레시피
 	FavoriteDao favoritelistdao = new FavoriteDao(); //즐겨찾기목록
-	HealthLightDAO healthlightdao = new HealthLightDAO(); //카페인 섭취량에 따른 캘린더
+	CalendarDao healthlightdao = new CalendarDao(); //카페인 섭취량에 따른 캘린더
 	
 	//내 프로필 보여주기
 	public MypagesDTO showMyProfile(String memberId) {

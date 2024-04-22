@@ -8,6 +8,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%
+	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
+	pageContext.setAttribute("isAuth", isAuth);
+	%>
 <meta charset="UTF-8">
 	<title>Mypage</title>
     <!-- 부트스트랩 CDN 추가 -->
