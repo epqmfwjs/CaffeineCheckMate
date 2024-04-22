@@ -15,8 +15,9 @@ public class CoffeeDetailHandler implements CommandHandler{
             int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
             //System.out.println("int로 변환까지 잘 됨");
             CoffeeDetailService coffeeDetailService = new CoffeeDetailService();
+            Coffee coffee = coffeeDetailService.getCoffeeDetail(coffeeNo);
             
-            request.setAttribute("coffeeDetail", coffeeDetailService.getCoffeeDetail(coffeeNo));
+            request.setAttribute("coffeeDetail", coffee);
             return "/views/screens/coffeeList_Detail.jsp";
         } catch (Exception e) {
             System.out.println("coffeedetail handler 에러 메시지: " + e.getMessage());

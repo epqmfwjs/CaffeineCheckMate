@@ -35,6 +35,13 @@ public class CoffeeListPageHandler implements CommandHandler{
 	    	
 	    	if(memberId != null ) {
 	    		request.setAttribute("CoffeeListPage", coffeeListService.getCoffeeList(memberId,page));
+	    		//관리자 여부 추가 확인
+	    		boolean coffeeListAdmin = coffeeListService.checkAdmin(memberId);
+	    		System.out.println("관리자 여부 불린 값"+coffeeListAdmin);
+	    		request.getSession().setAttribute("coffeeListAdmin", coffeeListAdmin);
+	    		
+	    		request.setAttribute("CoffeeListPage", coffeeListService.getCoffeeList(memberId, page));
+	    		
 	    	} else { // 비로그인상태    		
 	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList(page));
 	    		//System.out.println(coffeeListService.notAuthCoffeeList());

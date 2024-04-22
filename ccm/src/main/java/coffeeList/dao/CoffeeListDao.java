@@ -181,8 +181,8 @@ public class CoffeeListDao {
 	public void AddCoffee(Coffee coffee,Connection conn) throws SQLException {
 		String listAddSQL = "INSERT INTO COFFEELIST ("
 						  + "C_NAME, C_BRAND, C_CAFFEINE, C_SACCHARIDE, "
-						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL) "
-						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						  + "C_CALORIE, C_CONTENT, C_TYPE, C_STAGE, C_IMG_REAL, C_IMG_COPY) "
+						  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		//ㅋㅋㅋ... 아 쿼리문에 세미콜론 제발
 		PreparedStatement pstmt = null;
 		
@@ -197,6 +197,8 @@ public class CoffeeListDao {
 			pstmt.setString(7, coffee.getC_TYPE());
 			pstmt.setString(8, coffee.getC_STAGE());
 			pstmt.setString(9, coffee.getC_IMG_REAL());
+			pstmt.setString(10, coffee.getC_IMG_COPY());
+			
 			
 			pstmt.executeUpdate();
 		} finally {
@@ -223,6 +225,7 @@ public class CoffeeListDao {
 			pstmt.setString(7, coffee.getC_TYPE());
 			pstmt.setString(8, coffee.getC_STAGE());
 			pstmt.setString(9, coffee.getC_IMG_REAL());
+			pstmt.setString(10, coffee.getC_IMG_COPY());
 			pstmt.setInt(10, coffee.getC_NO());
 			System.out.println("다오 왔뎅");
 			pstmt.executeUpdate();

@@ -47,17 +47,18 @@
     <input type="submit" value="검색"/><br/>
     해당 부분에서 제목별 검색이 가능합니다
 </div>
-<div>
-    <a href="./views/screens/coffeeList_Add.jsp">순댓국 고기 추가</a>
-</div>
-
+<c:if test="${coffeeListAdmin}">
+	<div>
+	    <a href="./views/screens/coffeeList_Add.jsp">관리자 게시글 삽입</a>
+	</div>
+</c:if>
 <div class="coffeeListView">
     <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
         <c:if test="${status.index % 2 == 0}">
             <div style="width: 100%;"></div>
         </c:if>
         <div class="card">
-            <img src="${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME}"/>
+            <img src="<c:url value='${coffeeV.c_IMG_COPY}'/>" alt="${coffeeV.c_NAME} Image"/>
             <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></h4>
 	        <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
 	        <c:if test="${not empty sessionScope.AUTH_USER_ID}">

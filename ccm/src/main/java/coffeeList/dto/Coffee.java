@@ -26,7 +26,7 @@ public class Coffee {
 	}
 	//list Detail 조회
 	public Coffee
-		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE, int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE, int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY) {
 		this.C_NO = C_NO;
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
@@ -41,7 +41,7 @@ public class Coffee {
 	}
 	//list Add 추가
 	public Coffee
-		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY) {
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
 		this.C_CAFFEINE = C_CAFFEINE;
@@ -51,10 +51,11 @@ public class Coffee {
 		this.C_TYPE = C_TYPE;
 		this.C_STAGE = C_STAGE;
 		this.C_IMG_REAL = C_IMG_REAL;
+		this.C_IMG_COPY = C_IMG_COPY;
 	}
 	//list Update 수정
 	public Coffee
-		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL,int C_NO) {
+		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY, int C_NO) {
 		this.C_NO = C_NO; //수정 where절 입력값
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
@@ -65,6 +66,7 @@ public class Coffee {
 		this.C_TYPE = C_TYPE;
 		this.C_STAGE = C_STAGE;
 		this.C_IMG_REAL = C_IMG_REAL;
+		this.C_IMG_COPY = C_IMG_COPY;
 	}
 
 	//카페인, 이미지 조회 (계산기)
