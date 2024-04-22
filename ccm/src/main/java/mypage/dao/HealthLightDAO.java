@@ -4,36 +4,37 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import mypage.dto.HealthLightDTO;
 
 public class HealthLightDAO {
 	
-	//Map<String, HealthLightDTO> hlightdtoMap = null;
+	//Map<Stsring, HealthLightDTO> hlightdtoMap = null;
 	//카페인 섭취량에 따라 색을 결정하고 데이터베이스에 -> 
 	
-	public HealthLightDTO getHealthLight(String memberid ,String caldate, Connection conn) throws SQLException { 
+	public List<HealthLightDTO> getHealthLight(String memberid , Connection conn) throws SQLException { 
 		PreparedStatement pstmt =null;
 		ResultSet rs = null;
-		
+		List<HealthLightDTO> healthlightlist = new ArrayList<>();
 		try {
-			pstmt = conn.prepareStatement("select * from CALENDER where M_NO = ? AND CAL_DATE=?");
+			pstmt = conn.prepareStatement("select M_ID, CAL_DATE, CAL_COLOR, CAL_DAILYCF from CALENDAR where M_ID = ?");
 			pstmt.setString(1, memberid);
-			pstmt.setString(1, caldate);
 			rs = pstmt.executeQuery();
-			HealthLightDTO hldto = null;
-			if(rs.next()) {
-				hldto = new HealthLightDTO(
+			
+			while(rs.next()) {
+				HealthLightDTO hldto = new HealthLightDTO(
 					rs.getString("M_ID"),
 				    rs.getString("CAL_DATE"),
 				    rs.getString("CAL_COLOR"),
-				    rs.getInt("CAL_DALYCF")
+				    rs.getInt("CAL_DAILYCF")
 				);
+				healthlightlist.add(hldto);
 			}
-			System.out.println("hldto"+hldto.toString());
-			return hldto;
+			System.out.println("healthlightlist" + healthlightlist.toString());
+			return healthlightlist;
 			
 		}finally {
 			JdbcUtil.close(rs);
@@ -55,8 +56,6 @@ public class HealthLightDAO {
 //            JdbcUtil.close(pstmt);
 //        }
 //    }
-	
-	
 	
 }
 	

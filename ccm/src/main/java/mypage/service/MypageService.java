@@ -28,8 +28,6 @@ public class MypageService {
 	public MypagesDTO showMyProfile(String memberId) {
 		Connection conn = null;
 		MypagesDTO mypagedto = null;
-		//오늘 날짜 받아오기
-		String dateString = LocalDate.now().toString();
 		
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -49,10 +47,10 @@ public class MypageService {
 			*/
 			mypagedto = new MypagesDTO(
 					userprofiledao.ShowMyPF(memberId, conn),
-					null,
-					null,
-					null
-					);
+					myrecipedao.getRecipe(memberId,conn),
+					favoritelistdao.getFavList(memberId, conn),
+					healthlightdao.getHealthLight(memberId, conn)
+					); 
 			
 			
 			//회원ID로 회원ID, 프로필 이미지 사본 이름(나중에 이미지 보여줄것) 가져오기
@@ -65,23 +63,23 @@ public class MypageService {
 		}
 	}
 	
-	public MypagesDTO showMain() {
-		Connection conn = null;
-		MypagesDTO mypagedto = null;
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			
-			return mypagedto;
-		}catch(SQLException e) {
-			
-			return null;
-		} finally {
-			JdbcUtil.close(conn);
-		}
-		
-	}
-	
+//	public MypagesDTO showMain() {
+//		Connection conn = null;
+//		MypagesDTO mypagedto = null;
+//		
+//		try {
+//			conn = ConnectionProvider.getConnection();
+//			
+//			return mypagedto;
+//		}catch(SQLException e) {
+//			
+//			return null;
+//		} finally {
+//			JdbcUtil.close(conn);
+//		}
+//		
+//	}
+	// 프로필 업데이트
 	public UserProfileDTO getUserProfiles(String memberID) {
 		Connection conn = null;
 		UserProfileDTO updto = null;
@@ -98,7 +96,7 @@ public class MypageService {
 		return updto;
 	}
 	//프로필 업데이트
-	public boolean updateProfile(String memberId, String profileImage, int weight) {
+	public boolean updateProfile(UserProfileDTO dto) {
 		boolean isSuccess = false;
 		Connection conn = null;
 		
@@ -107,8 +105,7 @@ public class MypageService {
 			conn.setAutoCommit(false);
 			
 			//프로필 업데이트 수행
-			userprofiledao.updateProfile(memberId, profileImage, weight, conn);
-			
+			userprofiledao.updateProfile(dto, conn);
 			conn.commit();
 			isSuccess = true;
 		} catch (Exception e) {
