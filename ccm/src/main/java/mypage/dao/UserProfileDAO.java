@@ -78,12 +78,13 @@ public class UserProfileDAO {
 			PreparedStatement pstmt =null;
 			
 			try {
-				String sql = "UPDATE PROFILE SET P_WEIGHT=?, P_IMG_REAL=?, P_IMG_COPY=? WHERE M_ID=?";
+				String sql = "UPDATE PROFILE AS p INNER JOIN member AS m ON p.M_ID = m.M_ID SET p.P_WEIGHT = ?,p.P_IMG_REAL = ?, p.P_IMG_COPY = ?, m.M_NICKNAME = ? WHERE p.M_ID = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, dto.getP_WEIGHT());
+				pstmt.setInt(1, dto.getP_WEIGHT());				
 				pstmt.setString(2, dto.getP_IMG_REAL());
 				pstmt.setString(3, dto.getP_IMG_COPY());
-				pstmt.setString(4, dto.getM_ID());
+				pstmt.setString(4, dto.getM_NICKNAME());
+				pstmt.setString(5, dto.getM_ID());
 				
 				pstmt.executeUpdate();
 			} finally {

@@ -25,7 +25,7 @@ public class EditMyProfileUpdateHandler extends HttpServlet implements CommandHa
 	public static final String FORM_INDEX = "/index.do";
 	public static final String FORM_MYPAGE = "/mypage.do";
 	//본인의 파일업로드경로
-	public static final String FILE_ROOT_PATH = "/ccm_v0419_2150/src/main/webapp/resources/profile";
+	public static final String FILE_ROOT_PATH = "C:/src/main/webapp/resources/profile";
 	// 애플리케이션 루트 경로 얻기
 	//public static final String APP_ROOT = req.getServletContext().getRealPath("/");
 	
@@ -75,6 +75,9 @@ public class EditMyProfileUpdateHandler extends HttpServlet implements CommandHa
 	                        case "m_ID":
 	                            userProfile.setM_ID(fieldValue);
 	                            break;
+	                        case "m_NICKNAME":
+	                        	userProfile.setM_NICKNAME(fieldValue);
+	                        	break;
 	                        case "p_WEIGHT":
 	                            Integer weight = Integer.parseInt(fieldValue);
 	                            userProfile.setP_WEIGHT(weight);

@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label for="nickname">닉네임</label>
-                <input type="text" class="form-control" id="m_NICKNAME" name="m_NICKNAME" value="${profile.userProfileDTO.m_NICKNAME}" readonly>
+                <input type="text" class="form-control" id="m_NICKNAME" name="m_NICKNAME" value="${profile.userProfileDTO.m_NICKNAME}">
             </div>
             <div class="form-group">
                 <label for="userid">몸무게</label>
