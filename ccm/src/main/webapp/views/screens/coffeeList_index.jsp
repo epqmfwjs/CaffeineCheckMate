@@ -58,7 +58,7 @@
             <div style="width: 100%;"></div>
         </c:if>
         <div class="card">
-            <img src="<c:url value='${coffeeV.c_IMG_COPY}'/>" alt="${coffeeV.c_NAME} Image"/>
+            <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
             <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></h4>
 	        <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
 	        <c:if test="${not empty sessionScope.AUTH_USER_ID}">

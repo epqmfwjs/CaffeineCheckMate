@@ -1,5 +1,7 @@
 package coffeeList.handler;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,9 +20,16 @@ public class CoffeeAddHandler implements CommandHandler{
 		
 		System.out.println("여기는 오니..?");
 		
+
 		//이미지 추가 관련 로직
 		//1. 저장될 디렉토리 변수에 담기
-		String saveDirectory = "C:/Users/USER/git/CaffeineCheckMate/ccm/src/main/webapp/resources/testimg";
+		String saveDirectory = request.getServletContext().getRealPath("resources/testimg");
+		//1-1. 저장될 디렉토리가 없으면 새로 생성
+		//저장 경로 : C:\icanjava\webpg\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ccm\resources\testimg
+		File dir = new File(saveDirectory);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
 		//2. 파일 크기 제한 설정 변수에 담기
 		int maxPostSize = 10 * 1024 * 1024; // 10MB
 		

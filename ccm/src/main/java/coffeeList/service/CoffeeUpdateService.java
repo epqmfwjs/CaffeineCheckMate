@@ -22,13 +22,13 @@ public class CoffeeUpdateService {
 			conn.setAutoCommit(false);
 			
 			//Detail을 재활용하여 existingCoffee에 변수 저장 
-			Coffee existingCoffee = coffeeListDao.getCoffeeDetail(conn, coffee.getC_NO());
-			//이전값과 비교 : !null, C_IMG_REAL이 새로운 파일과 경로가 다른 경우에 삭제 진행 로직
+			/*Coffee existingCoffee = coffeeListDao.getCoffeeDetail(conn, coffee.getC_NO());
+			 이전값과 비교 : !null, C_IMG_REAL이 새로운 파일과 경로가 다른 경우에 삭제 진행 로직
 			if (existingCoffee != null && 
 				!existingCoffee.getC_IMG_REAL().equals(coffee.getC_IMG_REAL())) {
 				//파일 객체 생성하여 기존 이미지 삭제
 				new File(existingCoffee.getC_IMG_REAL()).delete();
-			}
+			}*/
 			coffeeListDao.updateCoffee(coffee, conn);
 			
 			conn.commit();

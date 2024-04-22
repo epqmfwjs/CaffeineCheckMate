@@ -210,7 +210,7 @@ public class CoffeeListDao {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
 		String listUpdateSQL = "UPDATE COFFEELIST "
 				+ "SET C_NAME = ?,  C_BRAND = ?, C_CAFFEINE = ?, C_SACCHARIDE = ?, "
-				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ? "
+				+ "C_CALORIE = ?, C_CONTENT = ?, C_TYPE = ?, C_STAGE = ?, C_IMG_REAL = ?, C_IMG_COPY = ? "
 				+ "WHERE C_NO = ?";
 		PreparedStatement pstmt = null;
 		
@@ -226,7 +226,7 @@ public class CoffeeListDao {
 			pstmt.setString(8, coffee.getC_STAGE());
 			pstmt.setString(9, coffee.getC_IMG_REAL());
 			pstmt.setString(10, coffee.getC_IMG_COPY());
-			pstmt.setInt(10, coffee.getC_NO());
+			pstmt.setInt(11, coffee.getC_NO());
 			System.out.println("다오 왔뎅");
 			pstmt.executeUpdate();
 		} finally {

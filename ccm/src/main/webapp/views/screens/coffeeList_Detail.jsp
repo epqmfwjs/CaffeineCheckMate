@@ -15,9 +15,8 @@
 		<a href="coffeeListUpdateForm.do?coffeeNo=${coffeeDetail.c_NO}">Update</a>
 	</div><br/>
 </c:if>
-
 <table border="1">
-	<tr><td>이미지</td><td><img src="${coffeeDetail.c_IMG_COPY}" width="300" height="200" alt="커피 이미지"></td></tr>
+	<tr><td>이미지</td><td><img src="${pageContext.request.contextPath}${coffeeDetail.c_IMG_COPY}" width="300" height="200" alt="커피 이미지"></td></tr>
 	<tr><td>제품명</td><td>${coffeeDetail.c_NAME}</td></tr>
 	<tr><td>브랜드</td><td>${coffeeDetail.c_BRAND}</td></tr>
 	<tr><td>카페인</td><td>${coffeeDetail.c_CAFFEINE}</td></tr>

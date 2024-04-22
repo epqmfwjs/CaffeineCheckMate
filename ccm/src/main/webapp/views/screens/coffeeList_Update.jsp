@@ -52,7 +52,7 @@
     변경할 이미지(기존 이미지 유지 희망 시 선택X)<br/>
     <input type="file" id="cimgreal" name="cimgreal" onchange="coffee_PreviewImage()"><br/>
     <!-- 수정하지 않으면 이전 값 히든으로 넘김 -->
-    <input type="hidden" name="defaultImage" value="${coffeeUpdateForm.c_IMG_COPY}">
+    <input type="hidden" name="defaultImage" value="${coffeeUpdateForm.c_IMG_REAL}">
     <input type="submit" value="수정 진행">
 </form>
 </body>

@@ -1,5 +1,7 @@
 package coffeeList.handler;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +21,7 @@ public class CoffeeUpdateHandler implements CommandHandler {
 		System.out.println("업뎃 핸들러");
 		//이미지 추가 관련 로직
 		//1. 저장될 디렉토리 변수에 담기
-		String saveDirectory = "C:/Users/USER/git/CaffeineCheckMate/ccm/src/main/webapp/resources/testimg";
+		String saveDirectory = request.getServletContext().getRealPath("resources/testimg");
 		//2. 파일 크기 제한 설정 변수에 담기
 		int maxPostSize = 10 * 1024 * 1024; // 10MB
 		
@@ -49,12 +51,23 @@ public class CoffeeUpdateHandler implements CommandHandler {
 			String ccontent = multi.getParameter("ccontent");
 			String ctype = multi.getParameter("ctype");
 			String cstage = multi.getParameter("cstage");
+			//newImage:새 이미지 / existingImage:이전 이미지
 			String newImage = multi.getFilesystemName("cimgreal");
 			String existingImage = multi.getParameter("defaultImage");
 			// 새 이미지가 업로드되었으면 사용, 그렇지 않으면 기존 이미지 유지
-			String cimgreal = newImage != null ? newImage : existingImage; 
-			String cimgcopy = "/resources/testimg/" + cimgreal;
+			String cimgreal;
+			String existAllPath = saveDirectory+existingImage;
+			System.out.println(existAllPath);
+			if(newImage!=null) {
+				cimgreal = newImage;
+			}else {
+				cimgreal = existingImage;
+			};
 			
+			
+			
+			String cimgcopy = "/resources/testimg/" + cimgreal;
+			System.out.println(cimgcopy);
 			Coffee coffee = new Coffee
 					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal,cimgcopy,coffeeNo);
 			
