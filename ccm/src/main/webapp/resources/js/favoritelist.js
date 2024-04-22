@@ -11,11 +11,11 @@ if (isAuth){
             <>
                 {Object.keys(fav).map(key => (
                 <div key={key} className="fp-item" id="fi_1" value={"C_NO="+fav[key]["C_NO"]}>
-                    <div className="fp-item__box" onClick={doCalc}>
-                        <div className="fp-item__img">이미지 이름 : {fav[key]["C_IMAGE"]}</div>
-                        <div className="fp-item__info">커피 이름 : {fav[key]["C_NAME"]}</div>
+                    <div className="fp-item__box clickable" onClick={doCalc}>
+                        <div className="fp-item__img clickable">이미지 이름 : {fav[key]["C_IMAGE"]}</div>
+                        <div className="fp-item__info clickable">커피 이름 : {fav[key]["C_NAME"]}</div>
                     </div>
-                    <button className="fp-item__delete-btn" onClick={deleteFavItem}>
+                    <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
                     <i className="fa-solid fa-x"></i>  
                     </button>
                 </div>

@@ -27,6 +27,10 @@
 			<input type="hidden" value="edit" name="Value"/>
 			<input type="submit" value="정보수정"/>
 		</form>
+		<!-- 마이페이지 버튼 추가 -->
+		<form action="/mypage.do">
+			<input type="submit" value="My Page" />
+		</form>
 	</div>
 	<%}else{%>
 	<div>
