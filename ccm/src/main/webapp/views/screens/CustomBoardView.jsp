@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +16,24 @@
 <style>
     /* 모달을 위한 스타일 */
     .modal-container {
-        display: none; /* 기본적으로 모달은 숨겨져 있어야 함 */
+        display: none; 
         position: fixed;
-        top: 0;
+        top: 0vh;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 함 */
-        z-index: 9999; /* 다른 요소 위에 모달이 나타나도록 함 */
+        background-color: rgba(0, 0, 0, 0.5); 
+        z-index: 9999; 
     }
 
     .modal-content {
         background-color: #fff;
         width: 500px;
-        margin: 100px auto; /* 화면 중앙에 위치하도록 함 */
+        margin: 100px auto;
         padding: 20px;
         border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+   		max-height: 60vh; 
     }
 </style>
 
@@ -43,7 +43,7 @@
     <li style="display: inline-block; width: 20%;">
         <div>
          <%--  <p>글번호: ${item.cus_no}</p> --%>
-          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
+          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p> 
           <p>회원아이디: ${item.m_id}</p>
           <p>제품아이디: ${item.c_no}</p>
           <p>게시글제목: ${item.cus_title}</p>

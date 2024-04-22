@@ -32,7 +32,7 @@ public class CustomBoardAddService {
 			 
 			ServletContext context = request.getSession().getServletContext();
 			String directory = context.getRealPath("/upload/");
-			int maxSize = 1024*1024*5;
+			int maxSize = 1024*1024*20;
 			String encoding =  "UTF-8";
 			
 			
