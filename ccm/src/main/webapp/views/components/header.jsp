@@ -14,19 +14,19 @@
 			<a class="headerLinks">CCM</a><!-- 추가- 시간날 때 포스터 같은 느낌으로 정체성 표시해주면 좋을듯 -->
 		</div>
 		<div class="header_col_7">
-			<a class="headerLinks" onclick="location.href='/coffeelist.do '">커피리스트</a>
+			<a class="headerLinks" onclick="location.href='/coffeelist.do '">Product</a>
 		</div>
 		<div class="header_col_8">
-			<a class="headerLinks" onclick="location.href='/main.do'">카페인계산기</a>
+			<a class="headerLinks" onclick="location.href='/main.do'">Calculator</a>
 		</div>
 		<div class="header_col_9">
-			<a class="headerLinks" onclick="location.href='/CustomBoardListHandler.do'">커스텀레시피</a>
+			<a class="headerLinks" onclick="location.href='/CustomBoardListHandler.do'">Custom</a>
 		</div>
 		<div class="header_col_10">
-			<a class="headerLinks">마이페이지</a><!-- 추가 -->
+			<a class="headerLinks">MyPage</a><!-- 추가 -->
 		</div>
 		<div class="header_col_11">
-			<a class="headerLinks" onclick="location.href='/LoginHandler.do'">로그인</a>
+			<a class="headerLinks" onclick="location.href='/LoginHandler.do'">Login</a>
 		</div>
 	</header>
 
