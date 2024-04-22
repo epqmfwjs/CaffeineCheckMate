@@ -4,22 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>글작성</title>
-<script>
-    function previewImage() {
-        var fileInput = document.getElementById('file');
-        var preview = document.getElementById('preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
- 
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-            }
-
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-</script>
+<script type="text/javascript" src="/resources/js/custom.js"></script>
 </head>
 <body>
 <form action="/CustomBoardAddHandler.do" id="add" name="add" method="post" enctype="multipart/form-data">
@@ -27,6 +12,8 @@
     내용<p><textarea cols="50" rows="10" id="cus_content" name="cus_content"></textarea></p>
     이미지: <input type="file" name="file" id="file" onchange="previewImage()"><br/>
     <img id="preview" src="#" alt="미리보기" style="max-width: 300px; max-height: 300px;"><br>
+    <input type="hidden" id="num" name="num" value="${item.cus_num}" />
+    <input type="hidden" id="img" name="img" value="${img}" />
 <td>
 	<select name="shot" id="shot">
 		<option value="0">샷추가</option>

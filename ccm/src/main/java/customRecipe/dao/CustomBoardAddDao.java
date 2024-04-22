@@ -47,33 +47,7 @@ public class CustomBoardAddDao {
 
 	}
 	
-	public void updateList(CustomBoardAddDto dto, Connection con,String num) throws SQLException {
 
-		String sql = "insert into custom(cus_no,m_id,c_no,cus_title,cus_content,cus_regdate,cus_sumgood)"
-		+ "values(null,?,11,?,?,default,0)";
-
-//		String cus_no = dto.getCus_no(); 오토키 null고정
-//		String m_no = dto.getM_no(); 세션 회원id 
-//		String c_no = dto.getC_no(); 제품id 커피리스트 
-	
-		String m_id = dto.getm_id();
-		String cus_name =dto.getcus_name();
-		String cus_content = dto.getcus_content();
-//		String cus_regdate = dto.getCus_regdate();
-//		String cus_sumgood = dto.getCus_sumgood();
-	
-				PreparedStatement pstm = con.prepareStatement(sql);
-				pstm.setString(1,m_id);
-				pstm.setString(2,cus_name);
-				pstm.setString(3,cus_content);
-				pstm.executeUpdate();
-				
-				
-				
-
-				JdbcUtil.close(pstm);
-
-	}
 	//작성된 게시글번호 조회
 	public int readCusNo(Connection con) throws SQLException {
 		String sql = "select cus_no from custom order by cus_no desc limit 1";

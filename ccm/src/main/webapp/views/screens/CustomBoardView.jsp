@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
     <li style="display: inline-block; width: 20%;">
         <div>
          <%--  <p>글번호: ${item.cus_no}</p> --%>
-          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p> 
+          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
           <p>회원아이디: ${item.m_id}</p>
           <p>제품아이디: ${item.c_no}</p>
           <p>게시글제목: ${item.cus_title}</p>

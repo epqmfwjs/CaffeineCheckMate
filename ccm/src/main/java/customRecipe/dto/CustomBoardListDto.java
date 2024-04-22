@@ -1,5 +1,7 @@
 package customRecipe.dto;
 
+import java.text.SimpleDateFormat;
+
 public class CustomBoardListDto {
 	private int CUS_NO;
 	private String M_NO;
@@ -159,8 +161,8 @@ public class CustomBoardListDto {
 	public String getcus_regdate() {
 		return CUS_REGDATE;
 	}
-	public void setCUS_REGDATE(String cUS_REGDATE) {
-		this.CUS_REGDATE = cUS_REGDATE;
+	public void setCUS_REGDATE(String sim) {
+		this.CUS_REGDATE = sim;
 	}
 	public String getcus_sumgood() {
 		return CUS_SUMGOOD;

@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/custom.js"></script>   
 <meta charset="UTF-8">
 <title>CCM</title>
 
 </head>
 <body>
+
     <form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
 <c:forEach var="item" items="${list}">
     <li style="display: inline-block; width: 20%;">
@@ -18,11 +22,11 @@
      <input type="hidden" name="title" id="title" value="${item.cus_title}" />
      <input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
 	 <h3>${itme.cus_num}</h3>     
-          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></          <p>회원아이디: ${item.m_id}</p>
+          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
+		  <p>회원아이디: ${item.m_id}</p>
           <p>제품아이디: ${item.c_no}</p>
           <p>게시글제목: ${item.cus_title}</p>
           <p>글내용: ${item.cus_content}</p>
-          <p>게시일: ${item.cus_regdate}</p>
         </div>
     </li>
           <p>#${item.shot}샷#${item.milkType}#${item.syrupType}
@@ -32,9 +36,9 @@
           </c:forEach>  
 <div style="display: flex; align-items: center;">
         <input type="hidden" name="no" value="${param.CUS_NUM}" />
-        <button type="submit">수정</button>
-    </form>
-    <button type="button" onclick="location.href='/CustomBoardDelete.do'">삭제</button>
+        <input type="submit" value="수정">
+    </form>   
 </div>
+<button type="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
 </body>
 </html>
