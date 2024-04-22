@@ -25,7 +25,7 @@
             <div class="calc-box__result"><span class="calc-box__result-title">Caffeine</span></div>
             <div class="calc-box__dailyc">${main.calculationResult} <span>mg</span> </div>
             <div class="calc-box__reset-box">
-                <button id="calc-box__btn-reset">Reset</button>
+                <button id="calc-box__btn-reset" class="clickable">Reset</button>
             </div>
         </div>
     </div>

@@ -32,11 +32,11 @@
 				<div class="fav-box">
 					<c:forEach var="favorite" items="${main.favorites}">
 						<div class="fp-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
-							<div class="fp-item__box">
-								<div class="fp-item__img">이미지 이름 : ${favorite.value.c_IMAGE}</div>
-								<div class="fp-item__info">커피 이름 : ${favorite.value.c_NAME}</div>
+							<div class="fp-item__box clickable">
+								<div class="fp-item__img clickable">이미지 이름 : ${favorite.value.c_IMAGE}</div>
+								<div class="fp-item__info clickable">커피 이름 : ${favorite.value.c_NAME}</div>
 							</div>
-							<button class="fp-item__delete-btn"><i class="fa-solid fa-x"></i></button>
+							<button class="fp-item__delete-btn clickable"><i class="fa-solid fa-x"></i></button>
 						</div>
 					</c:forEach>
 				</div>
@@ -45,9 +45,9 @@
 				<div class="popular-box">
 					<c:forEach var="popular" items="${main.favorites}">
 						<div class="fp-item" id="fi_${popular.key}" value="${popular.value.c_CAFFEINE}">
-							<div class="fp-item__box">
-								<div class="fp-item__img">이미지 이름 : ${popular.value.c_IMAGE}</div>
-								<div class="fp-item__info">커피 이름 : ${popular.value.c_NAME}</div>
+							<div class="fp-item__box clickable">
+								<div class="fp-item__img clickable">이미지 이름 : ${popular.value.c_IMAGE}</div>
+								<div class="fp-item__info clickable">커피 이름 : ${popular.value.c_NAME}</div>
 							</div>
 						</div>
 					</c:forEach>
