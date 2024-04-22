@@ -75,6 +75,6 @@ public class MypageHandler extends HttpServlet implements CommandHandler {
 		//로그인되지 않은 경우나 세션이 없는 경우 : INDEX.JSP로 리다이렉트
 		return FORM_INDEX;
 		}
-	
+	}
 }
 
