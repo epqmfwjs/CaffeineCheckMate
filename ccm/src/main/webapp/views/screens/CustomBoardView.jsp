@@ -18,7 +18,7 @@
     .modal-container {
         display: none; 
         position: fixed;
-        top: 20vh;
+        top: 0vh;
         left: 0;
         width: 100%;
         height: 100%;
