@@ -21,7 +21,7 @@ public class CustomBoardDeleteService {
 	
 	CustomBoardDelDao customBoardDelDao = new CustomBoardDelDao();
 	
-	public void deleteRecipe(String memberId, int cusNo) {
+	public void deleteRecipe(String memberId, String cusNo) {
 		Connection conn = null;
 		
 		try {

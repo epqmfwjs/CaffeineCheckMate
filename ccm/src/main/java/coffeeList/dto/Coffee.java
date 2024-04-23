@@ -78,7 +78,6 @@ public class Coffee {
 	//카페인, 이미지 조회 (계산기)
   public Coffee(int C_NO, String C_NAME, int C_CAFFEINE, String C_IMAGE) {
 		this.C_NO=C_NO;
-		this.C_NAME = C_NAME;
 		this.C_CAFFEINE=C_CAFFEINE;
 		this.C_IMAGE=C_IMAGE;
 	}
@@ -176,4 +175,3 @@ public class Coffee {
 	}
 	
 }	
-

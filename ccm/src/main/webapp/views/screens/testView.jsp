@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>test</title>
+<title>Insert title here</title>
 </head>
 <body>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
@@ -33,7 +33,7 @@
 		</form>
 	</div>
 	<%}else{%>
-	<div>
+	<div class="container">
 	<h1>임시 메인페이지</h1>
 		<form action="<%= request.getContextPath()%>/views/screens/login.jsp" name="loginFrm" method="post">
 			<input type="submit" value="로그인" class="login-button"/>

@@ -5,14 +5,9 @@
 <head>
 <link rel="icon" href="data:,">
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-.container{
-text-align: center;
-}
-</style>
+<title>로그인</title>
+<link href="/resources/css/login.css"rel="stylesheet" type="text/css">
 </head>
-
 <body>
 <div class="container">
 <!-- 아이디저장 jq -->
@@ -83,7 +78,7 @@ text-align: center;
 			if(model != null){
 				
 				out.println("<br/>" + model);
-				session.invalidate();
+				//session.invalidate();
 			}
 			%>
 </div>
