@@ -94,6 +94,7 @@ if (isAuth){
           console.log("error",error);
       })
     }
+}
 //} //로그인상태에서만 동작함
 
 /* 리액트 및 babel cdn
