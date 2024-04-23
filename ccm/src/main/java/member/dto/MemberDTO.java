@@ -15,7 +15,13 @@ public class MemberDTO {
 	private String dtoGENDER;
 	private String dtoSNS;
 	
+	public MemberDTO() {
+    }
 	
+	public MemberDTO(String dtoID, String dtoROLE) {
+		this.dtoID = dtoID;
+		this.dtoROLE = dtoROLE;
+	}
 	
 	public String getDtoID() {
 		return dtoID;

@@ -20,23 +20,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-
-    <!--임시 커피 목록-->
-    <h2>임시 커피목록</h2>
-	<div class="coffee-box">
-		<div class="coffeelist-item" value="C_NO=2"><h4 style="display: inline;">카페라떼</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=1"><h4 style="display: inline;">아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=3"><h4 style="display: inline;">그린티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=4"><h4 style="display: inline;">밀크티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
-		<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+<body >
+	<div class="background-blue">
+		<div class="background-pink"></div>
+		<div class="background-yellow"></div>
+		<div class="background-white">
+			<!--임시 커피 목록-->
+			<h2>임시 커피목록</h2>
+			<div class="coffee-box">
+				<div class="coffeelist-item" value="C_NO=2"><h4 style="display: inline;">카페라떼</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+				<div class="coffeelist-item" value="C_NO=1"><h4 style="display: inline;">아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+				<div class="coffeelist-item" value="C_NO=3"><h4 style="display: inline;">그린티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+				<div class="coffeelist-item" value="C_NO=4"><h4 style="display: inline;">밀크티</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+				<div class="coffeelist-item" value="C_NO=5"><h4 style="display: inline;">아이스아메리카노</h4><button style="display: inline-block;" class="addFav-btn">+</button></div>
+			</div>
+		
+			<div class="calc-area">
+				<!--계산기 include 부분 -->
+				<jsp:include page="/views/components/calculator.jsp"></jsp:include>
+			</div>
+		
+			<div class="fav-area">
+				<!--즐겨찾기 include 부분-->
+				<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+			</div>
+		</div>
 	</div>
-
-    <!--계산기 include 부분 -->
-    <jsp:include page="/views/components/calculator.jsp"></jsp:include>
-
-    <!--즐겨찾기 include 부분-->
-    <jsp:include page="/views/components/favorites.jsp"></jsp:include>
 
 </body>
 
@@ -44,6 +53,8 @@
 	let calcResult = "${main.calculationResult}";
 	const isAuth = "${isAuth}"==="true"? true : false;
 	console.log("html : ",isAuth);
+	const hasCoffees = true;
+	const hasCalc = true;
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>

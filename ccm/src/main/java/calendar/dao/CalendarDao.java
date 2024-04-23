@@ -5,9 +5,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import calendar.dto.Calendar;
 import jdbc.JdbcUtil;
+
 
 public class CalendarDao {
 	
@@ -84,6 +87,33 @@ public class CalendarDao {
 			int rows = pstmt.executeUpdate();
 			System.out.println("resetcaffeine : "+rows+" rows updated");
 		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public List<Calendar> getHealthLight(String memberid , Connection conn) throws SQLException { 
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		List<Calendar> healthlightlist = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement("select M_ID, CAL_DATE, CAL_COLOR, CAL_DAILYCF from CALENDAR where M_ID = ?");
+			pstmt.setString(1, memberid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Calendar calendar= new Calendar(
+					rs.getDate("CAL_DATE"),
+					rs.getString("M_ID"),
+				    rs.getInt("CAL_DAILYCF"),
+				    rs.getString("CAL_COLOR")
+				);
+				healthlightlist.add(calendar);
+			}
+			System.out.println("healthlightlist" + healthlightlist.toString());
+			return healthlightlist;
+			
+		}finally {
+			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 	}

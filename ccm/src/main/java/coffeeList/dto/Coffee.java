@@ -1,8 +1,8 @@
 package coffeeList.dto;
 
 public class Coffee {
-	//생성자
-	int C_NO;			//커피
+	//필드
+	int C_NO;			//커피 넘버 pk
 	String C_NAME;		//제품 이름
 	String C_BRAND;		//브랜드
 	int C_CAFFEINE;		//카페인
@@ -16,6 +16,7 @@ public class Coffee {
 	int C_FAVORITE;		//총 즐겨찾기 수
 	String C_IMAGE;		//C_IMG_COPY와 동일 / 팀원과 분할하여 구현 진행
 	
+	
 	//list 조회
 	public Coffee(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE,String C_IMG_COPY) {
 		this.C_NO = C_NO;
@@ -26,7 +27,7 @@ public class Coffee {
 	}
 	//list Detail 조회
 	public Coffee
-		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE, int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_IMG_COPY, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+		(int C_NO,String C_NAME,String C_BRAND,int C_CAFFEINE, int C_SACCHARIDE,int C_CALORIE,String C_CONTENT,String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY) {
 		this.C_NO = C_NO;
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
@@ -41,7 +42,7 @@ public class Coffee {
 	}
 	//list Add 추가
 	public Coffee
-		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL) {
+		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY) {
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
 		this.C_CAFFEINE = C_CAFFEINE;
@@ -51,10 +52,11 @@ public class Coffee {
 		this.C_TYPE = C_TYPE;
 		this.C_STAGE = C_STAGE;
 		this.C_IMG_REAL = C_IMG_REAL;
+		this.C_IMG_COPY = C_IMG_COPY;
 	}
 	//list Update 수정
 	public Coffee
-		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL,int C_NO) {
+		(String C_NAME,String C_BRAND,int C_CAFFEINE,int C_SACCHARIDE,int C_CALORIE,String C_CONTENT, String C_TYPE, String C_STAGE, String C_IMG_REAL, String C_IMG_COPY, int C_NO) {
 		this.C_NO = C_NO; //수정 where절 입력값
 		this.C_NAME = C_NAME;
 		this.C_BRAND = C_BRAND;
@@ -65,15 +67,23 @@ public class Coffee {
 		this.C_TYPE = C_TYPE;
 		this.C_STAGE = C_STAGE;
 		this.C_IMG_REAL = C_IMG_REAL;
+		this.C_IMG_COPY = C_IMG_COPY;
 	}
-
+	//사진파일 삭제
+	public Coffee(int C_NO,String C_IMG_REAL) {
+		this.C_NO = C_NO;
+		this.C_IMG_REAL = C_IMG_REAL;
+	}
+	
 	//카페인, 이미지 조회 (계산기)
-	public Coffee(int C_NO, int C_CAFFEINE, String C_IMAGE) {
+  public Coffee(int C_NO, String C_NAME, int C_CAFFEINE, String C_IMAGE) {
 		this.C_NO=C_NO;
 		this.C_CAFFEINE=C_CAFFEINE;
 		this.C_IMAGE=C_IMAGE;
 	}
-		
+	
+	
+	//하기 게터세터 메서드----------------------------------------------------
 	public String getC_IMAGE() {
 		return C_IMAGE;
 	}
@@ -163,6 +173,5 @@ public class Coffee {
 				+ ", C_TYPE=" + C_TYPE + ", C_STAGE=" + C_STAGE + ", C_IMG_REAL=" + C_IMG_REAL + ", C_IMG_COPY="
 				+ C_IMG_COPY + ", C_FAVORITE=" + C_FAVORITE + ", C_IMAGE=" + C_IMAGE + "]";
 	}
-	
 	
 }	
