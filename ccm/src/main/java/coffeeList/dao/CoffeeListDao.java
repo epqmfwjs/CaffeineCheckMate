@@ -309,6 +309,7 @@ public class CoffeeListDao {
 			while(rs.next()) {
 				coffeeFavMap.put(rs.getInt("idx"),new Coffee(
 						rs.getInt("C_NO"),
+						rs.getString("C_NAME"),
 						rs.getInt("C_CAFFAINE"),
 						rs.getString("C_IMG_COPY")
 						));

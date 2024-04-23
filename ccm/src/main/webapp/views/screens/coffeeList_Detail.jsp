@@ -23,6 +23,10 @@
 	<tr><td>당도</td><td>${coffeeDetail.c_SACCHARIDE}</td></tr>
 	<tr><td>칼로리</td><td>${coffeeDetail.c_CALORIE}</td></tr>
 	<tr><td>제품 설명</td><td>${coffeeDetail.c_CONTENT}</td></tr>
-</table>
+</table><br/>
+<div>
+	<a href="javascript:history.back();"><button>이전 페이지</button></a>
+	<a href="/coffeelist.do"><button>커피리스트 메인 페이지</button></a>
+</div>
 </body>
 </html>
