@@ -9,7 +9,7 @@
 <title>COFFEELIST ADD(master)</title>
 </head>
 <body>
-	<h2>커피를 열심히 추가하쟈</h2>
+	<h2>커피 추가(admin만 접속 가능)</h2>
 	<!-- 
 	이미지 추가 기능 : enctype="multipart/form-data"
 	HTML 폼의 기본 인코딩은 간단한 텍스트 데이터만 처리 가능(파일 업로드 지원 X)
@@ -67,4 +67,8 @@
 		<input type="file" accept=".png, .jpeg"> -->
         <input type="submit" value="찔러찔로">
     </form>
+<div>
+	<a href="javascript:history.back();"><button>이전 페이지</button></a>
+	<a href="/coffeelist.do"><button>커피리스트 메인 페이지</button></a>
+</div>
 </html>

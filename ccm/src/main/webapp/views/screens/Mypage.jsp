@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%
     request.setCharacterEncoding("utf-8");
 %>
@@ -172,11 +171,14 @@
 
 		<script>
 			const isAuth = "${isAuth}"==="true"? true : false;
-			const hasCoffees = false;
 		</script>
 		<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 		<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+
+		<script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/dist/progressbar.min.js" integrity="sha256-CjGwkk3nsu5BkdGgSjediSja+n8zB6HARhF/eZxtO0g=" crossorigin="anonymous"></script>
+
 		<script src="/resources/js/favoritelist.js" type="text/babel"></script>
 	</body>
 </html>
