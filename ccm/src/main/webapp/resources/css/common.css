@@ -20,7 +20,7 @@ body {
 
 .wrapper {
 	width: auto;
-	height: 90vh;
+	height: 7100vh;
 	background: rgba(200, 200, 200, 0.3);
 	border-radius: 20px;
 	box-shadow: 
@@ -106,7 +106,7 @@ header{
 /*---------- section ----------*/
 /* section{
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-auto-rows: auto;
 	grid-gap: 1em;
 	align-items: center;
@@ -160,3 +160,54 @@ footer{
 	color: rgba(150, 150, 150, 1);
 }
 
+
+
+
+
+
+
+/*브라우저 기본 설정 초기화*/
+/* reset.css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
