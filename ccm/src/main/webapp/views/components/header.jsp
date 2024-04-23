@@ -10,9 +10,6 @@
 <body>
 
 	<header class="container">
-		<div class="header_col_1">
-			<a class="headerLinks">CCM</a><!-- 추가- 시간날 때 포스터 같은 느낌으로 정체성 표시해주면 좋을듯 -->
-		</div>
 		<div class="header_col_7">
 			<a class="headerLinks" onclick="location.href='/coffeelist.do '">Product</a>
 		</div>

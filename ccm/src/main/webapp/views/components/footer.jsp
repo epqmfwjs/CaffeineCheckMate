@@ -11,7 +11,7 @@
 
 	<footer class="container">
 		<div class="footer_col_6">
-			<a class="footerLinks">(주)광현 Company</a> 
+			<a class="footerLinks">Caffeine Cycle Management Inc.</a> 
 		</div>
 	</footer>
 
