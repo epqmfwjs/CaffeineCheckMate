@@ -41,7 +41,7 @@
 <body>
 
 <div class="coffeeListSearch">
-    <h3>커피 리스트</h3>
+    <h3>커피 리스트 메인</h3>
     
     <form action="coffeeList.do" method="get">
     	<select name="searchType">
