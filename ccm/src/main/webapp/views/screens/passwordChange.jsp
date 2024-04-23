@@ -17,7 +17,7 @@
 			비밀번호확인:<input type="password" name="updatePw2" id="updatePw2" placeholder="비밀번호확인" required="required"/><br/>
 				<input type="hidden" value="passwordChange" name="Value">
 				<input type="submit" value="변경"/>
-				<input type="button" value="취소" onclick="location.href='updateRequest.jsp'"/>
+				<input type="button" value="취소" onclick="location.href='/views/screens/updateRequest.jsp'"/>
 		</form>
 </div>
 </body>
