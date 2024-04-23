@@ -9,27 +9,19 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import coffeeList.dto.Coffee;
-import coffeeList.service.CoffeeAddService;
+import coffeeList.service.CoffeeUpdateService;
 import controller.CommandHandler;
 
-public class CoffeeAddHandler implements CommandHandler{
-	
+public class CoffeeUpdateHandler implements CommandHandler {
+
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		
-		System.out.println("여기는 오니..?");
-		
-
+		System.out.println("업뎃 핸들러");
 		//이미지 추가 관련 로직
 		//1. 저장될 디렉토리 변수에 담기
 		String saveDirectory = request.getServletContext().getRealPath("resources/testimg");
-		//1-1. 저장될 디렉토리가 없으면 새로 생성
-		//저장 경로 : C:\icanjava\webpg\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ccm\resources\testimg
-		File dir = new File(saveDirectory);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
 		//2. 파일 크기 제한 설정 변수에 담기
 		int maxPostSize = 10 * 1024 * 1024; // 10MB
 		
@@ -47,10 +39,10 @@ public class CoffeeAddHandler implements CommandHandler{
 				"UTF-8",
 				new DefaultFileRenamePolicy()
 				);
-				
-		//4. MultipartRequest객체를 생성하여 파라미터를 받음
-		// request.getParameter -> multi.getParameter 로 변경
-		try {//파라미터 받은 값과 변수는 _없이 모두 소문자
+		
+		try {
+			//coffeeNo를 파라미터로 받아 WHERE절에 사용
+			int coffeeNo = Integer.parseInt(multi.getParameter("coffeeNo"));
 			String cname = multi.getParameter("cname");
 			String cbrand = multi.getParameter("cbrand");
 			int ccaffeine = Integer.parseInt(multi.getParameter("ccaffeine"));
@@ -59,23 +51,34 @@ public class CoffeeAddHandler implements CommandHandler{
 			String ccontent = multi.getParameter("ccontent");
 			String ctype = multi.getParameter("ctype");
 			String cstage = multi.getParameter("cstage");
-			String cimgreal = multi.getFilesystemName("cimgreal");//img : getFilesystemName 이용
-			//C_IMG_COPY 경로까지 합쳐서 저장
+			//newImage:새 이미지 / existingImage:이전 이미지
+			String newImage = multi.getFilesystemName("cimgreal");
+			String existingImage = multi.getParameter("defaultImage");
+			// 새 이미지가 업로드되었으면 사용, 그렇지 않으면 기존 이미지 유지
+			String cimgreal;
+			String existAllPath = saveDirectory+existingImage;
+			System.out.println(existAllPath);
+			if(newImage!=null) {
+				cimgreal = newImage;
+			}else {
+				cimgreal = existingImage;
+			};
+			
+			
+			
 			String cimgcopy = "/resources/testimg/" + cimgreal;
-			
+			System.out.println(cimgcopy);
 			Coffee coffee = new Coffee
-					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal,cimgcopy);
+					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal,cimgcopy,coffeeNo);
 			
-			CoffeeAddService coffeeAddService = new CoffeeAddService();
-			coffeeAddService.addCoffee(coffee);
-			System.out.println("여기까진..? 오니..?");
+			CoffeeUpdateService coffeeUpdateService = new CoffeeUpdateService();
+			coffeeUpdateService.updateCoffee(coffee,saveDirectory);
 			
 			response.sendRedirect("/coffeeList.do");
-			
 			return null;
-		} catch (Exception e) {
-			System.out.println("Coffee delete handler 에러 메시지: " + e.getMessage());
-            return "에러";
+		}catch(Exception e) {
+			System.out.println("coffee update handler 에러 메시지: " + e.getMessage());
+			return "에러";
 		}
 	}
 }

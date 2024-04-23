@@ -13,10 +13,14 @@ public class CoffeeDetailHandler implements CommandHandler{
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception{
         try {
             int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
+            String pageNo = request.getParameter("pageNo"); //이전 페이지
+            
             //System.out.println("int로 변환까지 잘 됨");
             CoffeeDetailService coffeeDetailService = new CoffeeDetailService();
+            Coffee coffee = coffeeDetailService.getCoffeeDetail(coffeeNo);
             
-            request.setAttribute("coffeeDetail", coffeeDetailService.getCoffeeDetail(coffeeNo));
+            //request.setAttribute("pageNo",pageNo);
+            request.setAttribute("coffeeDetail", coffee);
             return "/views/screens/coffeeList_Detail.jsp";
         } catch (Exception e) {
             System.out.println("coffeedetail handler 에러 메시지: " + e.getMessage());

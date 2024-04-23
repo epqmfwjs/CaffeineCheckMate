@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>test</title>
 </head>
 <body>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
@@ -40,6 +40,9 @@
 		</form>
 	</div>
 <%}%>
-
+	<h1>커피리스트</h1>
+	<form action="/coffeeList.do" method="get">
+		<input type="submit" value="coffeelist">
+	</form>
 </body>
 </html>
