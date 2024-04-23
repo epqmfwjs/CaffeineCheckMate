@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardViewDao;
@@ -25,7 +26,6 @@ public class CustomBoardViewService {
 			ArrayList<CustomBoardListDto> list = dao.boardview(con,num);
 			
 			
-			
 			request.setAttribute("list", list);
 			return list;
 			
@@ -39,5 +39,33 @@ public class CustomBoardViewService {
 		}
 		return null;
 }
+	
+	
+	
+	public String checkid(HttpServletRequest request, HttpServletResponse response) {
+		Connection con = null;
+		CustomBoardViewDao dao = new CustomBoardViewDao();
+		HttpSession session = request.getSession(false);
+		 String id = (String)session.getAttribute("AUTH_USER_ID");
+		 
+		String num = request.getParameter("CUS_NUM");
+		
+		try {
+			
+			con = ConnectionProvider.getConnection();
+			String dtoid = dao.memid(num,con);
+			
+			if(id !=null && id.equals(dtoid)) {
+			return "/views/screens/CustomBoardMyView.jsp";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			JdbcUtil.close(con);
+		}
+		
+		return "/views/screens/CustomBoardView.jsp";
+	}
 }
 

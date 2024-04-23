@@ -1,4 +1,4 @@
-package calendar.handler;
+package favorite.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,52 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import calendar.service.AsyncCalcService;
-import controller.CommandHandler;
+import favorite.service.FavoriteService;
 
 
-@WebServlet("/calc")
-public class AsyncCalc extends HttpServlet {
+@WebServlet("/favorites")
+public class GetFavListAsync extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AsyncCalcService asyncCalcService = new AsyncCalcService();
-    Gson gson = new Gson();
+	private Gson gson = new Gson();
+	private FavoriteService favoriteService = new FavoriteService();
 
-    
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Object mno =  request.getSession().getAttribute("AUTH_USER_ID");
     	String memberId = null;
     	if (mno != null) {
     		memberId = mno.toString();
     	}
-		
-		String cno = request.getParameter("C_NO");
-		Integer doReset = Integer.parseInt(request.getParameter("yn")); // y(1)이면 리셋, n(0)이면 계산
-		int coffeeNo;
-		String jsonString = null;
-		
-		if (cno != null) {
-			if (!cno.isEmpty()) {
-				try {
-					coffeeNo = Integer.parseInt(cno);
-				}catch (Exception e) {
-					coffeeNo = 0;
-				}				
-			} else {
-				coffeeNo = 0;
-			}
-		} else {
-			coffeeNo = 0;
-		}
-		
-		if (doReset == 0) {
-			HashMap<String, Object> cr = asyncCalcService.calc(memberId, coffeeNo);
-			jsonString = gson.toJson(cr);			
-		} else if (doReset ==1 ) {
-			HashMap<String, Object> rr = asyncCalcService.reset(memberId);
-			jsonString = gson.toJson(rr);
-		}
-		
+    	HashMap favMap = null;
+    	String jsonString = null;
+    	
+    	favMap = favoriteService.getFavAsync(memberId);
+    	jsonString = gson.toJson(favMap);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -67,9 +41,9 @@ public class AsyncCalc extends HttpServlet {
 		out.flush();	
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 
 }

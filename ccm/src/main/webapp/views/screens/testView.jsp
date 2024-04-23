@@ -49,8 +49,12 @@ input[type="button"]:hover, input[type="submit"]:hover {
 </style>
 </head>
 <body>
-<button onclick="location.href='/LoginHandler.do'">LoginHandler.do</button>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
+
+<button onclick="location.href='/views/screens/test.jsp'">test.jsp 즐겨찾기</button>
+
+<button onclick="location.href='/main.do'">계산기/즐겨찾기</button>
+
 
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
@@ -58,15 +62,13 @@ input[type="button"]:hover, input[type="submit"]:hover {
 	<div class="container">
 	<h1>다돌고  결과 viewPage 돌아오기 완료됨</h1>
 	  <strong><%= session.getAttribute("AUTH_USER_NICKNAME") %></strong> 님 안녕하세요
-		<div class="button-container">
-			<form action="<%=request.getContextPath() %>/Logout">
-				<input type="submit" value="로그아웃"  class="login-button" onclick="alert('로그아웃되었습니다.')"/>
-			</form>
-			<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
-				<input type="hidden" value="edit" name="Value"/>
-				<input type="submit" value="정보수정"/>
-			</form>
-			</div>
+		<form action="<%=request.getContextPath() %>/Logout">
+			<input type="submit" value="로그아웃"  class="login-button" onclick="alert('로그아웃되었습니다.')"/>
+		</form>
+		<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
+			<input type="hidden" value="edit" name="Value"/>
+			<input type="submit" value="정보수정"/>
+		</form>
 	</div>
 	<%}else{%>
 	<div class="container">
@@ -76,6 +78,9 @@ input[type="button"]:hover, input[type="submit"]:hover {
 		</form>
 	</div>
 <%}%>
-
+	<h1>커피리스트</h1>
+	<form action="/coffeeList.do" method="get">
+		<input type="submit" value="coffeelist">
+	</form>
 </body>
 </html>

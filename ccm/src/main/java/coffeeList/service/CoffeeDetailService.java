@@ -10,12 +10,13 @@ import jdbc.JdbcUtil;
 
 public class CoffeeDetailService {
     
+	CoffeeListDao coffeelistdao = new CoffeeListDao();
+	
     public Coffee getCoffeeDetail(int coffeeListNo) throws SQLException {
         Connection conn = null;
         try {
             conn = ConnectionProvider.getConnection();
             
-            CoffeeListDao coffeelistdao = new CoffeeListDao();
             Coffee coffeeDetail = coffeelistdao.getCoffeeDetail(conn, coffeeListNo);
             return coffeeDetail;
         } finally {
@@ -23,4 +24,4 @@ public class CoffeeDetailService {
         }
     }
 }
-//coffeeListNo(C_NO)
+//coffeeListNo(C_NO) 이 주석은 뭘까 나도 기억이
