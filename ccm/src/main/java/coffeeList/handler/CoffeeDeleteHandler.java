@@ -17,7 +17,9 @@ public class CoffeeDeleteHandler implements CommandHandler{
 			
 			CoffeeDeleteService coffeeDeleteService = new CoffeeDeleteService();
 			coffeeDeleteService.deleteCoffee(coffeeNo, saveDirectory);
-			return "/coffeeList.do";
+			
+			response.sendRedirect("/coffeeList.do");
+			return null;
 		} catch (Exception e) {
 			System.out.println("Coffee delete handler 에러 메시지: " + e.getMessage());
             return "에러";

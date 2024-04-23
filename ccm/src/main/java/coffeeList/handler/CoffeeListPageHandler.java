@@ -3,11 +3,8 @@ package coffeeList.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
+import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Response;
-
-import coffeeList.dto.Coffee;
 import coffeeList.dto.CoffeeListPage;
 import coffeeList.service.CoffeeListPageService;
 import controller.CommandHandler;
@@ -67,7 +64,9 @@ public class CoffeeListPageHandler implements CommandHandler{
 			}		
 			
 			request.setAttribute("CoffeeListPage", coffeeListPage);
-			request.setAttribute("isAdmin", isAdmin);
+			
+			HttpSession session = request.getSession(false);
+			session.setAttribute("isAdmin", isAdmin);
 			
 	    	System.out.println("리스트 뷰 핸들러 리턴 전");
 			return "/views/screens/coffeeList_index.jsp";

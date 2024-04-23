@@ -70,7 +70,9 @@ public class CoffeeAddHandler implements CommandHandler{
 			coffeeAddService.addCoffee(coffee);
 			System.out.println("여기까진..? 오니..?");
 			
-			return "/coffeeList.do";
+			response.sendRedirect("/coffeeList.do");
+			
+			return null;
 		} catch (Exception e) {
 			System.out.println("Coffee delete handler 에러 메시지: " + e.getMessage());
             return "에러";

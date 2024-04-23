@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COFFEE LIST INDEX</title>
-<!-- gpt짱.. ㅠ -->
 <style>
     .coffeeListSearch{
         text-align: center;
@@ -49,12 +48,12 @@
     		<option value="name">제품명</option>
     		<option value="brand">브랜드</option>
     	</select>	
-    	검색 <input type="text" name="searchQuery">
+    	검색 <input type="text" name="searchQuery" required="required">
     	<input type="submit" value="검색"><br/>
     	해당 부분에서 제목별 검색이 가능합니다
     </form>
 </div>
-<c:if test="${coffeeListAdmin}">
+<c:if test="${isAdmin}">
 	<div>
 	    <a href="./views/screens/coffeeList_Add.jsp">관리자 게시글 삽입</a>
 	</div>
@@ -66,7 +65,7 @@
         </c:if>
         <div class="card">
             <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
-            <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></h4>
+            <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}&pageNo=${CoffeeListPage.currentPage}">${coffeeV.c_NAME}</a></h4>
 	        <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
 	        <c:if test="${not empty sessionScope.AUTH_USER_ID}">
 	            <button type="button">즐겨찾기버튼</button>
@@ -75,28 +74,43 @@
             <p>Caffeine: ${coffeeV.c_CAFFEINE} mg</p>
         </div>
     </c:forEach>
-</div>
-
-<!-- 페이지네이션 아래 블럭을 담당하는 부분 -->
-<div class="pagination">
-	<c:if test="${CoffeeListPage.startPage > 1}">
-		<a href="?page=${CoffeeListPage.startPage - 1}">이전</a>
-	</c:if>
-        <c:forEach begin="${CoffeeListPage.startPage}" 
-        		   end  ="${CoffeeListPage.endPage}"  var="i">
-            <c:choose>
-                <c:when test="${i == CoffeeListPage.currentPage}">
-                    <span><b>${i}</b></span>
-                </c:when>
-                <c:otherwise>
-                    <a href="?page=${i}">${i}</a>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-    <c:if test="${CoffeeListPage.endPage < CoffeeListPage.totalPage}">
-    	<a href="?page=${CoffeeListPage.endPage + 1}">다음</a>
+<%-- 게시글이 없으면 보여줄 내용--%>
+    <c:if test="${CoffeeListPage.hasNoCoffeeList()}">
+    	<div>찾는 게시물이 없습니다</div>
     </c:if>
 </div>
 
+    
+
+<!-- 페이지네이션 아래 블럭을 담당하는 부분 -->
+
+<div class="pagination">
+<c:choose>
+	<c:when test="${CoffeeListPage.hasCoffeeList()}">
+		<!-- 게시물이 있을 경우 페이징 넘버 처리 -->
+		<c:if test="${CoffeeListPage.startPage > 1}">
+			<a href="?page=${CoffeeListPage.startPage - 1}">이전</a>
+		</c:if>
+			<c:forEach begin="${CoffeeListPage.startPage}" 
+					   end  ="${CoffeeListPage.endPage}"  var="i">
+				<c:choose>
+					<c:when test="${i == CoffeeListPage.currentPage}">
+						<span><b>${i}</b></span>
+					</c:when>
+					<c:otherwise>
+						<a href="?page=${i}">${i}</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		 <c:if test="${CoffeeListPage.endPage < CoffeeListPage.totalPage}">
+		    	<a href="?page=${CoffeeListPage.endPage + 1}">다음</a>
+		 </c:if>	
+	</c:when>
+	<c:otherwise>
+		<a href="/coffeeList.do"><button type="button">기본 리스트로 돌아가기</button></a>
+	</c:otherwise>
+</c:choose>
+			
+</div>
 </body>
 </html>

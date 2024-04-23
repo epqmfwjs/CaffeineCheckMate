@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>요기는 상세 페이지 임시 거처입니당 :D</h3>
-<c:if test="${sessionScope.coffeeListAdmin}">
+<c:if test="${sessionScope.isAdmin}">
 	<div>
 		관리자 전용<br/>
 		<a href="coffeeListDelete.do?coffeeNo=${coffeeDetail.c_NO}">Delete</a>
