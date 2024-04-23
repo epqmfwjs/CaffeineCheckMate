@@ -48,6 +48,7 @@
 	let calcResult = "${main.calculationResult}";
 	const isAuth = "${isAuth}"==="true"? true : false;
 	console.log("html : ",isAuth);
+	const hasCoffees = true;
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
