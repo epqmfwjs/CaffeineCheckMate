@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+#searchInput {
+	width : 50vw;
+	float: left;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px; /* 아이템 간의 간격 */
+    list-style-type: none; /* 리스트 스타일 제거 */
+} 
+
+#board li {
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+#board img {
+    max-width: 100%; /* 이미지 크기 조절 */
+}
+
+.dropdown {
+    display: inline-block;
+}
 div.divdropdown{
 float: right;
 }
@@ -12,8 +35,8 @@ float: right;
  button.dropdown{
   border:none;
   border-radius:5px;
-  padding:15px 30px;
-  font-size:18px;
+  padding: .5vw 3vh;
+  font-size:1em;
   cursor:pointer;
 } 
  
@@ -23,7 +46,7 @@ button:hover{
 
 .dropdown-options {
   display: none;
-   position: absolute;
+  position: absolute;
   overflow: auto;
   background-color:#fff;
   border-radius:5px;
@@ -49,29 +72,114 @@ button:hover{
 }
 
 
-
-#searchInput {
-	width : 500px;
-	
+/*---------- grid-set ----------*/
+section{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-auto-rows: auto;
+	grid-gap: 1em;
+	align-items: center;
+	text-align: center;
+	height: 70vh;
+	margin: 1em;
+	overflow: auto;
 }
 
-#board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px; /* 아이템 간의 간격 */
-    list-style-type: none; /* 리스트 스타일 제거 */
+@media screen and (max-width: 900px) {
+	.section{
+		grid-template-columns: 100%;
+		grid-template-rows: auto;
+		grid-gap: auto;
+	}
+}
+
+/*2행*/
+.section_col_1_row_2 {
+    grid-column: 1;
+    place-items: center;
+	grid-row: 2;
 } 
 
-#board li {
-    text-align: center; /* 텍스트 중앙 정렬 */
-}
+/*홈버튼*/
+.section_col_2_row_2 {
+    grid-column: 2;
+    place-items: center;
+	grid-row: 2;
+} 
 
-#board img {
-    max-width: 100%; /* 이미지 크기 조절 */
-}
+/*글 작성*/
+.section_col_3_row_2 {
+    grid-column: 3;
+    place-items: center;
+	grid-row: 2;
+} 
 
-     .dropdown {
-    display: inline-block;
-    margin-right: 10px; /* 각 드롭다운 사이의 간격을 위한 마진 */
-}
+/*검색창*/
+.section_col_4-to-11_row_2 {
+    grid-column: 4 / span 11;
+    place-items: center;
+	grid-row: 2;
+} 
 
+.section_col_12_row_2 {
+    grid-column: 12;
+    place-items: center;
+	grid-row: 2;
+} 
+
+/*3행*/
+.section_col_1_row_3 {
+    grid-column: 1;
+    place-items: center;
+	grid-row: 3;
+} 
+
+/*샷 추가*/
+.section_col_2-to-3_row_3 {
+    grid-column: 2 / span 3;
+    place-items: center;
+	grid-row: 3;
+} 
+
+/*우유 종류*/
+.section_col_4-to-5_row_3 {
+    grid-column: 4 / span 5;
+    place-items: center;
+	grid-row: 3;
+} 
+
+/*시럽 추가*/
+.section_col_6-to-7_row_3 {
+    grid-column: 6 / span 7;
+    place-items: center;
+	grid-row: 3;
+} 
+
+/*토핑 추가*/
+.section_col_8-to-9_row_3 {
+    grid-column: 8 / span 9;
+    place-items: center;
+	grid-row: 3;
+} 
+
+/*디카페인*/
+.section_col_10-to-11_row_3 {
+    grid-column: 10 / span 11;
+    place-items: center;
+	grid-row: 3;
+} 
+
+
+.section_col_12_row_3 {
+    grid-column: 12;
+    place-items: center;
+	grid-row: 3;
+} 
+
+
+/*4행*/
+.section_col_1-to-12_row_4 {
+    grid-column: 1 / span 12;
+    place-items: center;
+	grid-row: 4;
+} 
