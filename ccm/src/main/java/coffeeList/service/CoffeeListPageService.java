@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import coffeeList.dao.CoffeeListDao;
 import coffeeList.dto.Coffee;
@@ -13,12 +12,15 @@ import connection.ConnectionProvider;
 import favorite.dao.FavoriteDao;
 import favorite.dto.Favorite;
 import jdbc.JdbcUtil;
+import member.dao.MemberDAO;
 
 public class CoffeeListPageService {
 	
 	CoffeeListDao coffeeListDao = new CoffeeListDao();
 	FavoriteDao favoriteDao = new FavoriteDao();
+	MemberDAO memberDao = new MemberDAO();
 	
+	//리스트 페이지 회원일 때
 	public CoffeeListPage getCoffeeList(String memberId, int page) throws SQLException {
 		Connection conn = null;
 		try {
@@ -31,6 +33,8 @@ public class CoffeeListPageService {
 			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn, page, size);
 			HashMap<Integer, Favorite> favMap = favoriteDao.getFavList(memberId, conn);
 			int total = coffeeListDao.CoffeeListCount(conn);
+			//하기 checkAdmin 메소드 호출
+			boolean admin = checkAdmin(memberId);
 			
 			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList, favMap, total, page, size);
 			
@@ -40,6 +44,7 @@ public class CoffeeListPageService {
 		}
 	}
 	
+	//리스트 페이지 비회원일 때
 	public CoffeeListPage notAuthCoffeeList(int page) throws SQLException {
 		Connection conn = null;
 		try {
@@ -56,6 +61,26 @@ public class CoffeeListPageService {
 			
 			return coffeeListPage;
 		}finally {
+			JdbcUtil.close(conn);
+		}
+	}
+	public CoffeeListPage searchCoffee(String searchType, String searchQuery, int page) throws SQLException {
+		try (Connection conn = ConnectionProvider.getConnection()) {
+			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 10);
+			int total = coffeeList.size();  // 검색 결과 수
+			return new CoffeeListPage(coffeeList, total, page, 10);
+		}
+	}
+	
+	//관리자 유무 확인
+	public boolean checkAdmin(String memberId) throws SQLException {
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			String mrole = memberDao.adminOk(conn, memberId);
+			
+			return "A".equals(mrole);
+		} finally {
 			JdbcUtil.close(conn);
 		}
 	}

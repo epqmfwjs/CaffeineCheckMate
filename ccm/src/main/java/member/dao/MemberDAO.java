@@ -272,4 +272,36 @@ public class MemberDAO {
 		        	}
 			    return returnPage;
 		}
+		//-----------------------------------------------------------
+		//관리자 여부 확인 (coffeeList 사용)
+		public String adminOk(Connection conn, String memberId) throws SQLException {
+			String adminOkSQL = "SELECT M_ROLE "
+							  + "FROM MEMBER "
+							  + "WHERE M_ID = ?";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				pstmt = conn.prepareStatement(adminOkSQL);
+				pstmt.setString(1, memberId);
+				rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					return rs.getString("M_ROLE");
+				}
+				return null; //명시적으로 null을 반환해야 컴파일 에러 안 뜸
+			} finally {
+				pstmt.close();
+		        conn.close();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

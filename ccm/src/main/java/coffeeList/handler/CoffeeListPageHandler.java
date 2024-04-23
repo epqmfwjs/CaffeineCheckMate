@@ -3,11 +3,8 @@ package coffeeList.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
+import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Response;
-
-import coffeeList.dto.Coffee;
 import coffeeList.dto.CoffeeListPage;
 import coffeeList.service.CoffeeListPageService;
 import controller.CommandHandler;
@@ -28,17 +25,48 @@ public class CoffeeListPageHandler implements CommandHandler{
 				page = Integer.parseInt(request.getParameter("page"));
 			}
 			
-			//mId!=null일 경우 Object(mId)가 toString되어 member 변수에 save
-			//mId =null일 경우 memberId에 null save
+			CoffeeListPage coffeeListPage = null;
+			
+			// 검색로직 추가
+			//searchType:검색 옵션(브랜드,제품명) / searchQuery:클라이언트 입력값
+			String searchType = request.getParameter("searchType");
+			String searchQuery = request.getParameter("searchQuery");
+			
+			// 현재 멤버 id 세션
 			Object mId =  request.getSession().getAttribute("AUTH_USER_ID");
 			String memberId = mId != null? mId.toString() : null;
-	    	
-	    	if(memberId != null ) {
-	    		request.setAttribute("CoffeeListPage", coffeeListService.getCoffeeList(memberId,page));
-	    	} else { // 비로그인상태    		
-	    		request.setAttribute("CoffeeListPage", coffeeListService.notAuthCoffeeList(page));
-	    		//System.out.println(coffeeListService.notAuthCoffeeList());
-	    	}
+			boolean isAdmin = false;
+			
+			if (memberId != null) {
+				isAdmin = coffeeListService.checkAdmin(memberId);
+			}
+			
+			//회원
+			if (memberId != null) {
+				if (searchType != null && 
+					searchQuery != null && 
+					!searchQuery.isEmpty()) { //검색 시
+					coffeeListPage = coffeeListService.searchCoffee(searchType, searchQuery, page);
+				} else {//비검색 시
+					coffeeListPage = coffeeListService.getCoffeeList(memberId, page);
+				}
+				request.setAttribute("isAdmin", coffeeListService.checkAdmin(memberId)); // 관리자 여부 체크	
+			
+			//비회원
+			} else {	//검색 시
+				if (searchType != null && 
+					searchQuery != null &&
+					!searchQuery.isEmpty()) {	
+					coffeeListPage = coffeeListService.searchCoffee(searchType, searchQuery, page);
+				} else {	//비검색 시
+					coffeeListPage = coffeeListService.notAuthCoffeeList(page);
+				}
+			}		
+			
+			request.setAttribute("CoffeeListPage", coffeeListPage);
+			
+			HttpSession session = request.getSession(false);
+			session.setAttribute("isAdmin", isAdmin);
 			
 	    	System.out.println("리스트 뷰 핸들러 리턴 전");
 			return "/views/screens/coffeeList_index.jsp";

@@ -52,7 +52,7 @@ function calc(cno) {
                 const rda = data.rda;
                 const ratio = caffeine/rda;
                 console.log("cf:",caffeine,"  rda:",rda,"  ratio:",ratio);
-                dailyC.innerText = caffeine;
+                dailyC.innerText = `${caffeine} mg`;
                 bar.animate(ratio);
             })
             .catch(error => {

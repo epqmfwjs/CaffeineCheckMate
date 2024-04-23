@@ -16,8 +16,8 @@
 
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
-%>
-	<div class="container">
+%>	
+	<div>
 	<h1>다돌고  결과 viewPage 돌아오기 완료됨</h1>
 	  <strong><%= session.getAttribute("AUTH_USER_NICKNAME") %></strong> 님 안녕하세요
 		<form action="<%=request.getContextPath() %>/Logout">
@@ -26,6 +26,10 @@
 		<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
 			<input type="hidden" value="edit" name="Value"/>
 			<input type="submit" value="정보수정"/>
+		</form>
+		<!-- 마이페이지 버튼 추가 -->
+		<form action="/mypage.do">
+			<input type="submit" value="My Page" />
 		</form>
 	</div>
 	<%}else{%>
