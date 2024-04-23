@@ -3,7 +3,7 @@
 */
 
 // 즐겨찾기 목록 렌더링 함수 ReactDOM.render(<App data={data}/>,root);
-/*if (isAuth){
+if (isAuth){
     const root = document.querySelector(".fav-box");
     function App(props) {
         const fav = props.data;
@@ -26,7 +26,7 @@
     function render(data){
         console.log("render");
         ReactDOM.render(<App data={data}/>,root);
-    }*/
+    }
 
 
     //즐겨찾기 박스 선택
