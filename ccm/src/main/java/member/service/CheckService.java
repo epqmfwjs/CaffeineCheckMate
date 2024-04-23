@@ -18,8 +18,9 @@ public class CheckService {
 		conn = ConnectionProvider.getConnection();
 		conn.setAutoCommit(false);
 		MemberDAO memberDAO = new MemberDAO();	
-		
-		int	result = memberDAO.checkSystem(parameter,query,conn);					
+		System.out.println("서비스 파라미터 "+parameter);
+		int	result = memberDAO.checkSystem(parameter,query,conn);
+		System.out.println("dao다녀온 결과 " + result);
 		if (conn != null) conn.close();
 		return result;
 	}

@@ -120,16 +120,20 @@ public class MemberDAO {
 	//중복체크 select method
 	public int checkSystem(String value, String query, Connection conn) {
 	    System.out.println(value);
+	    //"SELECT ccm.member.M_ID FROM ccm.member WHERE M_ID = ? UNION all "
+	    //+ "SELECT ccm.member_backup.M_ID FROM ccm.member_backup WHERE M_ID = ?";
 	    int result = 0;
 	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
 	        pstmt.setString(1, value);
 	        pstmt.setString(2, value);
 	        try (ResultSet rs = pstmt.executeQuery()) {
-	            result = rs.next() ? 1 : 0;
+	            return rs.next() ? 1 : 0;
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
+	        return -1;
 	    } 
+	}
 //	    finally {
 //	        try {
 //	            if (conn != null) conn.close();
@@ -137,8 +141,7 @@ public class MemberDAO {
 //	            e.printStackTrace();
 //	        }
 //	    }
-	    return result;
-	}
+	    //return result;
 	// 수정요청메소드
 	//변경될 값 : value / pk조건 : id / 셀렉문 : select 
 	public String update(String value, String id, String query, Connection conn) {

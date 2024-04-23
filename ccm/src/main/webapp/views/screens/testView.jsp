@@ -25,7 +25,6 @@ input[type="button"], input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     width: 30%; /* 버튼 너비 조정 */
-    
 }
 /* 버튼 및 서브밋 스타일 조정 */
 input[type="button"], input[type="submit"] {
