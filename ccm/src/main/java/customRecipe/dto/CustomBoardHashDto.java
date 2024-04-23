@@ -6,6 +6,7 @@ public class CustomBoardHashDto {
 	private String syrupType;
 	private String toppingType;
 	private String decaffeinated; 
+	private String cus_no;
 
  
 
@@ -32,14 +33,21 @@ public class CustomBoardHashDto {
 
 
 	// getter 및 setter 메서드
-    public String getshot() {
-        return shot;
-    }
 
-    public void setshot(String shot) {
-        this.shot = shot;
-    }
-
+	public String getshot() {
+		return shot;
+	}
+	
+	public void setshot(String shot) {
+		this.shot = shot;
+	}
+	public String getcus_no() {
+		return cus_no;
+	}
+	
+	public void setcus_no(String cus_no) {
+		this.cus_no = cus_no;
+	}
     public String getmilkType() {
         return milkType;
     }

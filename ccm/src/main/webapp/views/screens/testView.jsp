@@ -7,9 +7,12 @@
 <title>test</title>
 </head>
 <body>
-<button onclick="location.href='/LoginHandler.do'">LoginHandler.do</button>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
+
+<button onclick="location.href='/views/screens/test.jsp'">test.jsp 즐겨찾기</button>
+
 <button onclick="location.href='/main.do'">계산기/즐겨찾기</button>
+
 
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
@@ -23,6 +26,10 @@
 		<form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
 			<input type="hidden" value="edit" name="Value"/>
 			<input type="submit" value="정보수정"/>
+		</form>
+		<!-- 마이페이지 버튼 추가 -->
+		<form action="/mypage.do">
+			<input type="submit" value="My Page" />
 		</form>
 	</div>
 	<%}else{%>

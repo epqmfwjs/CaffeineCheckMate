@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CCM</title>
-</head> 
+</head>
 <body>
 <c:forEach var="item" items="${list}">
     <li style="display: inline-block; width: 20%;">
