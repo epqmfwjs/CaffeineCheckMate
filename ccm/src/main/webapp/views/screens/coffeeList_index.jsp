@@ -65,7 +65,7 @@
         </c:if>
         <div class="card">
             <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
-            <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}&pageNo=${CoffeeListPage.currentPage}">${coffeeV.c_NAME}</a></h4>
+            <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></h4>
 	        <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
 	        <c:if test="${not empty sessionScope.AUTH_USER_ID}">
 	            <button type="button">즐겨찾기버튼</button>
