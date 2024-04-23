@@ -67,17 +67,15 @@ public class Coffee {
 		this.C_TYPE = C_TYPE;
 		this.C_STAGE = C_STAGE;
 		this.C_IMG_REAL = C_IMG_REAL;
-		this.C_IMG_COPY = C_IMG_COPY;
-	}
-	//사진파일 삭제
-	public Coffee(int C_NO,String C_IMG_REAL) {
-		this.C_NO = C_NO;
-		this.C_IMG_REAL = C_IMG_REAL;
 	}
 
+<<<<<<< HEAD
 	public Coffee(int C_NO, String C_NAME, int C_CAFFEINE, String C_IMAGE) {
+=======
+	//카페인, 이미지 조회 (계산기)
+	public Coffee(int C_NO, int C_CAFFEINE, String C_IMAGE) {
+>>>>>>> branch 'develop' of https://github.com/JinyDev95/CaffeineCheckMate.git
 		this.C_NO=C_NO;
-		this.C_NAME = C_NAME;
 		this.C_CAFFEINE=C_CAFFEINE;
 		this.C_IMAGE=C_IMAGE;
 	}
@@ -173,5 +171,7 @@ public class Coffee {
 				+ ", C_TYPE=" + C_TYPE + ", C_STAGE=" + C_STAGE + ", C_IMG_REAL=" + C_IMG_REAL + ", C_IMG_COPY="
 				+ C_IMG_COPY + ", C_FAVORITE=" + C_FAVORITE + ", C_IMAGE=" + C_IMAGE + "]";
 	}
+	
+>>>>>>> branch 'develop' of https://github.com/JinyDev95/CaffeineCheckMate.git
+	
 }	
-

@@ -259,7 +259,6 @@ public class CoffeeListDao {
 			if(rs.next()) {
 				coffee = new Coffee(
 						rs.getInt("C_NO"),
-						rs.getString("C_NAME"),
 						rs.getInt("C_CAFFEINE"),
 						rs.getString("C_IMG_COPY")
 						);
@@ -306,6 +305,7 @@ public class CoffeeListDao {
 			String query = "select C_NO, C_CAFFEINE, C_NAME, C_IMG_COPY, row_number() over (order by C_FAVORITE desc, C_NAME) as idx from COFFEELIST limit 5;";
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				coffeeFavMap.put(rs.getInt("idx"),new Coffee(
 						rs.getInt("C_NO"),
@@ -313,9 +313,7 @@ public class CoffeeListDao {
 						rs.getInt("C_CAFFAINE"),
 						rs.getString("C_IMG_COPY")
 						));
-				System.out.println("rs,ext");
 			}
-			System.out.println("dao :"+coffeeFavMap.size());
 			return coffeeFavMap;
 		} finally {
 			JdbcUtil.close(pstmt);

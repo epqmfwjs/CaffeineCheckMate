@@ -14,7 +14,7 @@ import controller.CommandHandler;
 public class JoinMemberHandler implements CommandHandler {
 	
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException, SQLException{
 		MemberDTO memberDTO = new MemberDTO();
 		JoinService joinService = new JoinService();
 		String returnPage = null;
@@ -22,7 +22,7 @@ public class JoinMemberHandler implements CommandHandler {
 		String allSSN = request.getParameter("birth-year") +"-"+ request.getParameter("birth-month") +"-"+request.getParameter("birth-day");
 		String allEMAIL = request.getParameter("joinEmail1") + "@" +request.getParameter("joinEmail2");
 		String allTEL = request.getParameter("joinTel1") +"-"+ request.getParameter("joinTel2") + "-"+ request.getParameter("joinTel3");
-		String alert = "'joinRequest.jsp';";
+		String alert = "'/views/screens/joinRequest.jsp';";
 		String formValue = request.getParameter("passwordvalue");
 		
 			if(formValue != null) {

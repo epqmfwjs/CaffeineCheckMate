@@ -27,17 +27,20 @@ public class CustomBoardAddService {
 		try {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false);
+			
+			
 			 
 			ServletContext context = request.getSession().getServletContext();
 			String directory = context.getRealPath("/upload/");
-			int maxSize = 1024*1024*5;
+			int maxSize = 1024*1024*20;
 			String encoding =  "UTF-8";
 			
 			
 			MultipartRequest mp = new MultipartRequest(request,directory,maxSize,encoding,
 					new DefaultFileRenamePolicy());
+			
 			HttpSession session = request.getSession(false);
-			String m_id = (String)session.getAttribute("AUTH_USER_ID"); //로그인세션 받을예정
+			String m_id = (String)session.getAttribute("AUTH_USER_ID");
 		
 //			String c_no = mp.getParameter("c_no");  아직 태그 미생성,c_no는 커피리스트에서 받아야됨
 			String c_no = "1";

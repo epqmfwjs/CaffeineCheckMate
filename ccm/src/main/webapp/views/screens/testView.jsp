@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>test</title>
+<title>Insert title here</title>
 </head>
 <body>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>
@@ -17,7 +17,7 @@
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
 %>
-	<div>
+	<div class="container">
 	<h1>다돌고  결과 viewPage 돌아오기 완료됨</h1>
 	  <strong><%= session.getAttribute("AUTH_USER_NICKNAME") %></strong> 님 안녕하세요
 		<form action="<%=request.getContextPath() %>/Logout">
@@ -28,12 +28,12 @@
 			<input type="submit" value="정보수정"/>
 		</form>
 		<!-- 마이페이지 버튼 추가 -->
-		<form action="/mypage.do">
+		<form action="mypage.do">
 			<input type="submit" value="My Page" />
 		</form>
 	</div>
 	<%}else{%>
-	<div>
+	<div class="container">
 	<h1>임시 메인페이지</h1>
 		<form action="<%= request.getContextPath()%>/views/screens/login.jsp" name="loginFrm" method="post">
 			<input type="submit" value="로그인" class="login-button"/>

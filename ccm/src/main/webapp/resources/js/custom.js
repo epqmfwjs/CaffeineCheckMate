@@ -6,7 +6,7 @@ $(document).ready(function(){
 	list(allcount);
 	
 	 $('#searchInput').keypress(function(event) {
-        if (event.which === 13) { // Enter 키 코드
+        if (event.which === 13) { 
             var searchTerm = $('#searchInput').val();
 			
             $.ajax({
@@ -28,8 +28,49 @@ $(document).ready(function(){
     });
 	});
 	
-	
+$(document).ready(function(){
+    $("#searchInput").focus(function(){
+        $(this).removeAttr('placeholder');
+    });
 
+    $("#searchInput").blur(function(){
+        $(this).attr('placeholder', 'Search');
+    });
+});
+
+/*$(document).ready(function() {
+    $.ajax({
+        url: "/getRealImagePath", // 실제 이미지 경로를 반환하는 서블릿 URL
+        type: "GET",
+        data: {
+            imgName: "${param.img}" // 이미지 파일 이름을 전달
+        },
+        dataType: "json",
+        success: function(data) {
+            var realImagePath = data.realImagePath; // 서버에서 받아온 실제 이미지 경로
+            $("#preview").attr("src", realImagePath); // 이미지 경로를 업데이트
+            console.log(realImagePath);
+        },
+        error: function() {
+            alert("이미지 경로를 가져오는데 실패했습니다.");
+        }
+    });
+});
+*/
+function previewImage() {
+    var fileInput = document.getElementById('file');
+    var preview = document.getElementById('preview');
+
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}
 //태그버튼 이벤트발생
 $(document).ready(function(){
 		let shot = 'null';
@@ -108,18 +149,38 @@ $(document).ready(function(){
 		    }
 		});
 	
+
+
+function formatDate(dateString) {
+    let date = new Date(dateString);
+    let year = date.getFullYear();
+    let month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더해줍니다.
+    let day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+//글내용 길이제한
+function cutString(inputString){
+	if(inputString.length>10){
+	 return inputString.slice(0, 7) + '...';
+	}
+	else{
+		return inputString;
+	}
 	
+}
+
 function searchlist(data){
     var list = data.list;
    
-
     list.forEach(function(item) {
         let cus_num = item.cus_num;
         let m_id = item.m_id;
         let c_no = item.c_no;
         let cus_name = item.cus_name;
-        let cus_content = item.cus_content;
-        let cus_regdate = item.cus_regdate;
+        let cus_content = cutString(item.cus_content);
+        let cus_regdate = formatDate(item.cus_regdate); // 날짜 형식 변경
         let cus_img_realname = item.cus_img_realname;
 
         let boardItem = `
@@ -174,8 +235,8 @@ function list(allcount){
                 let m_id = item.m_id;
                 let c_no = item.c_no;
                 let cus_name = item.cus_name;
-                let cus_content = item.cus_content;
-           		let cus_regdate = item.cus_regdate;
+                let cus_content = cutString(item.cus_content);
+           		let cus_regdate = formatDate(item.cus_regdate);
            		let cus_img_realname = item.cus_img_realname;
            		
            		
@@ -184,12 +245,11 @@ function list(allcount){
            			<a href="CustomBoardViewHandler.do?CUS_NUM=`+cus_num+`">
                     <div>
                         <img src="upload/` + cus_img_realname + `" alt="Image">
-                            <p>게시글번호: ` + cus_num + `</p>
-                            <p>회원명: ` + m_id + `</p>
-                        <p>제품아이디: ` + c_no + `</p>
-                        <p>게시글제목: ` + cus_name + `</p>
-                        <p>글내용: ` + cus_content + `</p>
-                        <p>게시일: ` + cus_regdate + `</p>
+                        <div class="boardTextBox">
+                        <span class="boardTextLeft"><b>` + m_id + '</b></span> &nbsp; &nbsp; <span class="boardTextRight">' + cus_regdate + `</span><br/>
+                        <span class="boardTextLeft"><b>` + cus_name + `</b></span><br/>
+                        <span class="boardTextLeft">` + cus_content + `</span>
+                        </div>
                     </div>
                     </a>
                    </li>
@@ -205,17 +265,6 @@ function list(allcount){
 	});//ajax끝 			
 }
 
-$(document).ready(function(){
-    // 포커스가 들어갔을 때
-    $("#search").focus(function(){
-        $(this).removeAttr('placeholder');
-    });
-
-    // 포커스가 나갔을 때
-    $("#search").blur(function(){
-        $(this).attr('placeholder', 'Search');
-    });
-});
 
 
 

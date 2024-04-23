@@ -20,7 +20,7 @@ public class CheckService {
 		MemberDAO memberDAO = new MemberDAO();	
 		
 		int	result = memberDAO.checkSystem(parameter,query,conn);					
-		
+		if (conn != null) conn.close();
 		return result;
 	}
 }

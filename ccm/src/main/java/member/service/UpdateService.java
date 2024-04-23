@@ -30,38 +30,30 @@ public class UpdateService {
 		
 			result = memberDAO.selectID(memberDTO,conn);
 			
-			if(result.getDtoPRO().equals("false")) {
-				String returnAlert = "'/views/screens/testView.jsp';"; 
-				session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-				 out.println("<script>alert('로그인실패'); location.href="
-				 		+ returnAlert
-				 		+ "</script>");
-				 out.flush();
-			}
-			if(result.getDtoID().equals(request.getParameter("identgyId")) &&
-					result.getDtoPW().equals(request.getParameter("identgyPw")) && 
-					result.getDtoID().equals(session.getAttribute("AUTH_USER_ID"))) {
-
-					session.setAttribute("AUTH_USER_UPDATENICKNAME", result.getDtoNICKNAME());
-					session.setAttribute("AUTH_USER_UPDATETEL", result.getDtoTEL());
-					session.setAttribute("AUTH_USER_UPDATESNS", result.getDtoSNS());
-					System.out.println("일단  ok 반환전까지옴");
-				returnPage = "ok";
-			}else{
-				if(result.getDtoPRO().equals("delete")) {
-						 session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-						 out.println("<script>alert('입력정보오류'); location.href='/views/screens/updateRequest.jsp';</script>");
-						 out.flush();
-						 returnPage = "err";
-				}else {
-						 session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-						 out.println("<script>alert('입력정보오류'); location.href='/views/screens/testView.jsp';</script>");
-						 out.flush();
-						 returnPage = "err";
-						}
+			System.out.println("requestValue "+result.getDtoPRO());
+			String Value = result.getDtoPRO();
+			switch (Value) {
+				case "MyselfCheck":
+					if(result.getDtoID().equals(request.getParameter("identgyId")) &&
+							result.getDtoPW().equals(request.getParameter("identgyPw")) && 
+							result.getDtoID().equals(session.getAttribute("AUTH_USER_ID"))) {
+						session.setAttribute("AUTH_USER_NICKNAME", result.getDtoNICKNAME());
+						session.setAttribute("AUTH_USER_TEL", result.getDtoTEL());
+						session.setAttribute("AUTH_USER_SNS", result.getDtoSNS());
+						returnPage = "/views/screens/updateRequest.jsp";
+					}else {
+						session.setAttribute("errMSG", "비밀번호가 일치하지않습니다.");
+						out.println("<script>alert('로그인실패 비밀번호를 확인해주세요.'); location.href='/views/screens/login.jsp';</script>");
+						out.flush();
 					}
-		return returnPage;
-	}
+					break;
+				default : 
+					 out.println("<script>alert('아이디를 확인해주세요.'); location.href='/views/screens/testView.jsp';</script>");
+					 out.flush();
+					 break;
+			}		
+			return returnPage;
+}
 	// sns수신여부 수정 메소드
 	public String UpdateSNS(MemberDTO memberDTO , HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
 		conn = ConnectionProvider.getConnection();
@@ -102,7 +94,7 @@ public class UpdateService {
 			String result = null;
 			String resultPage = null;
 			String TEL1 = memberDTO.getDtoTEL();
-			String TEL2 = (String)session.getAttribute("AUTH_USER_UPDATETEL");
+			String TEL2 = (String)session.getAttribute("AUTH_USER_TEL");
 	
 				if(TEL2.equals(TEL1)) {
 					System.out.println("수정사항없음");
@@ -133,9 +125,9 @@ public class UpdateService {
 			memberDTO.setDtoID(identgyId);
 			MemberDTO result = memberDAO.selectID(memberDTO,conn);
 			identgyId = result.getDtoPW();
+			System.out.println("identgyId(디비비밀번호) " + result.getDtoPW());
 			return identgyId;
 		}
-		
 		public String updatePassword(String pw1, String pw2,String formValue,HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
@@ -149,6 +141,7 @@ public class UpdateService {
 			String selectId = (String)session.getAttribute("AUTH_USER_ID");
 			
 			result = joinService.password(pw1, pw2, alert,formValue,request, response);
+			
 			String returnPage = memberDAO.update(result,selectId,query,conn);
 			if(returnPage == "true") {
 				System.out.println("true로들어옴");
@@ -168,5 +161,3 @@ public class UpdateService {
 			return returnPage;
 		}
 }
-
-

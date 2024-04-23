@@ -45,12 +45,12 @@ public ArrayList<CustomBoardListDto> searchlist(String content,Connection con) t
 		}
 		JdbcUtil.close(rs); JdbcUtil.close(pstm);
 		return list;
-	
 	}
+
 
 //해시태그-글번호로 검색
 public ArrayList<CustomBoardListDto> searchhash(String cus_no,Connection con) throws SQLException {
-	String sql = "select * from custom_view where cus_no = ?";
+	String sql = "select * from custom_view where cus_no = ? order by num desc";
 	
 	
 	PreparedStatement pstm = con.prepareStatement(sql);

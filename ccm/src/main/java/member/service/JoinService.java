@@ -27,19 +27,28 @@ public class JoinService {
 		return returnPage;  
 	}
 	//비번병경 메소드
-	public String password(String pw1,String pw2,String alert,String formValue,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String password(String pw1,String pw2,String alert,String formValue,HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession(false);
-		String pw3 = (String)session.getAttribute("AUTH_USER_PWD");
+		UpdateService updateService = new UpdateService();
+		String pw3 = updateService.updateOldPassword((String)session.getAttribute("AUTH_USER_ID"));
 		String result = null;
 		
 		if(formValue.equals("passwordChange")) {
-			if(pw1.equals(pw2) && !pw1.equals(pw3)) {
-				System.out.println("변경비번 같고 변경비번과 원래 비번은 틀리고");
-				result = pw1;
+			if(pw1.equals(pw2)) {
+				System.out.println("일단 비밀번호 와 확인비밀번호는 같음");
+				if(pw1.equals(pw3)) {
+					System.out.println("3가지 비밀번호가 같음");
+					 	out.println("<script>alert('기존비밀번호와 같은 비밀번호입니다.');"
+						 			+ "location.href=" + "'/views/screens/passwordChange.jsp'" + "</script>");
+						 out.flush();
+				}else {
+					System.out.println("기존비밀번호와 바꿀비밀번호 중복아님");
+					result = pw1;
+				}
 			}else {
-				 out.println("<script>alert('비밀번호가 일치하지 않거나 기존비밀번호와 같습니다.');"
-					 		+ "location.href=" + alert + "</script>");
+				 out.println("<script>alert('비밀번호가 일치하지않습니다.');"
+					 		+ "location.href=" + "'/views/screens/passwordChange.jsp'" + "</script>");
 					 out.flush();
 			}
 		}

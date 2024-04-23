@@ -3,7 +3,7 @@
 */
 
 // 즐겨찾기 목록 렌더링 함수 ReactDOM.render(<App data={data}/>,root);
-if (isAuth){
+/*if (isAuth){
     const root = document.querySelector(".fav-box");
     function App(props) {
         const fav = props.data;
@@ -26,7 +26,7 @@ if (isAuth){
     function render(data){
         console.log("render");
         ReactDOM.render(<App data={data}/>,root);
-    }
+    }*/
 
 
     //즐겨찾기 박스 선택
@@ -87,7 +87,7 @@ if (isAuth){
           console.log("error",error);
       })
     }
-} //로그인상태에서만 동작함
+//} //로그인상태에서만 동작함
 
 /* 리액트 및 babel cdn
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
