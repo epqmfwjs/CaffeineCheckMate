@@ -202,11 +202,11 @@ function searchlist(data){
         $("#board").append(boardItem);
     });
 }
-	
- $(window).on("scroll", function() {
-	var scrollTop = $(window).scrollTop(); // 위로 스크롤된 길이
-	var windowsHeight = $(window).height(); //웹브라우저의 창의 높이
-	var documentHeight = $(document).height(); // 문서 전체의 높이
+const sect = document.querySelector(".container");
+ $(sect).on("scroll", function() {
+	var scrollTop = $(sect).scrollTop(); // 위로 스크롤된 길이
+	var windowsHeight = $(sect).height(); //웹브라우저의 창의 높이
+	var documentHeight = $(sect).height(); // 문서 전체의 높이
 	var isBottom = scrollTop + windowsHeight + 10 >= documentHeight;
 	
 	if (isBottom) {

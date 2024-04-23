@@ -10,7 +10,7 @@ import favorite.dto.Favorite;
  */
 public class CoffeeListPage {
 	ArrayList<Coffee> coffeeList;					//게시글 데이터
-	HashMap<Integer,Favorite> favorites = null;	//게시글 데이터
+	HashMap<Integer,Favorite> coffeeFavMap = null;	//게시글 데이터
 	
 	private int total;			//총 제품 수
 	private int currentPage;	//현재(보고 싶은) 페이지번호
@@ -31,13 +31,13 @@ public class CoffeeListPage {
 	
 	public CoffeeListPage(ArrayList<Coffee> coffeeList, HashMap<Integer, Favorite> coffeeFavMap, int total, int currentPage, int size) {
 		this.coffeeList = coffeeList;
-		this.favorites = coffeeFavMap;
+		this.coffeeFavMap = coffeeFavMap;
 		paging(total, currentPage, size);
 	}
 	
 	public CoffeeListPage(ArrayList<Coffee> coffeeList, int total, int currentPage, int size) {
 		this.coffeeList = coffeeList;
-		this.favorites = new HashMap<Integer,Favorite>(); //비로그인 상태에서는 객체만 생성하여 비워두기만 함
+		this.coffeeFavMap = new HashMap<Integer,Favorite>(); //비로그인 상태에서는 객체만 생성하여 비워두기만 함
 		paging(total, currentPage, size);
 	}	
 	
@@ -98,11 +98,11 @@ public class CoffeeListPage {
 	public void setCoffeeList(ArrayList<Coffee> coffeeList) {
 		this.coffeeList = coffeeList;
 	}
-	public HashMap<Integer, Favorite> getFavorites() {
-		return favorites;
+	public HashMap<Integer, Favorite> getCoffeeFavMap() {
+		return coffeeFavMap;
 	}
-	public void setFavorites(HashMap<Integer, Favorite> coffeeFavMap) {
-		this.favorites = coffeeFavMap;
+	public void setCoffeeFavMap(HashMap<Integer, Favorite> coffeeFavMap) {
+		this.coffeeFavMap = coffeeFavMap;
 	}
 	
 	//페이징을 위한 필드는 가져오는 용도로 게터만 설정

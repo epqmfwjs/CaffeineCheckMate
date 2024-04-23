@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* 컨테이너 스타일 */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+/* 입력 필드 스타일 */
+input[type="text"] {
+    padding: 8px;
+    margin: 5px 0; /* 상하 마진 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 20%; /* 너비 조정 */
+}
+/* 기존 버튼 스타일 */
+input[type="button"], input[type="submit"] {
+    padding: 8px 15px; /* 패딩 조정 */
+    margin-top: 10px; /* 상단 마진 추가 */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 45%; /* 버튼 너비 조정 */
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049;
+}
+/* 비밀번호 입력 필드 스타일 */
+input[type="password"] {
+    padding: 8px;
+    margin: 5px 0; /* 상하 마진 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* 너비 조정 */
+    display: inline-block;
+    box-sizing: border-box; /* 박스 크기 조정 */
+}
+
+input[type="password"]:focus {
+    border-color: #4A90E2;
+}
+/* 드롭다운 스타일 */
+select {
+    padding: 8px;
+    margin: 5px 0; /* 상하 마진 조정 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 31.5%; /* 너비 조정 */
+    display: inline-block;
+    box-sizing: border-box; /* 박스 크기 조정 */
+    background-color: white;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #4A90E2;
+}
+body { 
+    font-family: 'Noto Sans KR', sans-serif; /* 폰트 설정 */
+    background-color: #f5f6f7; /* 배경색 설정 */
+    display: flex; /* Flexbox 레이아웃 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+input[type="password"], input[type="text"] {
+    width: 150%; /* 너비 조정 */
+    margin: 5px auto; /* 상하 마진 조정 및 자동 가운데 정렬 */
+    display: block; /* 블록 레벨 요소로 설정하여 가운데 정렬 가능하게 함 */
+}

@@ -33,7 +33,7 @@
 	function idok(joinPut){
 		//opener.setIdValue(joinPut);
 		opener.setIdValue(joinPut, true);
-		//전달하면서 창을 닫겠다.
+		//전달하면서 창을 닫음.
 		self.close();
 		}
 </script>

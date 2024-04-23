@@ -55,5 +55,9 @@
     <input type="hidden" name="defaultImage" value="${coffeeUpdateForm.c_IMG_REAL}">
     <input type="submit" value="수정 진행">
 </form>
+<div>
+	<a href="javascript:history.back();"><button>이전 페이지</button></a>
+	<a href="/coffeelist.do"><button>커피리스트 메인 페이지</button></a>
+</div>
 </body>
 </html>

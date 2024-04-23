@@ -124,7 +124,9 @@
 			</div>
 	
 		<!--게시글 가져오기 -->
-		<span id="board" class="section_col_1-to-12_row_4"></span>
+		<div class="section_col_1-to-12_row_4 cus-board">
+			<span id="board"></span>
+		</div>
 		
 	</section>
 	
