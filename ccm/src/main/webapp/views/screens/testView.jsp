@@ -16,8 +16,8 @@
 
 <%
 	if(session.getAttribute("AUTH_USER_ID") != null){
-%>
-	<div class="container">
+%>	
+	<div>
 	<h1>다돌고  결과 viewPage 돌아오기 완료됨</h1>
 	  <strong><%= session.getAttribute("AUTH_USER_NICKNAME") %></strong> 님 안녕하세요
 		<form action="<%=request.getContextPath() %>/Logout">
