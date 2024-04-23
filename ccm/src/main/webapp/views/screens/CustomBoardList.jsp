@@ -84,6 +84,7 @@
 			            <li id="메이플시럽" data-value="메이플시럽">메이플 시럽</li>
 			        </ul>
 			    </div>
+			</div>
 		</div>
 		
 		<div class="section_col_8-to-9_row_3">
@@ -117,14 +118,12 @@
 			            <li id="디카페인" data-value="디카페인">디카페인</li>
 			        </ul>
 			    </div>
+				</div>
 			</div>
-			</div>
-		</div>
 
 		<ul id="board" class="section_col_1-to-12_row_4"></ul>
 		
 	</section>
-	<%@ include file="/views/components/footer.jsp" %>
 </span>
 </body>
 </html>

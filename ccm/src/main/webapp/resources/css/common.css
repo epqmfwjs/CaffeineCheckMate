@@ -5,15 +5,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /*background: linear-gradient(to bottom, rgba(247, 174, 57, 1) 0%, rgba(211, 0, 28, 1) 70%);*//* 위에서 아래로 그라데이션 */
-    /*Alt-1*/
-    /* background: radial-gradient(ellipse 200% 130% at 50% 0%, rgba(0, 146, 75, 1) 10%, rgba(0, 117, 67, 1) 35%, rgba(10, 60, 44, 1) 100%); */
-    /*Alt-2*/
-    background: radial-gradient(ellipse 250% 120% at 50% 0%, rgba(0, 130, 65, 1) 0%, rgba(0, 95, 57, 1) 40%, rgba(28, 60, 44, 1) 110%);
-    
-/*     background-image: url('/resources/imgs/grain.png');
-    background-size: cover; 
-    background-position: center; */
+    background-image: linear-gradient(to top, #E1F5C4 0%, #EDE574 51%);
+    transition: 0.5s;
+    color: black;            
 }
 
 @media screen and (max-width: 900px) {
@@ -24,10 +18,9 @@ body {
 	}
 }
 
-
 .wrapper {
-	width: 150vh;
-	height: auto;
+	width: auto;
+	height: 90vh;
 	background: rgba(200, 200, 200, 0.3);
 	border-radius: 20px;
 	box-shadow: 
@@ -35,10 +28,8 @@ body {
 		inset 0px -0px 3px rgba(0, 95, 57, 0.1),
 		inset -0px 0px 3px rgba(0, 95, 57, 0.1),
 		inset 0px 0px 3px rgba(0, 95, 57, 0.1);
-	/*Alt-1*/
-    /* background: radial-gradient(ellipse 250% 120% at 50% 0%, rgba(0, 130, 65, 1) 0%, rgba(0, 95, 57, 1) 40%, rgba(28, 60, 44, 1) 110%); */
-	/*Alt-2*/
     background: white;
+    margin: 2vw;
     }
     
 @media screen and (max-width: 900px) {
@@ -138,7 +129,7 @@ header{
 footer{
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-auto-rows: auto;
+	grid-auto-rows: 150px;
 	grid-gap: 1em;
 	align-items: center;
 	justify-content: center;
