@@ -19,6 +19,7 @@
 				  <script>
 				  var idChecked = false;
 				  var nickChecked = false;
+				  var emailChecked = false;
 				  
 				  function checkId(){
 					  if(document.joinForm.joinId.value==""){
@@ -38,7 +39,6 @@
 					    }
 					}
 				  </script>
-				  
 		비밀번호<br/><input type="password" name="joinPw1" id="joinPw1" placeholder="비밀번호" required="required"/><br/>
 		비밀번호확인<br/><input type="password" name="joinPw2" id="joinPw2" placeholder="비밀번호확인" required="required"/><br/>
 		
@@ -46,14 +46,14 @@
 		생년월일<br/>
 					<select name="birth-year" id="birth-year">
 					    <option disabled selected>출생 연도</option>
-					  </select>
-					  <select name="birth-month" id="birth-month">
+					</select>
+					<select name="birth-month" id="birth-month">
 					    <option disabled selected>월</option>
-					  </select>
-					  <select name="birth-day" id="birth-day">
+					</select>
+					<select name="birth-day" id="birth-day">
 					    <option disabled selected>일</option>
 					</select>
-					<script>
+				<script>
 					// 출생 연도 셀렉트 박스 option 목록 동적 생성
 					const birthYearEl = document.querySelector('#birth-year');
 					const birthMonthEl = document.querySelector('#birth-month');
@@ -107,38 +107,17 @@
 					    }
 					  }
 					});
-					</script>
-				<br/>
-		E-MAIL<br/><input type="text" name="joinEmail1" id="joinEmail" size=10 required="required"/> @
-					<input name="joinEmail2" id="domain-txt" type="text" size=10 />
-						<select name="joinEmail2" id="domain-list">
-						  <option value="type">직접 입력</option>
-						  <option value="naver.com">naver.com</option>
-						  <option value="google.com">google.com</option>
-						  <option value="hanmail.net">hanmail.net</option>
-						  <option value="nate.com">nate.com</option>
-						  <option value="kakao.com">kakao.com</option>
-						</select>
-							<script>
-								// select 옵션 변경 시
-								const domainListEl = document.querySelector('#domain-list')
-								const domainInputEl = document.querySelector('#domain-txt')
-								domainListEl.addEventListener('change', (event) => {
-								  // option에 있는 도메인 선택 시
-								  if(event.target.value !== "type") {
-								    // 선택한 도메인을 input에 입력하고 disabled
-								    domainInputEl.value = event.target.value
-								    domainInputEl.disabled = true
-								  } else { // 직접 입력 시
-								    // input 내용 초기화 & 입력 가능하도록 변경
-								    domainInputEl.value = ""
-								    domainInputEl.disabled = false
-								  }
-								})
-							</script>
-							<input type="button" value="이메일인증"/><br/>
-		<br/>
-		닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
+			</script>
+		<p style="color:red">메일인증필수</p>			
+    			<input type="button" value="메일인증" onclick="joinEmail()"/><br/>
+    		<script>
+		        function joinEmail() {
+		            var url = "/views/screens/joinEmail.jsp";
+		            window.open(url, "_blank_1", "width=500,height=300,toolbar=no,menubar=no,resizable=no,scrollbars=yes");
+		            emailChecked = true;
+		        }
+    		</script>
+    		닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
 					<input type="button" value="중복체크" onclick="return checkNick()"/><br/>
 				<script>
 				  function checkNick(){
@@ -171,19 +150,19 @@
 				<input type="radio" name="joinSnsYN" id="joinSnsY" value="Y" checked="checked"/>동의함
 				<input type="radio" name="joinSnsYN" id="joinSnsN" value="N" required="required"/>동의안함
 			<br/>
-
 		 		<br/>	<input type="submit" value="가입"/>
 		 	<script>	
 		 		function validateForm() {
-				    if (!idChecked || !nickChecked) {
-				        alert("아이디와 닉네임 중복체크를 모두 완료해주세요.");
+				    if (!idChecked || !nickChecked || emailChecked) {
+				        alert("중복체크와 이메일인증을 모두 완료해주세요.");
 				        return false;
 				    }
 				    return true;
 				}
 			</script>
-	<input type="button"  onclick="location.href='/views/screens/login.jsp'" value="취소"/>
+	<input type="button" onclick="location.href='/views/screens/login.jsp'" value="취소"/>
 			</form>
-		</div>
+			
+					</div>
 </body>
 </html>

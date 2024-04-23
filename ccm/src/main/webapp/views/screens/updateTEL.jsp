@@ -11,8 +11,6 @@
 </br></br></br>
 <div class="container">
 <% session.removeAttribute("reWindow"); %>
-
-
 <%
 	if(session.getAttribute("editOK") != null && session.getAttribute("editCancel")==null){
 		session.removeAttribute("editOK");
