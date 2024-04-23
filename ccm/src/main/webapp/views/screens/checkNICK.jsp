@@ -6,15 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.container{
-text-align: center;
-}
-</style>
+<link href="/resources/css/checkNICK.css"rel="stylesheet" type="text/css">
 </head>
 <body>
-
-
 <div class="container">
 
 </br></br></br>

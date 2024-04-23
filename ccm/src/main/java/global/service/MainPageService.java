@@ -29,7 +29,7 @@ public class MainPageService {
 		
 		Main main = null;
 		Calendar todaysCaffeine = null;
-		Map<Integer, Favorite> favMap = null;
+		HashMap<Integer, Favorite> favMap = null;
 		
 		Date date = new Date(System.currentTimeMillis());
 		
@@ -70,6 +70,7 @@ public class MainPageService {
 			conn = ConnectionProvider.getConnection();
 			//커피리스트 즐겨찾기 많은 순 상위 5개
 			coffeeFavMap = coffeeListdao.getCoffeesByFav(conn);
+			System.out.println("main service : "+coffeeFavMap.size());
 			
 			main = new Main(coffeeFavMap, 0);
 			return main;

@@ -54,6 +54,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); 
 		response.setContentType("text/html; charset=UTF-8");
 		System.out.println("doGet");
+		
 		String requestURI = request.getRequestURI().toString();
 		String command = requestURI.substring(request.getContextPath().length());
 		String viewPage = null;
@@ -75,7 +76,9 @@ public class FrontController extends HttpServlet {
 				throw new ServletException(e);
 			}
 		}
-		request.getRequestDispatcher(viewPage).forward(request, response);
+		if(viewPage != null) {
+            request.getRequestDispatcher(viewPage).forward(request, response);
+        }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");

@@ -26,7 +26,8 @@ public class CoffeeAddHandler implements CommandHandler{
 			String cstage = request.getParameter("cstage");
 			String cimgreal = request.getParameter("cimgreal");
 			
-			Coffee coffee = new Coffee(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal);
+			Coffee coffee = new Coffee
+					(cname,cbrand,ccaffeine,csaccharide,ccalorie,ccontent,ctype,cstage,cimgreal);
 			
 			CoffeeAddService coffeeAddService = new CoffeeAddService();
 			coffeeAddService.addCoffee(coffee);

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
+import member.dto.MemberDTO;
 
 public class CustomBoardViewDao {
  
@@ -48,5 +49,18 @@ public class CustomBoardViewDao {
 		return list;
 	}
 	
+	public String memid(String a, Connection con) throws SQLException {
+		
+		String sql = "select m_id from custom_view where num=?";
+		PreparedStatement pstm = con.prepareStatement(sql);
+		pstm.setString(1, a);
+		
+		ResultSet rs = pstm.executeQuery();
+		MemberDTO dto = new MemberDTO();
+		while(rs.next()) {
+			dto.setDtoID(rs.getString(1));
+		}
+		return dto.getDtoID();
+	}
 
 }

@@ -36,7 +36,9 @@ public class CustomBoardListDao {
 	            dto.setc_no(rs.getString(4));
 	            dto.setcus_title(rs.getString(5));
 	            dto.setCUS_CONTENT(rs.getString(6));
+	            
 	            dto.setCUS_REGDATE(rs.getString(7));
+	            System.out.println(rs.getString(7));
 	            dto.setCUS_SUMGOOD(rs.getString(8));
 	            
 	            getimg(dto,con); 

@@ -5,11 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.container{
-	text-align: center;
-	}
-</style>
+<link href="/resources/css/joinRequest.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
@@ -41,9 +37,6 @@
 					        window.idChecked = true;
 					    }
 					}
-//				  function setIdValue(idValue) {
-//					    document.joinForm.joinId.value = idValue;
-//					}
 				  </script>
 				  
 		비밀번호<br/><input type="password" name="joinPw1" id="joinPw1" placeholder="비밀번호" required="required"/><br/>
@@ -100,7 +93,6 @@
 					    }
 					  }
 					});
-
 					birthDayEl.addEventListener('focus', function () {
 					  // day 목록 생성되지 않았을 때 (최초 클릭 시)
 					  if (!isDayOptionExisted) {
@@ -145,7 +137,6 @@
 								})
 							</script>
 							<input type="button" value="이메일인증"/><br/>
-		
 		<br/>
 		닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
 					<input type="button" value="중복체크" onclick="return checkNick()"/><br/>
@@ -156,8 +147,6 @@
 						  document.joinForm.joinNick.focus();
 						  return false;
 					  }
-					  //var url = "CheckHandler.do?joinNick=" + document.joinForm.joinNick.value;
-					  		//window.open(url,"_blank_1","width=500,height=300, toolbar=no,menubar=no,resizble=no,scrollbars=yes")
 					  	    var url = "CheckHandler.do?joinNick=" + encodeURIComponent(document.joinForm.joinNick.value);
 					  	    window.open(url,"_blank","width=500,height=300,toolbar=no,menubar=no,resizable=no,scrollbars=yes");
 				  }
@@ -168,11 +157,8 @@
 					        window.nickChecked = true;
 					    }
 					}
-//				  function setNickValue(nickValue) {
-//					    document.joinForm.joinNick.value = nickValue;
-//					}
 				  </script>
-		tel<br/><input type="text" name="joinTel1" id="joinTel1" placeholder="010" maxlength=3  minlength=3 size=3 required="required"/>-
+		전화번호<br/><input type="text" class="tel" name="joinTel1" id="joinTel1" placeholder="010" maxlength=3  minlength=3 size=3 required="required"/>-
 				<input type="text" name="joinTel2" id="joinTel2" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/>-
 				<input type="text" name="joinTel3" id="joinTel3" placeholder="0000" maxlength=4  minlength=4 size=4 required="required"/><br/>
 		성별

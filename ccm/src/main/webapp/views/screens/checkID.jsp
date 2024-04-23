@@ -5,12 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-.container{
-text-align: center;
-}
-</style>
+<title>아이디중복체크</title>
+<link href="/resources/css/checkID.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 

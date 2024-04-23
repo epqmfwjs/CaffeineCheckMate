@@ -1,7 +1,6 @@
 package global.handler;
 
 import controller.CommandHandler;
-import favorite.dto.Favorite;
 import global.dto.Main;
 import global.service.MainPageService;
 
@@ -23,17 +22,19 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
 
     public String process(HttpServletRequest req, HttpServletResponse res) throws Exception { 
     	Main main;
-    	
+
     	Object mId =  req.getSession().getAttribute("AUTH_USER_ID");
     	String memberId = mId != null? mId.toString() : null;
     	if(memberId != null ) {
+    		System.out.println("authed");
     		main = mainPageService.showAuthedMain(memberId);
     	} else { // 비로그인상태    		
+    		System.out.println("not authed");
     		main = mainPageService.showMain();
     	}
     	
 //    	String jsonString = gson.toJson(main);
     	req.setAttribute("main", main);
-		return "/views/screens/test.jsp";
+		return "/views/screens/test2.jsp";
     }
 }
