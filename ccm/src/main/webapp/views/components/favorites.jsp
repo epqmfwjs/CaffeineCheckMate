@@ -3,22 +3,26 @@
 <%@ page import="global.dto.Main" %>
 <%@ page import="favorite.dto.Favorite" %>
 <%@ page import="mypage.dto.MypagesDTO" %>
+<%@ page import="coffeeList.dto.CoffeeListPage" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <%
+	<%
 	boolean isAuth = request.getSession().getAttribute("AUTH_USER_ID") != null ? true:false;
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
 	<% 
 	if(request.getAttribute("mypages")!=null) {		
-	MypagesDTO main = (MypagesDTO)request.getAttribute("mypages");
-	pageContext.setAttribute("main", main);
+		MypagesDTO main = (MypagesDTO)request.getAttribute("mypages");
+		pageContext.setAttribute("main", main);
+	} else if(request.getAttribute("CoffeeListPage")!=null){
+		CoffeeListPage main = (CoffeeListPage) request.getAttribute("CoffeeListPage");
+		pageContext.setAttribute("main", main);
 	}
 	%>
 	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> 
 	<meta charset="UTF-8">
 	<meta http-equiv="Compatible" content="no-cache"/>
 </head>

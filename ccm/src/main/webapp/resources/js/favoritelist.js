@@ -11,9 +11,9 @@ if (isAuth){
             <>
                 {Object.keys(fav).map(key => (
                 <div key={key} className="fp-item" id="fi_1" value={"C_NO="+fav[key]["C_NO"]}>
-                    <div className="fp-item__box clickable" onClick={hasCoffees? doCalc:null}>
-                        <div className="fp-item__img clickable">이미지 이름 : {fav[key]["C_IMAGE"]}</div>
-                        <div className="fp-item__info clickable">커피 이름 : {fav[key]["C_NAME"]}</div>
+                    <div className="fp-item__box clickable" onClick={hasCalc? doCalc:null}>
+                        <div className="fp-item__img clickable">{fav[key]["C_IMAGE"]}</div>
+                        <div className="fp-item__info clickable">{fav[key]["C_NAME"]}</div>
                     </div>
                     <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
                     <i className="fa-solid fa-x"></i>  
@@ -49,8 +49,12 @@ if (isAuth){
     if (hasCoffees){
         const coffeeBox = document.querySelector(".coffee-box");
         const coffeeitem = coffeeBox.children;
+        console.log(coffeeitem);
         for(let i=0; i<coffeeitem.length; i++){
-            coffeeitem[i].querySelector(".addFav-btn").addEventListener("click",addFavItem);
+            let citem = coffeeitem[i].querySelector(".addFav-btn");
+            if(citem != null && citem != undefined){
+                citem.addEventListener("click",addFavItem);
+            }
         }
         // **커피 요소 박스 value에 C_NO 필요
         function addFavItem(element) {
