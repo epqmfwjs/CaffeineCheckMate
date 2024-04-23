@@ -17,7 +17,9 @@
 <body>
 
 <span class="wrapper" style="display: inline-block;">
+	<!-- 헤더 -->
 	<%@ include file="/views/components/header.jsp" %>
+	<!-- 섹션 시작 -->
 	<section class="container">
 	
 		<div class="section_col_2_row_2">
@@ -120,10 +122,12 @@
 			    </div>
 				</div>
 			</div>
-
-		<ul id="board" class="section_col_1-to-12_row_4"></ul>
+	
+		<!--게시글 가져오기 -->
+		<span id="board" class="section_col_1-to-12_row_4"></span>
 		
 	</section>
+	
 </span>
 </body>
 </html>
