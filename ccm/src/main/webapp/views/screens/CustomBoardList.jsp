@@ -30,7 +30,7 @@
 					<button id="edit" class="button_add" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add</button>
 				</span>
 				<span>
-					<input type="text" id="searchInput" placeholder="   Search">
+					<input type="text" id="searchInput" placeholder="    Search">
 					<span id="searchResult"></span>
 				</span>
 			</div>
