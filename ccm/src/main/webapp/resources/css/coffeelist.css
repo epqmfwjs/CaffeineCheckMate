@@ -40,6 +40,7 @@
 }
 .coffeelist-add{
     position: absolute;
+    right: -15px;
 }
 
 .coffeelist-searchbox{
@@ -85,20 +86,60 @@
 .coffee-box{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly   ;
 }
 .coffeelist-container{
     width: 25%;
 }
 .coffeelist-item {
+    margin: 10px;
+    width: 140px;
+    height: 160px;
     border: 1px solid black;
     text-align: center;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.coffeelist-item__img{
+    display: block;
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+}
+.coffeelist-item__name{
+    font-size: 20px;
+}
+.coffeelist-item__info{
+    font-size: 13px;
+}
+.coffeelist-item__btn-area{
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    width: 100%;
+}
+.coffeelist-item__fav{
+    height: 20px;
+    width: 80%;
+    border-radius: 10px;
+    background-color: transparent   ;
+    border: 1px solid var(--ccm-color1);
+    bottom: 5px;
+    right: 5px;
+}
+.coffeelist-item__fav:hover{
+    background-color: var(--ccm-color1);
+    color: white;
 }
 
-.coffeelist-item__img{
-    height: 60px;
-    width: 60px;
-}
+
+
 .pagination {
     text-align: center;
     margin-top: 20px;

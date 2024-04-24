@@ -28,7 +28,3 @@ function coffee_PreviewImage() {
 	}
 }
 
-
-
-
-

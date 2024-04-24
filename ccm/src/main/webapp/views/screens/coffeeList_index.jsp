@@ -30,7 +30,7 @@
             </div>
             <div class="coffeelist-add">
                 <c:if test="${isAdmin}">
-                    <a href="./views/screens/coffeeList_Add.jsp">관리자 게시글 삽입</a>
+                    <a href="./views/screens/coffeeList_Add.jsp">Add Coffee</a>
                 </c:if>
             </div>
         </div>
@@ -41,16 +41,17 @@
                 </c:if> -->
                 <div class="coffeelist-container">
                     <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
-                        <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${pageContext.request.contextPath}/resources/testimg/coffeelist-default"/>
-                        <div class="clickable">
+                        <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
+                        <div class="coffeelist-item__name clickable">
                             <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550'); return false;">${coffeeV.c_NAME}</a>
                         </div>
                         <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
-                        <c:if test="${not empty sessionScope.AUTH_USER_ID}">
-                            <button style="display: inline-block;" class="addFav-btn">+</button>
-                        </c:if>
-                        <div>${coffeeV.c_BRAND}</div>
-                        <div>Caffeine: ${coffeeV.c_CAFFEINE} mg</div>
+                        <div class="coffeelist-item__info">${coffeeV.c_BRAND}</div>
+                        <div class="coffeelist-item__btn-area">
+                            <c:if test="${not empty sessionScope.AUTH_USER_ID}">
+                                <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">+</button>
+                            </c:if>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
