@@ -7,6 +7,43 @@
 <meta charset="UTF-8">
 <title>COFFEELIST UPDATE(master)</title>
 <script src="../../resources/js/coffeeList.js"></script>
+<style>
+/* 모달 style */
+	/* 모달 바깥 백그라운드 */
+	#coffeemodal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; /*필요 시 스크롤 가능*/
+	background-color: #E1DDDB;
+	padding-top: 50px;
+	}
+    /*캔슬 버튼*/
+    #coffeecancelbtn, #coffeedeletebtn {
+	float: left;
+	width: 100%;
+	}
+	#coffeecancelbtn {
+	background-color: #EF6C33;
+	color: black;
+	}
+	/* 델리트 버튼 */
+	#coffeedeletebtn {
+	background-color: #EF6C33;
+	}	
+	/* 텍스트 중앙 정렬, 패딩 */
+	#coffeecontainer {
+	padding: 16px;
+	text-align: center;
+	}
+	
+	
+	
+</style>
 </head>
 <body>
 <%request.setCharacterEncoding("utf-8");%>

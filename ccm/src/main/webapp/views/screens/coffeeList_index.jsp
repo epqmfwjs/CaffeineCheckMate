@@ -7,21 +7,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COFFEE LIST INDEX</title>
 <style>
+	
     .coffeeListSearch{
         text-align: center;
     }
-
+	
+	
     .coffeeListView{
         margin-top: 20px; 
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-
+	
     .card {
         flex: 0 1 18%; 
         box-sizing: border-box;
-        margin: 10px 50px;
+        margin: 10px 30px;
         border: 1px solid black;
         text-align: center;
         padding: 10px;
@@ -29,20 +31,27 @@
 
     .card img {
         max-width: 100%; 
-        height: auto;
+        height: 100px;
     }
 
     .pagination {
         text-align: center;
         margin-top: 20px;
     }
+    
+}
 </style>
+
 </head>
 <body>
 
+<div>
+	<h3>커피 리스트 메인</h3>
+	<a href="javascript:history.back();"><button>이전 페이지</button></a>
+</div>
+
+
 <div class="coffeeListSearch">
-    <h3>커피 리스트 메인</h3>
-    
     <form action="coffeeList.do" method="get">
     	<select name="searchType">
     		<option value="name">제품명</option>
@@ -53,26 +62,39 @@
     	해당 부분에서 제목별 검색이 가능합니다
     </form>
 </div>
+
+<!-- 관리자 버튼 -->
 <c:if test="${isAdmin}">
 	<div>
 	    <a href="./views/screens/coffeeList_Add.jsp">관리자 게시글 삽입</a>
 	</div>
 </c:if>
+
+<!-- 메인 컨텐츠 -->
 <div class="coffeeListView">
     <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
         <c:if test="${status.index % 2 == 0}">
             <div style="width: 100%;"></div>
         </c:if>
-        <div class="card">
-            <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
-            <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}">${coffeeV.c_NAME}</a></h4>
+		
+	    <div class="card">
+	    	<a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" 
+	    	   onclick="window.open(this.href, '_blank', 'width=450, height=550'); return false;">
+		    	<div>
+		            <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/><br>
+		            ${coffeeV.c_NAME}
+	            </div>
+            </a><br/>
+            
 	        <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
 	        <c:if test="${not empty sessionScope.AUTH_USER_ID}">
 	            <button type="button">즐겨찾기버튼</button>
 	        </c:if>
             <p>${coffeeV.c_BRAND}</p>
             <p>Caffeine: ${coffeeV.c_CAFFEINE} mg</p>
-        </div>
+	    </div>
+		   
+        
     </c:forEach>
 <%-- 게시글이 없으면 보여줄 내용--%>
     <c:if test="${CoffeeListPage.hasNoCoffeeList()}">
@@ -83,7 +105,6 @@
     
 
 <!-- 페이지네이션 아래 블럭을 담당하는 부분 -->
-
 <div class="pagination">
 <c:choose>
 	<c:when test="${CoffeeListPage.hasCoffeeList()}">
