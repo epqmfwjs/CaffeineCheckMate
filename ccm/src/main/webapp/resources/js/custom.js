@@ -270,9 +270,9 @@ function list(allcount){
                     <div>
                         <img src="upload/` + cus_img_realname + `" alt="Image">
                         <div class="boardTextBox">
-                        <span class="boardTextLeft"><b>` + m_id + '</b></span> &nbsp; &nbsp; <span class="boardTextRight">' + cus_regdate + `</span><br/>
-                        <span class="boardTextLeft"><b>` + cus_name + `</b></span><br/>
-                        <span class="boardTextLeft">` + cus_content + `</span>
+                        <span><b>` + m_id + '</b></span> &nbsp; &nbsp; &nbsp; <span>' + cus_regdate + `</span><br/>
+                        <span><b>` + cus_name + `</b></span><br/>
+                        <span>` + cus_content + `</span>
                         </div>
                     </div>
                     </a>

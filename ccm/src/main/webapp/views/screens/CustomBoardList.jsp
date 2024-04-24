@@ -20,25 +20,27 @@
 		<%@ include file="/views/components/header.jsp" %>
 		<!-- 섹션 시작 -->
 		<section class="container">
-			
-			<div class="section_col_2_row_2">
-				<button id="test" class="button"type="button" onclick="location.href='/views/screens/testView.jsp'">Main</button>
+		
+			<div class="section_col_1_row_2">
+				<span>
+					<button id="test" class="button"type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
+				</span>
+				
+				<span>
+					<button id="edit" class="button" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add Post</button>
+				</span>
 			</div>
 			
-			<div class="section_col_3_row_2">
-				<button id="edit" class="button" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add Post</button>
-			</div>
-			
-			<div class="section_col_4-to-11_row_2">
+			<div class="section_col_2-to-3_row_2">
 				<input type="text" id="searchInput" placeholder="Search">
 				<div id="searchResult"></div>
 			</div>
 			
-			<div class="section_col_2-to-3_row_3">
-				<div class="divdropdown">
+			<div class="section_col_2-to-3_row_3">	
+				<span class="divdropdown">
 					<button id="shotButton" class="dropdown" type="button" data-toggle="dropdown">
 						샷추가
-			    </button>
+			    	</button>
 			    <div class="dropdown-options">
 					<ul>
 						<li id="null" data-value="샷추가">샷추가</li>
@@ -48,11 +50,9 @@
 			            <li id="4" data-value="4샷추가">4샷추가</li>
 			        </ul>
 			    </div>
-			</div>
-		</div>
+			</span>
 		
-		<div class="section_col_4-to-5_row_3">
-			<div class="divdropdown">
+			<span class="divdropdown">
 				<button id="milkButton" class="dropdown" type="button" data-toggle="dropdown">
 					우유 종류
 			    </button>
@@ -66,11 +66,9 @@
 			            <li id="코코넛밀크" data-value="코코넛밀크">코코넛 우유</li>
 			        </ul>
 			    </div>
-			</div>
-		</div>
+			</span>
 		
-		<div class="section_col_6-to-7_row_3">
-			<div class="divdropdown">
+			<span class="divdropdown">
 				<button id="syrupButton" class="dropdown" type="button" data-toggle="dropdown">
 					시럽 추가
 			    </button>
@@ -85,11 +83,9 @@
 			            <li id="메이플시럽" data-value="메이플시럽">메이플 시럽</li>
 			        </ul>
 			    </div>
-			</div>
-		</div>
+			</span>
 		
-		<div class="section_col_8-to-9_row_3">
-			<div class="divdropdown">
+			<span class="divdropdown">
 				<button id="toppingButton" class="dropdown" type="button" data-toggle="dropdown">
 					토핑 추가
 			    </button>
@@ -105,11 +101,9 @@
 			            <li id="펄" data-value="펄">펄</li>
 			        </ul>
 			    </div>
-			</div>
-		</div>
+			</span>
 		
-		<div class="section_col_10-to-11_row_3">
-			<div class="divdropdown">
+			<span class="divdropdown">
 			    <button id="decafButton" class="dropdown" type="button" data-toggle="dropdown">
 					디카페인 종류
 			    </button>
@@ -119,7 +113,7 @@
 			            <li id="디카페인" data-value="디카페인">디카페인</li>
 			        </ul>
 			    </div>
-			</div>
+			</span>
 		</div>
 		
 		<!--게시글 가져오기 -->
