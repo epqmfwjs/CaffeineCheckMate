@@ -20,6 +20,7 @@ public class CheckHandler implements CommandHandler {
 			String query = null;
 			String parameter = null;
 			String viewPage = null;
+			System.out.println("아이디중복체크 " + request.getParameter("joinId"));
 			// 중복체크 분류 및 매개변수값저장
 			if(request.getParameter("joinId") != null && request.getParameter("joinNick") == null) {
 				query = "SELECT ccm.member.M_ID FROM ccm.member WHERE M_ID = ? UNION all SELECT ccm.member_backup.M_ID FROM ccm.member_backup WHERE M_ID = ?";
