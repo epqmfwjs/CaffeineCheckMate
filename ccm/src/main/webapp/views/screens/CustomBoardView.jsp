@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/custom.css">
 <meta charset="UTF-8">
 <title>CCM</title>
 <%
@@ -13,34 +14,11 @@
 %>
 <input type="hidden" id="m_id_hidden" value="<%= m_id %>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<style>
-    /* 모달을 위한 스타일 */
-    .modal-container {
-        display: none; 
-        position: fixed;
-        top: 0vh;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); 
-        z-index: 9999; 
-    }
-
-    .modal-content {
-        background-color: #fff;
-        width: 500px;
-        margin: 100px auto;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-   		max-height: 60vh; 
-    }
-</style>
-
 </head> 
+
 <body>
 <c:forEach var="item" items="${list}">
-    <li style="display: inline-block; width: 20%;">
+    <li>
         <div>
          <%--  <p>글번호: ${item.cus_no}</p> --%>
           <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p> 
@@ -56,8 +34,8 @@
          <%--  <p>누적 좋아요 수: ${item.cus_sumgood}</p>
           <p>이미지번호: ${item.cus_img_no}</p> --%>
           <!-- 댓글 버튼 -->
-    <button onclick="showReplyModal('${item.cus_no}')">댓글</button>
-          </c:forEach>  
+		<button onclick="showReplyModal('${item.cus_no}')">댓글</button>
+	</c:forEach>  
           
 	<!-- 모달을 나타내는 HTML -->
 	<div id="modal" class="modal-container">
@@ -66,6 +44,8 @@
 	    </div>
 	</div>
 	          
+</body>
+
 	<script>
 	    // 댓글 모달을 보여주는 함수
 	    function showReplyModal(cus_no) {
@@ -103,5 +83,4 @@
 	        modal.style.display = "none";
 	    }
 	</script>
-</body>
 </html>

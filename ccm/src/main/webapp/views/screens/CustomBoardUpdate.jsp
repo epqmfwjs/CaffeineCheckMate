@@ -8,21 +8,32 @@
 <meta charset="UTF-8">
 <title>글작성</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<c:set var="img" value="${param.img}"/>
+<script type="text/javascript"> var img = ${img}; </script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>
-
+<link rel="stylesheet" href="/resources/css/custom.css">
 </head>
 <body>
 
 <c:set var="content" value="${param.content}" />
 <c:set var="title" value="${param.title}" />
-<c:set var="img" value="${param.img}" />
+
 <form action="/CustomBoardUpdateHandler.do" id="add" name="add" method="post" enctype="multipart/form-data">
  <input type="hidden" id="num" name="num" value="${param.no}"/> 
  <input type="hidden" id="img" name="img" value="${img}"/> 
     <p>제목 <input type="text" size="30" id="cus_name" name="cus_name" value="${title}"></p>
     내용<p><textarea cols="50" rows="10" id="cus_content" name="cus_content">${content}</textarea></p>
-    이미지: <input type="file" name="file" id="file" onchange="previewImage()"><br/>
-    <img id="preview" src="#" alt="미리보기" style="max-width: 300px; max-height: 300px;"><br>
+    
+    <div>
+  이미지: 
+  <label class="input-file-button" for="file">
+    업로드
+  </label> 
+    <input type="file" class="file" id="file" onchange="previewImage()">
+    </div>
+    <br/>
+<img id="preview" src="/upload/${img}" alt="미리보기" style="max-width: 250px; max-height: 250px;">
+
 <div class="selection-group">
     <select name="shot" id="shot">
         <option value="0">샷추가</option>

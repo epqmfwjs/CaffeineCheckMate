@@ -287,3 +287,30 @@ function list(allcount){
       
    });//ajax끝          
 }
+
+
+// 댓글 모달을 보여주는 함수
+function showCustomViewModal(pageURL) {
+    var modal = document.getElementById("modal");
+    modal.style.display = "block";
+
+    // AJAX를 통해 다른 JSP 페이지를 불러와 모달에 표시
+    var xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", pageURL);
+    xhr.send();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var modalContent = document.getElementById("add-modal-content");
+            modalContent.innerHTML = xhr.responseText;
+        }
+    };
+}
+
+// 모달을 닫는 함수
+function closeModal() {
+    var modal = document.getElementById("modal");
+    modal.style.display = "none";
+}
+
