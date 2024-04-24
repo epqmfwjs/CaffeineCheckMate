@@ -52,7 +52,7 @@ public class CoffeeListPageService {
 			conn = ConnectionProvider.getConnection();
 			
 			// 한 페이지에 표시할 게시물 수
-			int size = 10; 
+			int size = 12; 
 			
 			ArrayList<Coffee> coffeeList = coffeeListDao.CoffeeListView(conn, page, size);
 			int total = coffeeListDao.CoffeeListCount(conn);

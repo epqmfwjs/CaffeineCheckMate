@@ -32,7 +32,7 @@
     position: absolute;
     padding: 1px 1px 1px 1px;
     top: 1px;
-    right: 1    px;
+    right: 1px;
     height: 22px;
     width: 22px;
     border-radius: 11px;
@@ -47,7 +47,23 @@
 }
 .fp-item__delete-btn:hover{
     background-color: tomato;
+    animation: shake 0.3s linear infinite;
 }
 .fp-item__delete-btn:hover i{
     color: white;
+}
+
+@keyframes shake{
+    0% {
+        transform: translateX(-0.5px);
+    }
+    33% {
+        transform: translateX(0.5px);
+    }
+    66% {
+        transform: translateX(-0.5px);
+    }
+    100% {
+        transform: translateX(0.5px);
+    }
 }

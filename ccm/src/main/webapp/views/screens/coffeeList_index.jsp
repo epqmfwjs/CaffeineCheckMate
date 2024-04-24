@@ -28,17 +28,14 @@
                     <button class="coffeelist-searchbox__btn clickable"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <div class="coffeelist-add">
-                <c:if test="${isAdmin}">
+            <c:if test="${isAdmin}">
+                <div class="coffeelist-add">
                     <a href="./views/screens/coffeeList_Add.jsp">Add Coffee</a>
-                </c:if>
-            </div>
+                </div>
+            </c:if>
         </div>
         <div class="coffee-box">
             <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
-                <!-- <c:if test="${status.index % 2 == 0}">
-                    <div style="width: 100%;"></div>
-                </c:if> -->
                 <div class="coffeelist-container">
                     <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
                         <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
