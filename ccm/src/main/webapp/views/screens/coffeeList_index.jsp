@@ -95,6 +95,7 @@
 
     <div class="coffeelist-column_2">
         <c:if test="${not empty sessionScope.AUTH_USER_ID}">
+            <div class="coffeelist-column_2__title"><h3>Favorites</h2></div>
             <div class="favbox">
                 <!--즐겨찾기 include 부분-->
                 <jsp:include page="/views/components/favorites.jsp"></jsp:include>
@@ -112,5 +113,6 @@
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+<script src="/resources/js/coffeelist-index.js"></script>
 <script src="/resources/js/favoritelist.js" type="text/babel"></script>
 </html>

@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 /*first column*/
@@ -33,6 +34,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    width: 100%;
 }
 .coffeelist-title {
     font-size: 28px;
@@ -40,7 +42,24 @@
 }
 .coffeelist-add{
     position: absolute;
-    right: -15px;
+    top: 15px;
+    right: 15px;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--ccm-color1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coffeelist-add a{
+    font-size: 15px;
+}
+.coffeelist-add:hover{
+    background-color: var(--ccm-color1);
+}
+.coffeelist-add:hover a{
+    color: white;
 }
 
 .coffeelist-searchbox{
@@ -146,7 +165,7 @@
 }
 
 /*second coloumn*/
-.fp-item__img {
-    height: 60px;
-    width: 60px;
+.favbox{
+    height: 100%;
+    overflow: auto;
 }
