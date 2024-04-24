@@ -41,7 +41,7 @@
                 </c:if> -->
                 <div class="coffeelist-container">
                     <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
-                        <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
+                        <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${pageContext.request.contextPath}/resources/testimg/coffeelist-default"/>
                         <div class="clickable">
                             <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550'); return false;">${coffeeV.c_NAME}</a>
                         </div>
