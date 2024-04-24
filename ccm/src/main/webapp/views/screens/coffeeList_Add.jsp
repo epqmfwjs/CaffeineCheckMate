@@ -65,10 +65,11 @@
 		<!-- 이것도 유효성 검사 가능 신기하네
         <input type="file" accept="image/png, image/jpeg"> 
 		<input type="file" accept=".png, .jpeg"> -->
-        <input type="submit" value="찔러찔로">
+        <input class="coffee__add-btn" type="submit" value="찔러찔로">
     </form>
 <div>
 	<a href="javascript:history.back();"><button>이전 페이지</button></a>
 	<a href="/coffeelist.do"><button>커피리스트 메인 페이지</button></a>
 </div>
+<script src="/resources/js/coffeelist-add.js"></script>
 </html>
