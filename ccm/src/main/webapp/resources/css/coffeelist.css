@@ -1,0 +1,173 @@
+/*Components*/
+@import "/resources/css/components/favorites.css";
+
+/*Common*/
+@import "/resources/css/common.css";
+
+/*Screens*/
+
+#coffeelist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+}
+.coffeelist-column_1{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.coffeelist-column_2{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*first column*/
+.coffeelist-column__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.coffeelist-title {
+    font-size: 28px;
+    font-weight: 600;
+}
+.coffeelist-add{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--ccm-color1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coffeelist-add a{
+    font-size: 15px;
+}
+.coffeelist-add:hover{
+    background-color: var(--ccm-color1);
+}
+.coffeelist-add:hover a{
+    color: white;
+}
+
+.coffeelist-searchbox{
+    margin: 15px;
+    width: 300px;
+    height: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coffeelist-searchbox__select{
+    border: none;
+    height: 30px;
+    width: 70px;
+    padding-left: 5px;
+    border-radius: 14px;
+    border: 1px solid var(--ccm-color1);
+    color: var(--ccm-color1);
+    position: absolute;
+    left: -30px;
+    top: 1px;
+}
+.coffeelist-searchbox__input{
+    height: 30px;
+    width: 280px;
+    border-radius: 15px;
+    border: 1px solid var(--ccm-color1);
+    padding-left: 80px;
+}
+.coffeelist-searchbox__btn{
+    background-color: transparent;
+    border: 1px solid var(--ccm-color1);
+    height: 30px;
+    width: 30px;
+    border-radius:14px;
+    color: var(--ccm-color1);
+    position: absolute;
+    right: -30px;
+    top: 1px;
+}
+
+
+
+.coffee-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly   ;
+}
+.coffeelist-container{
+    width: 25%;
+}
+.coffeelist-item {
+    margin: 10px;
+    width: 140px;
+    height: 160px;
+    border: 1px solid black;
+    text-align: center;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.coffeelist-item__img{
+    display: block;
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+}
+.coffeelist-item__name{
+    font-size: 20px;
+}
+.coffeelist-item__info{
+    font-size: 13px;
+}
+.coffeelist-item__btn-area{
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    width: 100%;
+}
+.coffeelist-item__fav{
+    height: 20px;
+    width: 80%;
+    border-radius: 10px;
+    background-color: transparent   ;
+    border: 1px solid var(--ccm-color1);
+    bottom: 5px;
+    right: 5px;
+}
+.coffeelist-item__fav:hover{
+    background-color: var(--ccm-color1);
+    color: white;
+}
+
+
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*second coloumn*/
+.favbox{
+    height: 100%;
+    overflow: auto;
+}
