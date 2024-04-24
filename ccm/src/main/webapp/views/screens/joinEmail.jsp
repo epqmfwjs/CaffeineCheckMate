@@ -115,8 +115,9 @@ text-align: center;
 				})
 			</script>
 			<input type="hidden" value="emailinput" name="hidden">
-		 	<input type="submit" value="메일보내기"/>
+		 	<input type="submit" value="메일보내기" />
 			<input type="submit" value="취소" onclick="self.close();"/>
+
 		</form>
 <%}%>
 

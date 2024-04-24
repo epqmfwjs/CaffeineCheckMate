@@ -33,8 +33,12 @@ public class DeleteMemberHandler implements CommandHandler {
 				memberDTO.setDtoID(request.getParameter("identgyId"));
 				memberDTO.setDtoPW(request.getParameter("identgyPw"));
 				memberDTO.setDtoPRO("delete");
+				System.out.println("회원탈퇴 케이스안 이프문");
+				System.out.println("입력아이디 "+memberDTO.getDtoID());
+				System.out.println("입력비번 "+memberDTO.getDtoPW());
 				resultPage = deleteService.deleteAction(memberDTO, request, response);
 			}else {
+				System.out.println("딜리트 케이스 엘스문");
 				session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
 				out.println("<script>alert('로그인실패'); location.href='/views/screens/login.jsp';</script>");
 				out.flush();
@@ -45,8 +49,12 @@ public class DeleteMemberHandler implements CommandHandler {
 				memberDTO.setDtoID(request.getParameter("identgyId"));
 				memberDTO.setDtoPW(request.getParameter("identgyPw"));
 				memberDTO.setDtoPRO("deleteCancel");
+				System.out.println("탈퇴취소 케이스안 이프문");
+				System.out.println("입력아이디 "+memberDTO.getDtoID());
+				System.out.println("입력비번 "+memberDTO.getDtoPW());
 				resultPage = deleteService.deleteCancelAction(memberDTO, request, response);
 			}else if(resultPage.equals("false")) {
+				System.out.println("삭제핸들러 모든케이스들어가지못함");
 				 out.println("<script>alert('정보확인실패.'); location.href='/views/screens/okDelete.jsp';</script>");
 				 out.flush();
 			}

@@ -2,6 +2,7 @@ package member.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import member.service.EmailService;
 public class MailCheckHandler implements CommandHandler {
 
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException, SQLException{
 		String returnPage = "/views/screens/joinEmail.jsp";
 		MemberDTO memberDTO = new MemberDTO();
 		HttpSession session = request.getSession(false);
@@ -32,24 +33,30 @@ public class MailCheckHandler implements CommandHandler {
 			System.out.println(request.getParameter("input"));
 			String pushCode = (String)session.getAttribute("codeMail");
 			String iputCode = request.getParameter("input");
-			boolean result = emailService.checkedMail(iputCode,pushCode);
-			returnPage = result==true ? emailTrue(request,response) : emailFalse(request,response);
+			boolean result = emailService.checkedCode(iputCode,pushCode);
+			returnPage = result == true ? emailTrue(request,response) : emailFalse(request,response);
 			break;
 		case "emailinput" :
 			memberDTO = emailService.emailSend(inputEmail1,request,response);
 			session.setAttribute("code", memberDTO.getDtoEMAIL());
 			System.out.println(session.getAttribute("code"));
+			System.out.println("두번째 메일보낼때"+inputEmail1);
+			System.out.println("세번째 (세션)메일보낼때"+session.getAttribute("inputMail"));
 			returnPage = "/views/screens/joinEmail.jsp";
 		}
+		System.out.println("메일핸들러 나갈때1"+session.getAttribute("inputMail"));
 		return returnPage;
 	}
-	public String emailTrue(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public String emailTrue(HttpServletRequest request,HttpServletResponse response) throws IOException, SQLException {
 		PrintWriter out = response.getWriter();
+		EmailService emailService = new EmailService();
+		emailService.checkedMail(request,response);
 		out.println("<script>alert('인증성공!.'); location.href="
 				+ "'/views/screens/joinRequest.jsp';"
 				+ "self.close(); </script>");
 		out.flush();
 		return null;
+		
 	}
 	public String emailFalse(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();

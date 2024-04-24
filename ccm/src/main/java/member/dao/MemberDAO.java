@@ -11,6 +11,7 @@ public class MemberDAO {
 	
 // ------------------------insert-----------------------------------------	
 	public String insert(MemberDTO memberDTO, Connection conn) {
+		System.out.println("인서트들어옴");
 	    String returnPage = null;
 	    String query = "INSERT INTO ccm.member(M_ID, M_PASSWORD, M_NAME, M_NICKNAME, M_BIRTH, M_CREATEDATE, M_PHONENUMBER, M_MAIL, M_GENDER, M_ROLE, M_CANCEL, M_SNSYN) VALUES(?,?,?,?,?,DEFAULT,?,?,?,?,?,?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -117,15 +118,27 @@ public class MemberDAO {
 	    }
 	    return memberDTO;
 	}
-	//중복체크 select method
+	//중복체크 물음표 2개 select method
 	public int checkSystem(String value, String query, Connection conn) {
 	    System.out.println(value);
 	    //"SELECT ccm.member.M_ID FROM ccm.member WHERE M_ID = ? UNION all "
 	    //+ "SELECT ccm.member_backup.M_ID FROM ccm.member_backup WHERE M_ID = ?";
-	    int result = 0;
 	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
 	        pstmt.setString(1, value);
 	        pstmt.setString(2, value);
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            return rs.next() ? 1 : 0;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return -1;
+	    } 
+	}	
+	//중복체크 물음표 1개 select method
+	public int checkSystemOne(String value, String query, Connection conn) {
+	    System.out.println("checkSystemOne 으로넘어온 검색할 컬럼벨류 "+value);
+	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	        pstmt.setString(1, value);
 	        try (ResultSet rs = pstmt.executeQuery()) {
 	            return rs.next() ? 1 : 0;
 	        }

@@ -108,9 +108,7 @@
 				</script>
 		성별 :<input type="text" value="<%= UpdateGENDER%>"  style="border:none" readonly/></br>
 		SNS 수신여부 :<input type="text" value=" <%= UpdateSNS%>" size=3 style="border:none" readonly/>
-	<% if(UpdateSNS == null){
-		System.out.println("널로옴");
-	}
+	<% 
 	
 	if(UpdateSNS.equals("동의")){%>
 			<form action="<%=request.getContextPath() %>/UpdateMemberHandler.do" method = "post" name="UpdateSnsForm">
