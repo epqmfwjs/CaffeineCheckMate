@@ -1,0 +1,111 @@
+/*Components*/
+@import "/resources/css/components/favorites.css";
+
+/*Common*/
+@import "/resources/css/common.css";
+
+/*Screens*/
+
+#coffeelist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+}
+.coffeelist-column_1{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.coffeelist-column_2{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*first column*/
+.coffeelist-column__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.coffeelist-title {
+    font-size: 28px;
+    font-weight: 600;
+}
+.coffeelist-add{
+    position: absolute;
+}
+
+.coffeelist-searchbox{
+    margin: 15px;
+    width: 300px;
+    height: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coffeelist-searchbox__select{
+    border: none;
+    height: 30px;
+    width: 70px;
+    border-radius: 14px;
+    border: 1px solid var(--ccm-color1);
+    color: var(--ccm-color1);
+    position: absolute;
+    left: 9px;
+    top: 1px;
+}
+.coffeelist-searchbox__input{
+    height: 30px;
+    width: 280px;
+    border-radius: 15px;
+    border: 1px solid var(--ccm-color1);
+}
+.coffeelist-searchbox__btn{
+    background-color: transparent;
+    border: 1px solid var(--ccm-color1);
+    height: 30px;
+    width: 30px;
+    border-radius:14px;
+    color: var(--ccm-color1);
+    position: absolute;
+    right: 9px;
+    top: 1px;
+}
+
+
+
+.coffee-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.coffeelist-container{
+    width: 25%;
+}
+.coffeelist-item {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.coffeelist-item__img{
+    height: 60px;
+    width: 60px;
+}
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*second coloumn*/
+.fp-item__img {
+    height: 60px;
+    width: 60px;
+}

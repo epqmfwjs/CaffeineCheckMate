@@ -4,7 +4,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>임시메인페이지</title>
+<style>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+/* 기존 버튼 스타일 */
+input[type="button"], input[type="submit"] {
+    padding: 8px 15px; /* 패딩 조정 */
+    margin-top: 10px; /* 상단 마진 추가 */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%; /* 버튼 너비 조정 */
+}
+/* 버튼 및 서브밋 스타일 조정 */
+input[type="button"], input[type="submit"] {
+    padding: 8px 15px; /* 패딩 조정 */
+    margin-top: 10px; /* 상단 마진 추가 */
+    background-color: #4CAF50; /* 배경색 */
+    color: white; /* 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 모양 변경 */
+    width: 100%; /* 너비 조정 */
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #45a049; /* 호버 시 배경색 변경 */
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* 버튼들을 가운데 정렬 */
+    gap: 10px; /* 버튼 사이의 간격 조정 */
+}
+</style>
 </head>
 <body>
 <button onclick="location.href='/CustomBoardListHandler.do'">CustomBoardListHandler.do</button>

@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.cus-box{
+    overflow: auto;
+    height: 170px;
+}
+
 
 /*---------- 검색창 ----------*/
 #searchInput {
