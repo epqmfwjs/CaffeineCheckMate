@@ -288,7 +288,6 @@ function list(allcount){
    });//ajax끝          
 }
 
-
 // 댓글 모달을 보여주는 함수
 function showCustomViewModal(pageURL) {
     var modal = document.getElementById("modal");
@@ -302,7 +301,7 @@ function showCustomViewModal(pageURL) {
     
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var modalContent = document.getElementById("add-modal-content");
+            var modalContent = document.getElementById("modal-content");
             modalContent.innerHTML = xhr.responseText;
         }
     };

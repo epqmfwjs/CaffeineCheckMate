@@ -125,9 +125,11 @@
 		</div>
 		
 	</section>
-	<div id="modal" class="add-modal-container">
+	
+	<!-- 모달폼 -->
+	<div id="modal" class="modal-container">
 	    <button onclick="closeModal()">닫기</button>
-	    <div class="add-modal-content" id="add-modal-content">
+	    <div class="modal-content" id="modal-content">
 	    </div>
 	</div>
 	
