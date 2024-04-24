@@ -1,4 +1,22 @@
-@charset "UTF-8";
+ @charset "UTF-8";
+/*variables*/
+:root {
+    --ccm-color1:black;
+    --ccm-blue:rgb(0, 209, 255);
+    --ccm-yellow:rgb(255, 245, 0);
+}
+/*common style*/
+.clickable:hover {
+    cursor: pointer;
+}
+a{
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+	color: black;
+}
+
 
 body {
     display: flex;
@@ -88,7 +106,7 @@ header{
 
 
 /*---------- section ----------*/
-/* section{
+section{
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-auto-rows: auto;
@@ -106,7 +124,7 @@ header{
 		grid-template-rows: auto;
 		grid-gap: auto;
 	}
-} */
+}
 
 
 /*---------- footer ----------*/
@@ -132,14 +150,17 @@ footer{
 }
 
 .footer_col_6 {
-    grid-column: 6 / span 2; /* 6번 열부터 시작하여 2개의 열에 걸쳐 설정 */
-    place-items: center; /* 내용을 수직 및 수평 가운데로 정렬합니다. */
+    grid-column: 6 / span 2; 
+    place-items: center;
 }
-
+/* 6번 열부터 시작하여 2개의 열에 걸쳐 설정 */
+ /* 내용을 수직 및 수평 가운데로 정렬합니다. */
 .footerLinks {
 	font-family: san-serif;
 	font-size: 0.4em;
 	text-transform: uppercase;
 	text-decoration: none;
 	color: rgba(150, 150, 150, 1);
+
 }
+

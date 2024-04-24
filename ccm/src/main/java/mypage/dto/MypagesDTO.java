@@ -10,13 +10,13 @@ public class MypagesDTO {
 
 	private UserProfileDTO userProfileDTO; //유저 프로필 
 	private List<MyRecipeDTO> myRecipeDTO; // 내가 작성한 레시피 (+이미지)
-	private HashMap<Integer, Favorite> favoriteListDTO; //즐겨찾기 목록 (+이미지)
+	private HashMap<Integer, Favorite> favorites; //즐겨찾기 목록 (+이미지)
 	private List<Calendar> healthLightDTO; // 카페인 캘린더 
 	
 	public MypagesDTO(UserProfileDTO userProfileDTO, List<MyRecipeDTO> myRecipeDTO, HashMap<Integer, Favorite> favoriteListDTO, List<Calendar> healthLightDTO ) {
 		this.userProfileDTO = userProfileDTO;
 		this.myRecipeDTO = myRecipeDTO;
-		this.favoriteListDTO = favoriteListDTO;
+		this.favorites = favoriteListDTO;
 		this.healthLightDTO = healthLightDTO;
 	}
 
@@ -36,12 +36,12 @@ public class MypagesDTO {
 		this.myRecipeDTO = myRecipeDTO;
 	}
 
-	public HashMap<Integer, Favorite> getFavoriteListDTO() {
-		return favoriteListDTO;
+	public HashMap<Integer, Favorite> getFavorites() {
+		return favorites;
 	}
 
-	public void setFavoriteListDTO(HashMap<Integer, Favorite> favoriteListDTO) {
-		this.favoriteListDTO =  favoriteListDTO;
+	public void setFavorites(HashMap<Integer, Favorite> favoriteListDTO) {
+		this.favorites =  favoriteListDTO;
 	}
 
 	public List<Calendar> getHealthLightDTO() {
@@ -55,7 +55,7 @@ public class MypagesDTO {
 	@Override
 	public String toString() {
 		return "MypagesDTO [userProfileDTO=" + userProfileDTO + ", myRecipeDTO=" + myRecipeDTO + ", favoriteListDTO="
-				+ favoriteListDTO + ", healthLightDTO=" + healthLightDTO + "]";
+				+ favorites + ", healthLightDTO=" + healthLightDTO + "]";
 	}
 
 }

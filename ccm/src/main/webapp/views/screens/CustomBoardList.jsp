@@ -20,7 +20,6 @@
 		<%@ include file="/views/components/header.jsp" %>
 		<!-- 섹션 시작 -->
 		<section class="container">
-		
 			<div class="section_col_1-to-4_row_1">
 				<span>
 					<button id="test" class="button_home" type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
@@ -52,6 +51,7 @@
 			    </div>
 			</span>
 		
+
 			<span class="divdropdown">
 				<button id="milkButton" class="dropdown" type="button" data-toggle="dropdown">
 					우유 종류
@@ -68,6 +68,7 @@
 			    </div>
 			</span>
 		
+
 			<span class="divdropdown">
 				<button id="syrupButton" class="dropdown" type="button" data-toggle="dropdown">
 					시럽 추가
@@ -85,7 +86,9 @@
 			    </div>
 			</span>
 		
+
 			<span class="divdropdown">
+
 				<button id="toppingButton" class="dropdown" type="button" data-toggle="dropdown">
 					토핑 추가
 			    </button>

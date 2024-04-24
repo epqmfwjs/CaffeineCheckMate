@@ -24,6 +24,7 @@ public class CoffeeAddHandler implements CommandHandler{
 		//이미지 추가 관련 로직
 		//1. 저장될 디렉토리 변수에 담기
 		String saveDirectory = request.getServletContext().getRealPath("resources/testimg");
+		System.out.println(saveDirectory);
 		//1-1. 저장될 디렉토리가 없으면 새로 생성
 		//저장 경로 : C:\icanjava\webpg\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ccm\resources\testimg
 		File dir = new File(saveDirectory);
