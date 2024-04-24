@@ -6,6 +6,9 @@
     --ccm-yellow:rgb(255, 245, 0);
 }
 /*common style*/
+.hidden{
+	display: none;
+}
 .clickable:hover {
     cursor: pointer;
 }
@@ -17,7 +20,16 @@ a:visited{
 	color: black;
 }
 
+/*animations*/
+.rotated {
+	transform: rotate(180deg); /* 180도 회전 */
+	transition: transform 0.5s; /* 회전 애니메이션 0.5초 */
+}
+.not-rotated {
+	transition: transform 0.5s; /* 회전 애니메이션 0.5초 */
+}
 
+/*background*/
 body {
     display: flex;
     justify-content: center;
@@ -104,19 +116,6 @@ header{
 	font-size: 1em;
 }
 
-
-/*---------- section ----------*/
-section{
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-auto-rows: auto;
-	grid-gap: 1em;
-	align-items: center;
-	text-align: center;
-	height: 70vh;
-	margin: 1em;
-	overflow: auto;
-}
 
 @media screen and (max-width: 900px) {
 	.section{
