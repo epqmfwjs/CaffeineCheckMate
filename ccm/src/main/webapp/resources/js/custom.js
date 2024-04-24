@@ -162,8 +162,8 @@ function formatDate(dateString) {
 
 //글내용 길이제한
 function cutString(inputString){
-   if(inputString.length>10){
-    return inputString.slice(0, 7) + '...';
+   if(inputString.length>25){
+    return inputString.slice(0, 20) + '...';
    }
    else{
       return inputString;
@@ -185,19 +185,18 @@ function searchlist(data){
 
         let boardItem = `
         <li>
-            <a href="CustomBoardViewHandler.do?CUS_NUM=` + cus_num + `">
-                <div>
-                    <img src="upload/` + cus_img_realname + `" alt="Image">
-                    <p>게시글번호: ` + cus_num + `</p>
-                    <p>회원명: ` + m_id + `</p>
-                    <p>제품아이디: ` + c_no + `</p>
-                    <p>게시글제목: ` + cus_name + `</p>
-                    <p>글내용: ` + cus_content + `</p>
-                    <p>게시일: ` + cus_regdate + `</p>
-                </div>
-            </a>
-        </li>	
-        `;
+
+                    <div class="boardCard">
+                    <a href="CustomBoardViewHandler.do?CUS_NUM=`+cus_num+`">
+                        <img src="upload/` + cus_img_realname + `" alt="Image">
+                        <div class="cardTextBox">
+	                        <p><b>` + m_id + '</b>&nbsp;&nbsp;' + cus_regdate + `</p>
+	                        <p><b>` + cus_name + `</b>&nbsp;&nbsp;` + cus_content + `</p>
+                        </div>
+                    </a>
+                    </div>
+                   </li>
+                `;
 
         $("#board").append(boardItem);
     });
