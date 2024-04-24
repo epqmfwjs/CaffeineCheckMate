@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 body {
-    display: abstract;
+    display: flex;
     justify-content: center;
-    align-items: center;
     height: 90vh;
     width: auto;
     background: rgba(12, 74, 96, 1);

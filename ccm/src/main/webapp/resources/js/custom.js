@@ -266,16 +266,15 @@ function list(allcount){
                  
                  let boardItem = `
                  <li>
+                    <div class="boardCard">
                     <a href="CustomBoardViewHandler.do?CUS_NUM=`+cus_num+`">
-                    <div>
                         <img src="upload/` + cus_img_realname + `" alt="Image">
-                        <div class="boardTextBox">
-                        <span><b>` + m_id + '</b></span> &nbsp; &nbsp; &nbsp; <span>' + cus_regdate + `</span><br/>
-                        <span><b>` + cus_name + `</b></span><br/>
-                        <span>` + cus_content + `</span>
+                        <div class="cardTextBox">
+	                        <p><b>` + m_id + '</b>&nbsp;&nbsp;' + cus_regdate + `</p>
+	                        <p><b>` + cus_name + `</b>&nbsp;&nbsp;` + cus_content + `</p>
                         </div>
-                    </div>
                     </a>
+                    </div>
                    </li>
                 `;
                 
