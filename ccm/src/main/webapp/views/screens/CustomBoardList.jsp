@@ -21,22 +21,22 @@
 		<!-- 섹션 시작 -->
 		<section class="container">
 		
-			<div class="section_col_1_row_2">
+			<div class="section_col_1-to-4_row_1">
 				<span>
-					<button id="test" class="button"type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
+					<button id="test" class="button_home" type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
 				</span>
 				
 				<span>
-					<button id="edit" class="button" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add Post</button>
+					<button id="edit" class="button_add" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add</button>
+				</span>
+				<span>
+					<input type="text" id="searchInput" placeholder="   Search">
+					<span id="searchResult"></span>
 				</span>
 			</div>
 			
-			<div class="section_col_2-to-3_row_2">
-				<input type="text" id="searchInput" placeholder="Search">
-				<div id="searchResult"></div>
-			</div>
 			
-			<div class="section_col_2-to-3_row_3">	
+			<div class="section_col_2-to-3_row_2">	
 				<span class="divdropdown">
 					<button id="shotButton" class="dropdown" type="button" data-toggle="dropdown">
 						샷추가
@@ -117,7 +117,7 @@
 		</div>
 		
 		<!--게시글 가져오기 -->
-		<div class="section_col_1-to-12_row_4">
+		<div class="section_col_1-to-4_row_3">
 			<span id="board" class="cus-box"></span>
 		</div>
 		

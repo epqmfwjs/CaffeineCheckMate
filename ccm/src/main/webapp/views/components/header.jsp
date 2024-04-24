@@ -24,7 +24,7 @@
 				<a class="headerLinks">MyPage</a><!-- 추가 -->
 			</span>
 			<span>
-				<a class="headerLinks" onclick="location.href='/LoginHandler.do'">Login</a>
+				<a class="headerLinks" onclick="location.href='/LoginHandler.do" style="margin-left: 5vw; ">Login</a>
 			</span>
 		</div>
 	</header>

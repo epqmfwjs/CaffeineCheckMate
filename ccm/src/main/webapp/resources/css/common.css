@@ -25,10 +25,10 @@ body {
 	background: rgba(200, 200, 200, 0.3);
 	border-radius: 20px;
 	box-shadow: 
-		inset -0px -0px 3px rgba(0, 95, 57, 0.1),
-		inset 0px -0px 3px rgba(0, 95, 57, 0.1),
-		inset -0px 0px 3px rgba(0, 95, 57, 0.1),
-		inset 0px 0px 3px rgba(0, 95, 57, 0.1);
+		inset -0px -0px 3px rgba(0, 0, 0, 0.1),
+		inset 0px -0px 3px rgba(0, 0, 0, 0.1),
+		inset -0px 0px 3px rgba(0, 0, 0, 0.1),
+		inset 0px 0px 3px rgba(0, 0, 0, 0.1);
     background: white;
     margin: 2vw;
     }
@@ -73,15 +73,16 @@ header{
 
 .headerLinks {
 	font-family: san-serif;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	/*text-transform: uppercase;*/
 	text-decoration: none;
 	color: black;
 	font-weight: bold;
+	margin: 1vw;
 }
 
 .headerLinks:hover {
-	color: green;
+	color: rgb(239, 108, 51);
 	font-weight: bold;
 	font-size: 1em;
 }

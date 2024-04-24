@@ -8,7 +8,8 @@ section{
 	align-items: center;
 	text-align: center;
 	height: 82vh;
-	margin: 1em;
+	margin-left: 2.5vw;
+	margin-right: 2.5vw;
 	/* overflow: auto; */
 }
 
@@ -20,56 +21,79 @@ section{
 	}
 }
 
-/*2행*/
-.section_col_1_row_2 {
-    grid-column: 1;
+/*1행*/
+.section_col_1-to-4_row_1 {
+    grid-column: 1 / span 4; /*행의 1번째 셀부터 4개 까지의 셀 병합 => 1~4번 병합*/
     place-items: center;
-	grid-row: 2;
+	grid-row: 1; /*1번째 행*/
 } 
 
+/*2행*/
 .section_col_2-to-3_row_2 {
-     grid-column: 2 / span 2;
+    grid-column: 2 / span 2; /*행의 2번째 셀부터 2개 까지의 셀 병합 2~3번 병합*/
     place-items: center;
-	grid-row: 2;
+	grid-row: 2; /*2번째 행*/
 } 
 
 /*3행*/
-.section_col_2-to-3_row_3 {
-     grid-column: 2 / span 2;
+.section_col_1-to-4_row_3 {
+    grid-column: 1 / span 4; /*행의 1번째 셀부터 4개 까지의 셀 병합 1~4번 병합*/
     place-items: center;
-	grid-row: 3;
-} 
-
-/*4행*/
-.section_col_1-to-12_row_4 {
-    grid-column: 1 / span 4;
-    place-items: center;
-	grid-row: 4;
+	grid-row: 3; /*3번째 행*/
 } 
 span.cus-box {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 4; /*행의 2번째 셀부터 2개 까지의 셀 병합 2~3번 병합*/
     place-items: center;
-	grid-row: 4;
+	grid-row: 3;  /*3번째 행*/
 } 
 
 
 /*---------- 게시글 영역 ----------*/
 .cus-box{
     overflow: auto;
-    height: 80vh;;
+    height: 60vh;
 }
 
 
 /*---------- 검색창 ----------*/
 #searchInput {
-	width : 50vw;
-	float: left;
+	display: inline-block;
+	width : 70%;
+	height: 4vh;
+	border: 0.1px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+    background: rgb(253, 253, 253);
+    margin-left: 1vw;
+    margin-right: 2vw;
 }
 
-.cus-box{
-    overflow: auto;
-    height: 60vh;
+
+/*일반 버튼*/
+/*홈버튼*/
+.button_home{
+	background: black;
+	color: white;
+	font-size:0.8em;
+	cursor:pointer;
+	width: 4vw;
+	height: 4vh;
+	border: 0.1px;
+	border-radius: 5px;
+	margin: 0.3vw;
 }
+
+/*작성버튼*/
+.button_add{
+	font-size:0.8em;
+	cursor:pointer;
+	width: 5vw;
+	height: 4vh;
+	border: 0.1px;
+	border-radius: 5px;
+	margin: 0.3vw;
+}
+
 /*---------- 옵션 버튼 ----------*/
 .dropdown {
     display: inline-block;
@@ -85,15 +109,18 @@ float: right;
 }
 
  button.dropdown{
-  border:none;
-  border-radius:5px;
-  padding: 0.5vw 2vh;
-  font-size:1em;
+  font-size:0.8em;
   cursor:pointer;
+  width: 7vw;
+  height: 4vh;
+  border: 0.1px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  margin: 0.5vw;
 } 
  
 button:hover{
-  background-color:#ddd;
+  background-color: rgb(239, 108, 51);
 } 
 
 .dropdown-options {
