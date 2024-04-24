@@ -68,8 +68,10 @@
                     <div style="width: 100%;"></div>
                 </c:if>
                 <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
-                    <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
-                    <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}&pageNo=${CoffeeListPage.currentPage}">${coffeeV.c_NAME}</a></h4>
+                    <div class="coffeelist-item__clicks clickable" value="${coffeeV.c_NO}" coffeeName="${coffeeV.c_NAME}">
+                        <img src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
+                        <h4><a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}&pageNo=${CoffeeListPage.currentPage}">${coffeeV.c_NAME}</a></h4>
+                    </div>
                     <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
                     <c:if test="${not empty sessionScope.AUTH_USER_ID}">
                         <button style="display: inline-block;" class="addFav-btn">+</button>
@@ -133,6 +135,7 @@
 </script>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="/resources/js/coffeelistpopup.js"></script> 
 <script src="/resources/js/favoritelist.js" type="text/babel"></script>
 </html>

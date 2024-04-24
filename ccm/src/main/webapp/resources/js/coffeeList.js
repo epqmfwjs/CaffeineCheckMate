@@ -27,3 +27,8 @@ function coffee_PreviewImage() {
 		preview.src = document.getElementById('defaultImage').value;
 	}
 }
+
+
+
+
+
