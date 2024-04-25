@@ -17,7 +17,6 @@ a{
 }
 a:visited{
 	text-decoration: none;
-	color: black;
 }
 
 /*animations*/
@@ -28,6 +27,18 @@ a:visited{
 .not-rotated {
 	transition: transform 0.5s; /* 회전 애니메이션 0.5초 */
 }
+@keyframes beat {
+	0%{
+		transform: scale(1);	
+	}
+	50%{
+		transform: scale(1.05);			
+	}
+	100%{
+		transform: scale(1);	
+	}
+}
+
 
 /*background*/
 body {
