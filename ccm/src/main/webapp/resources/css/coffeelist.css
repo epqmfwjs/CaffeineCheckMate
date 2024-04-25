@@ -46,6 +46,7 @@
     margin-top: 15px;
     font-size: 28px;
     font-weight: 600;
+    font-family: var(--ccm-font);
 }
 .coffeelist-add{
     position: absolute;
@@ -58,9 +59,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 3px 5px 8px -1px #9E9E9E;
 }
 .coffeelist-add a{
-    font-size: 15px;
+    font-family: var(--ccm-font);
+    font-size: 13px;
     color: white;
 }
 .coffeelist-add:hover{
@@ -96,6 +99,7 @@
     border-radius: 16px;
     padding: 0 0 0 80px;
     border: none;
+    box-shadow: 3px 5px 8px -1px #9E9E9E;
 }
 .coffeelist-searchbox__btn{
     background-color: var(--ccm-color1);
@@ -158,6 +162,7 @@
 .coffeelist-item__info{
     font-size: 10px;
     color: black;
+    font-family: var(--ccm-font);
 }
 .coffeelist-item__btn-area{
     margin-bottom: 3px;

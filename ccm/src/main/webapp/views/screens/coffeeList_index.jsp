@@ -15,7 +15,6 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="overlay">
             <!-- 헤더 -->
             <%@ include file="/views/components/header.jsp" %>
             <div id="coffeelist">
@@ -124,7 +123,6 @@
                 </div>       
                 <button class="coffeelist-column_3 clickable not-rotated"><i class="fa-solid fa-chevron-left"></i></button>
             </div>
-        </div><!--레이어-->
     </div>
 </body>
 <script>

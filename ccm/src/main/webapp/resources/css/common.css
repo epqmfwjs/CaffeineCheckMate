@@ -4,6 +4,7 @@
     --ccm-color1:black;
     --ccm-color2:rgb(248, 254, 255);
     --ccm-yellow:rgb(255, 245, 0);
+	--ccm-font:font-family: san-serif;
 }
 /*common style*/
 .hidden{
