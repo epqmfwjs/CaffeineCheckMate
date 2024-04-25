@@ -2,8 +2,9 @@
 /*variables*/
 :root {
     --ccm-color1:black;
-    --ccm-blue:rgb(0, 209, 255);
+    --ccm-color2:rgb(248, 254, 255);
     --ccm-yellow:rgb(255, 245, 0);
+	--ccm-font:san-serif;
 }
 /*common style*/
 .hidden{
@@ -17,7 +18,12 @@ a{
 }
 a:visited{
 	text-decoration: none;
-	color: black;
+}
+.textlenth{
+	width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*animations*/
@@ -28,6 +34,25 @@ a:visited{
 .not-rotated {
 	transition: transform 0.5s; /* 회전 애니메이션 0.5초 */
 }
+@keyframes beat {
+	0%{
+		transform: scale(1);	
+	}
+	50%{
+		transform: scale(1.05);			
+	}
+	100%{
+		transform: scale(1);	
+	}
+}
+@keyframes showComponent {
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
 
 /*background*/
 body {
@@ -35,9 +60,9 @@ body {
     justify-content: center;
     height: 90vh;
     width: 100vw;
-    background: rgba(12, 74, 96, 1);
     transition: 0.5s;
     color: black;            
+	background: rgba(200, 200, 200, 0.3);
 }
 
 @media screen and (max-width: 900px) {
@@ -54,14 +79,29 @@ body {
 	background: rgba(200, 200, 200, 0.3);
 	border-radius: 20px;
 	box-shadow: 
-		inset -0px -0px 3px rgba(0, 0, 0, 0.1),
-		inset 0px -0px 3px rgba(0, 0, 0, 0.1),
-		inset -0px 0px 3px rgba(0, 0, 0, 0.1),
-		inset 0px 0px 3px rgba(0, 0, 0, 0.1);
-    background: white;
+	inset -0px -0px 3px rgba(0, 0, 0, 0.1),
+	inset 0px -0px 3px rgba(0, 0, 0, 0.1),
+	inset -0px 0px 3px rgba(0, 0, 0, 0.1),
+	inset 0px 0px 3px rgba(0, 0, 0, 0.1);
+	background-image: url(/resources/imgs/background3.jpeg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
     margin: 2vw;
-    }
-    
+	position: relative;
+}
+.overlay{
+	position: absolute;
+	top: 0%;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(69, 69, 69,0.3);
+	border-radius: 20px;
+}
+
 @media screen and (max-width: 900px) {
 	.wrapper{
 		grid-template-columns: 100%;

@@ -32,3 +32,17 @@ const clTitle = document.querySelector(".coffeelist-title");
 clTitle.addEventListener("click",function(){
     window.location.href = "/coffeeList.do";
 });
+
+const delFavTogle = document.querySelector(".coffeelist-column_2__togle-fav-del");
+delFavTogle.addEventListener("click",function(){
+    const deleteBtns = document.querySelectorAll(".fp-item__delete-btn");
+    if (deleteBtns.length>0){
+        deleteBtns.forEach((btn) => {
+            if (btn.classList.contains("hidden")) {
+                btn.classList.remove("hidden");
+            } else {
+                btn.classList.add("hidden");
+            }
+        });
+    }
+});
