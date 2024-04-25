@@ -13,11 +13,11 @@ HttpSession sessionId = request.getSession(false);
 String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 %>
 <input type="hidden" id="m_id_hidden" value="<%=m_id%>">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
+
 <span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
 		<%@ include file="/views/components/header.jsp" %>
@@ -30,10 +30,10 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 				</div>	
 				<div class="view_right_content">
 					<div>회원아이디: ${item.m_id}</div>
-					<p>제품아이디: ${item.c_no}</p>
-					<p>게시글제목: ${item.cus_title}</p>
-					<p>글내용: ${item.cus_content}</p>
-					<p>게시일: ${item.cus_regdate}</p>
+					<div>제품아이디: ${item.c_no}</div>
+					<div>게시글제목: ${item.cus_title}</div>
+					<div>글내용: ${item.cus_content}</div>
+					<div>게시일: ${item.cus_regdate}</div>
 				</div>
 				<div class="view_right_content_row2">
 					<div class="option_tag">

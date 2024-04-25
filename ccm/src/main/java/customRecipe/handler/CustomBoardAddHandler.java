@@ -25,3 +25,4 @@ public class CustomBoardAddHandler implements CommandHandler {
 		return null;
 		}
 }
+
