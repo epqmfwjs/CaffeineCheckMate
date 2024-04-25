@@ -70,21 +70,21 @@
                 </div>
                 <div class="coffee-box">
                     <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
-        <!-- 모달 창 시작-->
-				<div id="cdelete" class="coffeelist-modal">
-					<span onclick="coffee_closeModal('cdelete')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
-					<form class="coffeelist-modalcontent" method="post" action="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">
-						<div class="coffeelist-modalcontainer">
-							<h1>Delete Account</h1>
-							<p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?</p>
-							<div class="coffeelist-modalclearfix">
-								<input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cdelete')" value="돌아가기"/>
-								<input class="coffeelist-modalOkbtn" type="submit" value="삭제하기"/>
-							</div>
-						</div>
-					</form>
-				</div>
-				<!-- 모달 창 끝-->     
+                        <!-- 모달 창 시작-->
+                        <div id="cdelete" class="coffeelist-modal">
+                            <span onclick="coffee_closeModal('cdelete')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
+                            <form class="coffeelist-modalcontent" method="post" action="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">
+                                <div class="coffeelist-modalcontainer">
+                                    <h1>Delete Account</h1>
+                                    <p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?</p>
+                                    <div class="coffeelist-modalclearfix">
+                                        <input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cdelete')" value="돌아가기"/>
+                                        <input class="coffeelist-modalOkbtn" type="submit" value="삭제하기"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- 모달 창 끝-->     
                         <div class="coffeelist-container">
                             <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
                                 <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
