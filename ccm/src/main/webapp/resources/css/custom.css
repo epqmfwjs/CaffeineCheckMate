@@ -326,7 +326,6 @@ img {
 	height: 50%;
 	align-items: center;
 	justify-content: center;
-	text-align: center;
 	margin: auto ;
 	margin-top: 7%;
 	padding: 5%;		
@@ -346,39 +345,43 @@ img {
 	grid-column: 2;
 }
 
-.view_right_content_row2 {
-	grid-column: 1/ span 2;
-	grid-row: 2;
-	display: flex;
-	justify-content: center;
-}
-
-.option_tag > div {
-	display: inline-block;
-}
-
-.button_container {
-    display: inline-block;
-}
-
 .image_view {
 	width: 90%;
 	height: 50%;
 	border-radius: 10px 10px 10px 10px;
 }
 
+.view_id{
+	display: inline-block;
+	
+}
 
+.view_regdate{
+	display: inline-block;
+}
 
+.view_title{
+	
+}
 
+.view_content_box{
+	height: 100%;
+}
 
+.view_content{
+	
+}
 
+.option_tag > div {
+	display: inline-block;
+}
 
-
-
-
-
-
-
+.reply_button{
+	width: 100%;
+	height: 3vh;
+	border: none;
+	border-radius: 5px;
+}
 
 /*--------------------------------------------------- 수정 및 삭제 폼 ----------------------------------------------------------*/
 

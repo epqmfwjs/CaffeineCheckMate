@@ -29,23 +29,26 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 					<p><img src="upload/${item.cus_img_realname}" alt="Image" class="image_view"></p>
 				</div>	
 				<div class="view_right_content">
-					<div>회원아이디: ${item.m_id}</div>
-					<div>제품아이디: ${item.c_no}</div>
-					<div>게시글제목: ${item.cus_title}</div>
-					<div>글내용: ${item.cus_content}</div>
-					<div>게시일: ${item.cus_regdate}</div>
-				</div>
-				<div class="view_right_content_row2">
+					<div class="view_id"><b>${item.m_id}</b></div>
+					<div class="view_regdate">${item.cus_regdate}</div>
+					<hr/><br/>
+					<div class="view_title"><b> ${item.cus_title}</b></div>
+					<br/>
+					<div class="view_content_box">
+						<div class="view_content">${item.cus_content}</div>
+					</div>
+					<br/><hr/><br/>
 					<div class="option_tag">
 						<div>#${item.shot}샷</div>
 						<div>#${item.milkType}</div>
 						<div>#${item.syrupType}</div>
 						<div>#${item.toppingType}</div>
 						<div>#${item.decaffeinated}</div>
-					</div>
+				</div>
+				<br/>
 					<div>
 						<!-- 댓글 버튼 -->
-						<button onclick="showReplyModal('${item.cus_no}')">댓글</button>
+						<button class="reply_button" onclick="showReplyModal('${item.cus_no}')">댓글</button>
 					</div>
 				</div>
 			</c:forEach>
