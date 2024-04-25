@@ -51,6 +51,7 @@ span.cus-box {
 /*---------- 게시글 영역 ----------*/
 .cus-box{
     overflow: auto;
+    width: auto;
     height: 60vh;
 }
 
@@ -191,6 +192,7 @@ img {
 
 #board img {
     max-width: 100%; /* 이미지 크기 조절 */
+  object-fit: cover;
 }
 
 /*게시물 카드 텍스트*/
