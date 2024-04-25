@@ -7,23 +7,30 @@
 /*Screens*/
 
 #coffeelist {
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 90vw;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    height: 80%;
 }
 .coffeelist-column_1{
-    width: 70%;
+    flex: 1;
+    transition: width 0.5s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .coffeelist-column_2{
-    width: 20%;
+    width: 10%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-right: 40px;
 }
 
 /*first column*/
@@ -33,13 +40,33 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    width: 100%;
 }
 .coffeelist-title {
+    margin-top: 15px;
     font-size: 28px;
     font-weight: 600;
 }
 .coffeelist-add{
     position: absolute;
+    bottom: 15px;
+    left: 15%;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--ccm-color1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.coffeelist-add a{
+    font-size: 15px;
+}
+.coffeelist-add:hover{
+    background-color: var(--ccm-color1);
+}
+.coffeelist-add:hover a{
+    color: white;
 }
 
 .coffeelist-searchbox{
@@ -55,11 +82,12 @@
     border: none;
     height: 30px;
     width: 70px;
+    padding-left: 5px;
     border-radius: 14px;
     border: 1px solid var(--ccm-color1);
     color: var(--ccm-color1);
     position: absolute;
-    left: 9px;
+    left: -30px;
     top: 1px;
 }
 .coffeelist-searchbox__input{
@@ -67,6 +95,7 @@
     width: 280px;
     border-radius: 15px;
     border: 1px solid var(--ccm-color1);
+    padding-left: 80px;
 }
 .coffeelist-searchbox__btn{
     background-color: transparent;
@@ -76,7 +105,7 @@
     border-radius:14px;
     color: var(--ccm-color1);
     position: absolute;
-    right: 9px;
+    right: -30px;
     top: 1px;
 }
 
@@ -85,26 +114,96 @@
 .coffee-box{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    height: 70%;
+    max-width: 950px;
 }
 .coffeelist-container{
     width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .coffeelist-item {
+    margin: 10px;
+    width: 140px;
+    height: 160px;
     border: 1px solid black;
     text-align: center;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.coffeelist-item__img{
+    display: block;
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+}
+.coffeelist-item__name{
+    font-size: 20px;
+}
+.coffeelist-item__info{
+    font-size: 13px;
+}
+.coffeelist-item__btn-area{
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    width: 100%;
+}
+.coffeelist-item__fav{
+    height: 20px;
+    width: 80%;
+    border-radius: 10px;
+    background-color: transparent   ;
+    border: 1px solid var(--ccm-color1);
+    bottom: 5px;
+    right: 5px;
+}
+.coffeelist-item__fav:hover{
+    background-color: var(--ccm-color1);
+    color: white;
 }
 
-.coffeelist-item__img{
-    height: 60px;
-    width: 60px;
-}
+
+
 .pagination {
     text-align: center;
     margin-top: 20px;
 }
 
 /*second coloumn*/
+.coffeelist-column_2__title{
+    height: 70px;
+}
+.favbox{
+    height: auto;
+    overflow-y: auto;
+}
+.favbox::-webkit-scrollbar {
+    width: 0;
+}
+/*third column*/
+.coffeelist-column_3{
+    display: block;
+    height: 20vh;
+    width: 35px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 10px;
+}
+.coffeelist-column_3 i{
+    color: black;
+    font-size: 30px;
+}
 .fp-item__img {
     height: 60px;
     width: 60px;
