@@ -38,6 +38,7 @@
     right: 15px;
     border-radius: 15px;
     background-color: rgb(0, 0, 0);
+    animation: showComponent 0.5s ease linear;
 }
 
 /*first column*/
@@ -165,17 +166,18 @@
 .coffeelist-item__name{
     font-size: 15px;
     font-weight: 600;
-    color: black;
     width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.coffeelist-item__name a{
+    color: black;
+}
 .coffeelist-item__info{
     font-size: 10px;
     color: black;
     font-family: var(--ccm-font);
-    
 }
 .coffeelist-item__btn-area{
     margin-bottom: 3px;
@@ -237,7 +239,9 @@
     text-align: center;
     margin-top: 20px;
 }
-
+.pagination-a {
+    color: black;
+}
 /*second coloumn*/
 .coffeelist-column_2__title{
     height: 70px;
@@ -255,6 +259,7 @@
 .favbox{
     height: auto;
     overflow-y: auto;
+    width: 120px;
 }
 .favbox::-webkit-scrollbar {
     width: 0;

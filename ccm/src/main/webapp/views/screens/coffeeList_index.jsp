@@ -70,7 +70,7 @@
                                             <button class="coffeelist-item__delete-btn clickable" onclick="coffee_openModal('cdelete')"><i class="fa-solid fa-trash"></i></button>
                                         </c:if>
                                         <c:if test="${not empty sessionScope.AUTH_USER_ID}">
-                                            <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">
+                                            <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav clickable">
                                                 <i class="fa-solid fa-plus"></i>
                                             </button>
                                         </c:if>
@@ -90,7 +90,7 @@
                         <c:when test="${CoffeeListPage.hasCoffeeList()}">
                             <!-- 게시물이 있을 경우 페이징 넘버 처리 -->
                             <c:if test="${CoffeeListPage.startPage > 1}">
-                                <a href="?page=${CoffeeListPage.startPage - 1}">이전</a>
+                                <a class="pagination-a" href="?page=${CoffeeListPage.startPage - 1}">이전</a>
                             </c:if>
                                 <c:forEach begin="${CoffeeListPage.startPage}" 
                                         end  ="${CoffeeListPage.endPage}"  var="i">
@@ -99,12 +99,12 @@
                                             <span><b>${i}</b></span>
                                         </c:when>
                                         <c:otherwise>
-                                            <a class="clickable" href="?page=${i}">${i}</a>
+                                            <a class="pagination-a clickable" href="?page=${i}">${i}</a>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
                             <c:if test="${CoffeeListPage.endPage < CoffeeListPage.totalPage}">
-                                    <a class="clickable" href="?page=${CoffeeListPage.endPage + 1}">다음</a>
+                                    <a class="pagination-a clickable" href="?page=${CoffeeListPage.endPage + 1}">다음</a>
                             </c:if>	
                         </c:when>
                         <c:otherwise>

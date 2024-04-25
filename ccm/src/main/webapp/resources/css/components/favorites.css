@@ -3,7 +3,6 @@
 .fp-item {
     width: 110px;
     height: 130px;
-    border: 1px solid var(--ccm-color1);
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -37,6 +36,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .fp-item__delete-btn {
