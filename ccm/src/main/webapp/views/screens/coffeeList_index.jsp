@@ -22,6 +22,11 @@
                     <div class="coffeelist-column__header">
                         <div class="coffeelist-title clickable">Coffees</div><br/>
                         <div class="coffeelist-searchbox">
+                            <c:if test="${isAdmin}">
+                                <div class="coffeelist-add">
+                                    <a href="./views/screens/coffeeList_Add.jsp">Add Coffee</a>
+                                </div>
+                            </c:if>
                             <form action="coffeeList.do" method="get">
                                 <select class="coffeelist-searchbox__select" name="searchType">
                                     <option value="name">제품명</option>
@@ -33,11 +38,6 @@
                         </div>
                     </div>
                     <div class="coffee-box">
-                        <c:if test="${isAdmin}">
-                            <div class="coffeelist-add">
-                                <a href="./views/screens/coffeeList_Add.jsp">Add Coffee</a>
-                            </div>
-                        </c:if>
                         <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
                             <!-- 모달 창 시작-->
                             <div id="cdelete" class="coffeelist-modal">

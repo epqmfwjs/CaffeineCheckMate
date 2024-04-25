@@ -116,8 +116,7 @@
 }
 .coffeelist-add{
     position: absolute;
-    top: -25px;
-    left: 10%;
+    left: -50%;
     width: 90px;
     height: 20px;
     border-radius: 15px;
