@@ -84,8 +84,8 @@
     width: 70px;
     padding-left: 5px;
     border-radius: 14px;
-    border: 1px solid var(--ccm-color1);
-    color: var(--ccm-color1);
+    background-color: var(--ccm-color1);
+    color: var(--ccm-color2);
     position: absolute;
     left: -30px;
     top: 1px;
@@ -94,19 +94,23 @@
     height: 30px;
     width: 280px;
     border-radius: 15px;
-    border: 1px solid var(--ccm-color1);
     padding-left: 80px;
+    border: none;
 }
 .coffeelist-searchbox__btn{
-    background-color: transparent;
-    border: 1px solid var(--ccm-color1);
+    background-color: var(--ccm-color1);
     height: 30px;
     width: 30px;
     border-radius:14px;
-    color: var(--ccm-color1);
+    color: var(--ccm-color2);
     position: absolute;
     right: -30px;
     top: 1px;
+}
+.coffeelist-searchbox__btn:hover{
+    background-color: var(--ccm-color2);
+    color: var(--ccm-color1);
+    border: 1px solid var(--ccm-color1);
 }
 
 
@@ -129,7 +133,6 @@
     margin: 10px;
     width: 140px;
     height: 160px;
-    border: 1px solid black;
     text-align: center;
     position: relative;
     border-radius: 15px;
@@ -137,6 +140,9 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    background-color: var(--ccm-color2);
+    box-shadow: 3px 5px 8px -1px #9E9E9E;
 }
 .coffeelist-item__img{
     display: block;
@@ -145,10 +151,11 @@
     width: 80px;
 }
 .coffeelist-item__name{
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 500;
 }
 .coffeelist-item__info{
-    font-size: 13px;
+    font-size: 10px;
 }
 .coffeelist-item__btn-area{
     margin-bottom: 3px;
@@ -162,15 +169,38 @@
     height: 20px;
     width: 80%;
     border-radius: 10px;
-    background-color: transparent   ;
-    border: 1px solid var(--ccm-color1);
+    background-color: black;
     bottom: 5px;
     right: 5px;
-}
-.coffeelist-item__fav:hover{
-    background-color: var(--ccm-color1);
     color: white;
 }
+.coffeelist-item__fav:hover{
+    background-color: var(--ccm-color2);
+    color: black;
+}
+.coffeelist-item__modify-btn{
+    position: absolute;
+    top: 5px;
+    left: 4px;
+}
+.coffeelist-item__modify-btn button{
+    background-color: transparent;
+    border: none;
+}
+.fa-wrench{
+    font-size: 15px;
+}
+.coffeelist-item__delete-btn{
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    border: none;
+    background-color: transparent;
+}
+.fa-trash{
+    font-size: 15px;
+}
+
 
 
 
@@ -203,6 +233,7 @@
 .coffeelist-column_3 i{
     color: black;
     font-size: 30px;
+}
 .fp-item__img {
     height: 60px;
     width: 60px;

@@ -11,6 +11,7 @@
     flex-direction: column;
     margin: 5px;
     position: relative;
+    background-color: var(--ccm-color2);
 }
 .fp-boxes{
     display: flex;

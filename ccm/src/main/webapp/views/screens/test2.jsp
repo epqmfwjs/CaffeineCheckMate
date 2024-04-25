@@ -15,12 +15,16 @@
 	pageContext.setAttribute("isAuth", isAuth);
 	%>
 
-    <link rel="stylesheet" href="/resources/css/sample.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CaffeinCheckMate</title>
 </head>
-<body>
+<body id="main">
+	<div class="wrapper">
+		<!-- 헤더 -->
+		<%@ include file="/views/components/header.jsp" %>
+	</div>
 
 	<div class="calc-area">
 		<!--계산기 include 부분 -->
