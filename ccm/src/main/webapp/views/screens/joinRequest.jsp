@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="container">
+<%session.setAttribute("find","mailCheck"); %>
 <h1>회원가입</h1>
 	<form action="<%=request.getContextPath() %>/JoinMemberHandler.do" name=joinForm method = "post" onsubmit="return validateForm()">
 		<td>아이디</td>
@@ -114,7 +115,7 @@
 		        function joinEmail() {
 		            var url = "/views/screens/joinEmail.jsp";
 		            window.open(url, "_blank_1", "width=500,height=300,toolbar=no,menubar=no,resizable=no,scrollbars=yes");
-		            emailChecked = true;
+		            window.emailChecked = true;
 		        }
     		</script>
     		닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
@@ -153,7 +154,7 @@
 		 		<br/>	<input type="submit" value="가입"/>
 		 	<script>	
 		 		function validateForm() {
-				    if (!idChecked || !nickChecked) {
+				    if (!idChecked || !nickChecked || !emailChecked) {
 				        alert("중복체크와 이메일인증을 모두 완료해주세요.");
 				        return false;
 				    }

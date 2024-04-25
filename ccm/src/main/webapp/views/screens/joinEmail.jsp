@@ -10,7 +10,7 @@
 /* 전체 body 스타일 */
 body {
     font-family: 'Noto Sans KR', sans-serif; /* 폰트 설정 */
-    background-color: #f5f6f7; /* 배경색 설정 */
+    background-color: #E1DDDB; /* 배경색 설정 */
     display: flex; /* Flexbox 레이아웃 사용 */
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
@@ -28,7 +28,7 @@ body {
 
 /* 제목 스타일 */
 h3 {
-    color: #03c75a; /* 글자색 설정 */
+    color: #EF6C33; /* 글자색 설정 */
     margin-bottom: 20px; /* 하단 여백 설정 */
     text-align: center; /* 가운데 정렬 */
 }
@@ -50,14 +50,14 @@ input[type="submit"], input[type="button"] {
     margin: 10px 0; /* 바깥 여백 설정 */
     border: none; /* 테두리 없애기 */
     border-radius: 5px; /* 테두리 반경 설정 */
-    background-color:  #03c75a; /* 배경색 설정 */
+    background-color:  #0C4A60; /* 배경색 설정 */
     color: white;/*  글자색 설정 */
     cursor: pointer; /* 커서 설정 */
 }
 
 /* 버튼 호버 효과 */
 input[type="submit"]:hover, input[type="button"]:hover {
-    background-color: #029e47; /* 호버 시 배경색 변경 */
+    background-color: #EF6C33; /* 호버 시 배경색 변경 */
 }
 .container{
 text-align: center;
@@ -72,18 +72,52 @@ text-align: center;
 <body>
 
 <div class="container">
-</br></br></br>
+<br/><br/><br/>
 		<%String hidden = (String)session.getAttribute("code");
+		  String find = (String)session.getAttribute("find");
+		  System.out.println(find);
 		if(hidden != null){%>
 		<h3>이메일인증</h3>
 	<form action="/MailCheckHandler.do" name= "Mail2" id = "Mail2" method="post">
 	  <input type="text" name="input">
-	  <input type="hidden" name="hidden" value="emailCheck">
+			<%if (find.equals("findID")){ %>
+			<input type="hidden" value="findID" name="hidden">
+			<%}else if(find.equals("findPW")){%>
+			<input type="hidden" value="findPW" name="hidden">
+			<%}else if(find.equals("mailCheck")){ %>
+			<input type="hidden" value="emailCheck" name="hidden" >
+			<%}%>	  
 	  <input type="submit" value="인증">
 	</form><% 
 	session.setAttribute("codeMail" , session.getAttribute("code"));
-	session.removeAttribute("code"); 
-			}else{ %>
+	session.removeAttribute("code"); %>
+				<script>
+			    // 이메일 인증 성공 시
+			    newWindow.onload = function() {
+			        // 부모 창의 HTML 요소 업데이트
+			        const container = document.querySelector('.container');
+			        container.innerHTML = '<h1>인증성공</h1>';
+			        container.style.color = 'green'; // 성공 메시지 색상 변경
+			        
+			        // 세션 속성 업데이트
+			        sessionStorage.setItem('authCodeVerified', 'true');
+			        return true; // 트루 값 반환
+			    }
+
+			    // 이메일 인증 실패 시
+			    newWindow.onerror = function() {
+			        // 부모 창의 HTML 요소 업데이트
+			        const container = document.querySelector('.container');
+			        container.innerHTML = '<h1>인증실패</h1>';
+			        container.style.color = 'red'; // 실패 메시지 색상 변경
+			        
+			        // 세션 속성 업데이트
+			        sessionStorage.setItem('authCodeVerified', 'false');
+			        return false; // 폴스 값 반환
+			    }
+			</script>
+    		    
+			<%}else{ %>
 					
 	<form action="/MailCheckHandler.do" name= "Mail" method="post">
 	<h3>인증 메일보내기</h3>
@@ -114,8 +148,9 @@ text-align: center;
 					}
 				})
 			</script>
+
 			<input type="hidden" value="emailinput" name="hidden">
-		 	<input type="submit" value="메일보내기" />
+		 	<input type="submit" value="메일보내기"/>
 			<input type="submit" value="취소" onclick="self.close();"/>
 
 		</form>

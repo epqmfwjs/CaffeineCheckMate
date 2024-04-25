@@ -66,3 +66,24 @@ input[type="checkbox"] {
 .container{
 text-align: center;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+.icon-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-input-container img {
+  margin-right: 10px;
+}
+
+.icon-input-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+} 

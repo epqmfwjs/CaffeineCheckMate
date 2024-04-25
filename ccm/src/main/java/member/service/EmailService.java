@@ -122,6 +122,7 @@ public class EmailService {
 }
 	//인증 체크
 	public boolean checkedCode(String inputCode, String pushCode) {
+		System.out.println( "체크코드 " + inputCode);
 		return inputCode.equals(pushCode) ? true : false;
 	}
 	//이메일 중복체크
@@ -145,5 +146,67 @@ public class EmailService {
 						+ "self.close(); </script>");
 				out.flush();
 			}
+	}
+	public String findID (HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException {
+		HttpSession session = request.getSession(false);
+		String userMail = (String)session.getAttribute("inputMail");
+		Connection conn = null;
+		conn = ConnectionProvider.getConnection();
+		conn.setAutoCommit(false);
+		MemberDTO memberDTO = new MemberDTO();
+		MemberDAO memberDAO = new MemberDAO();
+		memberDTO.setDtoEMAIL(userMail);
+		System.out.println("userMail"+ userMail);
+		MemberDTO find = memberDAO.find(memberDTO, conn);
+		String reID = find.getDtoID();
+		System.out.println("디에이오 다녀온 파인드 "+ find);
+		if(find.getDtoPRO().equals("true")) {
+
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('인증성공.'); location.href="
+						+ "'/views/screens/findUser.jsp?find=REID&result="
+						+ reID
+						+"';"
+						+"window.opener.emailChecked = true;"
+						+"updateParentWindow();"
+						+ "self.close(); </script>");
+				out.flush();
+				return null;
+		}else{
+			
+		}
+		return null;
+		
+	}
+	public String findPW (HttpServletRequest request,HttpServletResponse response) throws SQLException, IOException {
+		HttpSession session = request.getSession(false);
+		String userMail = (String)session.getAttribute("inputMail");
+		Connection conn = null;
+		conn = ConnectionProvider.getConnection();
+		conn.setAutoCommit(false);
+		MemberDTO memberDTO = new MemberDTO();
+		MemberDAO memberDAO = new MemberDAO();
+		memberDTO.setDtoEMAIL(userMail);
+		System.out.println("userMail"+ userMail);
+		MemberDTO find = memberDAO.find(memberDTO, conn);
+		String rePW = find.getDtoID();
+		System.out.println("디에이오 다녀온 파인드 "+ find);
+		if(find.getDtoPRO().equals("true")) {
+
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('인증성공.'); location.href="
+						+ "'/views/screens/findUser.jsp?find=REPW&result="
+						+ rePW
+						+"';"
+						+"window.opener.emailChecked = true;"
+						+"updateParentWindow();"
+						+ "self.close(); </script>");
+				out.flush();
+				return null;
+		}else{
+			
+		}
+		return null;
+		
 	}
 }

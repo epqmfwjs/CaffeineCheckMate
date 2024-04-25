@@ -157,7 +157,7 @@ public class MemberDAO {
 //	    }
 	    //return result;
 	// 수정요청메소드
-	//변경될 값 : value / pk조건 : id / 셀렉문 : select 
+	//변경될 값 : value / pk조건 : id / 셀렉문 : query 
 	public String update(String value, String id, String query, Connection conn) {
 	    String returnPage = null;
 	    int result = -1;
@@ -312,7 +312,34 @@ public class MemberDAO {
 		        conn.close();
 			}
 		}
-		
+// ------------------------------아이디 비번 찾기---------------------------------
+		public MemberDTO find(MemberDTO memberDTO, Connection conn) {
+		    String query = "SELECT * FROM ccm.member WHERE M_MAIL = ?";
+		    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+		        pstmt.setString(1, memberDTO.getDtoEMAIL());
+		        try (ResultSet rs = pstmt.executeQuery()) {
+		            if (rs.next()) {
+		                memberDTO.setDtoID(rs.getString("M_ID"));
+		                memberDTO.setDtoPW(rs.getString("M_PASSWORD"));
+		                memberDTO.setDtoNAME(rs.getString("M_NAME"));
+		                memberDTO.setDtoSSN(rs.getString("M_BIRTH"));
+		                memberDTO.setDtoEMAIL(rs.getString("M_MAIL"));
+		                memberDTO.setDtoNICKNAME(rs.getString("M_NICKNAME"));
+		                memberDTO.setDtoTEL(rs.getString("M_PHONENUMBER"));
+		                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
+		                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
+		                memberDTO.setDtoPRO("true");
+		            } else {
+		            	System.out.println("없는이메일");
+		            	memberDTO.setDtoPRO("false");
+		            }
+		            if (conn != null) conn.close();
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+		    return memberDTO;
+		}
 		
 		
 		

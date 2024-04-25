@@ -52,3 +52,8 @@ input[type="button"]:hover, input[type="submit"]:hover {
     justify-content: center; /* 버튼을 가운데 정렬 */
     gap: 10px; /* 버튼 사이의 간격을 10px로 설정 */
 }
+h1 {
+    color: #EF6C33;/*03c75a;  글자색 설정 */
+    margin-bottom: 20px; /* 하단 여백 설정 */
+    text-align: center; /* 가운데 정렬 */
+}
