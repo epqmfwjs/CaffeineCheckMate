@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>탈퇴완료페이지</title>
-
 <style>
 /* 전체 body 스타일 */
 body {
@@ -21,9 +20,19 @@ body {
     height: 100vh; /* 뷰포트 높이에 맞게 설정 */
 }
 
+
+/* 로그인 컨테이너 스타일 */
+.container {
+    width: 400px; /* 너비 설정 */
+    background-color: #fff; /* 배경색 설정 */
+    padding: 20px; /* 안쪽 여백 설정 */
+    border-radius: 10px; /* 테두리 반경 설정 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
+}
+
 /* 제목 스타일 */
 h1,h3 {
-    color: #EF6C33; /* 글자색 설정 */
+    color:  #EF6C33; /*글자색 설정 */
     margin-bottom: 20px; /* 하단 여백 설정 */
     text-align: center; /* 가운데 정렬 */
 }
@@ -49,6 +58,17 @@ form input[type="submit"], form input[type="button"] {
 form input[type="submit"]:hover, form input[type="button"]:hover {
     background-color: #EF6C33; /* 호버 시 배경색 변경 */
 }
+
+
+.clock {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  padding: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -56,16 +76,17 @@ form input[type="submit"]:hover, form input[type="button"]:hover {
 String dday = (String)session.getAttribute("D_day");
 System.out.println(dday);
 session.invalidate();%>
+<div class="container">
 <div>
 	<h1>탈퇴진행중입니다...</h1>
 	<br/>
-	<h3> 탙퇴는 신청을하고 7일 후 완료됩니다.</h3>
+	<h3 style=color:red;> 탙퇴는 신청을하고 7일 후 완료됩니다.</h3>
 </div>
 <% if(dday!=null){%>
   	<h1>탈퇴까지 남은 시간</h1>
-  <div>
+  <div id="clock" class="clock">
   	<h2 id="deleteTime"></h2>
-  	<br/><br/>
+  	<br/>
   </div>
   <%}%>
   <div>
@@ -75,8 +96,7 @@ session.invalidate();%>
 	    <input type="button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'">
 	</form>
 </div>
-
-
+</div>
   <script>
 	const countDownTimer = function (id, date) {
 		var _vDate = new Date(date); // 전달 받은 일자

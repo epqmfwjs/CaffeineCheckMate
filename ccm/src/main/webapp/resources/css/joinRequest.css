@@ -22,7 +22,7 @@ input[type="text"] {
 input[type="button"], input[type="submit"] {
     padding: 8px 15px; /* 패딩 조정 */
     margin-top: 10px; /* 상단 마진 추가 */
-    background-color: #4CAF50;
+    background-color: #0C4A60;
     color: white;
     border: none;
     border-radius: 4px;

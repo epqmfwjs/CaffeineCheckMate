@@ -153,7 +153,7 @@
 		 		<br/>	<input type="submit" value="가입"/>
 		 	<script>	
 		 		function validateForm() {
-				    if (!idChecked || !nickChecked ) {
+				    if (!idChecked || !nickChecked) {
 				        alert("중복체크와 이메일인증을 모두 완료해주세요.");
 				        return false;
 				    }

@@ -45,9 +45,10 @@
 </body>
 
 <script>
-	let calcResult = "${main.calculationResult}";
-	const isAuth = "${isAuth}"==="true"? true : false;
-	console.log("html : ",isAuth);
+let calcResult = "${main.calculationResult}";
+const isAuth = "${isAuth}"==="true"? true : false;
+const hasCoffees = true;
+ const hasCalc = true;
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
