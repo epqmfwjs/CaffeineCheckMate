@@ -22,7 +22,8 @@ body {
     justify-content: center;
     height: 90vh;
     width: 100vw;
-    background: rgba(12, 74, 96, 1);
+    /* background: rgba(12, 74, 96, 1); */
+    background: rgba(200, 200, 200, 0.3);
     transition: 0.5s;
     color: black;            
 }
@@ -38,7 +39,6 @@ body {
 .wrapper {
 	width: 90%;
 	height: 90vh;
-	background: rgba(200, 200, 200, 0.3);
 	border-radius: 20px;
 	box-shadow: 
 		inset -0px -0px 3px rgba(0, 0, 0, 0.1),
@@ -85,6 +85,7 @@ header{
 
 .header_col_3-to-4 {
     grid-column: 3 / span 2;
+    display: inline-block;
 } 
 
 .headerLinks {
@@ -100,7 +101,8 @@ header{
 .headerLinks:hover {
 	color: rgb(239, 108, 51);
 	font-weight: bold;
-	font-size: 1em;
+	font-size: 0.9em;
+	transform: scale(1.2);
 }
 
 
