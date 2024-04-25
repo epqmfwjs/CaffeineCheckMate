@@ -22,8 +22,8 @@ import customRecipe.dto.CustomBoardHashDto;
 import customRecipe.dto.CustomBoardListDto;
 import jdbc.JdbcUtil;
 
-@WebServlet("/Jsontest.do")
-public class Jsontest extends HttpServlet {
+@WebServlet("/CustomBoardTag.do")
+public class CustomBoardTag extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String shot = (String)request.getParameter("shot");
