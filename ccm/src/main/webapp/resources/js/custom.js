@@ -186,9 +186,9 @@ function searchlist(data) {
       let cus_img_realname = item.cus_img_realname;
 
       let boardItem = `
-        <li>
 
                     <div class="boardCard">
+        <li>
                     <a href="CustomBoardViewHandler.do?CUS_NUM=`+ cus_num + `">
                         <img src="upload/` + cus_img_realname + `" alt="Image">
                         <div class="cardTextBox">
@@ -196,8 +196,8 @@ function searchlist(data) {
                            <p><b>` + cus_name + `</b>&nbsp;&nbsp;` + cus_content + `</p>
                         </div>
                     </a>
-                    </div>
                    </li>
+                    </div>
                 `;
 
       $("#board").append(boardItem);
@@ -266,9 +266,9 @@ function list(allcount) {
 
 
             let boardItem = `
-                 <li>
 
                     <div class="boardCard">
+                 <li>
                     <a href="CustomBoardViewHandler.do?CUS_NUM=`+ cus_num + `">
                         <img src="upload/` + cus_img_realname + `" alt="Image">
                         <div class="cardTextBox">
@@ -276,8 +276,8 @@ function list(allcount) {
                            <b>` + cus_name + `</b><br/>` + cus_content + `</p>
                         </div>
                     </a>
-                    </div>
                    </li>
+                    </div>
                    `;
 
             $("#board").append(boardItem);

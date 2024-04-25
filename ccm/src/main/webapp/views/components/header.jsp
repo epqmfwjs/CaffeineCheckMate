@@ -21,7 +21,7 @@
 				<a class="headerLinks" onclick="location.href='/CustomBoardListHandler.do'">Custom</a>
 			</span>
 			<span>
-				<a class="headerLinks">MyPage</a><!-- 추가 -->
+				<a class="headerLinks" onclick="location.href='/mypage.do'">MyPage</a>
 			</span>
 			<span>
 				<a class="headerLinks" onclick="location.href='/LoginHandler.do" style="margin-left: 5vw; ">Login</a>
