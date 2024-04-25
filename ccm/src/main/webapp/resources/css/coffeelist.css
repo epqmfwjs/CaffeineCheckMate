@@ -203,4 +203,80 @@
 .coffeelist-column_3 i{
     color: black;
     font-size: 30px;
+.fp-item__img {
+    height: 60px;
+    width: 60px;
+}
+
+
+/*모달 관련*/
+
+/* 모달 바깥 백그라운드 */
+.coffeelist-modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; /*필요 시 스크롤 가능*/
+	background-color: #E1DDDB;
+	padding-top: 50px;
+}
+/*캔슬,Ok 버튼*/
+.coffeelist-modalcancelbtn, .coffeelist-modalOkbtn {
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	opacity: 0.9; /*투명도*/
+	float: left;
+	width: 50%;
+}
+
+.coffeelist-modalcancelbtn:hover, .coffeelist-modalOkbtn:hover{
+	opacity: 1.0;
+}
+
+.ccoffeelist-modalcancelbtn {
+	background-color: #EF6C33;
+	color: black;
+}
+/* 델리트 버튼 */
+.coffeelist-modalOkbtn {
+	background-color: #EF6C33;
+}	
+/* 텍스트 중앙 정렬, 패딩 */
+.coffeelist-modalcontainer {
+	padding: 16px;
+	text-align: center;
+}
+/* 모달 컨텐츠 박스 */
+.coffeelist-modalcontent {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto; 
+	border: 1px solid #888;
+	width: 80%; 
+}
+/* 모달 X 버튼 */
+.coffeelist-modalclosebtn {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: black;
+}
+/* 모달 close 버튼: 마우스 올렸을 때, 포커스 됐을 때 hover*/
+.coffeelist-modalclosebtn:hover,
+.coffeelist-modalclosebtn:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+/* 플로트 속성 초기화 */
+.coffeelist-modalclearfix::after {
+  content: ""; 
+  clear: both; 
+  display: table;
 }
