@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import global.handler.NullHandler;
 
-
+@MultipartConfig
 @WebServlet(urlPatterns = {"*.do"},
 		    initParams = { 
 @WebInitParam(name = "configFile", value = "/WEB-INF/config/controller.properties")})
@@ -27,7 +28,7 @@ public class FrontController extends HttpServlet {
     
 	public void init() throws ServletException {
 	    String configFile = getInitParameter("configFile");
-	    Properties prop = new Properties(); 
+	    Properties prop = new Properties();
 	    String configFilePath = getServletContext().getRealPath(configFile);
 
 	    try (FileReader fis = new FileReader(configFilePath)) {
@@ -75,8 +76,7 @@ public class FrontController extends HttpServlet {
 			} catch (Exception e) {
 				throw new ServletException(e);
 			}
-		}
-		if(viewPage != null) {
+		}  if(viewPage != null) {
             request.getRequestDispatcher(viewPage).forward(request, response);
         }
 	}

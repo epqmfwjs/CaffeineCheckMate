@@ -58,8 +58,8 @@ span.cus-box {
 /*---------- 검색창 ----------*/
 #searchInput {
 	display: inline-block;
-	width : 70%;
-	height: 4vh;
+	width: 70%;
+	aspect-ratio: auto 30/1;
 	border: 0.1px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
@@ -76,8 +76,8 @@ span.cus-box {
 	color: white;
 	font-size:0.8em;
 	cursor:pointer;
-	width: 4vw;
-	height: 4vh;
+	width: 3.5vw;
+  	aspect-ratio: auto 3/2;
 	border: 0.1px;
 	border-radius: 5px;
 	margin: 0.3vw;
@@ -87,8 +87,8 @@ span.cus-box {
 .button_add{
 	font-size:0.8em;
 	cursor:pointer;
-	width: 5vw;
-	height: 4vh;
+	width: 3.5vw;
+  	aspect-ratio: auto 3/2;
 	border: 0.1px;
 	border-radius: 5px;
 	margin: 0.3vw;
@@ -98,22 +98,18 @@ span.cus-box {
 .dropdown {
   display: inline-block;
   width: 7vw;
+  position: abstract;
 }
 
 span.divdropdown{
 float: right;
 }
 
-.dropdown {
-  display: inline-block;
-  position: abstract;
-}
-
  button.dropdown{
   font-size:0.8em;
   cursor:pointer;
   width: 7vw;
-  height: 4vh;
+  aspect-ratio: auto 3/1;
   border: 0.1px;
   border-radius: 5px;
   margin-left: 0.5vw;
@@ -166,12 +162,6 @@ button:hover{
     list-style-type: none;
 }
 
-div.boardcard {
-	width: 100%;
-	height: 100%;
-	aspect-ratio: auto 4 / 5;
-}
-
 .boardCard il {
 	background: white;
 	border-radius: 10px;
@@ -192,10 +182,10 @@ div.boardcard {
 }
 
 img {
-  width: 18vw;
-  height: 35vh;
+  width: 17vw;
   object-fit: cover;
   border-radius: 10px 10px 0px 0px;
+  aspect-ratio: 3/3.5;
 }
 
 
@@ -210,10 +200,10 @@ img {
 
 .cardTextBox{
   width: auto;
-  height: 50%;
   object-fit: cover;
   margin: 15px;
   font-size: 0.9em;
+  aspect-ratio: auto 10/1;
 }
 
 /*--------------------------------------------------- 모달폼 ----------------------------------------------------------*/

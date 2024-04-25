@@ -18,6 +18,7 @@ public String process(HttpServletRequest request, HttpServletResponse response) 
 	service.deleteRecipe(id, num);
 	System.out.println("삭제완료");
 	
-	return "/CustomBoardListHandler.do";
+	response.sendRedirect(request.getContextPath()+"/CustomBoardListHandler.do");
+	return null;
 }
 }

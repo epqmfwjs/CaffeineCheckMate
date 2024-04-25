@@ -164,8 +164,8 @@ function formatDate(dateString) {
 
 //글내용 길이제한
 function cutString(inputString) {
-   if (inputString.length > 16) {
-      return inputString.slice(0, 15) + '...';
+   if (inputString.length > 26) {
+      return inputString.slice(0, 25) + '...';
    }
    else {
       return inputString;
