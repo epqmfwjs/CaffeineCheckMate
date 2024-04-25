@@ -4,46 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="/resources/css/coffeelist.css">
 <meta charset="UTF-8">
 <title>COFFEELIST UPDATE(master)</title>
 <script src="../../resources/js/coffeeList.js"></script>
-<style>
-/* 모달 style */
-	/* 모달 바깥 백그라운드 */
-	#coffeemodal {
-	display: none; 
-	position: fixed; 
-	z-index: 1; 
-	left: 0;
-	top: 0;
-	width: 100%; 
-	height: 100%; 
-	overflow: auto; /*필요 시 스크롤 가능*/
-	background-color: #E1DDDB;
-	padding-top: 50px;
-	}
-    /*캔슬 버튼*/
-    #coffeecancelbtn, #coffeedeletebtn {
-	float: left;
-	width: 100%;
-	}
-	#coffeecancelbtn {
-	background-color: #EF6C33;
-	color: black;
-	}
-	/* 델리트 버튼 */
-	#coffeedeletebtn {
-	background-color: #EF6C33;
-	}	
-	/* 텍스트 중앙 정렬, 패딩 */
-	#coffeecontainer {
-	padding: 16px;
-	text-align: center;
-	}
-	
-	
-	
-</style>
+
 </head>
 <body>
 <%request.setCharacterEncoding("utf-8");%>
@@ -90,7 +55,23 @@
     <input type="file" id="cimgreal" name="cimgreal" onchange="coffee_PreviewImage()"><br/>
     <!-- 수정하지 않으면 이전 값 히든으로 넘김 -->
     <input type="hidden" name="defaultImage" value="${coffeeUpdateForm.c_IMG_REAL}">
-    <input type="submit" value="수정 진행">
+    <input type="button" onclick="coffee_openModal('cupdate')" value="수정">
+    
+    <!-- 모달 창 시작-->
+	<div id="cupdate" class="coffeelist-modal">
+		<span onclick="coffee_closeModal('cupdate')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
+		<div class="coffeelist-modalcontent">
+			<div class="coffeelist-modalcontainer">
+				<h1>Update</h1>
+				<p>정말로 수정하시겠습니까?</p>
+				<div class="coffeelist-modalclearfix">
+					<input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cupdate')" value="돌아가기"/>
+					<input class="coffeelist-modalOkbtn" type="submit" value="수정하기"/>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 모달 창 끝--> 
 </form>
 <div>
 	<a href="javascript:history.back();"><button>이전 페이지</button></a>

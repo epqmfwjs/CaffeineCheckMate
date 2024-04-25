@@ -42,7 +42,7 @@
         margin-top: 20px;
     }
 </style>
-
+<script src="../../resources/js/coffeeList.js"></script>
 </head>
 <body id="coffeelist">
     <div class="coffeelist-column_1">
@@ -66,9 +66,21 @@
         </div>
         <div class="coffee-box">
             <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
-                <!-- <c:if test="${status.index % 4 == 0}">
-                    <div style="width: 100%;">
-                </c:if> -->
+				<!-- 모달 창 시작-->
+				<div id="cdelete" class="coffeelist-modal">
+					<span onclick="coffee_closeModal('cdelete')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
+					<form class="coffeelist-modalcontent" method="post" action="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">
+						<div class="coffeelist-modalcontainer">
+							<h1>Delete Account</h1>
+							<p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?</p>
+							<div class="coffeelist-modalclearfix">
+								<input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cdelete')" value="돌아가기"/>
+								<input class="coffeelist-modalOkbtn" type="submit" value="삭제하기"/>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- 모달 창 끝-->            
                 <div class="coffeelist-container">
                 
                     <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
@@ -77,6 +89,8 @@
                        		<a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" 
                        		onclick="window.open(this.href, '_blank', 'width=450, height=550, top=(screen.height - 550) / 2, left=(screen.width - 450) / 2'); return false;">${coffeeV.c_NAME}</a>
                         </div>
+                        
+                        
                         <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
                         <div>${coffeeV.c_BRAND}</div>
                         <div>Caffeine: ${coffeeV.c_CAFFEINE} mg</div>
@@ -84,7 +98,8 @@
                             <button style="display: inline-block;" class="addFav-btn">+</button>
                             <c:if test="${isAdmin}">
 	                            <a href="coffeeListUpdateForm.do?coffeeNo=${coffeeV.c_NO}"><button type="button">수정</button></a>
-	                            <a href="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}"><button type="button">삭제</button></a>
+	                            <!-- <a href="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}"><button type="button">삭제</button></a> -->
+	                            <button type="button" onclick="coffee_openModal('cdelete')">관리자 삭제</button>
                         	</c:if>
                         </c:if>
                     </div>
