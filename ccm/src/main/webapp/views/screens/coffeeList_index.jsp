@@ -76,7 +76,7 @@
                             <form class="coffeelist-modalcontent" method="post" action="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">
                                 <div class="coffeelist-modalcontainer">
                                     <h1>Delete Account</h1>
-                                    <p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?</p>
+                                    <p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?d</p>
                                     <div class="coffeelist-modalclearfix">
                                         <input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cdelete')" value="돌아가기"/>
                                         <input class="coffeelist-modalOkbtn" type="submit" value="삭제하기"/>
@@ -89,7 +89,7 @@
                             <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
                                 <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
                                 <div class="coffeelist-item__name clickable">
-                                    <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550'); return false;">${coffeeV.c_NAME}</a>
+                                    <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=550, height=700, resizable=no'); return false;">${coffeeV.c_NAME}</a>
                                 </div>
                                 <c:if test="${isAdmin}">
 			                            <a href="coffeeListUpdateForm.do?coffeeNo=${coffeeV.c_NO}"><button type="button">수정</button></a>
@@ -99,7 +99,7 @@
                                 <div class="coffeelist-item__info">${coffeeV.c_BRAND}</div>
                                 <div class="coffeelist-item__btn-area">
                                     <c:if test="${not empty sessionScope.AUTH_USER_ID}">
-                                        <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">+</button>
+                                        <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">+</button><br/>
                                         
                                     </c:if>
                                 </div>

@@ -16,39 +16,39 @@
 <h2>커피 수정 폼</h2>
 <form action="coffeeListUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return coffee_FileExtensionsError()">
     <input type="hidden" name="coffeeNo" value="${coffeeUpdateForm.c_NO}"/>
-    제품 이름:<br/>
+    <label>제품 이름:<br/></label>
     <input type="text" name="cname" value="${coffeeUpdateForm.c_NAME}" required><br/>
     
-    브랜드:<br/>
+    <label>브랜드:<br/></label>
     <input type="text" name="cbrand" value="${coffeeUpdateForm.c_BRAND}" required><br/>
     
-    카페인 함량:<br/>
+    <label>카페인 함량:<br/></label>
     <input type="number" name="ccaffeine" value="${coffeeUpdateForm.c_CAFFEINE}" required><br/>
     
-    당류 함량:<br/>
+    <label>당류 함량:<br/></label>
     <input type="number" name="csaccharide" value="${coffeeUpdateForm.c_SACCHARIDE}" required><br/>
     
-    칼로리:<br/>
+    <label>칼로리:<br/></label>
     <input type="number" name="ccalorie" value="${coffeeUpdateForm.c_CALORIE}" required><br/>
     
-    상세 내용:<br/>
+    <label>상세 내용:<br/></label>
     <textarea name="ccontent" required>${coffeeUpdateForm.c_CONTENT}</textarea><br/>
     
-    음료 타입:<br/>
+    <label>음료 타입:<br/></label>
     <select name="ctype" required>
         <option value="COF" ${"COF".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Coffee</option>
         <option value="BEV" ${"BEV".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Beverage</option>
         <option value="TEA" ${"TEA".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Tea</option>
     </select><br/>
     
-    카페인 정도:<br/>
+    <label>카페인 정도:<br/></label>
     <select name="cstage" required>
         <option value="1" ${"1".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>낮음</option>
         <option value="2" ${"2".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>중간</option>
         <option value="3" ${"3".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>높음</option>
     </select><br/>
     
-    현재 이미지:<br/>
+    <label>현재 이미지:<br/></label>
     <img id="coffeePreviewImage" src="${coffeeUpdateForm.c_IMG_COPY}" alt="기존 이미지" style="width:300px;"><br/>
     
     변경할 이미지(기존 이미지 유지 희망 시 선택X)<br/>
@@ -74,8 +74,8 @@
 <!-- 모달 창 끝--> 
 </form>
 <div>
-	<a href="javascript:history.back();"><button>이전 페이지</button></a>
-	<a href="/coffeelist.do"><button>커피리스트 메인 페이지</button></a>
+	<a href="javascript:history.back();"><button type="button">이전 페이지</button></a>
+	<a href="/coffeelist.do"><button type="button">커피리스트 메인 페이지</button></a>
 </div>
 </body>
 </html>

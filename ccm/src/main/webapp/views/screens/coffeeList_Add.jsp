@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/common.css">
 <script src="../../resources/js/coffeeList.js">
 </script>
 <title>COFFEELIST ADD(master)</title>
@@ -21,32 +23,32 @@
 	<form action="/coffeeListAdd.do" method="post" 
 		  accept-charset="UTF-8" enctype="multipart/form-data"
 		  onsubmit="return coffee_FileExtensionsError()">
-		제품 이름:<br/>
+		<label>제품 이름:<br/></label>
 		<input type="text" id="cname" name="cname" required><br/>
 		        
-		브랜드:<br/>
+		<label>브랜드:<br/></label>
 		<input type="text" id="cbrand" name="cbrand" required><br/>
 		        
-		카페인 함량:<br/>
+		<label>카페인 함량:<br/></label>
 		<input type="number" id="ccaffeine" name="ccaffeine" required><br/>
 		        
-		당류 함량:<br/>
+		<label>당류 함량:<br/></label>
 		<input type="number" id="csaccharide" name="csaccharide" required><br/>
 		        
-		칼로리:<br/>
+		<label>칼로리:<br/></label>
 		<input type="number" id="ccalorie" name="ccalorie" required><br/>
 		        
-		상세 내용:<br/>
+		<label>상세 내용:<br/></label>
 		<textarea id="ccontent" name="ccontent" required></textarea><br/>
 		        
-		음료 타입:<br/>
+		<label>음료 타입:<br/></label>
 			<select id="ctype" name="ctype" required>
 				<option value="COF">Coffee</option>
 				<option value="BEV">Beverage</option>
 				<option value="TEA">Tea</option>
 			</select><br/>
 		        
-		카페인 정도:<br/>
+		<label>카페인 정도:<br/></label>
 			<select id="cstage" name="cstage" required>
 				<option value="1">낮음</option>
 				<option value="2">중간</option>
@@ -57,7 +59,7 @@
         <p>
         <img id="coffeePreviewImage" src="#" width="300" height="200" alt="파일 미리보기">
         </p>
-		Image 파일 업로드 <br/>
+		<label>Image 파일 업로드</label> <br/>
 		
 		<!-- onchange -->
 		<input type="file" id="cimgreal" name="cimgreal" onchange="coffee_PreviewImage()" required><br>
@@ -65,7 +67,7 @@
 		<!-- 이것도 유효성 검사 가능 신기하네
         <input type="file" accept="image/png, image/jpeg"> 
 		<input type="file" accept=".png, .jpeg"> -->
-        <input class="coffee__add-btn" type="submit" value="찔러찔로">
+        <input class="coffee__add-btn" type="submit" value="추가하기">
     </form>
 <div>
 	<a href="javascript:history.back();"><button>이전 페이지</button></a>
