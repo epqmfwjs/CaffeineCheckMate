@@ -4,19 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../resources/css/common.css" />
+<link rel="stylesheet" href="/resources/css/common.css" />
+<link rel="stylesheet" href="/resources/css/main.css" />
 <title>Insert title here</title>
 </head>
 <body>
 <span class="wrapper" style="display: inline-block;">
 
-	<%@ include file="header.jsp" %>
+	<%@ include file="/views/components/header.jsp" %>
 
 	<section class="container">
 		<!-- 본문 내용 -->
 	</section>
 
-	<%@ include file="footer.jsp" %>
+	<%@ include file="/views/components/footer.jsp" %>
 	
 </span>
 		

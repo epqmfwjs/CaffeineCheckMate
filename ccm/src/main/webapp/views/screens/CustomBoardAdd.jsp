@@ -10,12 +10,15 @@
 <body>
 <form action="/CustomBoardAddHandler.do" id="add" name="add" method="post" enctype="multipart/form-data" class="add_form">
 	<div class="add_left_content">
-	    <input type="file" name="file" id="file" onchange="previewImage()" class="add_image_button"><br/>
-	    <img id="preview" src="#" alt="미리보기" class="add_image_preview"><br>
+		<label for="file">
+	    	<img id="preview" src="/resources/imgs/cusAdd.png" class="add_image_preview"><br>
+  			<!-- 	<div class="add_image_button">파일 업로드하기</div> -->
+		</label>
+	    <input type="file" name="file" id="file" onchange="previewImage()"><br/>
     </div>
     <div class="add_right_content">
-	    <p><input type="text" size="30" id="cus_name" name="cus_name"  placeholder="제목을 입력하세요." class="add_title"></p>
-	    <p><textarea cols="50" rows="10" id="cus_content" name="cus_content" placeholder="내용을 입력하세요." class="add_content"></textarea></p>
+	    <p><input type="text" size="30" id="cus_name" name="cus_name"  placeholder="  제목을 입력하세요" class="add_title"></p>
+	    <p><textarea cols="50" rows="10" id="cus_content" name="cus_content" placeholder=" 나만의 레시피를 작성해 보세요" class="add_content"></textarea></p>
 	    <input type="hidden" id="num" name="num" value="${item.cus_num}" />
 	<div class="selection-group">
 	    <select name="shot" id="shot" class="add_option">
