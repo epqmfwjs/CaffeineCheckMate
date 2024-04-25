@@ -37,7 +37,7 @@
     position: absolute;
     right: 15px;
     border-radius: 15px;
-    background-color: rgb(0, 0, 0,0.3);
+    background-color: rgb(0, 0, 0);
 }
 
 /*first column*/
@@ -187,12 +187,18 @@
 }
 .coffeelist-item__fav{
     height: 20px;
-    width: 80%;
-    border-radius: 10px;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
     background-color: black;
-    bottom: 5px;
-    right: 5px;
+    position: absolute;
+    bottom: 0;
     color: white;
+}
+.fa-plus{
+    font-weight: 800;
+    font-size: 10px;
 }
 .coffeelist-item__fav:hover{
     background-color: var(--ccm-color2);
@@ -235,7 +241,17 @@
 /*second coloumn*/
 .coffeelist-column_2__title{
     height: 70px;
+    color: white;
 }
+.coffeelist-column_2__togle-fav-del{
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 11px;
+    height: 22px;
+    color: white;
+    margin-bottom: 5px;
+}
+
 .favbox{
     height: auto;
     overflow-y: auto;
@@ -246,6 +262,8 @@
 .fp-boxes{
     flex-direction: column;
 }
+
+
 /*third column*/
 .coffeelist-column_3{
     display: block;

@@ -37,7 +37,7 @@
 								<img class="fp-item__img clickable" src="${favorite.value.c_IMAGE}"/>
 								<div class="fp-item__info clickable">${favorite.value.c_NAME}</div>
 							</div>
-							<button class="fp-item__delete-btn clickable"><i class="fa-solid fa-x"></i></button>
+							<button class="fp-item__delete-btn clickable hidden"><i class="fa-solid fa-minus"></i></button>
 						</div>
 					</c:forEach>
 				</div>

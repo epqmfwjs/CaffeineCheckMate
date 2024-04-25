@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 .calc-box{
-    height: 320px;
-    width: 600px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -11,8 +9,8 @@
     box-shadow: 3px 5px 8px -1px #9E9E9E;
 }
 .calc-box__column-first {
-    width: 400px;
-    height: 250px;
+    width: 65%;
+    height: 80%;
     background-color: white;
 
     border-radius: 8px;
@@ -40,7 +38,6 @@
     padding-bottom: 20px;
     height: 60%;
     width: 70%;
-    
 }
 
 .calc-box__result-title{

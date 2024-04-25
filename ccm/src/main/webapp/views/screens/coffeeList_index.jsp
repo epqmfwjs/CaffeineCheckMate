@@ -70,7 +70,9 @@
                                             <button class="coffeelist-item__delete-btn clickable" onclick="coffee_openModal('cdelete')"><i class="fa-solid fa-trash"></i></button>
                                         </c:if>
                                         <c:if test="${not empty sessionScope.AUTH_USER_ID}">
-                                            <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">+</button>
+                                            <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
                                         </c:if>
                                     </div>
                                 </div>
@@ -115,6 +117,7 @@
                 <c:if test="${not empty sessionScope.AUTH_USER_ID}">
                     <div class="coffeelist-column_2 hidden">
                         <div class="coffeelist-column_2__title"><h3>Favorites</h2></div>
+                            <button class="coffeelist-column_2__togle-fav-del clickable">Remove</button>
                         <div class="favbox">
                             <!--즐겨찾기 include 부분-->
                             <jsp:include page="/views/components/favorites.jsp"></jsp:include>
