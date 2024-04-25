@@ -28,6 +28,8 @@ function coffee_PreviewImage() {
 	}
 }
 
+
+
 // 모달 창 ----------------------------------------
 // 함수로 모달 열기
 function coffee_openModal(modalId) {

@@ -27,19 +27,10 @@
 	<meta http-equiv="Compatible" content="no-cache"/>
 </head>
 <body>
-	
-	<c:choose>
-		<c:when test="${isAuth}">
-			<h2>즐겨찾기목록</h2>
-		</c:when>
-		<c:when test="${!isAuth}">
-			<h2>즐겨찾기 많은 커피 5개</h2>
-		</c:when>
-	</c:choose>
 	<div class="fav-pop-box">
 		<c:choose>
 			<c:when test="${isAuth}">
-				<div class="fav-box">
+				<div class="fav-box fp-boxes">
 					<c:forEach var="favorite" items="${main.favorites}">
 						<div class="fp-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
 							<div class="fp-item__box clickable">
@@ -52,7 +43,7 @@
 				</div>
 			</c:when>
 			<c:when test="${!isAuth}">
-				<div class="popular-box">
+				<div class="popular-box fp-boxes">
 					<c:forEach var="popular" items="${main.favorites}">
 						<div class="fp-item" id="fi_${popular.key}" value="${popular.value.c_CAFFEINE}">
 							<div class="fp-item__box clickable">

@@ -10,20 +10,22 @@
 <body>
 
 	<header class="container">
-		<div class="header_col_7">
-			<a class="headerLinks" onclick="location.href='/coffeelist.do '">Product</a>
-		</div>
-		<div class="header_col_8">
-			<a class="headerLinks" onclick="location.href='/main.do'">Calculator</a>
-		</div>
-		<div class="header_col_9">
-			<a class="headerLinks" onclick="location.href='/CustomBoardListHandler.do'">Custom</a>
-		</div>
-		<div class="header_col_10">
-			<a class="headerLinks">MyPage</a><!-- 추가 -->
-		</div>
-		<div class="header_col_11">
-			<a class="headerLinks" onclick="location.href='/LoginHandler.do'">Login</a>
+		<div class="header_col_3-to-4">
+			<span>
+				<a class="headerLinks" onclick="location.href='/coffeelist.do '">Product</a>
+			</span>
+			<span>
+				<a class="headerLinks" onclick="location.href='/main.do'">Calculator</a>
+			</span>
+			<span>
+				<a class="headerLinks" onclick="location.href='/CustomBoardListHandler.do'">Custom</a>
+			</span>
+			<span>
+				<a class="headerLinks">MyPage</a><!-- 추가 -->
+			</span>
+			<span>
+				<a class="headerLinks" onclick="location.href='/LoginHandler.do" style="margin-left: 5vw; ">Login</a>
+			</span>
 		</div>
 	</header>
 
