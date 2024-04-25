@@ -68,4 +68,3 @@ public class CustomBoardViewService {
 		return "/views/screens/CustomBoardView.jsp";
 	}
 }
-
