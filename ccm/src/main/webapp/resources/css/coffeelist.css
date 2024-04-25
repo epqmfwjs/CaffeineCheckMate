@@ -17,6 +17,7 @@
 }
 .coffeelist-column_1{
     flex: 1;
+    width: 80%;
     transition: width 0.5s ease;
     display: flex;
     justify-content: center;
@@ -24,13 +25,19 @@
     flex-direction: column;
 }
 .coffeelist-column_2{
-    width: 10%;
-    height: 100%;
+    margin-top: 5%;
+    padding-bottom: 15px;
+    width: auto;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-right: 40px;
+    margin-right: 30px;
+    position: absolute;
+    right: 15px;
+    border-radius: 15px;
+    background-color: rgb(0, 0, 0,0.3);
 }
 
 /*first column*/
@@ -47,27 +54,6 @@
     font-size: 28px;
     font-weight: 600;
     font-family: var(--ccm-font);
-}
-.coffeelist-add{
-    position: absolute;
-    bottom: 15px;
-    left: 15%;
-    width: 90px;
-    height: 20px;
-    border-radius: 15px;
-    background-color: var(--ccm-color1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 3px 5px 8px -1px #9E9E9E;
-}
-.coffeelist-add a{
-    font-family: var(--ccm-font);
-    font-size: 13px;
-    color: white;
-}
-.coffeelist-add:hover{
-    animation: beat 0.2s linear;
 }
 
 .coffeelist-searchbox{
@@ -125,6 +111,28 @@
     height: 70%;
     max-width: 950px;
     min-width: 580px;
+    position: relative;
+}
+.coffeelist-add{
+    position: absolute;
+    top: -25px;
+    left: 10%;
+    width: 90px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: var(--ccm-color1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 5px 8px -1px #9E9E9E;
+}
+.coffeelist-add a{
+    font-family: var(--ccm-font);
+    font-size: 13px;
+    color: white;
+}
+.coffeelist-add:hover{
+    animation: beat 0.2s linear;
 }
 .coffeelist-container{
     width: 25%;
@@ -156,13 +164,18 @@
 }
 .coffeelist-item__name{
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     color: black;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .coffeelist-item__info{
     font-size: 10px;
     color: black;
     font-family: var(--ccm-font);
+    
 }
 .coffeelist-item__btn-area{
     margin-bottom: 3px;
@@ -214,9 +227,6 @@
     font-size: 15px;
 }
 
-
-
-
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -233,24 +243,27 @@
 .favbox::-webkit-scrollbar {
     width: 0;
 }
+.fp-boxes{
+    flex-direction: column;
+}
 /*third column*/
 .coffeelist-column_3{
     display: block;
-    height: 20vh;
+    height: 100%;
     width: 35px;
     border: none;
     background-color: transparent;
     position: absolute;
     right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .coffeelist-column_3 i{
     color: black;
     font-size: 30px;
 }
-.fp-item__img {
-    height: 60px;
-    width: 60px;
-}
+
 
 
 /*모달 관련*/

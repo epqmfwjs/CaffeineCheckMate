@@ -25,15 +25,16 @@
 		<!-- 헤더 -->
 		<%@ include file="/views/components/header.jsp" %>
 
-		
-		<div class="calc-area">
-			<!--계산기 include 부분 -->
-			<jsp:include page="/views/components/calculator.jsp"></jsp:include>
-		</div>
-	
-		<div class="fav-area">
-			<!--즐겨찾기 include 부분-->
-			<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+
+		<div class="fav-calc">
+			<div class="fav-area">
+				<!--즐겨찾기 include 부분-->
+				<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+			</div>
+			<div class="calc-area">
+				<!--계산기 include 부분 -->
+				<jsp:include page="/views/components/calculator.jsp"></jsp:include>
+			</div>
 		</div>
 	</div>
 

@@ -19,6 +19,12 @@ a{
 a:visited{
 	text-decoration: none;
 }
+.textlenth{
+	width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /*animations*/
 .rotated {
@@ -73,7 +79,7 @@ body {
 	background-image: url(/resources/imgs/background3.jpeg);
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 120%;
+	background-size: cover;
     margin: 2vw;
 	position: relative;
 }

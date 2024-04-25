@@ -31,13 +31,13 @@
                                 <button class="coffeelist-searchbox__btn clickable"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
+                    </div>
+                    <div class="coffee-box">
                         <c:if test="${isAdmin}">
                             <div class="coffeelist-add">
                                 <a href="./views/screens/coffeeList_Add.jsp">Add Coffee</a>
                             </div>
                         </c:if>
-                    </div>
-                    <div class="coffee-box">
                         <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
                             <!-- 모달 창 시작-->
                             <div id="cdelete" class="coffeelist-modal">
@@ -112,15 +112,15 @@
                     </div>
                 </div>
             
-                <div class="coffeelist-column_2 hidden">
-                    <c:if test="${not empty sessionScope.AUTH_USER_ID}">
+                <c:if test="${not empty sessionScope.AUTH_USER_ID}">
+                    <div class="coffeelist-column_2 hidden">
                         <div class="coffeelist-column_2__title"><h3>Favorites</h2></div>
                         <div class="favbox">
                             <!--즐겨찾기 include 부분-->
                             <jsp:include page="/views/components/favorites.jsp"></jsp:include>
                         </div>
-                    </c:if>
-                </div>       
+                    </div>       
+                </c:if>
                 <button class="coffeelist-column_3 clickable not-rotated"><i class="fa-solid fa-chevron-left"></i></button>
             </div>
     </div>
