@@ -26,7 +26,7 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 		<div class="view_form">
 			<c:forEach var="item" items="${list}">
 				<div class="view_left_content">
-					<p><img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
+					<p><img src="upload/${item.cus_img_realname}" alt="Image" class="image_view"></p>
 				</div>	
 				<div class="view_right_content">
 					<div>회원아이디: ${item.m_id}</div>

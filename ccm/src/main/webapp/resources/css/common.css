@@ -20,12 +20,14 @@ a:visited{
 body {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 90vh;
     width: 100vw;
     /* background: rgba(12, 74, 96, 1); */
     background: rgba(200, 200, 200, 0.3);
     transition: 0.5s;
     color: black;            
+    margin-top: 5vh;
 }
 
 @media screen and (max-width: 900px) {
