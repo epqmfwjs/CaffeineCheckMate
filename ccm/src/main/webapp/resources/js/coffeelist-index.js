@@ -25,3 +25,10 @@ function showFavs() {
         toggleRotation(showFavBtn);
     }
 }
+
+
+
+const clTitle = document.querySelector(".coffeelist-title");
+clTitle.addEventListener("click",function(){
+    window.location.href = "/coffeeList.do";
+});

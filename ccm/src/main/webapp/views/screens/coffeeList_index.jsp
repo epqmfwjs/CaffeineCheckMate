@@ -21,7 +21,7 @@
         <div id="coffeelist">
             <div class="coffeelist-column_1">
                 <div class="coffeelist-column__header">
-                    <div class="coffeelist-title">Coffees</div><br/>
+                    <div class="coffeelist-title clickable">Coffees</div><br/>
                     <div class="coffeelist-searchbox">
                         <form action="coffeeList.do" method="get">
                             <select class="coffeelist-searchbox__select" name="searchType">
@@ -111,6 +111,8 @@
 	const isAuth = "${isAuth}"==="true"? true : false;
 	const hasCoffees = true;
     const hasCalc = false;
+    const contextPath = '<%= request.getContextPath() %>';
+    console.log(contextPath);
 </script>
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
