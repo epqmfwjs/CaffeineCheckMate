@@ -26,7 +26,7 @@
 				</span>
 				
 				<span>
-					<button id="edit" class="button_add" type="button" onclick="showCustomViewModal('/views/screens/CustomBoardAdd.jsp')">Add</button>
+					<button id="edit" class="button_add" type="button" onclick="showCustomModal('/views/screens/CustomBoardAdd.jsp')">Add</button>
 				</span>
 				<span>
 					<input type="text" id="searchInput" placeholder="    Search">
@@ -128,7 +128,7 @@
 	
 	<!-- 모달폼 -->
 	<div id="modal" class="modal-container">
-	    <button onclick="closeModal()">닫기</button>
+	    <button onclick="closeModal()" class="modal_close">닫기</button>
 	    <div class="modal-content" id="modal-content">
 	    </div>
 	</div>

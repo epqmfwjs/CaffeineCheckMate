@@ -193,7 +193,7 @@ img {
   width: auto;
   height: 8vh;
   object-fit: cover;
-  margin:  15px;
+  margin: 15px;
   font-size: 0.9em;
 }
 
@@ -223,38 +223,66 @@ img {
     overflow-y: auto;
 }
 
+.modal_close {
+	
+}
+
 
 /*--------------------------------------------------- 작성폼 ----------------------------------------------------------*/
 
-.add_name-title {
-	
+.add_form{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: auto;
+	grid-gap: 1em;
+	width: 90%;
+	height: 90%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+	padding: 1em;		
+}
+
+.add_left_content {
+	grid-column: 1;
+}
+
+.add_right_content {
+	grid-column: 2;
 }
 
 .add_image_button {
-	
 }
 
 .add_image_preview {
+	width: 90%;
+	height: 75%;
 	
+}
+
+.add_title {
+	width: 90%;
 }
 
 .add_content {
-	
+	width: 90%;
+	height: auto;
 }
 
 .add_option {
-	
+	width: 17.2%;
 }
 
 .add_submit{
-	
+	width: 90%;
 }
-
 
 /*--------------------------------------------------- 조회폼 ----------------------------------------------------------*/
 
 
-/*--------------------------------------------------- 수정폼 ----------------------------------------------------------*/
+
+/*--------------------------------------------------- 수정 및 삭제 폼 ----------------------------------------------------------*/
 
 /*사진버튼*/
 label.input-file-button{
@@ -264,10 +292,10 @@ label.input-file-button{
   color: white;
   cursor: pointer;
 }
+
 .file{
 	display:none;
 }
 
 
-/*--------------------------------------------------- 댓글 모달 ----------------------------------------------------------*/
 
