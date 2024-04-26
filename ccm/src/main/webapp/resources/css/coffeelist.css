@@ -240,6 +240,9 @@
 .pagination-a {
     color: black;
 }
+
+
+
 /*second coloumn*/
 .coffeelist-column_2__title{
     height: 70px;
@@ -261,6 +264,15 @@
 }
 .favbox::-webkit-scrollbar {
     width: 0;
+}
+.fp-item{
+    width: 110px;
+    height: 130px;
+}
+.fp-item__img {
+    width: 90px;
+    height: 90px;
+    border-radius: 15px;
 }
 .fp-boxes{
     flex-direction: column;

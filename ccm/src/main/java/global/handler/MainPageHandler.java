@@ -35,6 +35,6 @@ public class MainPageHandler extends HttpServlet implements CommandHandler {
     	
 //    	String jsonString = gson.toJson(main);
     	req.setAttribute("main", main);
-		return "/views/screens/test2.jsp";
+		return "/views/screens/Main.jsp";
     }
 }
