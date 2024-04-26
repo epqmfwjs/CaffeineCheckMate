@@ -16,7 +16,7 @@ if (isAuth){
                         <div className="fp-item__info clickable">{fav[key]["C_NAME"]}</div>
                     </div>
                     <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
-                    <i className="fa-solid fa-x"></i>  
+                    <i className="fa-solid fa-minus"></i>  
                     </button>
                 </div>
                 ))}
@@ -24,7 +24,6 @@ if (isAuth){
         )
     }
     function render(data){
-        console.log("render");
         ReactDOM.render(<App data={data}/>,root);
     }
 
@@ -34,7 +33,6 @@ if (isAuth){
 
     // 즐겨찾기 목록에 이벤트 리스너 추가 메서드
     function loadLisetener() {
-        console.log("loadListener");
         for (let i=0; i<favItems.length; i++) {
             favItems[i].querySelector(".fp-item__delete-btn").addEventListener("click",deleteFavItem);
         }
@@ -49,7 +47,6 @@ if (isAuth){
     if (hasCoffees){
         const coffeeBox = document.querySelector(".coffee-box");
         const coffeeitem = coffeeBox.children;
-        console.log(coffeeitem);
         for(let i=0; i<coffeeitem.length; i++){
             let citem = coffeeitem[i].querySelector(".addFav-btn");
             if(citem != null && citem != undefined){
@@ -58,12 +55,10 @@ if (isAuth){
         }
         // **커피 요소 박스 value에 C_NO 필요
         function addFavItem(element) {
-            console.log("in addFav");
             const item = element.target.closest(".coffeelist-item");//커피리스트아이템
             const cno = item.getAttribute("value");
             fetch("/addfav?"+cno)
             .then(response => {
-                console.log("converting json");
                 return(response.json());
             })
             .then(data => {
@@ -81,7 +76,6 @@ if (isAuth){
         element.stopPropagation();
         const item = element.target.closest(".fp-item");
         const cno = item.getAttribute("value");
-        console.log("delete : ",item.getAttribute("class"));
         fetch("/delfav?"+cno)
         .then(response => {
             return(response.json());

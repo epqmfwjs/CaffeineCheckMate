@@ -6,3 +6,77 @@
 @import "/resources/css/common.css";
 
 /*Screens*/
+
+
+/*calculator-favorites*/
+.fav-calc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 410px;
+    width: 25%;
+    min-width: 330px;
+    max-width: 430px;
+    border: 1px solid black;
+    position: relative;
+}
+.fav-title{
+    border: 1px solid black;
+    position: absolute;
+    top: -5px;
+}
+.fav-title__title{
+    font-size: 22px;
+    font-style: var(--ccm-font);
+}
+.fav-btn__go-coffeelist{
+    border: 1px solid black;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+.fav-btn__togle-fav-del{
+    border: 1px solid black;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+
+.fav-area{
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 35%;
+    border: 1px solid black;
+    overflow-x: auto;
+}
+.fav-area::-webkit-scrollbar{
+    height: 0px;
+}
+.fp-item{
+    width: 80px;
+    height: 100px;
+}
+.fp-item__img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+
+
+
+.calc-area{
+    display: flex;
+    height: 65%;
+    width: 100%;
+    border: 1px solid black;
+}
+.calc-box{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

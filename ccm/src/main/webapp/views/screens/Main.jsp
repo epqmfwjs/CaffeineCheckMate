@@ -23,10 +23,13 @@
 <body id="main">
 	<div class="wrapper">
 		<!-- 헤더 -->
-		<%@ include file="/views/components/header.jsp" %>
+		<jsp:include page="/views/components/header.jsp" />
 
 
 		<div class="fav-calc">
+			<div class="fav-title"></div>
+			<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
+			<button class="fav-btn__togle-fav-del clickable">Remove</button>
 			<div class="fav-area">
 				<!--즐겨찾기 include 부분-->
 				<jsp:include page="/views/components/favorites.jsp"></jsp:include>
@@ -57,5 +60,6 @@
 
 <script src="/resources/js/favoritelist.js" type="text/babel"></script>
 <script src="/resources/js/calculator.js"></script>
+<script src="/resources/js/main.js" type="text/babel"></script>
 
 </html>
