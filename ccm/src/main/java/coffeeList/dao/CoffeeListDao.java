@@ -217,6 +217,21 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	//삭제 시 커피 즐겨찾기(fk)까지 추가로 삭제
+	public void deleteFavCoffee(int coffeeNo,Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String FavDeleteSQL = "DELETE FROM COFFEE_FAVORITE "+
+							  "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(FavDeleteSQL);
+			pstmt.setInt(1, coffeeNo);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
 	//게시물 사진 수정,삭제 관련 DAO(수정, 삭제 후 이전 사진 파일 삭제)
 	public Coffee fileDeleteCoffee(int coffeeNo, Connection conn) throws SQLException{
 		String fileDeleteSQL = "SELECT C_NO, C_IMG_REAL "

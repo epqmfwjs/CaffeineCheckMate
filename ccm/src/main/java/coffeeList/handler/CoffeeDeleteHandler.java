@@ -14,7 +14,7 @@ public class CoffeeDeleteHandler implements CommandHandler{
 			int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
 			//사진 삭제를 위해 파일 경로 얻어서 서비스로 보내기
 			String saveDirectory = request.getServletContext().getRealPath("/resources/testimg");
-			
+			System.out.println(coffeeNo);
 			CoffeeDeleteService coffeeDeleteService = new CoffeeDeleteService();
 			coffeeDeleteService.deleteCoffee(coffeeNo, saveDirectory);
 			
