@@ -17,11 +17,11 @@
 <c:forEach var="item" items="${list}">
     <li style="display: inline-block; width: 20%;">
         <div>
-	 <input type="hidden" id="num" name="num" value="${item.cus_num}" />    
-     <input type="hidden" name="content" id="content" value="${item.cus_content}" />
-     <input type="hidden" name="title" id="title" value="${item.cus_title}" />
-     <input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
-	 <h3>${itme.cus_num}</h3>     
+		 <input type="hidden" id="num" name="num" value="${item.cus_num}" />    
+	     <input type="hidden" name="content" id="content" value="${item.cus_content}" />
+	     <input type="hidden" name="title" id="title" value="${item.cus_title}" />
+	     <input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
+		 <h3>${itme.cus_num}</h3>     
           <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
 		  <p>회원아이디: ${item.m_id}</p>
           <p>제품아이디: ${item.c_no}</p>
