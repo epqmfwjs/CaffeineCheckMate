@@ -21,31 +21,34 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 <span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
 		<%@ include file="/views/components/header.jsp" %>
-		<!-- 섹션 시작 -->
 
 		<div class="view_form">
 			<c:forEach var="item" items="${list}">
 				<div class="view_left_content">
-					<p><img src="upload/${item.cus_img_realname}" alt="Image" class="image_view"></p>
+					<img src="upload/${item.cus_img_realname}" alt="Image" class="image_view">
 				</div>	
+				
 				<div class="view_right_content">
 					<div class="view_id"><b>${item.m_id}</b></div>
 					<div class="view_regdate">${item.cus_regdate}</div>
 					<hr/><br/>
 					<div class="view_title"><b> ${item.cus_title}</b></div>
+					
 					<br/>
 					<div class="view_content_box">
 						<div class="view_content">${item.cus_content}</div>
 					</div>
-					<br/><hr/><br/>
+					
+					<br/><hr/>
 					<div class="option_tag">
 						<div>#${item.shot}샷</div>
 						<div>#${item.milkType}</div>
 						<div>#${item.syrupType}</div>
 						<div>#${item.toppingType}</div>
 						<div>#${item.decaffeinated}</div>
-				</div>
-				<br/>
+					</div>
+					
+					<br/>
 					<div>
 						<!-- 댓글 버튼 -->
 						<button class="reply_button" onclick="showReplyModal('${item.cus_no}')">댓글</button>
@@ -59,6 +62,7 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 			<button onclick="closeModal()">닫기</button>
 			<div class="modal-content" id="modal-content"></div>
 		</div>
+</span>		
 
 </body>
 
