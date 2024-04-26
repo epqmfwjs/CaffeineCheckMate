@@ -1,2 +1,167 @@
-@charset "UTF-8";
+/* 기본 바디 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e1dddb;
+    margin: 0;
+    padding: 10px;
+    color: #333;
+}
 
+/* 헤더 스타일 */
+h2 {
+    text-align: center;
+    color: #ef6c33;
+}
+
+/* 폼 디자인 */
+form {
+    background: white;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px; /* 섹션 간 간격 */
+    border-radius: 4px;
+}
+
+/* 세부 정보 및 이미지 섹션 스타일 */
+.form-detail, .form-image {
+    flex: 1;
+    min-width: 40%; /* 최소 너비 설정 */
+    padding: 10px;
+    background-color: #f9f9f9; /* 배경 색상 추가 */
+    box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 이미지 섹션 내용 수직 중앙 정렬 */
+    border-radius: 4px;
+}
+
+/* 라벨 스타일 */
+label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* 버튼 스타일 */
+.mainbuttonOk,
+.mainbuttonSub {
+    background-color: #0c4a60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%
+}
+
+.mainbuttonSub {
+	background-color:#abdff1;
+	color:#0c4a60;
+}
+
+.mainbutton:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #ef6c33;
+}
+
+/* 이미지 프리뷰 스타일 */
+#coffeePreviewImage {
+    display: block;
+    width: 100%; /* 이미지가 너무 크지 않도록 적당한 크기로 설정 */
+    max-width: 300px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+/*모달 관련*/
+/* 모달 바깥 백그라운드 */
+.coffeelist-modal {
+    display: none; 
+    position: fixed; /* 모달이 전체 화면을 가리도록 변경 */
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    padding-top: 50px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+/*캔슬,Ok 버튼*/
+.coffeelist-modalcancelbtn, .coffeelist-modalOkbtn {
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	opacity: 0.9; /*투명도*/
+	float: left;
+	width: 50%;
+}
+
+.coffeelist-modalcancelbtn:hover, .coffeelist-modalOkbtn:hover{
+	opacity: 1.0;
+}
+
+.ccoffeelist-modalcancelbtn {
+	background-color: #EF6C33;
+	color: black;
+}
+/* 델리트 버튼 */
+.coffeelist-modalOkbtn {
+	background-color: #EF6C33;
+}	
+/* 텍스트 중앙 정렬, 패딩 */
+.coffeelist-modalcontainer {
+	padding: 16px;
+	text-align: center;
+}
+/* 모달 컨텐츠 박스 */
+.coffeelist-modalcontent {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto; 
+	border: 1px solid #888;
+	width: 80%; 
+}
+/* 모달 X 버튼 */
+.coffeelist-modalclosebtn {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: black;
+}
+/* 모달 close 버튼: 마우스 올렸을 때, 포커스 됐을 때 hover*/
+.coffeelist-modalclosebtn:hover,
+.coffeelist-modalclosebtn:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+/* 플로트 속성 초기화 */
+.coffeelist-modalclearfix::after {
+  content: ""; 
+  clear: both; 
+  display: table;
+}

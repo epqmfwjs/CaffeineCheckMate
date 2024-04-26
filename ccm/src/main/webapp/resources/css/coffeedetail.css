@@ -10,7 +10,7 @@ body {
     overflow: hidden; /*오버플로우 x*/
 }
 
-/* 로그인 컨테이너 스타일 */
+/* 컨테이너 스타일 */
 .container {
     width: 400px; /* 너비 설정 */
     background-color: #fff; /* 배경색 설정 */
