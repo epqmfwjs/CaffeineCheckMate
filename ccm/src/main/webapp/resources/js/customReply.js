@@ -117,3 +117,4 @@ function deleteReply(cus_re_no) {
     }, 1000);
     });
     clearInterval(autoRefresh); // 갱신 함수 중지
+    
