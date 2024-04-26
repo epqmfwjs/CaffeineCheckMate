@@ -28,7 +28,19 @@
 			<c:choose>
 				<c:when test="${not empty sessionScope.AUTH_USER_ID}">
 					<div>
-						<a class="headerLinks clickable" onclick="location.href='/mypage.do'" style="margin-left: 5vw; ">MyPage</a>
+						<a class="headerLinks clickable" onclick="location.href='/mypage.do'">MyPage</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div>
+						<a class="headerLinks clickable" onclick="location.href='/LoginHandler.do'">MyPage</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
+			<c:choose>
+				<c:when test="${not empty sessionScope.AUTH_USER_ID}">
+					<div>
+						<a class="headerLinks clickable" onclick="location.href='/logout.do'" style="margin-left: 5vw; ">Logout</a>
 					</div>
 				</c:when>
 				<c:otherwise>

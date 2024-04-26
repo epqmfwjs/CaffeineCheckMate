@@ -16,7 +16,7 @@ if (isAuth){
                         <div className="fp-item__info clickable">{fav[key]["C_NAME"]}</div>
                     </div>
                     <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
-                    <i className="fa-solid fa-x"></i>  
+                    <i className="fa-solid fa-minus"></i>  
                     </button>
                 </div>
                 ))}

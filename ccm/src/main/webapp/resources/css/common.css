@@ -137,7 +137,7 @@ header{
 	align-items: center;
 }
 .nav-bar div{
-	width: 25%;
+	width: 20%;
 }
 .header_col_1-to-2 {
     grid-column: 1 / span 2;
