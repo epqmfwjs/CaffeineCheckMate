@@ -35,9 +35,9 @@
 						<div class="fp-item" id="fi_${favorite.key}" value="C_NO=${favorite.key}">
 							<div class="fp-item__box clickable">
 								<img class="fp-item__img clickable" src="${favorite.value.c_IMAGE}"/>
-								<div class="fp-item__info clickable">${favorite.value.c_NAME}</div>
+								<div class="fp-item__info clickable textlenth">${favorite.value.c_NAME}</div>
 							</div>
-							<button class="fp-item__delete-btn clickable"><i class="fa-solid fa-x"></i></button>
+							<button class="fp-item__delete-btn clickable hidden"><i class="fa-solid fa-minus"></i></button>
 						</div>
 					</c:forEach>
 				</div>
@@ -47,8 +47,8 @@
 					<c:forEach var="popular" items="${main.favorites}">
 						<div class="fp-item" id="fi_${popular.key}" value="${popular.value.c_CAFFEINE}">
 							<div class="fp-item__box clickable">
-								<div class="fp-item__img clickable"></div>
-								<div class="fp-item__info clickable">${popular.value.c_NAME}</div>
+								<img class="fp-item__img clickable" src="${popular.value.c_IMAGE}"/>
+								<div class="fp-item__info clickable textlenth">${popular.value.c_NAME}</div>
 							</div>
 						</div>
 					</c:forEach>	

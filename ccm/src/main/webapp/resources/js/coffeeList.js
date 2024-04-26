@@ -28,3 +28,23 @@ function coffee_PreviewImage() {
 	}
 }
 
+
+
+// 모달 창 ----------------------------------------
+// 함수로 모달 열기
+function coffee_openModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+		modal.style.display = "block";
+	}
+}
+
+// 모달 클로즈
+function coffee_closeModal(modalId) {
+	var modal = document.getElementById(modalId);
+	if (modal) {
+		modal.style.display = "none";
+	}
+}
+
+
