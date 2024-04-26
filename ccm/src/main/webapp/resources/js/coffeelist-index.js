@@ -1,5 +1,15 @@
 const showFavBtn = document.querySelector(".coffeelist-column_3");
-console.log(showFavBtn);
+const classes = showFavBtn.classList;
+
+if(isAuth){
+    if(classes.contains("hidden")){
+        showFavBtn.classList.remove("hidden");
+    }
+}else{
+    if(!classes.contains("hidden")){
+        showFavBtn.classList.add("hidden");
+    }
+}
 showFavBtn.addEventListener("click",showFavs);
 
 function toggleRotation(element) {
@@ -46,3 +56,4 @@ delFavTogle.addEventListener("click",function(){
         });
     }
 });
+

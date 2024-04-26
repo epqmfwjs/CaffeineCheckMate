@@ -124,7 +124,7 @@
                         </div>
                     </div>       
                 </c:if>
-                <button class="coffeelist-column_3 clickable not-rotated"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="coffeelist-column_3 clickable not-rotated hidden"><i class="fa-solid fa-chevron-left"></i></button>
             </div>
     </div>
 </body>
