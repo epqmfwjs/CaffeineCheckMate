@@ -58,7 +58,7 @@
                                 <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
                                     <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
                                     <div class="coffeelist-item__name clickable">
-                                        <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550'); return false;">${coffeeV.c_NAME}</a>
+                                        <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550 scrollbars=no'); return false;">${coffeeV.c_NAME}</a>
                                     </div>
                                     <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
                                     <div class="coffeelist-item__info">${coffeeV.c_BRAND}</div>
