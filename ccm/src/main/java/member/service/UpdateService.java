@@ -177,12 +177,9 @@ public class UpdateService {
 				    out.println("<script>");
 				    out.println("  window.opener.postMessage('login_success', '*');");
 				    out.println("alert('변경성공 로그인해주세요.');");
-				    out.println("window.close();");
+				    out.println("self.close();");
+				    out.println("window.opener.location.href = '/views/screens/login.jsp';");
 				    out.println("</script>");
-
-//						out.println("<script>alert('변경성공 로그인해주세요.'); setTimeout(function() { location.href='/views/screens/login.jsp'; }, 2000);</script>");
-//						out.println("<script>alert('변경성공 로그인해주세요.'); location.href='/views/screens/login.jsp'</script>");
-//						out.flush();
 					}else {
 						out.println("<script>alert('비밀번호가 일치하지않습니다.');"
 						 		+ "location.href="

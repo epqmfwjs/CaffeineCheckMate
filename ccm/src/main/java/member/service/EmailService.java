@@ -156,13 +156,12 @@ public class EmailService {
 		MemberDTO memberDTO = new MemberDTO();
 		MemberDAO memberDAO = new MemberDAO();
 		memberDTO.setDtoEMAIL(userMail);
+		PrintWriter out = response.getWriter();
 		System.out.println("userMail"+ userMail);
 		MemberDTO find = memberDAO.find(memberDTO, conn);
 		String reID = find.getDtoID();
 		System.out.println("디에이오 다녀온 파인드 "+ find);
 		if(find.getDtoPRO().equals("true")) {
-
-				PrintWriter out = response.getWriter();
 				out.println("<script>alert('인증성공.'); location.href="
 						+ "'/views/screens/findUser.jsp?find=REID&result="
 						+ reID
@@ -173,7 +172,11 @@ public class EmailService {
 				out.flush();
 				return null;
 		}else{
-			
+			out.println("<script>alert('존재하지않는 이메일입니다.'); location.href="
+					+ "'/views/screens//views/screens/findUser.jsp?find=ID';"
+					+"window.opener.emailChecked = false;"
+					+ "self.close(); </script>");
+			out.flush();
 		}
 		return null;
 		
@@ -187,13 +190,13 @@ public class EmailService {
 		MemberDTO memberDTO = new MemberDTO();
 		MemberDAO memberDAO = new MemberDAO();
 		memberDTO.setDtoEMAIL(userMail);
+		PrintWriter out = response.getWriter();
 		System.out.println("userMail"+ userMail);
 		MemberDTO find = memberDAO.find(memberDTO, conn);
 		String rePW = find.getDtoID();
 		System.out.println("디에이오 다녀온 파인드 "+ find);
 		if(find.getDtoPRO().equals("true")) {
 
-				PrintWriter out = response.getWriter();
 				out.println("<script>alert('인증성공.'); location.href="
 						+ "'/views/screens/findUser.jsp?find=REPW&result="
 						+ rePW
@@ -204,6 +207,11 @@ public class EmailService {
 				out.flush();
 				return null;
 		}else{
+			out.println("<script>alert('존재하지않는 이메일입니다.'); location.href="
+					+ "'/views/screens//views/screens/findUser.jsp?find=ID';"
+					+"window.opener.emailChecked = false;"
+					+ "self.close(); </script>");
+			out.flush();
 			
 		}
 		return null;
