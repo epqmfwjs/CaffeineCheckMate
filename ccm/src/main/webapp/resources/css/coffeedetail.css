@@ -81,8 +81,8 @@ input[type="file"],
 	background-color:#abdff1;
 	color:#0c4a60;
 }
-
-.mainbutton:hover,
+.mainbuttonSub:hover,
+.mainbuttonOk:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover {
     background-color: #ef6c33;
@@ -97,6 +97,7 @@ input[type="button"]:hover {
     border: 1px solid #ccc;
     border-radius: 8px;
 }
+
 /*모달 관련*/
 /* 모달 바깥 백그라운드 */
 .coffeelist-modal {
@@ -121,7 +122,8 @@ input[type="button"]:hover {
 	width: 50%;
 }
 
-.coffeelist-modalcancelbtn:hover, .coffeelist-modalOkbtn:hover{
+.coffeelist-modalcancelbtn:hover, 
+.coffeelist-modalOkbtn:hover{
 	opacity: 1.0;
 }
 
@@ -137,6 +139,7 @@ input[type="button"]:hover {
 .coffeelist-modalcontainer {
 	padding: 16px;
 	text-align: center;
+	color: #0c4a60;
 }
 /* 모달 컨텐츠 박스 */
 .coffeelist-modalcontent {
