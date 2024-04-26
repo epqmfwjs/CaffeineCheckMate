@@ -31,7 +31,7 @@
 					    <option disabled selected>일</option>
 					</select>
 
-			<p style="color:red">메일인증필수</p>			
+				<p style="color:red">메일인증필수</p>			
     			<input type="button" value="메일인증" onclick="joinEmail()"/><br/>
 
    	   닉네임<br/><input type="text" name="joinNick" id="joinNick" placeholder="닉네임" size=10 maxlength=10 minlength=2 required="required"/>
@@ -49,12 +49,12 @@
 			<br/>  
 				<input type="radio" name="joinSnsYN" id="joinSnsY" value="Y" checked="checked"/>동의함
 				<input type="radio" name="joinSnsYN" id="joinSnsN" value="N" required="required"/>동의안함
-			<br/><br/>
+				<br/><br/>
 		 		<input type="submit" value="가입"/>
 
-	<input type="button" onclick="location.href='/views/screens/login.jsp'" value="취소"/>
-			</form>
-					</div>
+			<input type="button" onclick="location.href='/views/screens/login.jsp'" value="취소"/>
+	</form>
+</div>
 <script type="text/javascript" src="/resources/js/memberJoinRequest.js"></script>
 </body>
 </html>

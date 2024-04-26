@@ -12,6 +12,7 @@
 <div class="container">
 <!-- 아이디저장 jq -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"/></script>
+
 <script>
 	$(document).ready(function(){
 		var key = getCookie("idChk"); //user1
@@ -63,7 +64,8 @@
 		}
 		return unescape(cookieValue);
 	}
-	</script>
+</script>
+
 	<form action="<%=request.getContextPath() %>/LoginHandler.do" method = "post" name="loginForm" id="loginForm">
 				<h1>Login</h1>
 			<br/>

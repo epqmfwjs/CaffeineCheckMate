@@ -56,6 +56,5 @@ form input[type="submit"]:hover, form input[type="button"]:hover {
 		<form action="<%= request.getContextPath()%>/views/screens/testView.jsp" name="loginFrm" method="post">
 			<input type="submit" value="홈으로" class="login-button"/>
 		</form>
-
 </body>
 </html>

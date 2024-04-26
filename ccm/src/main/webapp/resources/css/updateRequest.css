@@ -18,6 +18,7 @@ input[type="text"] {
     border-radius: 4px;
     width: 30%; /* 너비 조정 */
 }
+
 /* 비밀번호 입력 필드 스타일 */
 input[type="password"] {
     padding: 8px;
