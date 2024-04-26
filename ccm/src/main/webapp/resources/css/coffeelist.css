@@ -109,7 +109,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    height: 70%;
+    height: 540px;
     max-width: 950px;
     min-width: 580px;
     position: relative;
@@ -137,7 +137,6 @@
 .coffeelist-container{
     width: 25%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -241,6 +240,9 @@
 .pagination-a {
     color: black;
 }
+
+
+
 /*second coloumn*/
 .coffeelist-column_2__title{
     height: 70px;
@@ -262,6 +264,15 @@
 }
 .favbox::-webkit-scrollbar {
     width: 0;
+}
+.fp-item{
+    width: 110px;
+    height: 130px;
+}
+.fp-item__img {
+    width: 90px;
+    height: 90px;
+    border-radius: 15px;
 }
 .fp-boxes{
     flex-direction: column;
@@ -292,16 +303,15 @@
 
 /* 모달 바깥 백그라운드 */
 .coffeelist-modal {
-	display: none; 
-	position: fixed; 
-	z-index: 1; 
-	left: 0;
-	top: 0;
-	width: 100%; 
-	height: 100%; 
-	overflow: auto; /*필요 시 스크롤 가능*/
-	background-color: #E1DDDB;
-	padding-top: 50px;
+    display: none; 
+    position: fixed; /* 모달이 전체 화면을 가리도록 변경 */
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    padding-top: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 /*캔슬,Ok 버튼*/
 .coffeelist-modalcancelbtn, .coffeelist-modalOkbtn {
