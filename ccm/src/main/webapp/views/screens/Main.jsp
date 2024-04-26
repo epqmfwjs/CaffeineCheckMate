@@ -23,7 +23,7 @@
 <body id="main">
 	<div class="wrapper">
 		<!-- 헤더 -->
-		<%@ include file="/views/components/header.jsp" %>
+		<jsp:include page="/views/components/header.jsp" />
 
 
 		<div class="fav-calc">

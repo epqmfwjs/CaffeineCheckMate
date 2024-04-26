@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
             <!-- 헤더 -->
-            <%@ include file="/views/components/header.jsp" %>
+            <jsp:include page="/views/components/header.jsp" />
             <div id="coffeelist">
                 <div class="coffeelist-column_1">
                     <div class="coffeelist-column__header">
@@ -133,7 +133,6 @@
 	const hasCoffees = true;
     const hasCalc = false;
     const contextPath = '<%= request.getContextPath() %>';
-    console.log(contextPath);
 </script>
 <script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
