@@ -29,10 +29,10 @@
 						<div class="view_left_content">
 							<img src="upload/${item.cus_img_realname}" alt="Image" class="image_view">
 						</div>
-						</form>
-						<form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
 			</c:forEach>  
+		</form>
 						
+		<form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
 			<c:forEach var="item" items="${list}">
 						<input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
 						<input type="hidden" id="num" name="num" value="${item.cus_num}" />    
@@ -56,10 +56,10 @@
 								<div>#${item.toppingType}</div>
 								<div>#${item.decaffeinated}</div>
 							</div>
-							<div>
+							<div><br/>
 						        <input type="hidden" name="no" value="${param.CUS_NUM}" />
-						        <input type="submit" value="수정">
-								<button type="button"id="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
+						        <input class="update_button" type="submit" value="수정">
+								<button class="delete_button" type="button"id="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
 							</div>
 						</div>
 			</c:forEach>  
