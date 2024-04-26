@@ -164,8 +164,8 @@ function formatDate(dateString) {
 
 //글내용 길이제한
 function cutString(inputString) {
-   if (inputString.length > 26) {
-      return inputString.slice(0, 25) + '...';
+   if (inputString.length > 21) {
+      return inputString.slice(0, 20) + '...';
    }
    else {
       return inputString;
@@ -313,6 +313,19 @@ function showCustomModal(pageURL) {
 }
 
 // 모달을 닫는 함수
+function closeModal() {
+   var modal = document.getElementById("modal");
+   modal.style.display = "none";
+}
+
+$(document).ready(function(){
+       $(document).keydown(function(event) {
+           if (event.which === 27) {
+              closeModal();
+           }
+       });
+   });
+   
 function closeModal() {
    var modal = document.getElementById("modal");
    modal.style.display = "none";

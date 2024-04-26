@@ -102,5 +102,13 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 		var modal = document.getElementById("modal");
 		modal.style.display = "none";
 	}
+	
+   $(document).ready(function() {
+       $(document).keydown(function(event) {
+           if (event.which === 27) {
+              closeModal();
+           }
+       });
+   });
 </script>
 </html>
