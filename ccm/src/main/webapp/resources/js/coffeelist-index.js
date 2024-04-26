@@ -1,9 +1,59 @@
-const addCoffee = () => {
-    window.open(
-        "/views/screens/coffeeList_Add.jsp", // 팝업 창에 열릴 URL
-        "Add Coffee", // 팝업 창의 이름
-        "width=600,height=400" // 팝업 창의 크기 및 설정
-    );
+const showFavBtn = document.querySelector(".coffeelist-column_3");
+const classes = showFavBtn.classList;
+
+if(isAuth){
+    if(classes.contains("hidden")){
+        showFavBtn.classList.remove("hidden");
+    }
+}else{
+    if(!classes.contains("hidden")){
+        showFavBtn.classList.add("hidden");
+    }
 }
-const addCoffeeBtn = document.querySelector(".coffeelist-add__btn");
-addCoffeeBtn.addEventListener("click",addCoffee);
+showFavBtn.addEventListener("click",showFavs);
+
+function toggleRotation(element) {
+    if (element.classList.contains("not-rotated")) {
+        // 요소가 회전하지 않은 상태라면 회전 상태로 변경
+        element.classList.remove("not-rotated");
+        element.classList.add("rotated");
+    } else {
+        // 요소가 회전 상태라면 회전하지 않은 상태로 변경
+        element.classList.remove("rotated");
+        element.classList.add("not-rotated");
+    }
+}
+
+function showFavs() {
+    const favsBox = document.querySelector(".coffeelist-column_2");
+    let favClassList = favsBox.classList;
+    if(favClassList.contains("hidden")){
+        toggleRotation(showFavBtn);
+        favsBox.classList.remove("hidden");
+    }else{
+        favsBox.classList.add("hidden");
+        toggleRotation(showFavBtn);
+    }
+}
+
+
+
+const clTitle = document.querySelector(".coffeelist-title");
+clTitle.addEventListener("click",function(){
+    window.location.href = "/coffeeList.do";
+});
+
+const delFavTogle = document.querySelector(".coffeelist-column_2__togle-fav-del");
+delFavTogle.addEventListener("click",function(){
+    const deleteBtns = document.querySelectorAll(".fp-item__delete-btn");
+    if (deleteBtns.length>0){
+        deleteBtns.forEach((btn) => {
+            if (btn.classList.contains("hidden")) {
+                btn.classList.remove("hidden");
+            } else {
+                btn.classList.add("hidden");
+            }
+        });
+    }
+});
+

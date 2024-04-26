@@ -13,7 +13,6 @@ public class CoffeeDetailHandler implements CommandHandler{
     public String process(HttpServletRequest request, HttpServletResponse response) throws Exception{
         try {
             int coffeeNo = Integer.parseInt(request.getParameter("coffeeNo"));
-            String pageNo = request.getParameter("pageNo"); //이전 페이지
             
             //System.out.println("int로 변환까지 잘 됨");
             CoffeeDetailService coffeeDetailService = new CoffeeDetailService();
