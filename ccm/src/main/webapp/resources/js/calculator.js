@@ -33,8 +33,8 @@ const bar = new ProgressBar.SemiCircle(container, {
 
 const dailyC = document.querySelector(".calc-box__dailyc"); //커피 섭취량
 bar.animate(calcResult/400);
-// const favBox = document.querySelector(".fav-box");
-// const favItems = favBox.children;
+
+
 
 //계산
 function calc(cno) {
@@ -51,7 +51,6 @@ function calc(cno) {
                 const caffeine = data.caffeine;
                 const rda = data.rda;
                 const ratio = caffeine/rda;
-                console.log("cf:",caffeine,"  rda:",rda,"  ratio:",ratio);
                 dailyC.innerText = `${caffeine} mg`;
                 bar.animate(ratio);
             })
@@ -66,6 +65,7 @@ function calc(cno) {
         let caffeine = caf? parseInt(caf.toString()) : 0;
         caffeine += parseInt(cno);
         localStorage.setItem("caf",caffeine);
+        dailyC.innerText = `${caffeine} mg`;
         bar.animate(parseInt(caffeine)/400);
     }
 }
@@ -93,6 +93,7 @@ function resetCalc(event) {
         })
     }else{//비로그인
         localStorage.setItem("caf",0);
+        dailyC.innerText = `0 mg`;
         bar.animate(0);
     }
 
@@ -115,7 +116,7 @@ if(isAuth){
     let caffeine = caf? parseInt(caf.toString()) : 0;
     localStorage.setItem("caf",caffeine);
     bar.animate(parseInt(caffeine)/400);
-    
+    dailyC.innerText = `${caffeine} mg`;
     const popB = document.querySelector(".popular-box");
     const popI = popB.children;
     for (let i=0; i<popI.length; i++) {
