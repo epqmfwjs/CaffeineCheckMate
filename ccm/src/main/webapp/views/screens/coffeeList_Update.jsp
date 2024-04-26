@@ -4,46 +4,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/resources/css/coffeeadd.css">
+	<link rel="stylesheet" href="/resources/css/coffeedetail.css">
 <meta charset="UTF-8">
 <title>COFFEELIST UPDATE(master)</title>
 <script src="../../resources/js/coffeeList.js"></script>
 
 </head>
 <body>
-<h2>COFFEE UPDATE</h2>
 <%request.setCharacterEncoding("utf-8");%>
-	<form action="coffeeListUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return coffee_FileExtensionsError()">
+<div class="coffeeupaddsection">
+<h2 class="coffeeupaddH2">COFFEE UPDATE</h2>
+	<form class="coffeewrapform" action="coffeeListUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return coffee_FileExtensionsError()">
 	    <div class="form-detail">
 	    	<div class="detail">
 			    <input type="hidden" name="coffeeNo" value="${coffeeUpdateForm.c_NO}"/>
-			    <label>제품 이름</label>
+			    <label class="coffeelabel">제품 이름</label>
 			    <input type="text" name="cname" value="${coffeeUpdateForm.c_NAME}" required>
 			    
-			    <label>브랜드</label>
+			    <label class="coffeelabel">브랜드</label>
 			    <input type="text" name="cbrand" value="${coffeeUpdateForm.c_BRAND}" required>
 			    
-			    <label>카페인 함량</label>
+			    <label class="coffeelabel">카페인 함량</label>
 			    <input type="number" name="ccaffeine" value="${coffeeUpdateForm.c_CAFFEINE}" required>
 			    
-			    <label>당류 함량</label>
+			    <label class="coffeelabel">당류 함량</label>
 			    <input type="number" name="csaccharide" value="${coffeeUpdateForm.c_SACCHARIDE}" required>
 			    
-			    <label>칼로리</label>
+			    <label class="coffeelabel">칼로리</label>
 			    <input type="number" name="ccalorie" value="${coffeeUpdateForm.c_CALORIE}" required>
 			    
-			    <label>상세 내용</label>
-			    <textarea name="ccontent" required>${coffeeUpdateForm.c_CONTENT}</textarea>
+			    <label class="coffeelabel">상세 내용</label>
+			    <textarea class="coffeeupaddTextA" name="ccontent" required>${coffeeUpdateForm.c_CONTENT}</textarea>
 			    
-			    <label>음료 타입</label>
-			    <select name="ctype" required>
+			    <label class="coffeelabel">음료 타입</label>
+			    <select class="coffeeupaddSel" name="ctype" required>
 			        <option value="COF" ${"COF".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Coffee</option>
 			        <option value="BEV" ${"BEV".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Beverage</option>
 			        <option value="TEA" ${"TEA".equals(coffeeUpdateForm.c_TYPE) ? "selected" : ""}>Tea</option>
 			    </select>
 			    
-			    <label>카페인 정도</label>
-			    <select name="cstage" required>
+			    <label class="coffeelabel">카페인 정도</label>
+			    <select class="coffeeupaddSel" name="cstage" required>
 			        <option value="1" ${"1".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>낮음</option>
 			        <option value="2" ${"2".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>중간</option>
 			        <option value="3" ${"3".equals(coffeeUpdateForm.c_STAGE) ? "selected" : ""}>높음</option>
@@ -53,7 +54,7 @@
 		<!-- 이미지 업로드 및 미리보기 섹션 -->
     	<div class="form-image">
     		<div class="image">
-				<label>현재 이미지<br/></label>
+				<label class="coffeelabel">현재 이미지<br/></label>
 			    <img id="coffeePreviewImage" src="${coffeeUpdateForm.c_IMG_COPY}" alt="기존 이미지" style="width:300px;"><br/>
 			    
 			    변경할 이미지(기존 이미지 유지 희망 시 선택X)<br/>
@@ -83,5 +84,6 @@
 	</div>
 <!-- 모달 창 끝--> 
 </form>
+</div>
 </body>
 </html>

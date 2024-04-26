@@ -1,6 +1,178 @@
-@charset "UTF-8";
-/* 전체 body 스타일 */
-body {
+/* CoffeeList Add,Update CSS
+/* 기본 바디 설정 */
+.coffeeupaddsection {
+    font-family: 'Arial', sans-serif;
+    background-color: #e1dddb;
+    margin: 0;
+    padding: 10px;
+    color: #333;
+}
+
+/* <h2> 변경 */
+.coffeeupaddH2 {
+    text-align: center;
+    color: #ef6c33;
+}
+
+/* 폼 디자인 */
+.coffeewrapform {
+    background: white;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px; /* 섹션 간 간격 */
+    border-radius: 4px;
+}
+
+/* 세부 정보 및 이미지 섹션 스타일 */
+.form-detail, .form-image {
+    flex: 1;
+    min-width: 40%; /* 최소 너비 설정 */
+    padding: 10px;
+    background-color: #f9f9f9; /* 배경 색상 추가 */
+    box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 이미지 섹션 내용 수직 중앙 정렬 */
+    border-radius: 4px;
+}
+
+/* 라벨 스타일 */
+.coffeelabel {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+.coffeeupaddSel,
+.coffeeupaddTextA {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.coffeeupaddTextA {
+    height: 100px;
+}
+
+/* 버튼 스타일 */
+.mainbuttonOk,
+.mainbuttonSub {
+    background-color: #0c4a60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%
+}
+
+.mainbuttonSub {
+	background-color:#abdff1;
+	color:#0c4a60;
+}
+
+.mainbutton:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #ef6c33;
+}
+
+/* 이미지 프리뷰 스타일 */
+#coffeePreviewImage {
+    display: block;
+    width: 100%; /* 이미지가 너무 크지 않도록 적당한 크기로 설정 */
+    max-width: 300px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+/*모달 관련*/
+/* 모달 바깥 백그라운드 */
+.coffeelist-modal {
+    display: none; 
+    position: fixed; /* 모달이 전체 화면을 가리도록 변경 */
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    padding-top: 50px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+/*캔슬,Ok 버튼*/
+.coffeelist-modalcancelbtn, .coffeelist-modalOkbtn {
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	opacity: 0.9; /*투명도*/
+	float: left;
+	width: 50%;
+}
+
+.coffeelist-modalcancelbtn:hover, .coffeelist-modalOkbtn:hover{
+	opacity: 1.0;
+}
+
+.ccoffeelist-modalcancelbtn {
+	background-color: #EF6C33;
+	color: black;
+}
+/* 델리트 버튼 */
+.coffeelist-modalOkbtn {
+	background-color: #EF6C33;
+}	
+/* 텍스트 중앙 정렬, 패딩 */
+.coffeelist-modalcontainer {
+	padding: 16px;
+	text-align: center;
+}
+/* 모달 컨텐츠 박스 */
+.coffeelist-modalcontent {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto; 
+	border: 1px solid #888;
+	width: 80%; 
+}
+/* 모달 X 버튼 */
+.coffeelist-modalclosebtn {
+	position: absolute;
+	right: 35px;
+	top: 15px;
+	font-size: 40px;
+	font-weight: bold;
+	color: black;
+}
+/* 모달 close 버튼: 마우스 올렸을 때, 포커스 됐을 때 hover*/
+.coffeelist-modalclosebtn:hover,
+.coffeelist-modalclosebtn:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+/* 플로트 속성 초기화 */
+.coffeelist-modalclearfix::after {
+  content: ""; 
+  clear: both; 
+  display: table;
+}
+
+
+
+
+
+/* CoffeeList Detail Section */
+.detailSection {
     font-family: 'Noto Sans KR', sans-serif; /* 폰트 설정 */
     background-color: #f5f6f7; /* 배경색 설정 */
     display: flex; /* Flexbox 레이아웃 사용 */
@@ -11,7 +183,7 @@ body {
 }
 
 /* 컨테이너 스타일 */
-.container {
+.coffeedetailcontainer {
     width: 400px; /* 너비 설정 */
     background-color: #fff; /* 배경색 설정 */
     padding: 20px; /* 안쪽 여백 설정 */
@@ -20,25 +192,25 @@ body {
 }
 
 /* 제목 스타일 */
-h1 {
+.detail-h1 {
     color: #EF6C33; /* 글자색 설정 */
     margin-bottom: 20px; /* 하단 여백 설정 */
     text-align: center; /* 가운데 정렬 */
 }
 /*부제목(제품 설명, )*/
-h3 {
+.detail-h3 {
 	margin-top: 50px;
 	color: #0C4A60; 
 	text-align: center; /* 가운데 정렬 */
 	font-family: "Lucida Console", "Courier New", monospace;
 }
 
-.content {
+.coffeedetailcontent {
 	text-align: center;
 	}
 
 /* 버튼 스타일 */
-button {
+.coffeedetailbtn {
     width: 100%; /* 너비 100% 설정 */
     padding: 10px; /* 안쪽 여백 설정 */
     margin: 10px 0; /* 바깥 여백 설정 */
@@ -50,12 +222,12 @@ button {
 }
 
 /* 버튼 호버 효과 */
-button:hover {
+.coffeedetailbtn:hover {
     background-color: #EF6C33; /* 호버 시 배경색 변경 */
 }
 
 /*컨테이너 이미지*/
-.container img{
+.coffeedetailcontainer img{
 	float: left;
 	margin: 15px;
 	padding: 5px;
@@ -65,33 +237,37 @@ button:hover {
 	height: 300px;
 }
 /*테이블*/
-table {
+.coffeedetailtable {
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
   text-align: center;
 }
-th,
-td {
+.coffeedetailtable th,
+.coffeedetailtable td {
   padding: 6px 15px;
 }
-th {
+.coffeedetailtable th {
   background: #42444e;
   color: #fff;
 }
-tr:first-child th:first-child {
+.coffeedetailtable tr:first-child,
+.coffeedetailtable th:first-child {
   border-top-left-radius: 6px;
 }
-tr:first-child th:last-child {
+.coffeedetailtable tr:first-child, 
+.coffeedetailtable th:last-child {
   border-top-right-radius: 6px;
 }
-td {
+.coffeedetailtable td {
   border-right: 1px solid #c6c9cc;
   border-bottom: 1px solid #c6c9cc;
 }
-tr:last-child td:first-child {
+.coffeedetailtable tr:last-child,
+.coffeedetailtable td:first-child {
   border-bottom-left-radius: 6px;
 }
-tr:last-child td:last-child {
+.coffeedetailtable tr:last-child,
+.coffeedetailtable  td:last-child {
   border-bottom-right-radius: 6px;
 }
