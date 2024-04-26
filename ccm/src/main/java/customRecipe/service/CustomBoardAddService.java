@@ -24,17 +24,16 @@ public class CustomBoardAddService {
 	public void addList(HttpServletRequest request, HttpServletResponse response) {
 		
 		Connection con = null;
+		
 		try {
 			con = ConnectionProvider.getConnection();
 			con.setAutoCommit(false);
-			
 			
 			 
 			ServletContext context = request.getSession().getServletContext();
 			String directory = context.getRealPath("/upload/");
 			int maxSize = 1024*1024*20;
 			String encoding =  "UTF-8";
-			
 			
 			MultipartRequest mp = new MultipartRequest(request,directory,maxSize,encoding,
 					new DefaultFileRenamePolicy());
@@ -51,9 +50,9 @@ public class CustomBoardAddService {
 			
 			String shot = mp.getParameter("shot");
 			String milkType = mp.getParameter("milkType");
-			String syrupType = mp.getParameter("syrupType");;
-			String toppingType = mp.getParameter("toppingType");;
-			String decaffeinated = mp.getParameter("decaffeinated");;
+			String syrupType = mp.getParameter("syrupType");
+			String toppingType = mp.getParameter("toppingType");
+			String decaffeinated = mp.getParameter("decaffeinated");
 			
 			CustomBoardAddDao dao = new CustomBoardAddDao();
 			CustomBoardAddDto dto = new CustomBoardAddDto("null",m_id,c_no,cus_name,cus_content,"null",0,cus_img,cus_img_realname);

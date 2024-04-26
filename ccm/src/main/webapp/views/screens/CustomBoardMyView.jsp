@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/resources/css/custom.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/custom.js"></script>   
 <meta charset="UTF-8">
@@ -13,32 +14,58 @@
 </head>
 <body>
 
-    <form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
-<c:forEach var="item" items="${list}">
-    <li style="display: inline-block; width: 20%;">
-        <div>
-	 <input type="hidden" id="num" name="num" value="${item.cus_num}" />    
-     <input type="hidden" name="content" id="content" value="${item.cus_content}" />
-     <input type="hidden" name="title" id="title" value="${item.cus_title}" />
-     <input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
-	 <h3>${itme.cus_num}</h3>     
-          <p>이미지: <img src="upload/${item.cus_img_realname}" alt="Image" width="150"></p>
-		  <p>회원아이디: ${item.m_id}</p>
-          <p>제품아이디: ${item.c_no}</p>
-          <p>게시글제목: ${item.cus_title}</p>
-          <p>글내용: ${item.cus_content}</p>
-        </div>
-    </li>
-          <p>#${item.shot}샷#${item.milkType}#${item.syrupType}
-          #${item.toppingType}#${item.decaffeinated}</p>
-         <%--  <p>누적 좋아요 수: ${item.cus_sumgood}</p>
-          <p>이미지번호: ${item.cus_img_no}</p> --%>
-          </c:forEach>  
-<div style="display: flex; align-items: center;">
-        <input type="hidden" name="no" value="${param.CUS_NUM}" />
-        <input type="submit" value="수정">
-    </form>   
-</div>
-<button type="button"id="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
+<span class="wrapper" style="display: inline-block;">
+		<!-- 헤더 -->
+	<%@ include file="/views/components/header.jsp" %>
+		
+	<div class="view_form">
+	    <form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
+			<c:forEach var="item" items="${list}">
+						<input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
+						<input type="hidden" id="num" name="num" value="${item.cus_num}" />    
+						<input type="hidden" name="content" id="content" value="${item.cus_content}" />
+						<input type="hidden" name="title" id="title" value="${item.cus_title}" />
+						
+						<div class="view_left_content">
+							<img src="upload/${item.cus_img_realname}" alt="Image" class="image_view">
+						</div>
+			</c:forEach>  
+		</form>
+						
+		<form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
+			<c:forEach var="item" items="${list}">
+						<input type="hidden" name="img" id="img" value="${item.cus_img_realname}" />
+						<input type="hidden" id="num" name="num" value="${item.cus_num}" />    
+						<input type="hidden" name="content" id="content" value="${item.cus_content}" />
+						<input type="hidden" name="title" id="title" value="${item.cus_title}" />
+						
+						<div class="view_right_content">
+							<div class="view_id"><b>${item.m_id}</b></div>
+							<div class="view_regdate">${item.cus_regdate}</div>
+							<hr/><br/>
+							<div class="view_title"><b> ${item.cus_title}</b></div>
+							<br/>
+							<div class="view_content_box">
+								<div class="view_content">${item.cus_content}</div>
+							</div>
+							<br/><hr/>
+							<div class="option_tag">
+								<div>#${item.shot}샷</div>
+								<div>#${item.milkType}</div>
+								<div>#${item.syrupType}</div>
+								<div>#${item.toppingType}</div>
+								<div>#${item.decaffeinated}</div>
+							</div>
+							<div><br/>
+						        <input type="hidden" name="no" value="${param.CUS_NUM}" />
+						        <input class="update_button" type="submit" value="수정">
+								<button class="delete_button" type="button"id="delbutton" onclick="location.href='/CustomBoardDelete.do?num=${param.CUS_NUM}'">삭제</button>
+							</div>
+						</div>
+			</c:forEach>  
+	    </form>
+	</div>
+</span>
+
 </body>
 </html>
