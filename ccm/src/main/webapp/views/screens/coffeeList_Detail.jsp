@@ -4,29 +4,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/resources/css/coffeedetail.css">
 <title>COFFEELIST Detail</title>
 </head>
 <body>
-<h3>요기는 상세 페이지 임시 거처입니당 :D</h3>
-<c:if test="${sessionScope.isAdmin}">
-	<!-- 
-	<div>
-		관리자 전용<br/>
-		<a href="coffeeListDelete.do?coffeeNo=${coffeeDetail.c_NO}">Delete</a>
-		<a href="coffeeListUpdateForm.do?coffeeNo=${coffeeDetail.c_NO}">Update</a>
-	</div><br/> -->
-</c:if>
-<table border="1">
-	<tr><td>이미지</td><td><img src="${pageContext.request.contextPath}${coffeeDetail.c_IMG_COPY}" width="300" height="200" alt="커피 이미지"></td></tr>
-	<tr><td>제품명</td><td>${coffeeDetail.c_NAME}</td></tr>
-	<tr><td>브랜드</td><td>${coffeeDetail.c_BRAND}</td></tr>
-	<tr><td>카페인</td><td>${coffeeDetail.c_CAFFEINE}</td></tr>
-	<tr><td>당도</td><td>${coffeeDetail.c_SACCHARIDE}</td></tr>
-	<tr><td>칼로리</td><td>${coffeeDetail.c_CALORIE}</td></tr>
-	<tr><td>제품 설명</td><td>${coffeeDetail.c_CONTENT}</td></tr>
-</table><br/>
-<div>
-	<button onclick="window.close()">창 닫기</button>
-</div>
+<section class="detailSection">
+	<div class="coffeedetailcontainer">
+		<h1 class="detail-h1">${coffeeDetail.c_NAME}</h1>
+		<img src="${pageContext.request.contextPath}${coffeeDetail.c_IMG_COPY}" alt="커피 이미지">
+		
+			<div class="coffeedetailcontent">
+				<h3 class="detail-h3">Brand</h3>
+				<div>${coffeeDetail.c_BRAND}</div>
+				<h3 class="detail-h3">Description</h3>
+				<div>${coffeeDetail.c_CONTENT}</div>
+			</div>
+		
+			<table class="coffeedetailtable">
+				<tr>
+					<th>카페인</th>
+					<th>당도</th>
+					<th>칼로리</th>
+				</tr>
+			<tbody>
+				<tr>
+					<td>${coffeeDetail.c_CAFFEINE}</td>
+					<td>${coffeeDetail.c_SACCHARIDE}</td>
+					<td>${coffeeDetail.c_CALORIE}</td>
+				</tr>
+			</tbody>
+			</table>
+		
+		<div>
+			<button class="coffeedetailbtn" onclick="window.close()">창 닫기</button>
+		</div>
+	</div>
+</section>
 </body>
 </html>
