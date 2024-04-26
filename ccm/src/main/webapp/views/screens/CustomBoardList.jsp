@@ -17,7 +17,7 @@
 	
 	<span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
-		<jsp:include page="/views/components/header.jsp" />
+		<%@ include file="/views/components/header.jsp" %>
 		<!-- 섹션 시작 -->
 		<section class="container">
 			<div class="section_col_1-to-4_row_1">
@@ -26,7 +26,7 @@
 				</span>
 				
 				<span>
-					<button id="edit" class="button_add" type="button" onclick="location.href='/views/screens/CustomBoardAdd.jsp'">Add</button>
+					<button id="edit" class="button_add" type="button" onclick="showCustomModal('/views/screens/CustomBoardAdd.jsp')">Add</button>
 				</span>
 				<span>
 					<input type="text" id="searchInput" placeholder="    Search">
@@ -126,12 +126,14 @@
 		
 	</section>
 	
+	<!-- 모달폼 -->
+	<div id="modal" class="modal-container">
+	    <button onclick="closeModal()" class="modal_close">닫기</button>
+	    <div class="modal-content" id="modal-content">
+	    </div>
+	</div>
+	
 </span>
 </body>
-<script>const isAuth = "${isAuth}"==="true"? true : false;</script>
-<script src="https://kit.fontawesome.com/9e2cfcdf3a.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
 <script type="text/javascript" src="/resources/js/custom.js"></script>
 </html>

@@ -21,7 +21,7 @@ public class CustomBoardAddDao {
 	public void addList(CustomBoardAddDto dto, Connection con) throws SQLException {
 
 		String sql = "insert into custom(cus_no,m_id,c_no,cus_title,cus_content,cus_regdate,cus_sumgood)"
-		+ "values(null,?,11,?,?,default,0)";
+		+ "values(null,?,1,?,?,default,0)";
 
 
 //		String cus_no = dto.getCus_no(); 오토키 null고정
