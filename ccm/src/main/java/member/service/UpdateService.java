@@ -160,4 +160,44 @@ public class UpdateService {
 			}
 			return returnPage;
 		}
+		public String findPassword(String pw1, String pw2,String id,HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+			conn = ConnectionProvider.getConnection();
+			conn.setAutoCommit(false);
+			HttpSession session = request.getSession(false);
+			PrintWriter out = response.getWriter();
+			String result = null;
+			String query = "update ccm.member set M_PASSWORD = ? where M_ID=?";
+			MemberDAO memberDAO = new MemberDAO();
+			
+			if(pw1.equals(pw2)){
+				result = pw1;
+				String success = memberDAO.update(result, id, query, conn);
+				if(success.equals("true")) {
+				    response.setContentType("text/html");
+				    out.println("<script>");
+				    out.println("  window.opener.postMessage('login_success', '*');");
+				    out.println("alert('변경성공 로그인해주세요.');");
+				    out.println("self.close();");
+				    out.println("window.opener.location.href = '/views/screens/login.jsp';");
+				    out.println("</script>");
+					}else {
+						out.println("<script>alert('비밀번호가 일치하지않습니다.');"
+						 		+ "location.href="
+						 		+ "'/views/screens/findUser.jsp?find=REPW&result="
+						 		+ id
+								+"';"
+						 		+ "</script>");
+						 out.flush();
+					}
+			}else{
+			out.println("<script>alert('비밀번호가 일치하지않습니다.');"
+			 		+ "location.href="
+			 		+ "'/views/screens/findUser.jsp?find=REPW&result="
+			 		+ id
+					+"';"
+			 		+ "</script>");
+			 out.flush();
+			}
+			return null;
+		}
 }

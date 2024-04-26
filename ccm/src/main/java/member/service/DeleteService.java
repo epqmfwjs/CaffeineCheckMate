@@ -50,8 +50,11 @@ public class DeleteService {
 					
 					if(result == true) {
 						System.out.println("딜리트메소드 다녀와서 if문 트루로 들어옴");
-						 returnPage = "/views/screens/okDelete.jsp";
+						 out.println("<script>alert('탈퇴가완료되었습니다.'); location.href='/views/screens/okDelete.jsp';</script>");
 						 session.invalidate();
+						 out.flush();
+						 returnPage = "/views/screens/okDelete.jsp";
+						 //session.invalidate();
 					}else {
 						System.out.println("딜리트메소드 다녀와서 else로 들어옴");
 						 out.println("<script>alert('알수없는 오류로인해 회원정보를 확인할수없습니다.'); location.href='/views/screens/login.jsp';</script>");
@@ -66,11 +69,16 @@ public class DeleteService {
 					 out.flush();
 					
 				}
+				
 		case "backupEmpty":
+			if(session.getAttribute("AUTH_USER_ID")!= null) {
 			System.out.println("아이디가 안맞음");
 			 out.println("<script>alert('아이디를 확인해주세요.'); location.href='/views/screens/updateRequest.jsp';</script>");
 			 //session.invalidate();
 			 out.flush();
+			}else {
+				
+			}
 		}
 		return returnPage;
 	}

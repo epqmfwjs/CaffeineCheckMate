@@ -11,6 +11,7 @@ public class MemberDAO {
 	
 // ------------------------insert-----------------------------------------	
 	public String insert(MemberDTO memberDTO, Connection conn) {
+		System.out.println("인서트들어옴");
 	    String returnPage = null;
 	    String query = "INSERT INTO ccm.member(M_ID, M_PASSWORD, M_NAME, M_NICKNAME, M_BIRTH, M_CREATEDATE, M_PHONENUMBER, M_MAIL, M_GENDER, M_ROLE, M_CANCEL, M_SNSYN) VALUES(?,?,?,?,?,DEFAULT,?,?,?,?,?,?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -101,6 +102,7 @@ public class MemberDAO {
 	                memberDTO.setDtoTEL(rs.getString("M_PHONENUMBER"));
 	                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
 	                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
+	                memberDTO.setDtoDELETEDATE(rs.getTimestamp("DELETED_AT"));
 	            } else {
 	            	System.out.println("백업도아이디없음");
 	                memberDTO.setDtoPRO("backupEmpty");
@@ -117,15 +119,27 @@ public class MemberDAO {
 	    }
 	    return memberDTO;
 	}
-	//중복체크 select method
+	//중복체크 물음표 2개 select method
 	public int checkSystem(String value, String query, Connection conn) {
 	    System.out.println(value);
 	    //"SELECT ccm.member.M_ID FROM ccm.member WHERE M_ID = ? UNION all "
 	    //+ "SELECT ccm.member_backup.M_ID FROM ccm.member_backup WHERE M_ID = ?";
-	    int result = 0;
 	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
 	        pstmt.setString(1, value);
 	        pstmt.setString(2, value);
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            return rs.next() ? 1 : 0;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return -1;
+	    } 
+	}	
+	//중복체크 물음표 1개 select method
+	public int checkSystemOne(String value, String query, Connection conn) {
+	    System.out.println("checkSystemOne 으로넘어온 검색할 컬럼벨류 "+value);
+	    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	        pstmt.setString(1, value);
 	        try (ResultSet rs = pstmt.executeQuery()) {
 	            return rs.next() ? 1 : 0;
 	        }
@@ -143,7 +157,7 @@ public class MemberDAO {
 //	    }
 	    //return result;
 	// 수정요청메소드
-	//변경될 값 : value / pk조건 : id / 셀렉문 : select 
+	//변경될 값 : value / pk조건 : id / 셀렉문 : query 
 	public String update(String value, String id, String query, Connection conn) {
 	    String returnPage = null;
 	    int result = -1;
@@ -298,13 +312,32 @@ public class MemberDAO {
 		        conn.close();
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+// ------------------------------아이디 비번 찾기---------------------------------
+		public MemberDTO find(MemberDTO memberDTO, Connection conn) {
+		    String query = "SELECT * FROM ccm.member WHERE M_MAIL = ?";
+		    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+		        pstmt.setString(1, memberDTO.getDtoEMAIL());
+		        try (ResultSet rs = pstmt.executeQuery()) {
+		            if (rs.next()) {
+		                memberDTO.setDtoID(rs.getString("M_ID"));
+		                memberDTO.setDtoPW(rs.getString("M_PASSWORD"));
+		                memberDTO.setDtoNAME(rs.getString("M_NAME"));
+		                memberDTO.setDtoSSN(rs.getString("M_BIRTH"));
+		                memberDTO.setDtoEMAIL(rs.getString("M_MAIL"));
+		                memberDTO.setDtoNICKNAME(rs.getString("M_NICKNAME"));
+		                memberDTO.setDtoTEL(rs.getString("M_PHONENUMBER"));
+		                memberDTO.setDtoGENDER(rs.getString("M_GENDER"));
+		                memberDTO.setDtoSNS(rs.getString("M_SNSYN").equals("Y") ? "동의" : "거절");
+		                memberDTO.setDtoPRO("true");
+		            } else {
+		            	System.out.println("없는이메일");
+		            	memberDTO.setDtoPRO("false");
+		            }
+		            if (conn != null) conn.close();
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+		    return memberDTO;
+		}
 }

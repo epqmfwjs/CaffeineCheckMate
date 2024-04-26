@@ -1,5 +1,7 @@
 package member.dto;
 
+import java.sql.Timestamp;
+
 public class MemberDTO {
 	
 	private String dtoPRO;
@@ -14,6 +16,8 @@ public class MemberDTO {
 	private String dtoTEL;
 	private String dtoGENDER;
 	private String dtoSNS;
+	private Timestamp  dtoDELETEDATE;
+	
 	
 	public MemberDTO() {
     }
@@ -94,6 +98,13 @@ public class MemberDTO {
 	}
 	public void setDtoCANCEL(String dtoCANCEL) {
 		this.dtoCANCEL = dtoCANCEL;
+	}
+	public Timestamp getDtoDELETEDATE() {
+		return dtoDELETEDATE;
+	}
+
+	public void setDtoDELETEDATE(Timestamp dtoDELETEDATE) {
+		this.dtoDELETEDATE = dtoDELETEDATE;
 	}
 	
 

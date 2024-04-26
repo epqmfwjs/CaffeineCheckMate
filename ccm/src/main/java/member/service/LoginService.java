@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,10 +39,25 @@ public class LoginService {
 		String dbID = result.getDtoID();
 		String dbPW = result.getDtoPW();
 		String value = memberDTO.getDtoPRO();
+//		// D-day 계산
+//		long hoursUntilFutureDate = ChronoUnit.HOURS.between(localDateTime, futureDateAndTime);
+//		long minutesUntilFutureDate = ChronoUnit.MINUTES.between(localDateTime, futureDateAndTime);
+//		long secondsUntilFutureDate = ChronoUnit.SECONDS.between(localDateTime, futureDateAndTime);
+
 		boolean temp = false;
-			
 			switch (value) {
 			case "memberEmpty" : // 멤버에 없고 백업테이블에 있음
+				Timestamp dbTIME = memberDTO.getDtoDELETEDATE();
+		        // 현재 날짜 가져오기
+				LocalDateTime localDateTime = dbTIME.toLocalDateTime(); // db에서 가져온 Timestamp 날짜를 LocalDateTime으로 변경한 값
+				// 7일 후의 날짜와 시간 구하기
+				LocalDateTime futureDateAndTime = localDateTime.plusDays(7);
+				
+				LocalDateTime localDateTime1 = futureDateAndTime;
+				DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a").withLocale(Locale.ENGLISH);;
+				String formattedDateTime = localDateTime1.format(dateTimeFormatter);
+				System.out.println("dbTIME = " + dbTIME);
+				session.setAttribute("D_day", formattedDateTime);
 				temp = memberEmpty(loginId,loginPw,dbID,dbPW);
 				if(true == temp) {
 					session.setAttribute("AUTH_USER_ID", dbID);

@@ -83,6 +83,12 @@ public class UpdateMemberHandler implements CommandHandler {
 				        System.out.println("sns 수정 요청 없음");
 				    }
 				break;
+			case "findPassword" :
+					String findId = request.getParameter("findId");
+					String findPw1 = request.getParameter("findPassword1");
+					String findPw2 = request.getParameter("findPassword2");
+					updateService.findPassword(findPw1, findPw2, findId, request, response);
+				break;
 		}
 		 System.out.println(resultPage);
          return resultPage;
