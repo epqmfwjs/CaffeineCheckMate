@@ -280,6 +280,8 @@ img {
   display: none;
 }
 
+
+
 .add_image_preview {
 	width: 90%;
 	height: 37vh;
@@ -403,6 +405,11 @@ img {
 	border-radius: 5px;
 	margin-right: 2%;
 }
+
+.update_button:hover{
+  background-color: rgb(239, 108, 51);
+} 
+
 .delete_button{
 	width: 48%;
 	height: 3vh;
@@ -410,7 +417,6 @@ img {
 	border-radius: 5px;
 }
 /*--------------------------------------------------- 수정 및 삭제 폼 ----------------------------------------------------------*/
-
 /*사진버튼*/
 label.input-file-button{
   padding: 6px 25px;
@@ -423,6 +429,7 @@ label.input-file-button{
 .file{
 	display:none;
 }
+
 
 
 
