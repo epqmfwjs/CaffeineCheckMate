@@ -18,6 +18,7 @@ public class JoinService {
 		String returnPage;
 	public String joinInsert(MemberDTO memberDTO) 
 			throws IOException, ClassNotFoundException, SQLException {
+		System.out.println("조인인서트들어옴");
 		Connection conn = null;
 		conn = ConnectionProvider.getConnection();
 		conn.setAutoCommit(false);

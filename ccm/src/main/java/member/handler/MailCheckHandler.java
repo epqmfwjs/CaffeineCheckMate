@@ -2,6 +2,7 @@ package member.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import member.service.EmailService;
 public class MailCheckHandler implements CommandHandler {
 
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+	public String process(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException, SQLException{
 		String returnPage = "/views/screens/joinEmail.jsp";
 		MemberDTO memberDTO = new MemberDTO();
 		HttpSession session = request.getSession(false);
@@ -28,33 +29,57 @@ public class MailCheckHandler implements CommandHandler {
 		System.out.println("히든값 "+hidden);
 		switch (hidden) {
 		case "emailCheck" :
-			System.out.println(session.getAttribute("codeMail"));
-			System.out.println(request.getParameter("input"));
+			System.out.println("이메일 체크 푸쉬 "+session.getAttribute("codeMail"));
+			System.out.println("이메일 체크 입력"+request.getParameter("input"));
 			String pushCode = (String)session.getAttribute("codeMail");
 			String iputCode = request.getParameter("input");
-			boolean result = emailService.checkedMail(iputCode,pushCode);
-			returnPage = result==true ? emailTrue(request,response) : emailFalse(request,response);
+			boolean result = emailService.checkedCode(iputCode,pushCode);
+			returnPage = result == true ? emailTrue(request,response) : emailFalse(request,response);
 			break;
 		case "emailinput" :
 			memberDTO = emailService.emailSend(inputEmail1,request,response);
 			session.setAttribute("code", memberDTO.getDtoEMAIL());
 			System.out.println(session.getAttribute("code"));
+			System.out.println("두번째 메일보낼때"+inputEmail1);
+			System.out.println("세번째 (세션)메일보낼때"+session.getAttribute("inputMail"));
 			returnPage = "/views/screens/joinEmail.jsp";
+			break;
+		case "findID" :
+			String pushCodefindID = (String)session.getAttribute("codeMail");
+			String iputCodefindID = request.getParameter("input");
+			boolean idCode = emailService.checkedCode(iputCodefindID,pushCodefindID);
+			System.out.println("코드체크값 "+idCode);
+			returnPage = idCode == true ? emailService.findID(request,response) : emailFalse(request,response);
+			break;
+		case "findPW" :
+			String pushCodefindPW = (String)session.getAttribute("codeMail");
+			String iputCodefindPW = request.getParameter("input");
+			boolean pwCode = emailService.checkedCode(iputCodefindPW,pushCodefindPW);
+			returnPage = pwCode == true ? emailService.findPW(request,response) : emailFalse(request,response);
+			System.out.println("코드체크값 "+pwCode);
+			break;
 		}
+		System.out.println("메일핸들러 나갈때1"+session.getAttribute("inputMail"));
 		return returnPage;
 	}
-	public String emailTrue(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public String emailTrue(HttpServletRequest request,HttpServletResponse response) throws IOException, SQLException {
 		PrintWriter out = response.getWriter();
+		EmailService emailService = new EmailService();
+		emailService.checkedMail(request,response);
 		out.println("<script>alert('인증성공!.'); location.href="
 				+ "'/views/screens/joinRequest.jsp';"
-				+ "self.close(); </script>");
+				+"window.opener.emailChecked = true;"
+				+ "self.close();"
+				+"updateParentWindow(); </script>");
 		out.flush();
 		return null;
+		
 	}
 	public String emailFalse(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		out.println("<script>alert('인증실패.'); location.href="
 				+ "'/views/screens/joinRequest.jsp';"
+				+"window.opener.emailChecked = false;"
 				+ "self.close(); </script>");
 		out.flush();
 		return null;
