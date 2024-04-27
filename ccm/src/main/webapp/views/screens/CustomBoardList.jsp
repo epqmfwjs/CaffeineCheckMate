@@ -25,7 +25,7 @@
 		<!-- 섹션 시작 -->
 		<section class="container">
 			<div class="section_col_1-to-12_row_1">
-					<button id="test" class="button_home" type="button" onclick="location.href='/views/screens/testView.jsp'">Home</button>
+					<button id="test" class="button_home" type="button" onclick="location.href='/main.do'">Home</button>
 					<button id="edit" class="button_add" type="button" onclick="showCustomModal('/views/screens/CustomBoardAdd.jsp')">Add</button>
 					<input type="text" id="searchInput" placeholder="    Search">
 					<div id="searchResult"></div>

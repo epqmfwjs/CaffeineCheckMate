@@ -89,7 +89,7 @@ img#img {
             from { opacity: .4 }
             to { opacity: 1 }
         }
-
+        
 .calc-area{
     display: flex;
     height: 65%;

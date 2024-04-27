@@ -16,10 +16,15 @@
 	%>
 
     <link rel="stylesheet" href="/resources/css/main.css">
+    
 
 <meta charset="UTF-8">
 <title>CaffeinCheckMate</title>
+
 </head>
+
+
+
 <body id="main">
 	<div class="wrapper">
 		<!-- 헤더 -->
@@ -39,7 +44,8 @@
 				<jsp:include page="/views/components/calculator.jsp"></jsp:include>
 			</div>
 		</div>
-		<div id="imgboard" class="slideshow-container">
+	
+<div id="imgboard" class="slideshow-container">
 	<h2>랜덤 레시피</h2>
     <c:forEach var="item" items="${main.customBoardListDao}">
         <div class="mySlides fade">
@@ -51,7 +57,6 @@
         </div>
     </c:forEach>
 </div>
-
 
  <script>
  //슬라이드 스크립트
@@ -72,8 +77,6 @@
         }
     </script>
 </div>
-
-
 </body>
 
 <script>
