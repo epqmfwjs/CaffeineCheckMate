@@ -39,7 +39,39 @@
 				<jsp:include page="/views/components/calculator.jsp"></jsp:include>
 			</div>
 		</div>
-	</div>
+		<div id="imgboard" class="slideshow-container">
+	<h2>랜덤 레시피</h2>
+    <c:forEach var="item" items="${main.customBoardListDao}">
+        <div class="mySlides fade">
+            <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">
+                <div class="boardTextBox">
+                    <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
+                </div>
+            </a>
+        </div>
+    </c:forEach>
+</div>
+
+
+ <script>
+ //슬라이드 스크립트
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var slides = document.getElementsByClassName("mySlides");
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // 3초마다 전환
+        }
+    </script>
+</div>
 
 
 </body>
