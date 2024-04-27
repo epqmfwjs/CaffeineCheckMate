@@ -63,7 +63,7 @@ body {
     width: 100vw;
     transition: 0.5s;
     background: rgba(200, 200, 200, 0.3);
-    color: black;            
+    color: black; 
 }
 
 @media screen and (max-width: 900px) {
