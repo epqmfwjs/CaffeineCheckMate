@@ -64,7 +64,6 @@ body {
     transition: 0.5s;
     background: rgba(200, 200, 200, 0.3);
     color: black;            
-    margin-top: 5vh;
 }
 
 @media screen and (max-width: 900px) {

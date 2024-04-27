@@ -10,9 +10,7 @@ section{
 	height: 82vh;
 	margin-left: 2.5vw;
 	margin-right: 2.5vw;
-	/* overflow: auto; */
 }
-
 @media screen and (max-width: 900px) {
 	.section{
 		grid-template-columns: 100%;
@@ -20,21 +18,18 @@ section{
 		grid-gap: auto;
 	}
 }
-
 /*1행-홈버튼, 작성버튼, 검색창*/
 .section_col_1-to-4_row_1 {
     grid-column: 1 / span 4; /*행의 1번째 셀부터 4개 까지의 셀 병합 => 1~4번 병합*/
     place-items: center;
 	grid-row: 1; /*1번째 행*/
 } 
-
 /*2행-태그*/
 .section_col_2-to-3_row_2 {
     grid-column: 2 / span 2; /*행의 2번째 셀부터 2개 까지의 셀 병합 2~3번 병합*/
     place-items: center;
 	grid-row: 2; /*2번째 행*/
 } 
-
 /*3행*/
 .section_col_1-to-4_row_3 {
     grid-column: 1 / span 4; /*행의 1번째 셀부터 4개 까지의 셀 병합 1~4번 병합*/
@@ -46,20 +41,15 @@ span.cus-box {
     place-items: center;
 	grid-row: 3;  /*3번째 행*/
 } 
-
-
 /*---------- 게시글 영역 ----------*/
 .cus-box{
     overflow: auto;
     width: auto;
     height: 60vh;
 }
-
 .cus-box::-webkit-scrollbar {
     width: 0px;
 }
-
-
 /*---------- 검색창 ----------*/
 #searchInput {
 	display: inline-block;
@@ -72,8 +62,6 @@ span.cus-box {
     margin-left: 1vw;
     margin-right: 2vw;
 }
-
-
 /*일반 버튼*/
 /*홈버튼*/
 .button_home{
@@ -87,7 +75,6 @@ span.cus-box {
 	border-radius: 5px;
 	margin: 0.3vw;
 }
-
 /*작성버튼*/
 .button_add{
 	font-size:0.8em;
@@ -98,18 +85,15 @@ span.cus-box {
 	border-radius: 5px;
 	margin: 0.3vw;
 }
-
 /*---------- 옵션 버튼 ----------*/
 .dropdown {
   display: inline-block;
   width: 7vw;
   position: abstract;
 }
-
 span.divdropdown{
 float: right;
 }
-
  button.dropdown{
   font-size:0.8em;
   cursor:pointer;
@@ -120,11 +104,9 @@ float: right;
   margin-left: 0.5vw;
   margin-right: 0.5vw;
 } 
- 
 button:hover{
   background-color: rgb(239, 108, 51);
 } 
-
 .dropdown-options {
   display: none;
   position: absolute;
@@ -133,20 +115,16 @@ button:hover{
   width: 8%;
   border-radius:5px;
 }
-
 .dropdown-options::-webkit-scrollbar {
     width: 0px;
 }
-
  .dropdown:hover .dropdown-options {
    display: block; 
 } 
-
 .divdropdown ul {
     padding: 0px;
     list-style: none;
 }
-
 .dropdown-options li {
   font-size:0.8em;
   display: block;
@@ -154,60 +132,48 @@ button:hover{
   text-decoration: none;
   padding:  10% 10%;
 }
-
 .dropdown-options li:hover {
   color: #0a0a23;
   background-color: #ddd;
   border-radius:5px;
 }
-
-
 /*---------- 게시글 목록 ----------*/
-
 #board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px; 
     list-style-type: none;
 }
-
 .boardCard il {
 	background: white;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .1);
 }
-
 /*각 게시물 카드*/
 .boardCard{
 	background: white;
 	border-radius: 10px;
 	box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .1);
 }
-
 /*하이퍼링크 지워줌*/
 .boardCard a{
 	color: inherit;
     text-decoration: none;
 }
-
 img {
   width: 17vw;
   object-fit: cover;
   border-radius: 10px 10px 0px 0px;
   aspect-ratio: 3/3.5;
 }
-
-
 #board img {
     max-width: 100%; /* 이미지 크기 조절 */
   object-fit: cover;
 }
-
 /*게시물 카드 텍스트*/
 #board li {
     text-align: left;
 }
-
 .cardTextBox{
   width: auto;
   object-fit: cover;
@@ -215,9 +181,7 @@ img {
   font-size: 0.9em;
   aspect-ratio: auto 10/1;
 }
-
 /*--------------------------------------------------- 모달폼 ----------------------------------------------------------*/
-
 /* 작성 모달 */
 .modal-container {
     display: none; 
@@ -230,7 +194,6 @@ img {
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 5555;
 }
-
 .modal-content {
     background-color: #fff;
     width: 50vw;
@@ -241,19 +204,10 @@ img {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
 }
-
 .modal-content ::-webkit-scrollbar {
     width: 0px;
 }
-
-
-.modal_close {
-	
-}
-
-
 /*--------------------------------------------------- 작성폼 ----------------------------------------------------------*/
-
 .add_form{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -267,28 +221,21 @@ img {
 	margin: 0 auto;
 	padding: 1em;		
 }
-
 .add_left_content {
 	grid-column: 1;
 }
-
 .add_right_content {
 	grid-column: 2;
 }
-
 #file {
   display: none;
 }
-
-
-
 .add_image_preview {
 	width: 90%;
 	height: 37vh;
 	border-radius: 10px 10px 10px 10px;
 	margin-top: 3vh;
 }
-
 .add_title {
 	width: 90%;
 	height: 3vh;
@@ -301,7 +248,6 @@ img {
     overflow: hidden; /* 넘치는 부분 감춤 */
     text-overflow: ellipsis;
 }
-
 .add_content {
 	width: 90%;
 	height: auto;
@@ -314,7 +260,6 @@ img {
     overflow: hidden; /* 넘치는 부분 감춤 */
     text-overflow: ellipsis;
 }
-
 .add_option {
 	width: 17.8%;
 	height: 3vh;
@@ -323,21 +268,17 @@ img {
 	box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.15);
     background: rgb(253, 253, 253);
 }
-
 .add_submit{
 	width: 92%;
 	height: 3vh;
 	border: none;
 	border-radius: 5px;
 }
-
 .add_submit:hover{
   background-color: rgb(239, 108, 51);
   color: white;
 } 
-
 /*--------------------------------------------------- 조회 및 나의 게시물 조회폼 ----------------------------------------------------------*/
-
 .view_form{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -357,46 +298,37 @@ img {
 			            -0px 0px 10px 0px rgba(0, 0, 0, 0.05),
 			             0px -0px 10px 0px rgba(0, 0, 0, 0.05);
 }
-
 .view_left_content {
 	grid-column: 1;
 }
-
 .view_right_content {
 	grid-column: 2;
 }
-
 .image_view {
 	width: 90%;
 	height: 37vh;
 	border-radius: 10px 10px 10px 10px;
 	margin-top: 3vh;
 }
-
 .view_id{
 	display: inline-block;
 	
 }
-
 .view_regdate{
 	display: inline-block;
 }
-
 .view_content_box{
 	height: 100%;
 }
-
 .option_tag > div {
 	display: inline-block;
 }
-
 .reply_button{
 	width: 100%;
 	height: 3vh;
 	border: none;
 	border-radius: 5px;
 }
-
 .update_button{
 	width: 48%;
 	height: 3vh;
@@ -404,11 +336,9 @@ img {
 	border-radius: 5px;
 	margin-right: 2%;
 }
-
 .update_button:hover{
   background-color: rgb(239, 108, 51);
 } 
-
 .delete_button{
 	width: 48%;
 	height: 3vh;
@@ -416,7 +346,6 @@ img {
 	border-radius: 5px;
 }
 /*--------------------------------------------------- 수정 및 삭제 폼 ----------------------------------------------------------*/
-
 .update-form {
     display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -436,23 +365,15 @@ img {
 			            -0px 0px 10px 0px rgba(0, 0, 0, 0.05),
 			             0px -0px 10px 0px rgba(0, 0, 0, 0.05);
 }
-
 .grid-item {
  	width: 100%;
- 	
 }
-
 .update-form form {
     text-align: center;
 }
-
 .grid-item {
     margin: auto;
 }
-
-
-
-
 /*사진버튼*/
 label.input-file-button{
   padding: 6px 25px;
@@ -461,11 +382,6 @@ label.input-file-button{
   color: white;
   cursor: pointer;
 }
-
 .file{
 	display:none;
 }
-
-
-
-
