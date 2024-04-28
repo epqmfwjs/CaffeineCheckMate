@@ -54,8 +54,8 @@
 .caffeine_info_box{
 	display: grid;
 	position: relative;
-	grid-template-columns: repeat(3 1fr);
-	grid-gap: 5%;
+	grid-template-columns: repeat(2 1fr);
+	grid-gap: 0%;
 	width: 50vw;
 	height: 100%;
 	justify-content: center;
@@ -70,7 +70,16 @@
 
 .caffeine_info_col2 {
 	grid-column: 2;
-	white-space: nowrap;
+	display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+/*카페인 정보*/
+.caffeine_info_image {
+    max-width: 75%; /* 이미지의 최대 너비 설정 */
+    max-height: 80%; /* 이미지의 최대 높이 설정 */
+    margin: 0;
 }
 
 
@@ -126,7 +135,7 @@
 	margin-bottom: 3%;
 	overflow-x: auto;
 	border-radius: 10px;
-	background: rgb(255, 255, 255);	
+	background: rgb(245, 245, 245);	
 	box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .1);
 }
 
@@ -150,7 +159,7 @@
 	display: flex;
 	width: 100;
 	height: 70%;
-	background: rgb(255, 255, 255);	
+	background: rgb(245, 245, 245);	
 	border-radius: 10px;
 }
 
@@ -164,8 +173,7 @@
 .boardCard {
 	height: 100%;
 	border-radius: 10px;
-	background: rgb(255, 255, 255);
-	box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .1);
+	background: rgb(245, 245, 245);
 }
 /*하이퍼링크 지워줌*/
 .boardCard a {
@@ -173,13 +181,13 @@
 	text-decoration: none;
 }
 /*이미지 설정*/
-img {
+.img_basic {
 	width: 17vw;
 	object-fit: cover;
 	border-radius: 10px 10px 0px 0px;
-	aspect-ratio: 3/3.4;
+	aspect-ratio: 3/3.3;
 }
-#board img {
+#board .img {
 	max-width: 100%;
 	object-fit: cover;
 }
@@ -188,14 +196,16 @@ img {
 	object-fit: cover;
 	font-size: 0.9em;
 	width: auto;
-	margin: 15px ;
+	padding: 0  15px 5px 15px;
 	aspect-ratio: auto 10/1;
 }
+
 
 /*게시물 슬라이드*/
 .slideshow-container {
 	position: relative;
 	overflow: hidden;
+	margin: 0;
 }
 .mySlides1 {
 	display: none;

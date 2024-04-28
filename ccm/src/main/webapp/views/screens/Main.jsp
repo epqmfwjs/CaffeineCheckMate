@@ -50,17 +50,7 @@
 					</div>
 					
 					<div class="caffeine_info_col2">
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
-						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<img src="/resources/imgs/caffeine_info.png" alt="caffeine_info_image" class="caffeine_info_image">
 					</div>
 					
 				</div>
@@ -73,7 +63,7 @@
 				        <div class="mySlides fade">
 				            <div class="boardCard">
 					            <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">
-					                    <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
+					                    <img src="upload/${item.cus_img_realname}" alt="Image" id="img" class="img_basic">
 					                <div class="cardTextBox">
 			                           <p><b>${item.m_id}</b>     ${item.cus_regdate}<br/>
 			                           <b>${item.cus_title}</b><br/>${item.cus_content}</p>
