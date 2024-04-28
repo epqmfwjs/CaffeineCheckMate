@@ -24,34 +24,35 @@
 		<jsp:include page="/views/components/header.jsp" />
 		<div class="main_container">
 		
-			<!-- 카페인 계산기 -->
-			<div class="main_col_1_row1">
-					<div class="fav-title">카페인 계산기</div>
-			</div>	
 			
-			<div class="main_col_1_row2-to-3">
-				<div class="fav-calc">
-					<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
-					<button class="fav-btn__togle-fav-del clickable">Remove</button>
-					<div class="fav-area">
-						<!--즐겨찾기 include 부분-->
-						<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+			<div class="main_col_1_row2">
+				<div class="caffeine_info_box">
+					<div class="fav-calc">
+					
+					
+						<div class="fav-area">
+						<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
+						<button class="fav-btn__togle-fav-del clickable">Remove</button>
+							<!--즐겨찾기 include 부분-->
+							<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+						</div>
+						<div class="calc-area">
+							<!--계산기 include 부분 -->
+							<jsp:include page="/views/components/calculator.jsp"></jsp:include>
+						</div>
+						
+						
 					</div>
-					<div class="calc-area">
-						<!--계산기 include 부분 -->
-						<jsp:include page="/views/components/calculator.jsp"></jsp:include>
-				</div>
 				</div>
 			</div>	
-			
 			
 			<!-- 커스텀 레시피 추천 -->
-			<div class="main_col_3_row2-to-3">
+			<div class="main_col_2_row2">
 				<div id="imgboard" class="slideshow-container">
 				    <c:forEach var="item" items="${main.customBoardListDao}">
 				        <div class="mySlides fade">
 				            <div class="boardCard">
-					            <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}"></a>
+					            <a href="CustomBoardViewHandler.do?CUS_NUM=${item.cus_num}">
 					                    <img src="upload/${item.cus_img_realname}" alt="Image" id="img">
 					                <div class="cardTextBox">
 			                           <p><b>${item.m_id}</b>     ${item.cus_regdate}<br/>
