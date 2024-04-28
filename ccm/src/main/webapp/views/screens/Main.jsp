@@ -23,10 +23,16 @@
 		<!-- 헤더 -->
 		<jsp:include page="/views/components/header.jsp" />
 		<div class="main_container">
+		
 			<!-- 메인페이지 상단 박스 -->
-			<div class="main_col_1-to-2_row1">
+			<div class="main_col_1_row1">
 				<div class="main_top_box">
-
+							<div class="fav-area">
+							<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
+							<button class="fav-btn__togle-fav-del clickable">Remove</button>
+								<!--즐겨찾기 include 부분-->
+								<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+							</div>
 				</div>
 			</div>
 			
@@ -35,18 +41,10 @@
 				<div class="caffeine_info_box">
 				
 					<div class="caffeine_info_col1">
-						<div class="fav-calc">
-							<div class="fav-area">
-							<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
-							<button class="fav-btn__togle-fav-del clickable">Remove</button>
-								<!--즐겨찾기 include 부분-->
-								<jsp:include page="/views/components/favorites.jsp"></jsp:include>
-							</div>
 							<div class="calc-area">
 								<!--계산기 include 부분 -->
 								<jsp:include page="/views/components/calculator.jsp"></jsp:include>
 							</div>
-						</div>
 					</div>
 					
 					<div class="caffeine_info_col2">
