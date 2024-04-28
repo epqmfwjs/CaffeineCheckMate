@@ -23,26 +23,46 @@
 		<!-- 헤더 -->
 		<jsp:include page="/views/components/header.jsp" />
 		<div class="main_container">
-		
+			<!-- 메인페이지 상단 박스 -->
+			<div class="main_col_1-to-2_row1">
+				<div class="main_top_box">
+
+				</div>
+			</div>
 			
+			<!-- 카페인 정보 -->
 			<div class="main_col_1_row2">
 				<div class="caffeine_info_box">
-					<div class="fav-calc">
-					
-					
-						<div class="fav-area">
-						<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
-						<button class="fav-btn__togle-fav-del clickable">Remove</button>
-							<!--즐겨찾기 include 부분-->
-							<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+				
+					<div class="caffeine_info_col1">
+						<div class="fav-calc">
+							<div class="fav-area">
+							<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
+							<button class="fav-btn__togle-fav-del clickable">Remove</button>
+								<!--즐겨찾기 include 부분-->
+								<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+							</div>
+							<div class="calc-area">
+								<!--계산기 include 부분 -->
+								<jsp:include page="/views/components/calculator.jsp"></jsp:include>
+							</div>
 						</div>
-						<div class="calc-area">
-							<!--계산기 include 부분 -->
-							<jsp:include page="/views/components/calculator.jsp"></jsp:include>
-						</div>
-						
-						
 					</div>
+					
+					<div class="caffeine_info_col2">
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+						<p>카페인에 대한 정보와 이미지가 들어갈 예정입니다 하기 싫네.</p>
+					</div>
+					
 				</div>
 			</div>	
 			
