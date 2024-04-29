@@ -28,6 +28,7 @@ public class LoginHandler implements CommandHandler {
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("핸들러나가기전 리턴값 "+result);
          return result;
 	}
 }

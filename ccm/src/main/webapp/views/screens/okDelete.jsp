@@ -34,7 +34,7 @@ session.invalidate();
 		<form action="/views/screens/identify.jsp" name="deleteCancelForm" id="deleteCancelForm" method="post">
 		    <input type="hidden" value="deleteCancel" name="Value"/>
 		    <input type="submit" value="탈퇴취소"/>
-		    <input type="button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'">
+		    <input type="button" value="홈으로" onclick="location.href='/views/screens/Main.jsp'">
 		</form>
 	</div>
 </div>

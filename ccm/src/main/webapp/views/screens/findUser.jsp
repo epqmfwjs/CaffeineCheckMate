@@ -20,7 +20,7 @@
 					<h1>아이디찾기</h1>
 	    			<input type="button" value="메일인증" onclick="joinEmail()"/><br/>
 	    			<input type="button" value="로그인" onclick="location.href='/views/screens/login.jsp'"/><br/>
-	    			<input type="button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'"/><br/>
+	    			<input type="button" value="홈으로" onclick="location.href='/main.do'"/><br/>
 	    		<script>
 		    		var emailChecked = false; // 이메일 인증 여부를 저장하는 변수
 		
@@ -36,7 +36,7 @@
 					<h1>비밀번호찾기</h1>
 	    			<input type="button" value="메일인증" onclick="joinEmail()"/><br/>
 					<input type="button" value="로그인" onclick="location.href='/views/screens/login.jsp'"/><br/>	    		
-					<input type="button" value="홈으로" onclick="location.href='/views/screens/testView.jsp'"/><br/>				
+					<input type="button" value="홈으로" onclick="location.href='/main.do'"/><br/>				
 						<script>
 							var emailChecked = false; // 이메일 인증 여부를 저장하는 변수
 						

@@ -60,6 +60,7 @@
     height: 30px;
     margin-top: 10%;
     font-size: 16px;
+    color: white;
     font-weight: 400;
     transition: font-weight 0.3s ease-in-out;
     transition: font-size 0.3s ease-in-out;
