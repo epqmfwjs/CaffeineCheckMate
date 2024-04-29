@@ -190,7 +190,7 @@ function searchlist(data) {
                     <div class="boardCard">
         <li>
                     <a href="CustomBoardViewHandler.do?CUS_NUM=`+ cus_num + `">
-                        <img src="upload/` + cus_img_realname + `" alt="Image">
+                        <img src="upload/` + cus_img_realname + `" alt="Image" class="cus_img">
                         <div class="cardTextBox">
                            <p><b>` + m_id + '</b>&nbsp;&nbsp;' + cus_regdate + `</p>
                            <p><b>` + cus_name + `</b>&nbsp;&nbsp;` + cus_content + `</p>
@@ -270,7 +270,7 @@ function list(allcount) {
                     <div class="boardCard">
                  <li>
                     <a href="CustomBoardViewHandler.do?CUS_NUM=`+ cus_num + `">
-                        <img src="upload/` + cus_img_realname + `" alt="Image">
+                        <img src="upload/` + cus_img_realname + `" alt="Image" class="cus_img">
                         <div class="cardTextBox">
                            <p><b>` + m_id + '</b>&nbsp;&nbsp;' + cus_regdate + `<br/>
                            <b>` + cus_name + `</b><br/>` + cus_content + `</p>
