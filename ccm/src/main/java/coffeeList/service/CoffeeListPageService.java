@@ -68,19 +68,19 @@ public class CoffeeListPageService {
 	//비회원 검색
 	public CoffeeListPage searchCoffee(String searchType, String searchQuery, int page) throws SQLException {
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 10);
+			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 12);
 			int total = coffeeList.size();  // 검색 결과 수
-			return new CoffeeListPage(coffeeList, total, page, 10);
+			return new CoffeeListPage(coffeeList, total, page, 12);
 		}
 	}
 	
 	//회원 검색
 	public CoffeeListPage searchAuthCoffee(String searchType, String memberId, String searchQuery, int page) throws SQLException {
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 10);
+			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 12);
 			HashMap<Integer, Favorite> favMap = favoriteDao.getFavList(memberId, conn);
 			int total = coffeeList.size();  // 검색 결과 수
-			return new CoffeeListPage(coffeeList, favMap,total, page, 10);
+			return new CoffeeListPage(coffeeList, favMap,total, page, 12);
 		}
 	}
 	

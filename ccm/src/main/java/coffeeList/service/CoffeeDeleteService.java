@@ -23,6 +23,8 @@ public class CoffeeDeleteService {
 			
 			//삭제 후 게시물 이미지 실제 파일 삭제하는 로직
 			Coffee deleteExistingCoffee = coffeeListDao.fileDeleteCoffee(coffeeNo, conn);
+			
+			
 			if (deleteExistingCoffee != null && deleteExistingCoffee.getC_IMG_REAL() != null) {
 				String filePath = saveDirectory + "/" + deleteExistingCoffee.getC_IMG_REAL();
 				
@@ -32,6 +34,7 @@ public class CoffeeDeleteService {
 				}
 			}
 			//db 삭제
+			coffeeListDao.deleteFavCoffee(coffeeNo, conn);
 			coffeeListDao.deleteCoffee(coffeeNo, conn);
 			
 			conn.commit();

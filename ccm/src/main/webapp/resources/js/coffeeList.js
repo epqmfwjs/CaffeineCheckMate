@@ -31,7 +31,7 @@ function coffee_PreviewImage() {
 
 
 // 모달 창 ----------------------------------------
-// 함수로 모달 열기
+// 함수로 모달 열기 (파라미터: 모달이름(커피넘버))
 function coffee_openModal(modalId) {
 	var modal = document.getElementById(modalId);
 	if (modal) {
@@ -43,6 +43,8 @@ function coffee_openModal(modalId) {
 function coffee_closeModal(modalId) {
 	var modal = document.getElementById(modalId);
 	if (modal) {
+		//창 닫을 경우 커피 넘버를 초기화
+		delete modal.dataset.coffeeNo;
 		modal.style.display = "none";
 	}
 }
