@@ -99,9 +99,8 @@ public class CalculatorService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			double weight = profileDao.getWeight(memberId, conn);
-			
-			coffee = coffeeListDao.selectByCoffeeNo(coffeeNo, conn);
+			double weight = profileDao.getWeight(memberId, conn);			
+			coffee = coffeeListDao.selectByCoffeeNo(coffeeNo, conn);			
 			caffeine = coffee.getC_CAFFEINE();
 			todaysCaffeine = calendarDao.getTodaysRecord(memberId, date, conn);
 			

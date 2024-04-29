@@ -46,7 +46,7 @@ public class CoffeeListPageHandler implements CommandHandler{
 				if (searchType != null && 
 					searchQuery != null && 
 					!searchQuery.isEmpty()) { //검색 시
-					coffeeListPage = coffeeListService.searchCoffee(searchType, searchQuery, page);
+					coffeeListPage = coffeeListService.searchAuthCoffee(searchType, memberId ,searchQuery, page);
 				} else {//비검색 시
 					coffeeListPage = coffeeListService.getCoffeeList(memberId, page);
 				}

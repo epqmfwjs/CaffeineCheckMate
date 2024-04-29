@@ -18,6 +18,8 @@ import favorite.dto.Favorite;
 import global.dto.Main;
 import jdbc.JdbcUtil;
 import mypage.dao.ProfileDao;
+import mypage.dao.UserProfileDAO;
+import mypage.dto.UserProfileDTO;
 
 public class MainPageService {
 	
@@ -26,6 +28,7 @@ public class MainPageService {
 	ProfileDao profileDao = new ProfileDao();
 	CoffeeListDao coffeeListdao = new CoffeeListDao();
 	CustomBoardListDao customBoardListDao = new CustomBoardListDao();
+	UserProfileDAO userProfileDao = new UserProfileDAO();
 	
 	public Main showAuthedMain(String memberId) {
 		Connection conn = null;
@@ -33,12 +36,12 @@ public class MainPageService {
 		Main main = null;
 		Calendar todaysCaffeine = null;
 		HashMap<Integer, Favorite> favMap = null;
+
 		
 		Date date = new Date(System.currentTimeMillis());
 		
 		int calculationResult = 0;
 		double weight = 62;
-		
 		try {
 			conn = ConnectionProvider.getConnection();
 			
@@ -54,10 +57,14 @@ public class MainPageService {
 			//프로필의 몸무게 값 가져오기
 			weight = profileDao.getWeight(memberId, conn);
 			
+			//프로필 정보 가져오기
+			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
+			
 			ArrayList<CustomBoardListDto> list = new ArrayList<>();
 			list =customBoardListDao.getmainList(conn);
 			
-			main = new Main(favMap,calculationResult,list);
+			main = new Main(favMap,userProfile ,calculationResult,list);
+			main.setRecommendedIntake(weight);
 			return main;
 		}catch (SQLException e) {
 			

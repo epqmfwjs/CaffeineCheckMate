@@ -49,6 +49,7 @@ public class CalendarDao {
 						rs.getInt("CAL_DAILYCF"),
 						""
 						);
+				System.out.println("rs.next - date : "+date+" mid : "+memberId+" dailycf : "+rs.getInt("CAL_DAILYCF"));
 				return todaysCaffeine;
 			} else {
 				return null;
@@ -62,6 +63,7 @@ public class CalendarDao {
 	public void recordCaffeine(Date date, String memberId, int caffeine, String color, Connection conn) throws SQLException {
 		PreparedStatement pstmt =null;
 		String caffeineStr = caffeine+"";
+		System.out.println("recordCaffeine reuslt:"+caffeine+" memberId : "+memberId+" date : "+date);
 		try {
 			pstmt=conn.prepareStatement(
 					"update CALENDAR set CAL_DAILYCF=?, CAL_COLOR=?  where M_ID = ? and CAL_DATE=?");
