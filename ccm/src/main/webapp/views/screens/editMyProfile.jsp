@@ -29,6 +29,14 @@
             height: 300px;
             object-fit: cover;
         }
+        /* 이미지 미리보기 영역 */
+        .image-preview {
+            display: none;
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+            object-fit: cover;
+        }
     </style>    
 </head>
 <body>
@@ -36,9 +44,10 @@
         <h2 class="text-center">프로필 수정</h2>
         <form action="/editMyProfileUpdate.do" method="post" enctype="multipart/form-data"> <!-- 프로필 수정 처리 URL -->
 	        <c:if test="${not empty profile.userProfileDTO.p_IMG_COPY}">
-	       		<img src="/resources/profile/${profile.userProfileDTO.p_IMG_COPY}" class="profile-image" alt="프로필 이미지"> <!-- 프로필 사진 표시 -->
+	       		<img src="/resources/profile/${profile.userProfileDTO.p_IMG_COPY}" id="beforeImage" class="profile-image" alt="프로필 이미지"> <!-- 프로필 사진 표시 -->
 	        	<input type="hidden" value="${profile.userProfileDTO.p_IMG_COPY}" name="p_IMG_COPY">
 	        </c:if>
+            <img src="" alt="이미지 미리보기" id="profile-image" class="profile-image image-preview">
             <div class="form-group">
                 <label for="userid">아이디</label>
                 <input type="text" class="form-control" id="m_ID" name="m_ID" value="${profile.userProfileDTO.m_ID}" readonly>
@@ -74,11 +83,35 @@
     <!-- jQuery 이벤트로 파일 이름 표시 -->
 	<script>
 		$(document).ready(function() {
-  			$('#p_IMG_REAL').on('change', function() {
-                var fileName = $(this).val().split('\\').pop();  // 파일 이름 추출
-                $('#fileNameDisplay').val(fileName);  // 텍스트 영역에 파일 이름 표시
-                $('.custom-file-label').text(fileName);  // 커스텀 파일 라벨에 파일 이름 표시
-            });
+		    // 파일 선택 input 요소의 변경 이벤트를 감지합니다.
+		    $('#p_IMG_REAL').on('change', function() {
+		        
+		    	var file = this.files[0]; // 선택된 파일을 가져옵니다.
+		        
+		        if (file) {
+		            var reader = new FileReader(); // FileReader 객체를 초기화합니다.
+		            reader.onload = function(e) {
+		            	$('#beforeImage').css('display', 'none');
+		                // 이미지 미리보기로 선택된 이미지를 설정합니다.
+		                $('.image-preview').attr('src', e.target.result);
+		                // 이미지 미리보기를 표시합니다.
+		                $('.image-preview').css('display', 'block');
+		            }
+		            reader.readAsDataURL(file); // 선택된 파일을 Data URL로 읽어옵니다.
+		        
+		        } else {
+		            // 파일이 선택되지 않은 경우 이미지 미리보기를 지웁니다.
+		            $('.image-preview').attr('src', '');
+		            // 이미지 미리보기를 숨깁니다.
+		            $('.image-preview').css('display', 'none');
+		        }
+
+		        var fileName = $(this).val().split('\\').pop(); // 파일 이름을 추출합니다.
+		        // 텍스트 입력란에 파일 이름을 표시합니다.
+		        $('#fileNameDisplay').val(fileName);
+		        // 사용자 정의 파일 라벨에 파일 이름을 표시합니다.
+		        $('.custom-file-label').text(fileName);
+		    });
         });
     </script>
 </body>

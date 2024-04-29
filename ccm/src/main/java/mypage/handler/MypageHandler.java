@@ -16,7 +16,7 @@ import mypage.service.MypageService;
 
 public class MypageHandler extends HttpServlet implements CommandHandler {
    private static final long serialVersionUID = 1L;
-   public static final String FORM_INDEX = "/views/screens/index.jsp";
+   public static final String FORM_INDEX = "/views/screens/Main.jsp";
    public static final String FORM_MYPAGE = "/views/screens/Mypage.jsp";
    
    private MypageService mypageService = new MypageService();
