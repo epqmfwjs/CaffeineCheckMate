@@ -60,13 +60,10 @@ public class MainPageService {
 			//프로필 정보 가져오기
 			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
 			
-			//프로필 정보 가져오기
-			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
-			
 			ArrayList<CustomBoardListDto> list = new ArrayList<>();
 			list =customBoardListDao.getmainList(conn);
 			
-			main = new Main(favMap,userProfile ,calculationResult);
+			main = new Main(favMap,userProfile ,calculationResult,list);
 			main.setRecommendedIntake(weight);
 			return main;
 		}catch (SQLException e) {

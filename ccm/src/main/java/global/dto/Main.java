@@ -6,6 +6,7 @@ import java.util.HashMap;
  */
 
 import customRecipe.dto.CustomBoardListDto;
+import mypage.dto.UserProfileDTO;
 
 
 public class Main {
@@ -17,12 +18,14 @@ public class Main {
 	ArrayList<CustomBoardListDto> CustomBoardListDao;
 //	추천레시피 관련필드
 	
-	public Main(HashMap favMap, int  calculatedResult) { //수정필요
+	public Main(HashMap favMap, int  calculatedResult, ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
 		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
+		this.CustomBoardListDao = CustomBoardListDao;
 	}
-	public Main(HashMap favMap, int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
+	public Main(HashMap favMap, UserProfileDTO profile,int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
 		this.favorites = favMap;
+		this.userProfile = profile;
 		this.calculationResult = calculatedResult;
 		this.CustomBoardListDao = CustomBoardListDao;
 	}
