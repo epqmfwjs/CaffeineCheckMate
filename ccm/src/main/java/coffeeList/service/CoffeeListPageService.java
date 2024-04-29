@@ -64,11 +64,20 @@ public class CoffeeListPageService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
 	public CoffeeListPage searchCoffee(String searchType, String searchQuery, int page) throws SQLException {
-		try (Connection conn = ConnectionProvider.getConnection()) {
-			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 10);
-			int total = coffeeList.size();  // 검색 결과 수
-			return new CoffeeListPage(coffeeList, total, page, 10);
+		Connection conn = null;
+		try {
+			conn = ConnectionProvider.getConnection();
+			
+			ArrayList<Coffee> coffeeList = coffeeListDao.searchCoffees(conn, searchType, searchQuery, page, 12);
+			int total = 12;  // 미구현 현 12개 검색 - 검색 결과 수 쓰는 dao 추가 필요  
+			
+			CoffeeListPage coffeeListPage = new CoffeeListPage(coffeeList,total,page,12);
+			
+			return coffeeListPage;
+		}finally {
+			JdbcUtil.close(conn);
 		}
 	}
 	

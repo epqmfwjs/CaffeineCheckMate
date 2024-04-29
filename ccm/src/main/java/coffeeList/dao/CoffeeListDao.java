@@ -113,6 +113,7 @@ public class CoffeeListDao {
 	    }
 	    return searchResults;
 	}
+	// 검색된 커피의 총 수를 세는 DAO 메소드
 	
 	//커피 상세 내역 DAO
     public Coffee getCoffeeDetail(Connection conn, int coffeeNo) throws SQLException {

@@ -40,14 +40,14 @@
                     <div class="coffee-box">
                         <c:forEach var="coffeeV" items="${CoffeeListPage.coffeeList}" varStatus="status">
                             <!-- 모달 창 시작-->
-                            <div id="cdelete" class="coffeelist-modal">
-                                <span onclick="coffee_closeModal('cdelete')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
+                            <div id="${coffeeV.c_NO}" class="coffeelist-modal">
+                                <span onclick="coffee_closeModal('${coffeeV.c_NO}')" class="coffeelist-modalclosebtn" title="Close Modal">x</span>
                                 <form class="coffeelist-modalcontent" method="post" action="coffeeListDelete.do?coffeeNo=${coffeeV.c_NO}">
                                     <div class="coffeelist-modalcontainer">
                                         <h1>Delete Account</h1>
                                         <p>삭제된 게시물은 되돌릴 수 없습니다. 정말로 삭제하시겠습니까?</p>
                                         <div class="coffeelist-modalclearfix">
-                                            <input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('cdelete')" value="돌아가기"/>
+                                            <input class="coffeelist-modalcancelbtn" type="button" onclick="coffee_closeModal('${coffeeV.c_NO}')" value="돌아가기"/>
                                             <input class="coffeelist-modalOkbtn" type="submit" value="삭제하기"/>
                                         </div>
                                     </div>
@@ -55,15 +55,11 @@
                             </div>
                             <!-- 모달 창 끝-->     
                             <div class="coffeelist-container">
-                                <div class="coffeelist-item">
+                                <div class="coffeelist-item" value="C_NO=${coffeeV.c_NO}">
                                     <img class="coffeelist-item__img" src="${pageContext.request.contextPath}${coffeeV.c_IMG_COPY}" alt="${coffeeV.c_NAME} Image"/>
                                     <div class="coffeelist-item__name clickable">
                                         <a href="coffeeListDetail.do?coffeeNo=${coffeeV.c_NO}" onclick="window.open(this.href, '_blank', 'width=450, height=550 scrollbars=no'); return false;">${coffeeV.c_NAME}</a>
                                     </div>
-                                    
-                                    
-                                    
-                                    
                                     <!-- 회원만 조회할 수 있는 즐겨찾기 버튼 -->
                                     <div class="coffeelist-item__info">${coffeeV.c_BRAND}</div>
                                     <div class="coffeelist-item__btn-area">
@@ -71,7 +67,7 @@
                                             <a class="coffeelist-item__modify-btn clickable" href="coffeeListUpdateForm.do?coffeeNo=${coffeeV.c_NO}">
                                                 <button><i class="fa-solid fa-wrench clickable"></i></button>
                                             </a>
-                                            <button class="coffeelist-item__delete-btn clickable" onclick="coffee_openModal('cdelete')"><i class="fa-solid fa-trash"></i></button>
+                                            <button class="coffeelist-item__delete-btn clickable" onclick="coffee_openModal('${coffeeV.c_NO}')"><i class="fa-solid fa-trash"></i></button>
                                         </c:if>
                                         <c:if test="${not empty sessionScope.AUTH_USER_ID}">
                                             <button style="display: inline-block;" class="addFav-btn coffeelist-item__fav clickable">
