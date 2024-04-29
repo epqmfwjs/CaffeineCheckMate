@@ -1,3 +1,4 @@
+
 package mypage.handler;
 
 import java.io.File;
@@ -26,7 +27,7 @@ public class EditMyProfileUpdateHandler extends HttpServlet implements CommandHa
 	public static final String FORM_MYPAGE = "/mypage.do";
 	//본인의 파일업로드경로
 	//프로필폴더 우클릭 > 프로퍼리 > 로케이션복사 C:\Users\USER\git\CaffeineCheckMate\ccm\src\main\webapp\resources\profile
-	public static final String FILE_ROOT_PATH = "C:/Users/USER/git/CaffeineCheckMate/ccm/src/main/webapp/resources/profile";
+	public static final String FILE_ROOT_PATH = "/Users/jiny_dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ccm/resources/profile";
 	// 애플리케이션 루트 경로 얻기
 	//public static final String APP_ROOT = req.getServletContext().getRealPath("/");
 	

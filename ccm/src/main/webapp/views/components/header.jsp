@@ -19,9 +19,6 @@
 		</div>
 		<div class="header_col_3-to-4 nav-bar">
 			<div>
-				<a class="headerLinks clickable" onclick="location.href='/main.do'"><i class="fa-solid fa-house"></i></a>
-			</div>
-			<div>
 				<a class="headerLinks clickable" onclick="location.href='/coffeelist.do '">Product</a>
 			</div>
 			<div>
