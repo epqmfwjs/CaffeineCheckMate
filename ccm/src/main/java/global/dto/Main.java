@@ -1,22 +1,39 @@
 package global.dto;
+import java.util.ArrayList;
 import java.util.HashMap;
 /*
  * 로그인 페이지에 들어갈 요소 정리
  */
 
-import favorite.dto.Favorite;
+import customRecipe.dto.CustomBoardListDto;
+
 
 public class Main {
 	HashMap<Integer, Object> favorites;
 	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";
+	ArrayList<CustomBoardListDto> CustomBoardListDao;
 //	추천레시피 관련필드
 	
 	public Main(HashMap favMap, int  calculatedResult) { //수정필요
 		this.favorites = favMap;
 		this.calculationResult = calculatedResult;
 	}
+	public Main(HashMap favMap, int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
+		this.favorites = favMap;
+		this.calculationResult = calculatedResult;
+		this.CustomBoardListDao = CustomBoardListDao;
+	}
+	public ArrayList<CustomBoardListDto> getcustomBoardListDao() {
+		return CustomBoardListDao;
+	}
+	
+	
+	public void setCustomBoardListDao(ArrayList<CustomBoardListDto> customBoardListDao) {
+		CustomBoardListDao = customBoardListDao;
+	}
+
 	
 	public HashMap<Integer, Object> getfavorites() {
 		return favorites;
