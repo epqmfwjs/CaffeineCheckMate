@@ -42,8 +42,8 @@ function cusReplyList(cus_no) {
                     '<br>' +
                     '<tr>' +
                     '<td>' + cus_re_regdate + '&nbsp; &nbsp; &nbsp;</td>' +
-                    '<td><button onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">수정</button></td>' +
-                    '<td><button onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">삭제</button></td>' +
+                    '<td><button class="reply_bnt" onclick="updateReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">수정</button></td>' +
+                    '<td><button class="reply_bnt" onclick="deleteReply(' + cus_re_no + ')" style="display: ' + (m_id === m_id_db ? 'inline-block' : 'none') + '">삭제</button></td>' +
                     '</tr>' +
                     '<br>';
                     
