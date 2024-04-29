@@ -63,8 +63,7 @@ body {
     width: 100vw;
     transition: 0.5s;
     background: rgba(200, 200, 200, 0.3);
-    color: black;            
-    margin-top: 5vh;
+    color: black; 
 }
 
 @media screen and (max-width: 900px) {
@@ -174,7 +173,6 @@ footer{
 	text-align: center;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
-    margin: 1em;
 }
 
 @media screen and (max-width: 900px) {

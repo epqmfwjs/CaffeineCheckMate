@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -40,12 +39,12 @@
 			<c:choose>
 				<c:when test="${not empty sessionScope.AUTH_USER_ID}">
 					<div>
-						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/Logout" onclick="alert('로그아웃되었습니다.')" style="margin-left: 5vw; ">Logout</a>
+						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/Logout" onclick="alert('로그아웃되었습니다.')">Logout</a>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div>
-						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/views/screens/login.jsp" style="margin-left: 5vw; ">Login</a>
+						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/views/screens/login.jsp" >Login</a>
 					</div>
 				</c:otherwise>
 			</c:choose>

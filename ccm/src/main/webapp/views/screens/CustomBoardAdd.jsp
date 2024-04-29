@@ -12,7 +12,7 @@
 
 	<div class="add_left_content">
 		<label for="file">
-	    	<img id="preview" src="/resources/imgs/cusAdd.png" class="add_image_preview"><br>
+	    	<img id="preview" src="/resources/imgs/recipeDefault.png" class="add_image_preview"><br>
   			<!-- 	<div class="add_image_button">파일 업로드하기</div> -->
 		</label>
 	    <input type="file" name="file" id="file" onchange="previewImage()"><br/>

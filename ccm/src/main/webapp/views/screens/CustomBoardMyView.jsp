@@ -16,7 +16,7 @@
 
 <span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
-	<%@ include file="/views/components/header.jsp" %>
+	<jsp:include page="/views/components/header.jsp" />
 		
 	<div class="view_form">
 	    <form action="/views/screens/CustomBoardUpdate.jsp" method="post" id="updateform">
@@ -68,4 +68,5 @@
 </span>
 
 </body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> 
 </html>
