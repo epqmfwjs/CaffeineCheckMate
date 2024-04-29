@@ -113,6 +113,7 @@ public class CoffeeListDao {
 	    }
 	    return searchResults;
 	}
+	// 검색된 커피의 총 수를 세는 DAO 메소드
 	
 	//커피 상세 내역 DAO
     public Coffee getCoffeeDetail(Connection conn, int coffeeNo) throws SQLException {
@@ -202,6 +203,7 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
 	//게시물 삭제 관련 DAO
 	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
@@ -211,6 +213,22 @@ public class CoffeeListDao {
 		
 		try {
 			pstmt = conn.prepareStatement(listDeleteSQL);
+			pstmt.setInt(1, coffeeNo);
+			pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	//삭제 시 커피 즐겨찾기(fk)까지 추가로 삭제
+	public void deleteFavCoffee(int coffeeNo,Connection conn) throws SQLException {
+		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
+		String FavDeleteSQL = "DELETE FROM COFFEE_FAVORITE "+
+							  "WHERE C_NO = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(FavDeleteSQL);
 			pstmt.setInt(1, coffeeNo);
 			pstmt.executeUpdate();
 		} finally {
