@@ -12,7 +12,7 @@
 		jdbcdriver=com.mysql.cj.jdbc.Driver<!-- connector j 8버전 이후부터는 중간에 cj가 들어감 -->
 		jdbcUrl=jdbc:mysql://localhost:3306/ccm?characterEncoding=utf8<!-- db포트번호, 스키마이름 -->
 		dbUser=root<!-- 아이디 -->
-		dbPass=1234<!-- 비번 -->
+		dbPass=0805<!-- 비번 -->
 		validationQuery=select 1
 		minIdle=3
 		maxTotal=30

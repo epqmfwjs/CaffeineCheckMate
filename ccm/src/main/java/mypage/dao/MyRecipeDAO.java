@@ -21,7 +21,7 @@ public class MyRecipeDAO {
 		List<MyRecipeDTO> myrecipelist = new ArrayList<>();
 		//조인하기 (DTO-1개, DAO-1개)
 		try {
-			pstmt = conn.prepareStatement("SELECT custom.CUS_NO, custom.M_ID, custom.CUS_TITLE, custom_img.CUS_IMG_COPY FROM custom join custom_img on custom.CUS_NO = custom_img.CUS_NO where custom.M_ID=?"
+			pstmt = conn.prepareStatement("SELECT custom.CUS_NO, custom.M_ID, custom.CUS_TITLE, custom_img.CUS_IMG_COPY, custom.CUS_CONTENT, custom.CUS_REGDATE, custom.CUS_SUMGOOD FROM custom join custom_img on custom.CUS_NO = custom_img.CUS_NO where custom.M_ID=?"
 											);
 			pstmt.setString(1, memberid);
 			rs = pstmt.executeQuery();
@@ -30,7 +30,10 @@ public class MyRecipeDAO {
 						rs.getInt("CUS_NO"),
 						rs.getString("M_ID"),
 						rs.getString("CUS_TITLE"),
-						rs.getString("CUS_IMG_COPY")
+						rs.getString("CUS_IMG_COPY"),
+						rs.getString("CUS_CONTENT"),
+						rs.getString("CUS_REGDATE"),
+						rs.getString("CUS_SUMGOOD")
 						);
 				myrecipelist.add(myrecipe);
 			}

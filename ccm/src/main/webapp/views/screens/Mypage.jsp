@@ -45,7 +45,7 @@
 	                <div class="tonari">
 	                    <div class="hr-sect">내 프로필</div>
 	                    <form action="EditMyProfile.do">
-	                        <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 수정</a>
+	                        <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
 	                    </form>
 	                </div>
                 	<div>
@@ -98,8 +98,7 @@
 			                                	<a href="CustomBoardViewHandler.do?CUS_NUM=${myrecipe.CUS_NO}">
 	                                            	<img src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
 	                                              	<div class="cardTextBox">
-							                           	<p>&nbsp;&nbsp;${myrecipe.CUS_TITLE}<br/>
-							                           	<br/></p>
+							                           	<p>&nbsp;&nbsp;${myrecipe.CUS_TITLE}<br/><br/></p>
 							                        </div>
 	                                            </a>
 	                                		</div>
