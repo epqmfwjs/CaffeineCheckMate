@@ -47,13 +47,17 @@
 	                    <form action="EditMyProfile.do">
 	                        <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
 	                    </form>
+	                    <form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
+							<input type="hidden" value="edit" name="Value"/>
+							<input type="submit" value="정보수정"/>
+						</form>
 	                </div>
                 	<div>
                     	<!--이미지 div-->
                     	<div>
                         	<c:choose>
                             <c:when test="${not empty mypages.userProfileDTO.p_IMG_COPY}">
-                                   <img id="profileimg" width="300" height="300"  src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}">
+                                   <img id="profileimg" width="300" src="/resources/profile/${mypages.userProfileDTO.p_IMG_COPY}">
                              </c:when>
                              <c:otherwise>
                                    <td>등록된 프로필 이미지가 없습니다.</td>
@@ -96,7 +100,7 @@
 	                                    <c:forEach var="myrecipe" items="${mypages.myRecipeDTO}">
 			                                <div class="boardCard">
 			                                	<a href="CustomBoardViewHandler.do?CUS_NUM=${myrecipe.CUS_NO}">
-	                                            	<img src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
+	                                            	<img class=".cus_img" src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
 	                                              	<div class="cardTextBox">
 							                           	<p>&nbsp;&nbsp;${myrecipe.CUS_TITLE}<br/><br/></p>
 							                        </div>

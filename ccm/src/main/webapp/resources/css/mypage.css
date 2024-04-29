@@ -52,7 +52,7 @@
 }
 
 #id.profileimg {
-    property: new-value; /* 2.css에서 적용한 스타일을 무효화 */
+     width: 30vw;
 	  object-fit: cover;
 	  border-radius: 10px 10px 10px 10px;
 	  aspect-ratio: 3/3.5;
