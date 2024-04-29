@@ -19,7 +19,7 @@
 				비밀번호<br/><input type="password" name="identgyPw" id="deletePw" placeholder="비밀번호" required="required"/><br/>
 							<input type="hidden" value="delete" name="Value"/>
 						<br/><input type="submit" value="탈퇴"/>
-							<input type="button"  onclick="location.href='/views/screens/testView.jsp'" value="취소"/>
+							<input type="button"  onclick="location.href='/main.do'" value="취소"/>
 			</form>
 		<%}if(value.equals("edit")){%>
 			<form action="<%=request.getContextPath() %>/UpdateMemberHandler.do" method = "post" name="UpdateLogin" id="UpdateLogin">
@@ -28,7 +28,7 @@
 					비밀번호<br/><input type="password" name="identgyPw" id="updatePw" placeholder="비밀번호" required="required"/><br/>
 							<br/><input type ="hidden" value="MyselfCheck" name="Value">
 						<input type="submit" value="정보확인"/>
-						<input type="button"  onclick="location.href='/views/screens/testView.jsp'" value="취소"/>
+						<input type="button"  onclick="location.href='/main.do'" value="취소"/>
 			</form>
 		<%}if(value.equals("deleteCancel")){%>	
 			<form action="<%=request.getContextPath() %>/DeleteMemberHandler.do" method = "post" name="DeleteCancelLogin" id="DeleteCancelLogin">
@@ -37,7 +37,7 @@
 					비밀번호<br/><input type="password" name="identgyPw" id="deleteCancelPw" placeholder="비밀번호" required="required"/>
 								<input type="hidden" value="deleteCancel" name="Value"/><br/>
 						<br/><input type="submit" value="정보확인"/>
-							<input type="button"  onclick="location.href='/views/screens/testView.jsp'" value="취소"/>
+							<input type="button"  onclick="location.href='/main.do'" value="취소"/>
 			</form>
 		<%}%>
 		<%// 로그인 실패시 에러메세지 관련 부분

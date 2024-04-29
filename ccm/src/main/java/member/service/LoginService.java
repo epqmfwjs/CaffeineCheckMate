@@ -52,7 +52,6 @@ public class LoginService {
 				LocalDateTime localDateTime = dbTIME.toLocalDateTime(); // db에서 가져온 Timestamp 날짜를 LocalDateTime으로 변경한 값
 				// 7일 후의 날짜와 시간 구하기
 				LocalDateTime futureDateAndTime = localDateTime.plusDays(7);
-				
 				LocalDateTime localDateTime1 = futureDateAndTime;
 				DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a").withLocale(Locale.ENGLISH);;
 				String formattedDateTime = localDateTime1.format(dateTimeFormatter);
@@ -88,7 +87,7 @@ public class LoginService {
 					session.setAttribute("AUTH_USER_TEL", result.getDtoTEL());
 					session.setAttribute("AUTH_USER_GENDER", result.getDtoGENDER());
 					session.setAttribute("AUTH_USER_SNS", result.getDtoSNS());
-					returnPage = "/views/screens/testView.jsp";					
+					returnPage = "/main.do";					
 				}else {
 					session.setAttribute("errMSG", " 비밀번호가 일치하지않습니다.");
 					out.println("<script>alert('비밀번호를 확인해주세요.'); location.href='/views/screens/login.jsp';</script>");
