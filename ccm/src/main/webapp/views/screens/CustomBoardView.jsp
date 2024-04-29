@@ -20,7 +20,7 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
 
 <span class="wrapper" style="display: inline-block;">
 		<!-- 헤더 -->
-		<%@ include file="/views/components/header.jsp" %>
+		<jsp:include page="/views/components/header.jsp" />
 
 		<div class="view_form">
 			<c:forEach var="item" items="${list}">
@@ -111,4 +111,5 @@ String m_id = (String) sessionId.getAttribute("AUTH_USER_ID");
        });
    });
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.1/local-dev/main.min.css"> 
 </html>

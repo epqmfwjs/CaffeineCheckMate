@@ -32,13 +32,12 @@ public class CustomBoardListDao {
 				
 	            dto.setCUS_NUM(rs.getInt(1));
 	            dto.setCUS_NO(rs.getInt(2)); 
-	            dto.setm_id(rs.getString(3));
+	            dto.setm_id(boardnick(con, rs.getString(3)));
 	            dto.setc_no(rs.getString(4));
 	            dto.setcus_title(rs.getString(5));
 	            dto.setCUS_CONTENT(rs.getString(6));
 	            
 	            dto.setCUS_REGDATE(rs.getString(7));
-	            System.out.println(rs.getString(7));
 	            dto.setCUS_SUMGOOD(rs.getString(8));
 	            
 	            getimg(dto,con); 
@@ -81,7 +80,8 @@ public class CustomBoardListDao {
 				
 				dto.setCUS_NUM(rs.getInt(1));
 				dto.setCUS_NO(rs.getInt(2)); 
-				dto.setm_id(rs.getString(3));
+				dto.setm_id(boardnick(con, rs.getString(3)));
+				 
 				dto.setc_no(rs.getString(4));
 				dto.setcus_title(rs.getString(5));
 				dto.setCUS_CONTENT(rs.getString(6));
@@ -133,7 +133,9 @@ public class CustomBoardListDao {
 			
 			dto.setCUS_NUM(rs.getInt(1));
             dto.setCUS_NO(rs.getInt(2)); 
-            dto.setm_id(rs.getString(3));
+            
+        	dto.setm_id(boardnick(con, rs.getString(3)));
+            
             dto.setc_no(rs.getString(4));
             dto.setcus_title(rs.getString(5));
             dto.setCUS_CONTENT(rs.getString(6));
@@ -182,5 +184,26 @@ public ArrayList<CustomBoardListDto> viewhash(CustomBoardListDto dto,Connection 
 	    	return rs.getInt(1);
 	    }
 		return -1;
+	}
+	
+	
+	public String boardnick(Connection con,String m_id) throws SQLException {
+		 String sql = "select m_nickname from member where m_id=?";
+		 PreparedStatement pstm = con.prepareStatement(sql);
+		 pstm.setString(1, m_id);
+		 ResultSet rs = pstm.executeQuery();
+		 String nick=null;
+		 
+		 while(rs.next()) {
+			nick =rs.getString(1);
+			
+		}
+		 JdbcUtil.close(pstm);
+		 JdbcUtil.close(rs);
+		 if(nick==null) {
+			 nick = "비회원";
+		 }
+		return nick;
+		
 	}
 }
