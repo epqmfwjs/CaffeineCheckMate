@@ -20,12 +20,20 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 설정 */
 }
 
-/* 제목 스타일 */
-h1 {
-    color: #EF6C33;/*03c75a;  글자색 설정 */
-    margin-bottom: 20px; /* 하단 여백 설정 */
-    text-align: center; /* 가운데 정렬 */
+/* 로고 홈 */
+.logo{
+	position: relative;
+	width: 300px;
+	height: auto;
+	top: 30%;
+    left: 0%;
+	overflow: visible;
 }
+
+.logo:hover {
+    cursor: pointer;
+}
+
 
 /* 입력 필드 스타일 */
 input[type="text"], input[type="password"] {
