@@ -203,6 +203,7 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
 	//게시물 삭제 관련 DAO
 	public void deleteCoffee(int coffeeNo,Connection conn) throws SQLException {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
@@ -218,6 +219,7 @@ public class CoffeeListDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
 	//삭제 시 커피 즐겨찾기(fk)까지 추가로 삭제
 	public void deleteFavCoffee(int coffeeNo,Connection conn) throws SQLException {
 		//커피넘버를 매개변수로 받아서 SQL문 WHERE 절에 대입함
