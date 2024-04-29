@@ -69,6 +69,11 @@ function calc(cno) {
         dailyC.innerText = `${caffeine} mg`;
         bar.animate(parseInt(caffeine)/400);
     }
+
+    dailyC.classList.add("bold");
+    setTimeout(() => {
+        dailyC.classList.remove("bold");
+    }, 300);
 }
 
 //리셋
@@ -86,7 +91,7 @@ function resetCalc(event) {
             const rda = data.rda;
             const ratio = caffeine/rda;
             console.log("cf:",caffeine,"  rda:",rda,"  ratio:",ratio);
-            dailyC.innerText = caffeine;
+            dailyC.innerText = `${caffeine} mg`;
             bar.animate(ratio);
         })
         .catch(error => {
@@ -97,7 +102,10 @@ function resetCalc(event) {
         dailyC.innerText = `0 mg`;
         bar.animate(0);
     }
-
+    dailyC.classList.add("bold");
+    setTimeout(() => {
+        dailyC.classList.remove("bold");
+    }, 300);
 }
 
 //리셋버튼

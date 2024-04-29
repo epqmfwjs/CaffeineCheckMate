@@ -5,9 +5,11 @@ import java.util.HashMap;
  */
 
 import favorite.dto.Favorite;
+import mypage.dto.UserProfileDTO;
 
 public class Main {
 	HashMap<Integer, Object> favorites;
+	UserProfileDTO userProfile;
 	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";
@@ -15,6 +17,11 @@ public class Main {
 	
 	public Main(HashMap favMap, int  calculatedResult) { //수정필요
 		this.favorites = favMap;
+		this.calculationResult = calculatedResult;
+	}
+	public Main(HashMap favMap, UserProfileDTO userProfile, int  calculatedResult) { //수정필요
+		this.favorites = favMap;
+		this.userProfile = userProfile;
 		this.calculationResult = calculatedResult;
 	}
 	
@@ -41,5 +48,11 @@ public class Main {
 	}
 	public void setRecommendedIntake(double weight) {
 		this.recommendedIntake = weight*6.4;
+	}
+	public UserProfileDTO getUserProfile() {
+		return userProfile;
+	}
+	public void setUserProfile(UserProfileDTO userProfile) {
+		this.userProfile = userProfile;
 	}
 }
