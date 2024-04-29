@@ -14,17 +14,18 @@
 				<%String hidden = (String)session.getAttribute("code");
 				  String find = (String)session.getAttribute("find");
 				  System.out.println(find);
+				  System.out.println(hidden);
 				if(hidden != null){%>
 				<h3>이메일인증</h3>
 			<form action="/MailCheckHandler.do" name= "Mail2" id = "Mail2" method="post">
 			  <input type="text" name="input">
-					<%if (find.equals("findID")){ %>
+			  		<%if(find == null){ %>
+					<input type="hidden" value="emailCheck" name="hidden" >
+					<%}else if (find.equals("findID")){ %>
 					<input type="hidden" value="findID" name="hidden">
 					<%}else if(find.equals("findPW")){%>
 					<input type="hidden" value="findPW" name="hidden">
-					<%}else if(find.equals("mailCheck")){ %>
-					<input type="hidden" value="emailCheck" name="hidden" >
-					<%}%>	  
+	  				<%}%>
 			  <input type="submit" value="인증">
 			</form><% 
 					session.setAttribute("codeMail" , session.getAttribute("code"));
