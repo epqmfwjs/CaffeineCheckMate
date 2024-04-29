@@ -47,6 +47,7 @@
 	                    <form action="EditMyProfile.do">
 	                        <a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3">프로필 &nbsp수정</a>
 	                    </form>
+	                    &nbsp
 	                    <form action="<%=request.getContextPath() %>/views/screens/identify.jsp">
 							<input type="hidden" value="edit" name="Value"/>
 							<input type="submit" value="정보수정"/>
@@ -74,6 +75,8 @@
                             	<c:otherwise>
                               		<p>아이디 : ${mypages.userProfileDTO.m_ID}</p>
                                  	<p>닉네임 : ${mypages.userProfileDTO.m_NICKNAME}</p>
+                                 	<p>몸무게 : ${mypages.userProfileDTO.p_WEIGHT}</p>
+                                 	
                             	</c:otherwise>
                     		</c:choose>
                     	</div>
@@ -102,7 +105,10 @@
 			                                	<a href="CustomBoardViewHandler.do?CUS_NUM=${myrecipe.CUS_NO}">
 	                                            	<img class=".cus_img" src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
 	                                              	<div class="cardTextBox">
-							                           	<p>&nbsp;&nbsp;${myrecipe.CUS_TITLE}<br/><br/></p>
+							                           	<p>&nbsp;&nbsp;📌 ${myrecipe.CUS_TITLE}<br/><br/></p>
+							                           	<p>&nbsp;&nbsp;📆 ${myrecipe.CUS_REGDATE}<br/><br/></p>
+							                           	<p>&nbsp;&nbsp;👍 ${myrecipe.CUS_SUMGOOD}<br/><br/></p>
+							                           	
 							                        </div>
 	                                            </a>
 	                                		</div>
