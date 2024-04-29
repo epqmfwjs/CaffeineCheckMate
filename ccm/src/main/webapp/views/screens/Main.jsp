@@ -52,9 +52,13 @@
 			            </div>
 		            </c:when>
 	            <c:otherwise>
-		            <div class="main_profile__column1">
-		          	  <button class="main_profile__login-page-btn" onclick="window.location.href = '/views/screens/login.jsp';">로그인하러 가기</button>
-		            </div>
+		            <div>
+			            <div class="main_profile_login_box">
+			           		<div class="main_profile_login_text">로그인하여 자주 찾는 음료를 즐겨찾기 하고 </div>
+			           		<div class="main_profile_login_text">카페인 계산기를 통해 섭취량을 기록하세요!</div>
+			           	</div>
+			          	<button class="main_profile_login-page-btn" onclick="window.location.href = '/views/screens/login.jsp';">로그인하러 가기</button>
+			        </div>
 	            </c:otherwise>
 	            </c:choose>
 			</div>

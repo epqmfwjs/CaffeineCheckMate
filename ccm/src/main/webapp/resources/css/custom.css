@@ -90,7 +90,7 @@ button.dropdown {
 }
 
 button:hover {
-	background-color: rgb(239, 108, 51);
+	background-color: rgb(255, 146, 41);
 }
 
 .dropdown-options {
@@ -363,7 +363,7 @@ button:hover {
 }
 
 .update_button:hover {
-	background-color: rgb(239, 108, 51);
+	background-color: rgb(255, 146, 41);
 }
 
 .delete_button {

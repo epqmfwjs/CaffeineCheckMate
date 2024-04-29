@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+/*꾸밈 요소*/
+/*여기어때 잘난체*/
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* --글자--*/
 .hr-sect {
     display: flex;
@@ -49,7 +58,7 @@
   height: 10%;
 }
 .mypageh2 h2{
-	  font-family : "Jua", sans-serif;
+	 font-family: 'yg-jalnan', sans-serif;
 }
 
 /* div 가로로 정렬 */
@@ -97,7 +106,7 @@
 .item{
     border: 2px solid gray;
     padding: 20px;
-    font-family : "Jua", sans-serif;
+   font-family: 'yg-jalnan', sans-serif;
     font-size : larger;
 }
 .hr-sect__btn{
@@ -183,7 +192,7 @@
 
 /*글씨체*/
 .jua-regular {
-  font-family: "Jua", sans-serif;
+  font-family: 'yg-jalnan', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
