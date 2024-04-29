@@ -15,7 +15,7 @@
 
 	<header class="container">
 		<div class="header_col_1">
-			<img class="logo" src="/resources/imgs/logo.png" alt="logo"/>
+			<img class="logo" src="/resources/imgs/logo.png" alt="logo" onclick="window.location.href='main.do'"/>
 		</div>
 		<div class="header_col_3-to-4 nav-bar">
 			<div>
