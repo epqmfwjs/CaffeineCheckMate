@@ -15,9 +15,11 @@
     transform: translate(-50%, -50%);
     grid-template-columns: repeat(3 1fr);
 	grid-auto-rows: auto;
-	grid-gap: 6%;
+	grid-column-gap: 3%; 
+    grid-row-gap: 3%;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
 	height: 80%;
 }
 
@@ -51,22 +53,10 @@
 	height: 20vh;
 	justify-content: center;
 	align-items: center;
-	background: rgb(240, 240, 240);	
+	background: rgb(245, 245, 245);	
 	border-radius: 10px;
 }
 
-/*메인 상단 우측 박스*/
-.logo_box{
-	display: grid;
-	position: relative;
-	grid-template-columns: repeat(1 1fr);
-	width: 100%;
-	height: 20vh;
-	justify-content: center;
-	align-items: center;
-	background: rgb(240, 240, 240);	
-	border-radius: 10px;
-}
 
 /*calculator-favorites*/
 
@@ -75,7 +65,7 @@
 	display: flex;
 	position: relative;
 	width: 43.3vw;
-	height: 70%;
+	height: 80%;
 	justify-content: center;
 	align-items: center;
 	overflow-x: auto;
@@ -127,6 +117,52 @@
 	top: 10px;
 	z-index: 1;
 	z-index: 1;
+}
+
+
+/*메인 상단 우측 박스*/
+.main_profile{
+	display: grid;
+	position: relative;
+	grid-template-columns: repeat(1 1fr);
+	width: 100%;
+	height: 20vh;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	background: rgb(245, 245, 245);	
+}
+
+/*프로필 이미지 박스*/
+.main_profile__img_box{
+	grid-column: 1;
+	grid-row: 1;
+	width: 90%;
+	height: 70%;
+}
+.main_profile__img{
+	width: auto;
+	height: 12vh;
+	border-radius: 10px;
+	background: rgb(0, 0, 0);	
+}
+
+/*프로필 정보 및 버튼 박스*/
+.main_profile__nickname-box{
+	grid-column: 1;
+	grid-row: 2;
+	margin-top: 3%;
+	display: flex;
+    justify-content: space-between;
+}
+/*프로필 닉네임*/
+.main_profile__nickname{
+	font-family: 'yg-jalnan', sans-serif;
+	font-size: .9em;
+}
+/*프로필 수정 버튼*/
+.main_profile__btn{
+	text-align: right;
 }
 
 
@@ -185,7 +221,7 @@
 .boardCard {
 	height: 100%;
 	border-radius: 10px;
-	background: rgb(240, 240, 240);
+	background: rgb(245, 245, 245);
 }
 /*하이퍼링크 지워줌*/
 .boardCard a {

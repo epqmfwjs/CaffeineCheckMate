@@ -39,28 +39,25 @@
 			
 			<!-- 메인페이지 상단 우측 박스 -->
 			<div class="main_col_2_row1">
-				<div class="main_profile">
-					<c:choose>
-	                  <c:when test="${not empty sessionScope.AUTH_USER_ID}">
-	                     <div class="main_profile__column1">
-	                        <div class="main_profile__nickname-box">
-	                           <span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
-	                        </div>
-	                        <div class="main_profile__btn-box">
-	                           <button class="main_profile__btn">프로필 수정</button>
-	                        </div>
-	                     </div>
-	                     <div class="main_profile__column2">
-	                        <img class="main_profile__img" width="150px;"  height="150px" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/>
-	                     </div>
-	                  </c:when>
-	                  <c:otherwise>
-	                     <div class="main_profile__column1">
-	                        <button class="main_profile__login-page-btn" onclick="window.location.href = '/views/screens/identify.jsp';"></button>
-	                     </div>
-	                  </c:otherwise>
-	               </c:choose>
-				</div>
+			<div class="main_profile">
+				<c:choose>
+		            <c:when test="${not empty sessionScope.AUTH_USER_ID}">
+			            <div class="main_profile__img_box">
+			           		<img class="main_profile__img" src="/resources/profile/imsi_profile.jpg" alt=""/><!-- 임시로 만든 이미지 -->
+			           		<%-- <img class="main_profile__img" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/> --%>
+				        </div>
+			            <div class="main_profile__nickname-box">
+			            	<span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
+			            	<button class="main_profile__btn">수정</button>
+			            </div>
+		            </c:when>
+	            <c:otherwise>
+		            <div class="main_profile__column1">
+		          	  <button class="main_profile__login-page-btn" onclick="window.location.href = '/views/screens/login.jsp';">로그인하러 가기</button>
+		            </div>
+	            </c:otherwise>
+	            </c:choose>
+			</div>
 			</div>
 			
 			<!-- 메인페이지 하단 박스 카페인 정보 -->
