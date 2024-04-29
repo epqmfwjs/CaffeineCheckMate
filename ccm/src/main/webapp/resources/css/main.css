@@ -198,6 +198,7 @@
 	object-fit: cover;
 	border-radius: 10px 10px 0px 0px;
 	aspect-ratio: 3/3.3;
+	
 }
 #board .img {
 	max-height: 100%;
