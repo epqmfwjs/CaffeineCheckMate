@@ -28,6 +28,7 @@
 			<div class="main_col_1_row1">
 				<div class="fav_info_box">
 					<div class="fav-area">
+					<div class="fav-title"></div>
 					<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
 					<button class="fav-btn__togle-fav-del clickable">Remove</button>
 						<!--즐겨찾기 include 부분-->

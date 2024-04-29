@@ -15,8 +15,8 @@ function FavTitle({isAuth}){
     return(
         <>
             {isAuth? 
-            <div className="fav-title__title">Favorites</div> : 
-            <div className="fav-title__title">Populars</div>}
+            <div className="fav-title__title"></div> : 
+            <div className="fav-title__title"></div>}
         </>
     );
 }
