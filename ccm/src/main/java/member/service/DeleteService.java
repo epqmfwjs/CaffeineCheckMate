@@ -102,7 +102,7 @@ public class DeleteService {
 		}
 		if(returnPage.equals("false")) {
 			 session.setAttribute("errMSG", "아이디나 비밀번호가 일치하지않습니다.");
-			 out.println("<script>alert('입력정보오류3'); location.href='/views/screens/testView.jsp';</script>");
+			 out.println("<script>alert('입력정보오류3'); location.href='/views/screens/Main.jsp';</script>");
 			 out.flush();
 		}
 		return returnPage;

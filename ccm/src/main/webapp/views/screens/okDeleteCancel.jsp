@@ -53,7 +53,7 @@ form input[type="submit"]:hover, form input[type="button"]:hover {
 	<br/>
 	<h3>다시 정상적인 회원활동이 가능합니다.</h3>
 </div>
-		<form action="<%= request.getContextPath()%>/views/screens/testView.jsp" name="loginFrm" method="post">
+		<form action="<%= request.getContextPath()%>/views/screens/Main.jsp" name="loginFrm" method="post">
 			<input type="submit" value="홈으로" class="login-button"/>
 		</form>
 </body>

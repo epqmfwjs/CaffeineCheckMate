@@ -26,7 +26,7 @@
 </c:if>
 	
 	<c:if test="${result == 0}">
-		</br>${joinPut}는 사용가능한 아이디입니다.</br></br>
+		<br/>${joinPut}는 사용가능한 아이디입니다.<br/><br/>
 			<input type="button" value="사용" onclick="return idok('${joinPut}')">
 	</c:if>
 <script>

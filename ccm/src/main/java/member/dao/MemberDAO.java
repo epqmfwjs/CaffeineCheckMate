@@ -29,7 +29,7 @@ public class MemberDAO {
 
 	        int result = pstmt.executeUpdate();
 	        if (result == 1) {
-	            returnPage = "/views/screens/testView.jsp";
+	            returnPage = "/views/screens/Main.jsp";
 	            System.out.println("데이터 입력 완료!");
 	            conn.commit();
 	        } else {

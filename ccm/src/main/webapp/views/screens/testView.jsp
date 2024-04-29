@@ -69,6 +69,7 @@ input[type="button"]:hover, input[type="submit"]:hover {
 			<input type="hidden" value="edit" name="Value"/>
 			<input type="submit" value="정보수정"/>
 		</form>
+		<!-- <a href="<%=request.getContextPath() %>/views/screens/identify.jsp?Value=edit">정보수정</a> -->
 		<!-- 마이페이지 버튼 추가 -->
 		<form action="/mypage.do">
 			<input type="submit" value="My Page" />
@@ -79,6 +80,7 @@ input[type="button"]:hover, input[type="submit"]:hover {
 	<h1>임시 메인페이지</h1>
 		<form action="<%= request.getContextPath()%>/views/screens/login.jsp" name="loginFrm" method="post">
 			<input type="submit" value="로그인" class="login-button"/>
+			
 		</form>
 	</div>
 <%}%>
