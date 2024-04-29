@@ -17,7 +17,7 @@ public class Logout extends HttpServlet {
 	
 	HttpSession session = request.getSession(false);
 	session.invalidate();
-	response.sendRedirect("/views/screens/Main.jsp");
+	response.sendRedirect("/main.do");
 	
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

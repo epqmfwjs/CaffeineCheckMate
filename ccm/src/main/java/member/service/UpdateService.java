@@ -81,7 +81,7 @@ public class UpdateService {
 				}
 				result = "/views/screens/updateRequest.jsp";
 			}else {
-				result = "/views/screens/testView.jsp";
+				result = "/main.do";
 			}
 			return result;
 		}
@@ -112,7 +112,7 @@ public class UpdateService {
 						resultPage = "/views/screens/updateTEL.jsp";
 					}else {
 						session.setAttribute("editCANCEL", "editCANCEL");
-						resultPage = "/views/screens/testView.jsp";
+						resultPage = "/main.do";
 				}
 				return resultPage;
 		}
