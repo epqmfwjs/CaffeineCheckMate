@@ -67,6 +67,7 @@
 			<div class="main_col_1_row2">
 				<div class="caffeine_info_box">
 					<div class="caffeine_info_col1">
+						<div class="caffeine_title">카페인 계산기</div>
 							<div class="calc-area">
 							
 								<!--계산기 include 부분 -->
@@ -74,7 +75,7 @@
 							</div>
 					</div>
 					<div class="caffeine_info_col2">
-						<img src="/resources/imgs/caffeine_info.png" alt="caffeine_info_image" class="caffeine_info_image">
+						<img src="/resources/imgs/caffeine_info_mark4.png" alt="caffeine_info_image" class="caffeine_info_image">
 					</div>
 				</div>
 			</div>	
