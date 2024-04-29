@@ -39,7 +39,7 @@
 			
 			<!-- 메인페이지 상단 우측 박스 -->
 			<div class="main_col_2_row1">
-				<div class="logo_box">
+				<div class="main_profile">
 				</div>
 			</div>
 			

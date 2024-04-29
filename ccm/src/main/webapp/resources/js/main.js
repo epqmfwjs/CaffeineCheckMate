@@ -15,7 +15,7 @@ function FavTitle({isAuth}){
     return(
         <>
             {isAuth? 
-            <div className="fav-title__title"></div> : 
+            <div className="fav-title__title"></div> : /*위Favorites 아래Populars*/ 
             <div className="fav-title__title"></div>}
         </>
     );
