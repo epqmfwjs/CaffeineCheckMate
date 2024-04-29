@@ -39,10 +39,6 @@ public class LoginService {
 		String dbID = result.getDtoID();
 		String dbPW = result.getDtoPW();
 		String value = memberDTO.getDtoPRO();
-//		// D-day 계산
-//		long hoursUntilFutureDate = ChronoUnit.HOURS.between(localDateTime, futureDateAndTime);
-//		long minutesUntilFutureDate = ChronoUnit.MINUTES.between(localDateTime, futureDateAndTime);
-//		long secondsUntilFutureDate = ChronoUnit.SECONDS.between(localDateTime, futureDateAndTime);
 
 		boolean temp = false;
 			switch (value) {

@@ -26,7 +26,9 @@ public class MailCheckHandler implements CommandHandler {
 		System.out.println("두번째 모달창 " + request.getAttribute("inputCode"));
 		System.out.println("두번째 모달창 히든 " + request.getAttribute("inputEmail"));
 		String hidden = request.getParameter("hidden");
+		String emailCheck = (String)session.getAttribute("find");
 		System.out.println("히든값 "+hidden);
+		System.out.println("세션들어오는값  "+emailCheck);
 		switch (hidden) {
 		case "emailCheck" :
 			System.out.println("이메일 체크 푸쉬 "+session.getAttribute("codeMail"));
@@ -38,7 +40,10 @@ public class MailCheckHandler implements CommandHandler {
 			break;
 		case "emailinput" :
 			memberDTO = emailService.emailSend(inputEmail1,request,response);
+			//emailCheck.equals("emailCheck") ? session.setAttribute("find", emailCheck) : session.setAttribute("code", memberDTO.getDtoEMAIL());
+			//session.setAttribute("find", emailCheck);
 			session.setAttribute("code", memberDTO.getDtoEMAIL());
+			System.out.println("파라미터 파인드"+session.getAttribute("find"));
 			System.out.println(session.getAttribute("code"));
 			System.out.println("두번째 메일보낼때"+inputEmail1);
 			System.out.println("세번째 (세션)메일보낼때"+session.getAttribute("inputMail"));
