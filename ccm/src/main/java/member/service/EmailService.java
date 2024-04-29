@@ -53,7 +53,7 @@ public class EmailService {
 	props.put("mail.smtp.host", "smtp.gmail.com");
 	props.put("mail.smtp.port", "587"); //465, 587 구글포트번호
 	props.put("mail.smtp.auth", "true");
-	props.put("mail.smtp.ssl.protocols", "TLSv1.2");// 오류해결코드 버전관련??
+	props.put("mail.smtp.ssl.protocols", "TLSv1.2");//
 	// 추가 옵션
 	props.put("mail.smtp.quitwait", "false");
 	props.put("mail.smtp.socketFactory.port", "587");
