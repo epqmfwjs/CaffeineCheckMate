@@ -40,11 +40,13 @@
 				<c:when test="${not empty sessionScope.AUTH_USER_ID}">
 					<div>
 						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/Logout" onclick="alert('로그아웃되었습니다.')">Logout</a>
+						<!-- <a class="headerLinks clickable" onclick="location.href='/logout.do'" style="margin-left: 5vw; ">Logout</a> -->
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div>
 						<a class="headerLinks clickable" href="<%=request.getContextPath() %>/views/screens/login.jsp" >Login</a>
+						<!-- <a class="headerLinks clickable" onclick="location.href='/LoginHandler.do'" style="margin-left: 5vw; ">Login</a> -->
 					</div>
 				</c:otherwise>
 			</c:choose>

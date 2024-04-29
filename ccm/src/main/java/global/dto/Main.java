@@ -23,6 +23,7 @@ public class Main {
 		this.calculationResult = calculatedResult;
 		this.CustomBoardListDao = CustomBoardListDao;
 	}
+
 	public Main(HashMap favMap, UserProfileDTO profile,int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
 		this.favorites = favMap;
 		this.userProfile = profile;

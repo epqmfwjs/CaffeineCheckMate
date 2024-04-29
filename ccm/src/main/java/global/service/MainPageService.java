@@ -28,7 +28,9 @@ public class MainPageService {
 	ProfileDao profileDao = new ProfileDao();
 	CoffeeListDao coffeeListdao = new CoffeeListDao();
 	CustomBoardListDao customBoardListDao = new CustomBoardListDao();
+
 	UserProfileDAO userProfileDao = new UserProfileDAO();
+
 	
 	public Main showAuthedMain(String memberId) {
 		Connection conn = null;
@@ -57,14 +59,14 @@ public class MainPageService {
 			//프로필의 몸무게 값 가져오기
 			weight = profileDao.getWeight(memberId, conn);
 			
-			//프로필 정보 가져오기
-			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
-			
 			ArrayList<CustomBoardListDto> list = new ArrayList<>();
 			list =customBoardListDao.getmainList(conn);
-			
+
+			//프로필 정보 가져오기
+			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
 			main = new Main(favMap,userProfile ,calculationResult,list);
 			main.setRecommendedIntake(weight);
+
 			return main;
 		}catch (SQLException e) {
 			
