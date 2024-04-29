@@ -133,12 +133,12 @@ button:hover {
 	overflow: auto;
 	width: auto;
 	height: 65vh;
-	padding: 0 5%;
 }
 
-.cus-box::-webkit-scrollbar {
-	width: 0px;
-}
+/* .cus-box::-webkit-scrollbar {
+    width: 0px;
+} */
+
 /*---------- 게시글 목록 ----------*/
 #board {
 	display: grid;
