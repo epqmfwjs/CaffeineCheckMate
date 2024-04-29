@@ -55,12 +55,14 @@ a:visited{
 }
 
 
+body,html{
+   height:100%;
+   width:100%
+}
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    width: 100vw;
     transition: 0.5s;
     background: rgba(200, 200, 200, 0.3);
     color: black; 
