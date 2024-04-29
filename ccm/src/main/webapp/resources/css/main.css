@@ -236,3 +236,9 @@
 	from { opacity:.4}
 	to {opacity: 1}
 }
+
+
+.text-reaction {
+    font-size: 16px; 
+    transition: font-size 0.3s ease;
+}
