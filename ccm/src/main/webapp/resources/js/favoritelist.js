@@ -13,7 +13,7 @@ if (isAuth){
                 <div key={key} className="fp-item" id="fi_1" value={"C_NO="+fav[key]["C_NO"]}>
                     <div className="fp-item__box clickable" onClick={hasCalc? doCalc:null}>
                         <img className="fp-item__img clickable" src={fav[key]["C_IMAGE"]}/>
-                        <div className="fp-item__info clickable">{fav[key]["C_NAME"]}</div>
+                        <div className="fp-item__info clickable textlenth">{fav[key]["C_NAME"]}</div>
                     </div>
                     <button className="fp-item__delete-btn clickable" onClick={deleteFavItem}>
                     <i className="fa-solid fa-minus"></i>  
