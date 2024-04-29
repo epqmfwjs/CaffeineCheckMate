@@ -39,7 +39,27 @@
 			
 			<!-- 메인페이지 상단 우측 박스 -->
 			<div class="main_col_2_row1">
-				<div class="main_profile" >
+				<div class="main_profile">
+					<c:choose>
+	                  <c:when test="${not empty sessionScope.AUTH_USER_ID}">
+	                     <div class="main_profile__column1">
+	                        <div class="main_profile__nickname-box">
+	                           <span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
+	                        </div>
+	                        <div class="main_profile__btn-box">
+	                           <button class="main_profile__btn">프로필 수정</button>
+	                        </div>
+	                     </div>
+	                     <div class="main_profile__column2">
+	                        <img class="main_profile__img" width="150px;"  height="150px" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/>
+	                     </div>
+	                  </c:when>
+	                  <c:otherwise>
+	                     <div class="main_profile__column1">
+	                        <button class="main_profile__login-page-btn" onclick="window.location.href = '/views/screens/identify.jsp';"></button>
+	                     </div>
+	                  </c:otherwise>
+	               </c:choose>
 				</div>
 			</div>
 			
@@ -106,6 +126,14 @@
 	const isAuth = "${isAuth}"==="true"? true : false;
 	const hasCoffees = false;
     const hasCalc = true;
+</script>
+
+<script>
+//프로필수정.do
+const editProfileBtn = document.querySelector(".main_profile__btn");
+editProfileBtn.addEventListener("click", function(){
+    window.location.href = '/editMyProfilePageMove.do';
+})
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>

@@ -11,7 +11,7 @@ import mypage.dto.UserProfileDTO;
 
 public class Main {
 	HashMap<Integer, Object> favorites;
-	UserProfileDTO userProfile;
+	UserProfileDTO userProfileDTO;
 	int calculationResult=0;
 	double recommendedIntake =400;
 	String color = "#BFFE01";
@@ -26,7 +26,7 @@ public class Main {
 
 	public Main(HashMap favMap, UserProfileDTO profile,int  calculatedResult,ArrayList<CustomBoardListDto> CustomBoardListDao) { //수정필요
 		this.favorites = favMap;
-		this.userProfile = profile;
+		this.userProfileDTO = profile;
 		this.calculationResult = calculatedResult;
 		this.CustomBoardListDao = CustomBoardListDao;
 	}
@@ -64,10 +64,10 @@ public class Main {
 	public void setRecommendedIntake(double weight) {
 		this.recommendedIntake = weight*6.4;
 	}
-	public UserProfileDTO getUserProfile() {
-		return userProfile;
+	public UserProfileDTO getUserProfileDTO() {
+		return userProfileDTO;
 	}
-	public void setUserProfile(UserProfileDTO userProfile) {
-		this.userProfile = userProfile;
+	public void setUserProfileDTO(UserProfileDTO userProfile) {
+		this.userProfileDTO = userProfile;
 	}
 }
