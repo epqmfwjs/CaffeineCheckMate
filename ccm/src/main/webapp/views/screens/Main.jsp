@@ -24,33 +24,37 @@
 		<jsp:include page="/views/components/header.jsp" />
 		<div class="main_container">
 		
-			<!-- 메인페이지 상단 박스 -->
+			<!-- 메인페이지 상단 좌측 박스 -->
 			<div class="main_col_1_row1">
-				<div class="main_top_box">
-							<div class="fav-area">
-							<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
-							<button class="fav-btn__togle-fav-del clickable">Remove</button>
-								<!--즐겨찾기 include 부분-->
-								<jsp:include page="/views/components/favorites.jsp"></jsp:include>
-							</div>
+				<div class="fav_info_box">
+					<div class="fav-area">
+					<button class="fav-btn__go-coffeelist clickable"><i class="fa-solid fa-plus"></i></button>
+					<button class="fav-btn__togle-fav-del clickable">Remove</button>
+						<!--즐겨찾기 include 부분-->
+						<jsp:include page="/views/components/favorites.jsp"></jsp:include>
+					</div>
 				</div>
 			</div>
 			
-			<!-- 카페인 정보 -->
+			<!-- 메인페이지 상단 우측 박스 -->
+			<div class="main_col_2_row1">
+				<div class="logo_box">
+				</div>
+			</div>
+			
+			<!-- 메인페이지 하단 박스 카페인 정보 -->
 			<div class="main_col_1_row2">
 				<div class="caffeine_info_box">
-				
 					<div class="caffeine_info_col1">
 							<div class="calc-area">
+							
 								<!--계산기 include 부분 -->
 								<jsp:include page="/views/components/calculator.jsp"></jsp:include>
 							</div>
 					</div>
-					
 					<div class="caffeine_info_col2">
 						<img src="/resources/imgs/caffeine_info.png" alt="caffeine_info_image" class="caffeine_info_image">
 					</div>
-					
 				</div>
 			</div>	
 			
