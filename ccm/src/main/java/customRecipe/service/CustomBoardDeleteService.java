@@ -6,16 +6,6 @@ import connection.ConnectionProvider;
 import customRecipe.dao.CustomBoardDelDao;
 import jdbc.JdbcUtil;
 
-/*
- *  삭제해야 되는것
- *  - 게시글
- *  - 이미지
- *  - 댓글
- *  - 해시태그
- * 
- * delete from ? where CUS_NO = ?
- * 
- */
 
 public class CustomBoardDeleteService {
 	

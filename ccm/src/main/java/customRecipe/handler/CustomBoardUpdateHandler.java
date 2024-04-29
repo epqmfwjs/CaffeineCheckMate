@@ -12,7 +12,8 @@ public class CustomBoardUpdateHandler implements CommandHandler {
 		CustomBoardUpdateService service = new CustomBoardUpdateService();
 		service.boardUpdate(req, res);
 		
+		res.sendRedirect(req.getContextPath() + "/CustomBoardListHandler.do");
 		
-		return "/CustomBoardListHandler.do";
+		return null;
 	}
 }

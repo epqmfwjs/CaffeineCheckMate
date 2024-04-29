@@ -3,14 +3,16 @@ package global.service;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import calendar.dao.CalendarDao;
 import calendar.dto.Calendar;
 import coffeeList.dao.CoffeeListDao;
 import coffeeList.dto.Coffee;
 import connection.ConnectionProvider;
+import customRecipe.dao.CustomBoardListDao;
+import customRecipe.dto.CustomBoardListDto;
 import favorite.dao.FavoriteDao;
 import favorite.dto.Favorite;
 import global.dto.Main;
@@ -25,6 +27,7 @@ public class MainPageService {
 	CalendarDao calendarDao = new CalendarDao();
 	ProfileDao profileDao = new ProfileDao();
 	CoffeeListDao coffeeListdao = new CoffeeListDao();
+	CustomBoardListDao customBoardListDao = new CustomBoardListDao();
 	UserProfileDAO userProfileDao = new UserProfileDAO();
 	
 	public Main showAuthedMain(String memberId) {
@@ -57,6 +60,11 @@ public class MainPageService {
 			//프로필 정보 가져오기
 			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
 			
+			//프로필 정보 가져오기
+			UserProfileDTO userProfile = userProfileDao.ShowMyPF(memberId, conn);
+			
+			ArrayList<CustomBoardListDto> list = new ArrayList<>();
+			list =customBoardListDao.getmainList(conn);
 			
 			main = new Main(favMap,userProfile ,calculationResult);
 			main.setRecommendedIntake(weight);
@@ -77,8 +85,9 @@ public class MainPageService {
 			//커피리스트 즐겨찾기 많은 순 상위 5개
 			coffeeFavMap = coffeeListdao.getCoffeesByFav(conn);
 			System.out.println("main service : "+coffeeFavMap.size());
-			
-			main = new Main(coffeeFavMap, 0);
+			ArrayList<CustomBoardListDto> list = new ArrayList<>();
+			list =customBoardListDao.getmainList(conn);
+			main = new Main(coffeeFavMap,0,list);
 			return main;
 		}catch (SQLException e) {
 			

@@ -1,4 +1,7 @@
-// jsp에서 받은 게시판 번호 추출 정수로 변환
+/**
+ * 
+ */
+//jsp에서 받은 게시판 번호 추출 정수로 변환
 var cus_no = parseInt(document.getElementById("cus_no_hidden").value);
 var m_id = document.getElementById("m_id_hidden").value;
 
@@ -6,7 +9,7 @@ var autoRefresh;
 
 //시작시 목록 조회 
 $(document).ready(function() {
-    cusReplyList(cus_no); // 페이지가 로드될 때 케시글 목록을 불러옴
+    cusReplyList(cus_no); //페이지가 로드될 때 케시글 목록을 불러옴
 });
 
 
@@ -69,9 +72,9 @@ function insertReply(){
    }), $(function(){
     autoRefresh = setInterval(function() {
         cusReplyList(cus_no);
-    }, 1000);
+    }, 1000); //목록 갱신 시작
     });
-    clearInterval(autoRefresh); // 갱신 함수 중지
+    clearInterval(autoRefresh); //갱신 함수 중지
 }
 
 /*댓글 수정 버튼 작동*/
@@ -82,10 +85,10 @@ function updateReply(cus_re_no) {
     $("#saveBtn").attr("data-cus-re-no", cus_re_no);
     $(function(){
     autoRefresh = setInterval(function() {
-        cusReplyList(cus_no);
+        cusReplyList(cus_no); //목록 갱신 시작
     }, 1000);
     });
-    clearInterval(autoRefresh); // 갱신 함수 중지
+    clearInterval(autoRefresh); //갱신 함수 중지
 }
 
 
@@ -111,10 +114,11 @@ function deleteReply(cus_re_no) {
         data: {cus_re_no: cus_re_no},
         type: "POST",
         dataType: "json",
-  }), $(function(){
-    autoRefresh = setInterval(function() {
-        cusReplyList(cus_no);
-    }, 1000);
+    }), $(function(){
+        autoRefresh = setInterval(function() {
+            cusReplyList(cus_no);
+        }, 1000); //목록 갱신 시작
     });
-    clearInterval(autoRefresh); // 갱신 함수 중지
+    clearInterval(autoRefresh); //갱신 함수 중지
 }
+
