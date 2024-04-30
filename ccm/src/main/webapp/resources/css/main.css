@@ -234,7 +234,7 @@
 .calc-area {
 	display: flex;
 	width: 20vw; 
-    height: 34vh;
+	height: calc(10vw * 1.75);
 	margin: 3% 10% 5% 0%;
 	border-radius: 10px;
 	background: rgb(12, 74, 96);
