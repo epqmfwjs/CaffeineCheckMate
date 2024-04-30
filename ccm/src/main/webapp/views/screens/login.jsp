@@ -67,7 +67,7 @@
 </script>
 
 	<form action="<%=request.getContextPath() %>/LoginHandler.do" method = "post" name="loginForm" id="loginForm">
-				<h1>Login</h1>
+			<img class="logo" src="/resources/imgs/logo.png" alt="logo" onclick="window.location.href='/main.do'"/>
 			<br/>
 			<div class="icon-input-container">
 			<img src="/resources/imgs/id.png" alt="id" width="20" height="20">

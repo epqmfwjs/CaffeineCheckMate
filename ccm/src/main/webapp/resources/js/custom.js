@@ -28,6 +28,33 @@ $(document).ready(function() {
    });
 });
 
+
+var userDataElement = document.getElementById('userData');
+var userId = userDataElement.dataset.userId;
+
+
+$(document).ready(function() {
+    $(".button_add").click(function(event){
+	console.log("User ID:", userId);
+        if(!userId){
+            alert("로그인 후 진행해주세요.");
+            event.preventDefault(); // 클릭 이벤트의 기본 동작을 중지
+            location.href = "/views/screens/login.jsp"; // 로그인 페이지로 이동
+        }
+    });
+});
+
+$(document).ready(function() {
+    $(".add_submit").click(function(event){
+        if(!userId){
+            alert("로그인 후 진행해주세요. 꼼수 ㄴㄴ");
+            event.preventDefault(); // 클릭 이벤트의 기본 동작을 중지
+            location.href = "/views/screens/login.jsp"; // 로그인 페이지로 이동
+        }
+    });
+});
+
+
 $(document).ready(function() {
    $("#searchInput").focus(function() {
       $(this).removeAttr('placeholder');
@@ -37,6 +64,8 @@ $(document).ready(function() {
       $(this).attr('placeholder', 'Search');
    });
 });
+
+
 
 /*$(document).ready(function() {
    $.ajax({
@@ -79,66 +108,61 @@ $(document).ready(function() {
    let topping = 'null';
    let decaf = 'null';
 
-    $(".dropdown").click(function(){
-         let Dropdowns = $(this).next(".dropdown-options");
-         $(".dropdown-options").not(Dropdowns).slideUp();
-         Dropdowns.slideToggle();
-          });
+	 $(".dropdown").click(function(){
+			let Dropdowns = $(this).next(".dropdown-options");
+			$(".dropdown-options").not(Dropdowns).slideUp();
+			Dropdowns.slideToggle();
+		    });
 
-   $("#shotButton + .dropdown-options li").click(function() {
-      shot = $(this).attr("id");
-      let selectedText = $(this).text();
-      $("#shotButton").text(selectedText);
-      $("#shotButton").next(".dropdown-options").slideToggle();
-      console.log("선택된 샷:", shot);
-      sendData();
-   });
-   $("#milkButton + .dropdown-options li").click(function() {
-      milk = $(this).attr("id");
-      let selectedText = $(this).text();
-      $("#milkButton").text(selectedText);
-      $("#milkButton").next(".dropdown-options").slideToggle();
-      console.log("선택된 우유:", milk);
-      sendData();
-   });
+	$("#shotButton + .dropdown-options li").click(function() {
+		shot = $(this).attr("id");
+		let selectedText = $(this).text();
+		$("#shotButton").text(selectedText);
+		$("#shotButton").next(".dropdown-options").slideToggle();
+		sendData();
+	});
+	$("#milkButton + .dropdown-options li").click(function() {
+		milk = $(this).attr("id");
+		let selectedText = $(this).text();
+		$("#milkButton").text(selectedText);
+		$("#milkButton").next(".dropdown-options").slideToggle();
+		sendData();
+	});
 
-   $("#syrupButton +.dropdown-options li").click(function() {
-      syrup = $(this).attr("id");
-      $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
-      $(this).closest(".dropdown-options").slideToggle();
-      console.log("선택된 시럽:", syrup);
-      sendData();
-   });
+	$("#syrupButton +.dropdown-options li").click(function() {
+		syrup = $(this).attr("id");
+		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		$(this).closest(".dropdown-options").slideToggle();
+		sendData();
+	});
 
-   $("#toppingButton +.dropdown-options li").click(function() {
-      topping = $(this).attr("id");
-      $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
-      $(this).closest(".dropdown-options").slideToggle();
-      console.log("선택된 토핑:", topping);
-      sendData();
-   });
+	$("#toppingButton +.dropdown-options li").click(function() {
+		topping = $(this).attr("id");
+		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		$(this).closest(".dropdown-options").slideToggle();
+		sendData();
+	});
 
-   $("#decafButton +.dropdown-options li").click(function() {
-      decaf = $(this).attr("id");
-      $(this).closest(".divdropdown").find(".dropdown").text($(this).text());
-      $(this).closest(".dropdown-options").slideToggle();
-      console.log("선택된 디카페인:", decaf);
-      sendData();
-   });
+	$("#decafButton +.dropdown-options li").click(function() {
+		decaf = $(this).attr("id");
+		$(this).closest(".divdropdown").find(".dropdown").text($(this).text());
+		$(this).closest(".dropdown-options").slideToggle();
+		sendData();
+	});
 
-   function sendData() {
-      $.ajax({
-         url: '/CustomBoardTag.do',
-         type: 'get',
-         data: {
-            "shot": shot,
-            "milk": milk,
-            "syrup": syrup,
-            "topping": topping,
-            "decaf": decaf
-         },
-         datatype: "json",
-         success: function(data) {
+	function sendData() {
+		$.ajax({
+			url: '/CustomBoardTag.do',
+			type: 'get',
+			data: {
+				"shot": shot,
+				"milk": milk,
+				"syrup": syrup,
+				"topping": topping,
+				"decaf": decaf
+			},
+			datatype: "json",
+			success: function(data) {
 
             $("#board").empty();
             searchlist(data);
@@ -313,19 +337,15 @@ function showCustomModal(pageURL) {
 }
 
 // 모달을 닫는 함수
-function closeModal() {
-   var modal = document.getElementById("modal");
-   modal.style.display = "none";
-}
 
 $(document).ready(function(){
-       $(document).keydown(function(event) {
-           if (event.which === 27) {
-              closeModal();
-           }
-       });
-   });
-   
+	    $(document).keydown(function(event) {
+	        if (event.which === 27) {
+	        	closeModal();
+	        }
+	    });
+	});
+	
 function closeModal() {
    var modal = document.getElementById("modal");
    modal.style.display = "none";

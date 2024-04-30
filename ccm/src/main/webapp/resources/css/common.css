@@ -55,12 +55,14 @@ a:visited{
 }
 
 
+body,html{
+   height:100%;
+   width:100%
+}
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    width: 100vw;
     transition: 0.5s;
     background: rgba(225, 221, 219, 1);
     color: black; 
@@ -128,6 +130,10 @@ header{
 }
 /*-----------------------------------------------------*/
 
+.header_col_1 {
+    grid-column: 1;
+} 
+
 .header_col_1-to-2 {
     grid-column: 1 / span 2;
 } 
@@ -143,13 +149,26 @@ header{
 	text-decoration: none;
 	color: black;
 	font-weight: bold;
-	margin: 1vw;
+	margin: 1vh;
 }
 
 .headerLinks:hover {
 	color: rgb(239, 108, 51);
 	font-weight: bold;
-	font-size: 1em;
+}
+
+.logo{
+	position: absolute;
+	width: 130px;
+	height: auto;
+	top: 5.5%;
+    left: 13.8%;
+	overflow: visible;
+	z-index: 1;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 /*------------------------------------------------------*/

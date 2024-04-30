@@ -39,14 +39,35 @@
 			
 			<!-- 메인페이지 상단 우측 박스 -->
 			<div class="main_col_2_row1">
-				<div class="main_profile">
-				</div>
+			<div class="main_profile">
+				<c:choose>
+		            <c:when test="${not empty sessionScope.AUTH_USER_ID}">
+			            <div class="main_profile__img_box">
+			           		<img class="main_profile__img" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/>
+				        </div>
+			            <div class="main_profile__nickname-box">
+			            	<span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
+			            	<button class="main_profile__btn">수정</button>
+			            </div>
+		            </c:when>
+	            <c:otherwise>
+		            <div>
+			            <div class="main_profile_login_box">
+			           		<div class="main_profile_login_text">로그인하여 자주 찾는 음료를 즐겨찾기 하고 </div>
+			           		<div class="main_profile_login_text">카페인 계산기를 통해 섭취량을 기록하세요!</div>
+			           	</div>
+			          	<button class="main_profile_login-page-btn" onclick="window.location.href = '/views/screens/login.jsp';">로그인하러 가기</button>
+			        </div>
+	            </c:otherwise>
+	            </c:choose>
+			</div>
 			</div>
 			
 			<!-- 메인페이지 하단 박스 카페인 정보 -->
 			<div class="main_col_1_row2">
 				<div class="caffeine_info_box">
 					<div class="caffeine_info_col1">
+						<div class="caffeine_title">카페인 계산기</div>
 							<div class="calc-area">
 							
 								<!--계산기 include 부분 -->
@@ -54,7 +75,7 @@
 							</div>
 					</div>
 					<div class="caffeine_info_col2">
-						<img src="/resources/imgs/caffeine_info.png" alt="caffeine_info_image" class="caffeine_info_image">
+						<img src="/resources/imgs/caffeine_info_mark4.png" alt="caffeine_info_image" class="caffeine_info_image">
 					</div>
 				</div>
 			</div>	
@@ -106,6 +127,14 @@
 	const isAuth = "${isAuth}"==="true"? true : false;
 	const hasCoffees = false;
     const hasCalc = true;
+</script>
+
+<script>
+//프로필수정.do
+const editProfileBtn = document.querySelector(".main_profile__btn");
+editProfileBtn.addEventListener("click", function(){
+    window.location.href = '/editMyProfilePageMove.do';
+})
 </script>
 
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
