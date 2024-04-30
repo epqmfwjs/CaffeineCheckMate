@@ -43,8 +43,7 @@
 				<c:choose>
 		            <c:when test="${not empty sessionScope.AUTH_USER_ID}">
 			            <div class="main_profile__img_box">
-			           		<img class="main_profile__img" src="/resources/profile/imsi_profile.jpg" alt=""/><!-- 임시로 만든 이미지 -->
-			           		<%-- <img class="main_profile__img" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/> --%>
+			           		<img class="main_profile__img" src="/resources/profile/${main.userProfileDTO.p_IMG_COPY}" alt=""/>
 				        </div>
 			            <div class="main_profile__nickname-box">
 			            	<span class="main_profile__nickname">닉네임 : ${main.userProfileDTO.m_NICKNAME}</span>
