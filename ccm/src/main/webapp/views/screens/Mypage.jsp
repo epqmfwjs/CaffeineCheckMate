@@ -31,9 +31,10 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
 </head>
 	<body>
-	    <div class="wrapper mypage-wrapper" style="display: inline-block;">
+	<div class="wrapper">
 			<!-- 헤더 -->
 			<jsp:include page="/views/components/header.jsp" />
+	    <div class="mypage-wrapper" style="display: inline-block;">
 			<!-- 첫번째줄(프로필+캘린더) div -->
 			<div class="mypageh2">
 				<h2>MYPAGE</h2>
@@ -43,12 +44,12 @@
 	                <div class="profilebox__1">
 	                    <div class="hr-sect ">내 프로필</div>
 						<div class="hr-sect__2">
-							<form class="hr-sect__btn" action="EditMyProfile.do">
-								<a href="/editMyProfilePageMove.do" class="btn btn-primary mb-3 hr-sect__btn-btn clickable">프로필 &nbsp수정</a>
+							<form class="hr-sect__btn" action="/editMyProfilePageMove.do">
+							    <button type="submit" class="btn btn-primary mb-3 hr-sect__btn-btn clickable">프로필 수정</button>
 							</form>
-							<form  class="hr-sect__btn" action="<%=request.getContextPath() %>/views/screens/identify.jsp">
-								<input type="hidden" value="edit" name="Value"/>
-								<input class="hr-sect__btn-btn clickable" type="submit" value="정보수정"/>
+							<form class="hr-sect__btn" action="<%=request.getContextPath() %>/views/screens/identify.jsp">
+							    <input type="hidden" value="edit" name="Value"/>
+							    <button type="submit" class="btn btn-primary mb-3 hr-sect__btn-btn clickable">정보 수정</button>
 							</form>
 						</div>
 	                </div>
@@ -103,9 +104,9 @@
 			                                	<a href="CustomBoardViewHandler.do?CUS_NUM=${myrecipe.CUS_NO}">
 	                                            	<img class="cus_img" src="upload/${myrecipe.CUS_IMG_COPY}"alt="Image">
 	                                              	<div class="cardTextBox">
-							                           	<p>&nbsp;&nbsp;📌 ${myrecipe.CUS_TITLE}</p>
-							                           	<p>&nbsp;&nbsp;📆 ${myrecipe.CUS_REGDATE}</p>
-							                           	<p>&nbsp;&nbsp;👍 ${myrecipe.CUS_SUMGOOD}</p>
+							                           	<div class="cardText">&nbsp;&nbsp;📌 ${myrecipe.CUS_TITLE}</div>
+							                           	<div class="cardText">&nbsp;&nbsp;📆 ${myrecipe.CUS_REGDATE}</div>
+							                           	<div class="cardText">&nbsp;&nbsp;👍 ${myrecipe.CUS_SUMGOOD}</div>
 							                           	
 							                        </div>
 	                                            </a>
@@ -137,6 +138,7 @@
 	                </div>
 	            </div>
         	</div>
+		</div>
 		</div>
 	</body>
 <!-- 부트스트랩 자바스크립트 추가 -->

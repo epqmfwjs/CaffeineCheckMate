@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link href="/resources/css/joinRequest.css"rel="stylesheet" type="text/css">
 
 </head>

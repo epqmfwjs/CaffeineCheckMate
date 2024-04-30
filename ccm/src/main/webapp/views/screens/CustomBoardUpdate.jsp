@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="/resources/css/custom.css">
 <meta charset="UTF-8">
-<title>글작성</title>
+<title>Update</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <c:set var="img" value="${param.img}"/>
 <script type="text/javascript"> var img = ${img}; </script>

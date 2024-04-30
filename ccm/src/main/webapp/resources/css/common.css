@@ -155,7 +155,6 @@ header{
 .headerLinks:hover {
 	color: rgb(239, 108, 51);
 	font-weight: bold;
-	font-size: 1em;
 }
 
 .logo{
@@ -163,7 +162,7 @@ header{
 	width: 130px;
 	height: auto;
 	top: 5.5%;
-    left: 8%;
+    left: 13.8%;
 	overflow: visible;
 	z-index: 1;
 }

@@ -46,10 +46,13 @@
 }
 
 .mypage-wrapper{
+  top: 30%;
+  left: 50%;
   display: flex !important;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 95%;
 }
 
 
@@ -113,36 +116,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 .hr-sect__btn a{
   margin: 0 !important;
 }
 .hr-sect__btn-btn{
-  height: 30px;
-  width: 80px;
+  height: 40px;
+  width: 120px;
   border-radius: 5px;
-  background-color: black;
+  background-color: #0C4A60 !important;
   color: white;
+  margin: 10px;
 }
 
 /*custom*/
 .cus-container{
-  min-height: 550px;
+	height: 70vh;
 }
 .custom-box{
-  max-height: 250px;
+	display: flex;
   overflow-y: auto;
+  height: 100%;
 }
 .boardCard{
-  width: 200px;
+  width: 230px;
   max-height: 450px;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .1);
+  margin: 1%;
 }
 .cus_img{
+  border-radius: 10px;
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 260px;
 }
 .cardTextBox{
   width: 100%;
@@ -150,6 +158,11 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
+}
+
+.cardText{
+	text-align: left;
+	font-size: .8em;
 }
 
 /*fav*/

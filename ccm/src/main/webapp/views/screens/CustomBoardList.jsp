@@ -17,7 +17,7 @@
 
 
 <meta charset="UTF-8">
-<title>커스텀레시피</title>
+<title>CustomRecipe</title>
 
 </head>
 <body>

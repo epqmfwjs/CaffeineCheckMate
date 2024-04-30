@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+/*꾸밈 요소*/
+/*여기어때 잘난체*/
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /*---------- grid-set ----------*/
 section {
 	display: grid;
@@ -24,6 +34,7 @@ section {
 }
 /*1행-홈버튼, 작성버튼, 검색창*/
 .section_col_1-to-12_row_1 {
+	
 	grid-column: 1/span 12;
 	grid-row: 1;
 	display: inline;
