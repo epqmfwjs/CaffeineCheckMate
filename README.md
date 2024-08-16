@@ -1,84 +1,74 @@
+<br>
 <p align="center">
-  <img alt="mainLogo" src="https://github.com/user-attachments/assets/4791ae8f-4643-4b0e-97ab-73875ea97061">
+  <img src="https://github.com/user-attachments/assets/bca51650-c36e-465e-bc4b-8a712c9a0a42" alt="mainLogo"/>
 </p>
+<br>
 
-# JSP / Servlet 프로젝트
-**CaffeineCheckMate** : 데일리 카페인 계산기 & 음료 관련 커뮤니티
+# MVC2패턴 기반 JSP/Servlet  프로젝트
+**CaffeineCheckMate** : 카페인계산기 및 정보공유 커뮤니티 사이트
 
-## 프로젝트 정보
+## 프로젝트 목적
 
-주제 선정 사유 : 한국의 카페 이용 증가
-- 커피 전문점, 카페 음료 소비량이 하락세 없이 지속적으로 증가하는 추세
+1. 카페 음료에 대한 전문적인 커뮤니케이션 서비스를 통해 자신의 입맛에 맞는 레시피를 찾거나 타인과 공유 및 저장 할 수있는 웹서비스제공
+2. 자신이 섭취한 음료의 카페인 함량분을 일별로 기록하여 건강관리에 참고할 수 있도록 기록된 데이터를 제공 
 
-**개발 목표** 
-- 하루 간 섭취한 음료의 영양 성분 분석
-- 하루 영양 성분 권장량 간편하게 체크
-- 현대 추세에 맞는 음료 관련 커뮤니티 활성화
+**CaffeineCheckMate** : 이러한 목적을 달성하기 위하여 구현한 기능
 
+-  **카페인계산기**: 자신의 프로필 정보를 활용하여 마신 커피 등록후  카페인 섭취량 계산 및 저장
+-  **커스텀 레시피**: 추가옵션을 활용한 자신만의 레시피 정보를 공유하는 게시판 구현
+-  **마이 페이지 캘린더**: 카페인계산기를 통한 카페인 섭취량 기록 및  캘린더에 현재상태를 3가지 상태로 시각적 표현
+  
 ## 개발 기간
 
-- **시작일**: 2024.03.17
-- **종료일**: 2024.04.29 (총 6주)
+- **시작일**: 2024.03.29
+- **종료일**: 2024.04.29 (총 4주)
 
 ## 팀원 및 주요 기능
 
-1. **박준영** - DB 관련 총괄 및 커피 목록 조회 게시판 / [PastelQ](https://github.com/PastelQ) 
-2. **최원진** - 웹 디자인, FrontEnd 총괄 및 댓글 게시판 / [JinyDev95](https://github.com/JinyDev95)
-3. **이준호** - 커스텀 레시피(커뮤니티) 게시판 / [ljh0808](https://github.com/ljh0808)
-4. **최광현** - 회원 관리 / [epqmfwjs](https://github.com/epqmfwjs)
-5. **한재엽** - 카페인 계산기 로직, 즐겨찾기 기능 / [sunniesfish](https://github.com/sunniesfish)
-6. **최문영** - 웹 디자인, FrontEnd 지원 및 마이페이지 / [Ramambo](https://github.com/Ramambo)
-
+1. **최광현** - 로그인 및 회원관리 팀장 임무수행 / [epqmfwjs](https://github.com/epqmfwjs)
+2. **박준영** - 커피리스트 검색 게시판 및 DB관리 / [PastelQ](https://github.com/PastelQ) 
+3. **최문영** - 마이페이지 및 PPT / [Moon](https://github.com/Ramambo)
+4. **이준호** - 커스텀 레시피 게시판 / [ljh0808](https://github.com/ljh0808)
+5. **한재엽** - 카페인계산기 및 검색게시판 / [sunniesfish](https://github.com/sunniesfish)
+6. **최원진** - 커스텀 레시피 게시판 댓글 및 Frontend / [JinyDev](https://github.com/JinyDev95)
 ## 기술 스택
 
 <details>
 <summary><strong>언어 및 프레임워크</strong></summary>
 
 - **Java** 17
-- **HTML**
+- **JavaScript**
 - **CSS**
-- **JSP** 4.0
-- **Servlet** 2.3
+- **JSP**
+- **Servlet**
+- **JDBC Driver**
+- **jQuery**
+- **JSTL** 1.2
+- **Java mail** 11
+
+</details>
+
+<details>
+<summary><strong>데이터베이스 및 클라우드</strong></summary>
+
+- **MySQL** 8.0.36
+- **Tommcat** 9.0
 
 </details>
 
 <details>
 <summary><strong>개발 도구</strong></summary>
 
-- **Git**
 - **GitHub**
-- **Eclipse IDE** 2022.03
+- **IntelliJ IDEA**
+- **Eclipse IDEA**
+- **Visual Studio Code (VSCode)**
 
 </details>
 
 <details>
-<summary><strong>서버 및 클라우드</strong></summary>
+<summary><strong>운영 체제</strong></summary>
 
-- **Apache Tomcat** 9.0
-
-</details>
-
-<details>
-<summary><strong>데이터베이스</strong></summary>
-
-- **MySQL** 8.0.36
-
-</details>
-
-<details>
-<summary><strong>라이브러리 및 프레임워크</strong></summary>
-
-- **JSTL** 1.2
-- **커넥션 풀**:
-  - **commons-dbcp2** 2.12.0
-  - **commons-logging** 1.3.0
-  - **commons-pool2** 2.12.0
-
-</details>
-
-<details>
-<summary><strong>기타</strong></summary>
-
-- [FullCalendar](https://fullcalendar.io)
+- **Windows** 11
 
 </details>
